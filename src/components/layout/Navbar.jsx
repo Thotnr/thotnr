@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
-import { cn } from '../../utils'
+import { cn } from '../../utils';
+import logoWhite from '../../assets/images/thotnr_logo_white.png';
+import logoRed from '../../assets/images/thotnr_logo_red.png';
 
 // ── Mega-dropdown content ─────────────────────────────────────────────────────
 
@@ -19,22 +21,28 @@ const aiSolutions = [
   { label: 'Recommendation Systems',      desc: 'Personalise at scale across touchpoints' },
 ]
 
-// ── Logo SVG mark ─────────────────────────────────────────────────────────────
+// ── Logo ──────────────────────────────────────────────────────────────────────
 
-// LogoMark — abstract hexagon icon rendered beside the THOTNR wordmark
-function LogoMark({ size = 28 }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 28 28" fill="none">
-      <polygon points="14,2 25,8 25,20 14,26 3,20 3,8" fill="none" stroke="var(--color-sky)" strokeWidth="1.8" />
-      <polygon points="14,7 21,11 21,19 14,23 7,19 7,11" fill="var(--color-sky)" opacity="0.15" />
-      <circle cx="14" cy="14" r="3.5" fill="var(--color-sky)" />
-    </svg>
+function LogoMark({ size = 28, scrolled }) {
+  const c = scrolled ? 'var(--color-accent)' : 'var(--color-accent)'
+  return (  
+    <img
+      src={scrolled ? logoRed :logoWhite}
+      alt="Thotnr Logo"
+      width={size}
+      height={size}
+      color={c}
+      style={{
+        objectFit: 'contain',
+        opacity: scrolled ? 0.9 : 1,
+        transition: 'opacity 0.2s ease',
+      }}
+    />
   )
 }
 
 // ── Chevron ───────────────────────────────────────────────────────────────────
 
-// ChevronDown — rotates 180° when the dropdown/accordion it belongs to is open
 function ChevronDown({ open }) {
   return (
     <svg
@@ -49,7 +57,6 @@ function ChevronDown({ open }) {
 
 // ── Mega-menu panel ───────────────────────────────────────────────────────────
 
-// MegaMenu — grid of labelled links inside a floating dropdown panel
 function MegaMenu({ items, cols = 2 }) {
   return (
     <div
@@ -60,34 +67,28 @@ function MegaMenu({ items, cols = 2 }) {
         <a
           key={item.label}
           href="#"
-          className="flex flex-col gap-0.5 rounded-lg px-4 py-3 no-underline transition-colors duration-150 hover:bg-sky/[0.06]"
+          className="flex flex-col gap-0.5 rounded-lg px-4 py-3 no-underline transition-colors duration-150 hover:bg-accent-soft"
         >
-          <span className="text-sm font-medium text-navy">{item.label}</span>
-          <span className="text-xs text-muted">{item.desc}</span>
+          <span className="text-sm font-semibold text-gray-900">{item.label}</span>
+          <span className="text-xs text-gray-500">{item.desc}</span>
         </a>
       ))}
     </div>
   )
 }
 
-// ── Dropdown nav item (desktop) ───────────────────────────────────────────────
+// ── Dropdown item (desktop) ───────────────────────────────────────────────────
 
-// DropdownItem — desktop nav button that reveals a MegaMenu panel on hover
-function DropdownItem({ label, items, cols }) {
+function DropdownItem({ label, items, cols, scrolled }) {
   const [open, setOpen] = useState(false)
   const ref = useRef(null)
 
   return (
-    <div
-      ref={ref}
-      className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
+    <div ref={ref} className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
       <button
         className={cn(
           'flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md transition-colors duration-150 bg-transparent border-none cursor-pointer',
-          open ? 'text-sky' : 'text-ink'
+          open ? 'text-accent' : scrolled ? 'text-gray-700' : 'text-white'
         )}
       >
         {label}
@@ -96,15 +97,14 @@ function DropdownItem({ label, items, cols }) {
 
       {open && (
         <div
-          className="absolute top-full left-0 z-50 mt-1.5 bg-white p-2"
+          className="absolute top-full left-0 z-50 mt-1.5 bg-white p-2 shadow-xl"
           style={{
-            border:       '1px solid var(--color-line)',
-            borderTop:    '2px solid var(--color-sky)',
+            border:       '1px solid var(--color-gray-200)',
+            borderTop:    '2px solid var(--color-accent)',
             borderRadius: '0 12px 12px 12px',
-            boxShadow:    '0 16px 40px rgba(0,0,0,0.10)',
           }}
         >
-          <p className="text-xs font-semibold uppercase tracking-widest px-4 py-2 mb-1 text-sky">
+          <p className="text-xs font-semibold uppercase tracking-widest px-4 py-2 mb-1 text-accent">
             {label}
           </p>
           <MegaMenu items={items} cols={cols} />
@@ -114,41 +114,33 @@ function DropdownItem({ label, items, cols }) {
   )
 }
 
-// ── Hamburger icon (mobile) ───────────────────────────────────────────────────
+// ── Hamburger ─────────────────────────────────────────────────────────────────
 
-// HamburgerIcon — three bars that animate into an × when the mobile menu is open
-function HamburgerIcon({ open }) {
+function HamburgerIcon({ open, scrolled }) {
+  const barCls = cn(
+    'block h-[2px] rounded-full transition-transform duration-[250ms]',
+    scrolled ? 'bg-gray-800' : 'bg-white'
+  )
   return (
     <div className="flex flex-col justify-center gap-[5px] w-5 h-5 cursor-pointer">
-      <span
-        className="block h-[2px] rounded-full bg-navy transition-transform duration-[250ms]"
-        style={{ transform: open ? 'translateY(7px) rotate(45deg)' : 'none' }}
-      />
-      <span
-        className="block h-[2px] rounded-full bg-navy transition-opacity duration-200"
-        style={{ opacity: open ? 0 : 1 }}
-      />
-      <span
-        className="block h-[2px] rounded-full bg-navy transition-transform duration-[250ms]"
-        style={{ transform: open ? 'translateY(-7px) rotate(-45deg)' : 'none' }}
-      />
+      <span className={barCls} style={{ transform: open ? 'translateY(7px) rotate(45deg)' : 'none' }} />
+      <span className={cn(barCls, 'transition-opacity duration-200')} style={{ opacity: open ? 0 : 1 }} />
+      <span className={barCls} style={{ transform: open ? 'translateY(-7px) rotate(-45deg)' : 'none' }} />
     </div>
   )
 }
 
 // ── Main Navbar ───────────────────────────────────────────────────────────────
 
-// Navbar — fixed top bar, white/translucent at top, fully opaque on scroll
-// Desktop (md+): logo · nav links · CTA button  — controlled by `hidden md:flex`
-// Mobile (<md):  logo · hamburger                — controlled by `flex md:hidden`
-// The `display` property is NEVER set in the inline style so Tailwind classes win.
+// Navbar — transparent over dark Hero, white/opaque on scroll
+// display is NEVER set in inline style — Tailwind's hidden/flex classes control it
 function Navbar() {
-  const [scrolled,   setScrolled]  = useState(false)
-  const [mobileOpen, setMobileOpen]= useState(false)
-  const [mobileExp,  setMobileExp] = useState(null)
+  const [scrolled,   setScrolled]   = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [mobileExp,  setMobileExp]  = useState(null)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
+    const onScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -159,59 +151,57 @@ function Navbar() {
   }, [mobileOpen])
 
   const navBase = cn(
-    'fixed top-0 left-0 right-0 z-50 h-16 items-center justify-between backdrop-blur-[16px] transition-all duration-300',
+    'fixed top-0 inset-x-0 z-50 h-16 items-center justify-between',
+    'px-6 md:px-10 lg:px-16 transition-all duration-300',
     scrolled
-      ? 'bg-white/[0.97] border-b border-line shadow-[0_2px_16px_rgba(0,0,0,0.07)]'
-      : 'bg-white/[0.82] border-b border-transparent'
+      ? 'bg-white/95 backdrop-blur-sm border-b border-border shadow-sm'
+      : 'bg-transparent border-b border-transparent'
   )
 
   return (
     <>
-      {/* ══════════════════════════════ DESKTOP NAV ══════════════════════════
-          `hidden md:flex` — invisible below 768 px, flex row at 768 px and up.
-          No `display` in navBase so Tailwind's class is never overridden.
-      ════════════════════════════════════════════════════════════════════════ */}
-      <nav className={cn(navBase, 'hidden md:flex px-4 md:px-8 xl:px-16')}>
-        {/* Logo */}
+      {/* ── DESKTOP NAV ── */}
+      <nav className={cn(navBase, 'hidden md:flex')}>
         <a href="/" className="flex items-center gap-2.5 no-underline flex-shrink-0">
-          <LogoMark />
-          <span className="text-xl font-bold tracking-tight text-navy font-heading">
-            THOTNR
+          <LogoMark scrolled={scrolled} />
+          
+          <span className={cn('relative text-2xl font-black tracking-widest', scrolled ? 'text-gray-900' : 'text-white')}>
+            THO
+            <span className="text-red-500">T</span>
+            NR
+            <span className="absolute -bottom-0.5 left-0 w-full h-[2px] bg-gradient-to-r from-red-500 to-transparent" />
           </span>
         </a>
-
-        {/* Nav links */}
-        <div className="flex items-center gap-1">
-          <DropdownItem label="What We Offer" items={whatWeOffer} cols={2} />
-          <DropdownItem label="AI Solutions"  items={aiSolutions} cols={3} />
-
-          {['Industries', 'Insights', 'About', 'Contact'].map((link) => (
-            <a
-              key={link}
-              href="#"
-              className="px-3 py-2 text-sm font-medium rounded-md no-underline transition-colors duration-150 text-ink hover:text-sky"
-            >
-              {link}
-            </a>
-          ))}
+        <div className="flex justify-around w-full">
+          <div className="flex items-center gap-1">
+            <DropdownItem label="What We Offer" items={whatWeOffer} cols={2} scrolled={scrolled} />
+            <DropdownItem label="Our work"  items={aiSolutions} cols={3} scrolled={scrolled} />
+            <DropdownItem label="Insights"  items={aiSolutions} cols={3} scrolled={scrolled} />
+            <DropdownItem label="AI"  items={aiSolutions} cols={3} scrolled={scrolled} />
+          </div>
+          <div className="flex items-center gap-1">
+            {['About', 'Contact', 'Join Us'].map((link) => (
+                <a
+                  key={link}
+                  href="#"
+                  className={cn(
+                    'px-3 py-2 text-sm font-medium rounded-md no-underline transition-colors duration-150 hover:text-accent',
+                    scrolled ? 'text-gray-700' : 'text-white'
+                  )}
+                >
+                  {link}
+                </a>
+              ))}
+          </div>
         </div>
-
-        {/* CTA */}
-        <a
-          href="#"
-          className="no-underline flex-shrink-0 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 bg-sky text-white hover:bg-sky-dk hover:-translate-y-px hover:shadow-[0_6px_20px_rgba(14,165,233,0.30)]"
-        >
-          Get Started
-        </a>
+        
       </nav>
 
-      {/* ══════════════════════════════ MOBILE NAV ═══════════════════════════
-          `flex md:hidden` — flex row below 768 px, hidden at 768 px and up.
-      ════════════════════════════════════════════════════════════════════════ */}
+      {/* ── MOBILE NAV ── */}
       <nav className={cn(navBase, 'flex md:hidden px-5')}>
         <a href="/" className="flex items-center gap-2 no-underline">
-          <LogoMark size={24} />
-          <span className="text-lg font-bold text-navy font-heading">
+          <LogoMark size={24} scrolled={scrolled} />
+          <span className={cn('text-lg font-bold', scrolled ? 'text-gray-900' : 'text-white')}>
             THOTNR
           </span>
         </a>
@@ -221,30 +211,25 @@ function Navbar() {
           aria-label="Toggle navigation"
           className="bg-transparent border-none p-1.5 cursor-pointer"
         >
-          <HamburgerIcon open={mobileOpen} />
+          <HamburgerIcon open={mobileOpen} scrolled={scrolled} />
         </button>
       </nav>
 
-      {/* ══════════════════════════════ MOBILE DRAWER ════════════════════════
-          Slides down from under the mobile navbar when hamburger is tapped.
-      ════════════════════════════════════════════════════════════════════════ */}
+      {/* ── MOBILE DRAWER ── */}
       <div
         className={cn(
-          'md:hidden fixed left-0 right-0 z-40 overflow-y-auto transition-transform duration-300',
+          'md:hidden fixed inset-x-0 z-40 overflow-y-auto transition-transform duration-300',
           mobileOpen ? 'translate-y-0 pointer-events-auto' : '-translate-y-[110%] pointer-events-none'
         )}
         style={{
-          top:                   64,
-          bottom:                0,
-          background:            '#ffffff',
-          borderTop:             '2px solid var(--color-sky)',
-          boxShadow:             '0 12px 40px rgba(0,0,0,0.10)',
+          top: 64, bottom: 0,
+          background: '#ffffff',
+          borderTop: '2px solid var(--color-accent)',
+          boxShadow: '0 12px 40px rgba(0,0,0,0.12)',
           transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1)',
         }}
       >
         <div className="flex flex-col gap-1 p-5 pb-12">
-
-          {/* Accordion mega-dropdown items */}
           {[
             { label: 'What We Offer', key: 'offer',     items: whatWeOffer },
             { label: 'AI Solutions',  key: 'solutions', items: aiSolutions },
@@ -252,8 +237,8 @@ function Navbar() {
             <div key={key}>
               <button
                 className={cn(
-                  'w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-150 border-none cursor-pointer text-ink',
-                  mobileExp === key ? 'bg-sky/[0.06]' : 'bg-transparent'
+                  'w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-150 border-none cursor-pointer text-gray-800',
+                  mobileExp === key ? 'bg-accent-soft' : 'bg-transparent'
                 )}
                 onClick={() => setMobileExp(mobileExp === key ? null : key)}
               >
@@ -261,23 +246,16 @@ function Navbar() {
                 <ChevronDown open={mobileExp === key} />
               </button>
 
-              {/* Accordion body */}
-              <div
-                style={{
-                  maxHeight:  mobileExp === key ? 400 : 0,
-                  overflow:   'hidden',
-                  transition: 'max-height 0.3s ease',
-                }}
-              >
+              <div style={{ maxHeight: mobileExp === key ? 400 : 0, overflow: 'hidden', transition: 'max-height 0.3s ease' }}>
                 <div className="ml-4 mt-1 mb-1 flex flex-col gap-0.5">
                   {items.map((item) => (
                     <a
                       key={item.label}
                       href="#"
-                      className="flex flex-col gap-0.5 px-4 py-2.5 rounded-lg no-underline transition-colors duration-150 hover:bg-sky/[0.06]"
+                      className="flex flex-col gap-0.5 px-4 py-2.5 rounded-lg no-underline transition-colors duration-150 hover:bg-accent-soft"
                     >
-                      <span className="text-sm font-medium text-navy">{item.label}</span>
-                      <span className="text-xs text-muted">{item.desc}</span>
+                      <span className="text-sm font-semibold text-gray-900">{item.label}</span>
+                      <span className="text-xs text-gray-500">{item.desc}</span>
                     </a>
                   ))}
                 </div>
@@ -285,22 +263,17 @@ function Navbar() {
             </div>
           ))}
 
-          {/* Simple nav links */}
           {['Industries', 'Insights', 'About', 'Contact'].map((link) => (
             <a
               key={link}
               href="#"
-              className="px-4 py-3 rounded-xl text-sm font-medium no-underline transition-colors duration-150 text-ink hover:text-sky"
+              className="px-4 py-3 rounded-xl text-sm font-medium no-underline transition-colors duration-150 text-gray-700 hover:text-accent"
             >
               {link}
             </a>
           ))}
 
-          {/* Mobile CTA */}
-          <a
-            href="#"
-            className="mt-4 px-5 py-3 rounded-xl text-sm font-semibold text-center no-underline bg-sky text-white"
-          >
+          <a href="#" className="mt-4 px-5 py-3 rounded-lg text-sm font-semibold text-center no-underline bg-accent text-white hover:bg-accent-dark transition-colors duration-200">
             Get Started
           </a>
         </div>

@@ -1,6 +1,5 @@
-// ── Social SVG icons ──────────────────────────────────────────────────────────
+// ── Social icons ──────────────────────────────────────────────────────────────
 
-// LinkedInIcon — LinkedIn brand mark
 function LinkedInIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -11,7 +10,6 @@ function LinkedInIcon() {
   )
 }
 
-// TwitterIcon — Twitter / X brand mark
 function TwitterIcon() {
   return (
     <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
@@ -20,7 +18,6 @@ function TwitterIcon() {
   )
 }
 
-// InstagramIcon — Instagram brand mark
 function InstagramIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -33,66 +30,53 @@ function InstagramIcon() {
 
 // ── Footer logo ───────────────────────────────────────────────────────────────
 
-// FooterLogo — hexagon icon mark + THOTNR wordmark for the footer brand column
 function FooterLogo() {
   return (
     <div className="flex items-center gap-2.5">
       <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
-        <polygon points="14,2 25,8 25,20 14,26 3,20 3,8" fill="none" stroke="var(--color-sky)" strokeWidth="1.8" />
-        <polygon points="14,7 21,11 21,19 14,23 7,19 7,11" fill="var(--color-sky)" opacity="0.15" />
-        <circle cx="14" cy="14" r="3.5" fill="var(--color-sky)" />
+        <polygon points="14,2 25,8 25,20 14,26 3,20 3,8" fill="none" stroke="var(--color-accent)" strokeWidth="1.8" />
+        <polygon points="14,7 21,11 21,19 14,23 7,19 7,11" fill="var(--color-accent)" opacity="0.2" />
+        <circle cx="14" cy="14" r="3.5" fill="var(--color-accent)" />
       </svg>
-      <span className="text-lg font-bold text-white font-heading">
-        THOTNR
-      </span>
+      <span className="text-lg font-bold text-white tracking-tight">THOTNR</span>
     </div>
   )
 }
 
-// ── Reusable helpers ──────────────────────────────────────────────────────────
+// ── Helpers ───────────────────────────────────────────────────────────────────
 
-// FooterHeading — section label for each footer column
 function FooterHeading({ children }) {
   return (
-    <h4 className="text-xs font-semibold uppercase tracking-[0.12em] mb-5 text-white font-heading">
+    <h4 className="text-xs font-semibold uppercase tracking-[0.12em] mb-5 text-white">
       {children}
     </h4>
   )
 }
 
-// FooterLink — a single anchor in a footer column list
 function FooterLink({ href = '#', children }) {
   return (
-    <a
-      href={href}
-      className="block text-sm py-0.5 no-underline leading-loose transition-colors duration-150 text-muted hover:text-white"
-    >
+    <a href={href} className="block text-sm py-0.5 no-underline leading-loose transition-colors duration-150 text-muted hover:text-accent">
       {children}
     </a>
   )
 }
 
-// ── Main Footer ───────────────────────────────────────────────────────────────
+// ── Footer ────────────────────────────────────────────────────────────────────
 
-// Footer — dark-navy 4-column grid: brand + quick links + services + contact info
-// Bottom bar: copyright left, legal links right
+// Footer — dark section (section 10), 4-column brand / links / services / contact
 function Footer() {
   return (
-    <footer className="bg-navy">
+    <footer className="bg-dark border-t border-border-dk">
 
-      {/* ── Top divider line ── */}
-      <div className="border-t border-navy-edge" />
+      {/* Main grid */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
-      {/* ── Main 4-column grid ── */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-16 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-
-        {/* Column 1 — Brand */}
+        {/* Brand */}
         <div className="flex flex-col gap-5">
           <FooterLogo />
           <p className="text-sm leading-relaxed text-muted" style={{ maxWidth: 220 }}>
             Your strategic thought partner for AI transformation — from ambition to production.
           </p>
-          {/* Social icons */}
           <div className="flex gap-2.5 mt-1">
             {[
               { label: 'LinkedIn',  icon: <LinkedInIcon /> },
@@ -103,7 +87,7 @@ function Footer() {
                 key={label}
                 href="#"
                 aria-label={label}
-                className="flex items-center justify-center w-9 h-9 rounded-full transition-all duration-200 no-underline border border-navy-edge text-muted hover:border-sky hover:text-sky hover:bg-sky/[0.12]"
+                className="flex items-center justify-center w-9 h-9 rounded-full transition-all duration-200 no-underline border border-border-dk text-muted hover:border-accent hover:text-accent"
               >
                 {icon}
               </a>
@@ -111,7 +95,7 @@ function Footer() {
           </div>
         </div>
 
-        {/* Column 2 — Quick Links */}
+        {/* Quick Links */}
         <div>
           <FooterHeading>Quick Links</FooterHeading>
           <nav>
@@ -121,7 +105,7 @@ function Footer() {
           </nav>
         </div>
 
-        {/* Column 3 — Services */}
+        {/* Services */}
         <div>
           <FooterHeading>Services</FooterHeading>
           <nav>
@@ -138,7 +122,7 @@ function Footer() {
           </nav>
         </div>
 
-        {/* Column 4 — Contact */}
+        {/* Contact */}
         <div>
           <FooterHeading>Get in Touch</FooterHeading>
           <div className="flex flex-col gap-4">
@@ -148,7 +132,7 @@ function Footer() {
               { emoji: '📍', text: '340 Pine Street, San Francisco, CA 94104' },
             ].map(({ emoji, text }) => (
               <div key={text} className="flex items-start gap-3 text-sm text-muted">
-                <span className="mt-0.5 text-base">{emoji}</span>
+                <span className="mt-0.5">{emoji}</span>
                 <span className="leading-relaxed">{text}</span>
               </div>
             ))}
@@ -156,19 +140,12 @@ function Footer() {
         </div>
       </div>
 
-      {/* ── Bottom bar ── */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-16 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs border-t border-navy-edge text-muted">
-        {/* Copyright */}
+      {/* Bottom bar */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs border-t border-border-dk text-muted">
         <span>© {new Date().getFullYear()} THOTNR. All rights reserved.</span>
-
-        {/* Legal links */}
         <div className="flex items-center gap-5">
           {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((l) => (
-            <a
-              key={l}
-              href="#"
-              className="no-underline transition-colors duration-150 text-muted hover:text-white"
-            >
+            <a key={l} href="#" className="no-underline transition-colors duration-150 text-muted hover:text-accent">
               {l}
             </a>
           ))}

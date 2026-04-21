@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { cn } from '../../../utils'
 
-// ── Featured service data ─────────────────────────────────────────────────────
+// ── Data ──────────────────────────────────────────────────────────────────────
 
 const featured = [
   {
@@ -21,8 +21,6 @@ const featured = [
   },
 ]
 
-// ── All-services grid data ────────────────────────────────────────────────────
-
 const allServices = [
   { icon: '💬', label: 'NLP Solutions' },
   { icon: '👁️', label: 'Computer Vision' },
@@ -38,85 +36,72 @@ const allServices = [
   { icon: '🎯', label: 'Customer AI' },
 ]
 
-// ── Featured service card ─────────────────────────────────────────────────────
+// ── Cards ─────────────────────────────────────────────────────────────────────
 
-// FeaturedServiceCard — gradient-border card using p-px wrapper + group-hover
+// FeaturedServiceCard — light card on white section
 function FeaturedServiceCard({ icon, title, desc }) {
   return (
-    <div className="group p-px rounded-xl transition-all duration-300 bg-navy-edge hover:bg-gradient-to-br hover:from-sky hover:to-indigo hover:-translate-y-[4px] hover:shadow-[0_16px_40px_rgba(0,0,0,0.3)]">
-      <div className="bg-navy-card rounded-xl flex flex-col gap-5 p-7 h-full">
-
-        {/* Icon */}
-        <span className="text-3xl">{icon}</span>
-
-        {/* Text */}
-        <div>
-          <h3 className="text-lg font-semibold mb-2 text-white font-heading">{title}</h3>
-          <p className="text-sm leading-relaxed text-muted">{desc}</p>
-        </div>
-
-        {/* CTA */}
-        <a
-          href="#"
-          className="mt-auto inline-flex items-center gap-1.5 text-sm font-medium no-underline transition-colors duration-150 text-sky hover:text-sky-dk"
-        >
-          Know More →
-        </a>
+    <div className="group flex flex-col gap-5 bg-white rounded-xl border border-border p-7 transition-all duration-300 hover:border-accent hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(225,29,72,0.08)]">
+      <span className="text-3xl">{icon}</span>
+      <div>
+        <h3 className="text-lg font-semibold mb-2 text-gray-900">{title}</h3>
+        <p className="text-sm leading-relaxed text-gray-600">{desc}</p>
       </div>
+      <a href="#" className="mt-auto text-sm font-semibold text-accent hover:text-accent-dark transition-colors duration-150">
+        Know More →
+      </a>
     </div>
   )
 }
 
-// ── Small service tile ────────────────────────────────────────────────────────
-
-// ServiceTile — compact icon + label tile used in the "All Services" expandable grid
+// ServiceTile — compact tile in the expandable grid
 function ServiceTile({ icon, label }) {
   return (
-    <div className="group flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-150 cursor-default border border-navy-edge hover:border-sky hover:bg-sky/[0.06]">
+    <div className="group flex items-center gap-3 px-4 py-3 rounded-lg border border-border transition-all duration-150 hover:border-accent hover:bg-accent/[0.04] cursor-default">
       <span className="text-xl">{icon}</span>
-      <span className="text-sm font-medium text-muted group-hover:text-white transition-colors duration-150">
+      <span className="text-sm font-medium text-gray-600 group-hover:text-accent transition-colors duration-150">
         {label}
       </span>
     </div>
   )
 }
 
-// ── ServicesList section ──────────────────────────────────────────────────────
+// ── Section ───────────────────────────────────────────────────────────────────
 
-// ServicesList — dark-navy section with 3 featured cards and a collapsible full-services grid
+// ServicesList — Section 6 (light). 3 featured cards + expandable full-services grid.
 function ServicesList() {
   const [expanded, setExpanded] = useState(false)
 
   return (
-    <section className="bg-navy py-24 px-6 lg:px-16">
+    <section className="bg-white py-24 px-6 md:px-10 lg:px-16">
       <div className="max-w-7xl mx-auto">
 
-        {/* Section header */}
+        {/* Header */}
         <div className="text-center mb-14">
-          <p className="text-xs font-semibold uppercase tracking-widest mb-3 text-sky">
+          <p className="text-xs font-semibold uppercase tracking-widest mb-3 text-accent">
             What We Deliver
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white font-heading tracking-tight">
-            Services We Offer
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">
+            Services We <span className="text-accent">Offer</span>
           </h2>
         </div>
 
-        {/* Featured 3-column grid */}
+        {/* Featured grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           {featured.map((svc) => (
             <FeaturedServiceCard key={svc.title} {...svc} />
           ))}
         </div>
 
-        {/* Expand / collapse toggle */}
+        {/* Expand toggle */}
         <div className="flex justify-center mb-8">
           <button
             onClick={() => setExpanded((e) => !e)}
             className={cn(
-              'inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer',
+              'inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer border',
               expanded
-                ? 'bg-sky/[0.09] border border-sky text-sky'
-                : 'bg-transparent border border-navy-edge text-muted'
+                ? 'bg-accent/[0.06] border-accent text-accent'
+                : 'bg-white border-border text-gray-600 hover:border-accent hover:text-accent'
             )}
           >
             {expanded ? 'Hide Services' : 'Show All Services'}
@@ -130,14 +115,8 @@ function ServicesList() {
           </button>
         </div>
 
-        {/* Expandable all-services grid */}
-        <div
-          style={{
-            maxHeight:  expanded ? 600 : 0,
-            overflow:   'hidden',
-            transition: 'max-height 0.4s cubic-bezier(0.4,0,0.2,1)',
-          }}
-        >
+        {/* Expandable grid */}
+        <div style={{ maxHeight: expanded ? 600 : 0, overflow: 'hidden', transition: 'max-height 0.4s cubic-bezier(0.4,0,0.2,1)' }}>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 pt-2">
             {allServices.map((svc) => (
               <ServiceTile key={svc.label} {...svc} />

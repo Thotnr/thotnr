@@ -1,4 +1,4 @@
-// ── Timeline step data ────────────────────────────────────────────────────────
+// ── Data ──────────────────────────────────────────────────────────────────────
 
 const steps = [
   {
@@ -23,7 +23,7 @@ const steps = [
     number:  '04',
     title:   'Make It Real',
     summary: 'Production is the only metric that matters.',
-    detail:  'We own deployment, integration testing, user acceptance, and team training. We don\'t consider a project complete until your people are running it confidently and outcomes are being tracked.',
+    detail:  "We own deployment, integration testing, user acceptance, and team training. We don't consider a project complete until your people are running it confidently and outcomes are being tracked.",
   },
   {
     number:  '05',
@@ -33,53 +33,48 @@ const steps = [
   },
 ]
 
-// ── Single timeline step ──────────────────────────────────────────────────────
+// ── Step ──────────────────────────────────────────────────────────────────────
 
-// TimelineStep — one numbered step with large accent number, title, and description
 function TimelineStep({ number, title, summary, detail, isLast }) {
   return (
     <div className="flex gap-8 relative">
-      {/* Left: number + connecting line */}
+      {/* Number + line */}
       <div className="flex flex-col items-center" style={{ minWidth: 72 }}>
-        <div className="w-14 h-14 rounded-full flex items-center justify-center text-lg font-bold flex-shrink-0 z-10 bg-gradient-to-br from-sky/[0.13] to-indigo/[0.13] border-2 border-sky text-sky font-heading">
+        <div className="w-14 h-14 rounded-full flex items-center justify-center text-lg font-bold flex-shrink-0 z-10 border-2 border-accent text-accent bg-accent/[0.08]">
           {number}
         </div>
-        {/* Connecting line */}
         {!isLast && (
-          <div
-            className="flex-1 w-px mt-2 bg-gradient-to-b from-sky to-indigo/[0.27]"
-            style={{ minHeight: 60 }}
-          />
+          <div className="flex-1 w-px mt-2 bg-gradient-to-b from-accent/40 to-transparent" style={{ minHeight: 60 }} />
         )}
       </div>
 
-      {/* Right: content */}
+      {/* Content */}
       <div className="pb-12">
-        <h3 className="text-xl font-semibold mb-1 text-navy font-heading">{title}</h3>
-        <p className="text-base font-medium mb-3 text-sky">{summary}</p>
-        <p className="text-sm lg:text-base leading-relaxed text-muted-dk">{detail}</p>
+        <h3 className="text-xl font-semibold mb-1 text-gray-900">{title}</h3>
+        <p className="text-base font-medium mb-3 text-accent">{summary}</p>
+        <p className="text-sm lg:text-base leading-relaxed text-gray-600">{detail}</p>
       </div>
     </div>
   )
 }
 
-// ── ProcessTimeline section ───────────────────────────────────────────────────
+// ── Section ───────────────────────────────────────────────────────────────────
 
-// ProcessTimeline — white section with vertical numbered timeline showing the engagement methodology
+// ProcessTimeline — Section 4 (light). Vertical numbered engagement methodology.
 function ProcessTimeline() {
   return (
-    <section className="bg-white py-24 px-6 lg:px-16">
+    <section className="bg-white py-24 px-6 md:px-10 lg:px-16">
       <div className="max-w-3xl mx-auto">
 
-        {/* Section header */}
+        {/* Header */}
         <div className="mb-16">
-          <p className="text-xs font-semibold uppercase tracking-widest mb-3 text-sky">
+          <p className="text-xs font-semibold uppercase tracking-widest mb-3 text-accent">
             Our Methodology
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold leading-tight text-navy font-heading tracking-tight">
-            How AI Thinking Works in Practice
+          <h2 className="text-3xl sm:text-4xl font-bold leading-tight text-gray-900 tracking-tight">
+            How <span className="text-accent">AI Thinking</span> Works in Practice
           </h2>
-          <p className="mt-4 text-base lg:text-lg leading-relaxed text-muted-dk">
+          <p className="mt-4 text-base lg:text-lg leading-relaxed text-gray-600">
             A five-phase engagement designed to move at the speed of your organisation while never sacrificing depth.
           </p>
         </div>

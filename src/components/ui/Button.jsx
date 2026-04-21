@@ -1,10 +1,11 @@
 function Button({ children, onClick, variant = 'primary', className = '', ...props }) {
   const base =
-    'inline-flex items-center justify-center gap-2 rounded px-4 py-2 font-mono text-sm transition-colors cursor-pointer border'
+    'inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 font-sans text-sm font-semibold transition-colors duration-200 cursor-pointer border'
+
   const variants = {
-    primary:   'bg-sky/10 border-sky/30 text-white hover:bg-sky hover:text-white hover:border-sky',
-    secondary: 'bg-transparent border-navy-edge text-muted hover:border-sky/40 hover:text-ink',
-    ghost:     'bg-transparent border-transparent text-muted hover:text-ink',
+    primary:   'bg-accent border-accent text-white hover:bg-accent-dark hover:border-accent-dark',
+    secondary: 'bg-transparent border-border text-gray-700 hover:border-accent hover:text-accent',
+    ghost:     'bg-transparent border-transparent text-gray-600 hover:text-accent',
   }
 
   return (

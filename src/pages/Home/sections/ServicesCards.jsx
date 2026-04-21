@@ -1,19 +1,17 @@
-// ── Service icons ─────────────────────────────────────────────────────────────
+// ── Icons ─────────────────────────────────────────────────────────────────────
 
-// ChatBubbleIcon — represents Strategic AI Integration
 function ChatBubbleIcon() {
   return (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
       <path d="M8 10h.01M12 10h.01M16 10h.01"/>
     </svg>
   )
 }
 
-// LayersIcon — represents AI-Powered Decision Making
 function LayersIcon() {
   return (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <polygon points="12 2 22 8.5 12 15 2 8.5 12 2"/>
       <polyline points="22 15.5 12 22 2 15.5"/>
       <polyline points="22 12 12 18.5 2 12"/>
@@ -21,16 +19,15 @@ function LayersIcon() {
   )
 }
 
-// PulseIcon — represents Intelligent Automation
 function PulseIcon() {
   return (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
     </svg>
   )
 }
 
-// ── Service card data ─────────────────────────────────────────────────────────
+// ── Data ──────────────────────────────────────────────────────────────────────
 
 const services = [
   {
@@ -56,64 +53,61 @@ const services = [
   },
 ]
 
-// ── Service card component ────────────────────────────────────────────────────
+// ── Card ──────────────────────────────────────────────────────────────────────
 
-// ServiceCard — gradient-border card using p-px wrapper + group-hover for hover effects.
-// No useState needed — pure CSS hover via Tailwind group utilities.
+// ServiceCard — dark card with accent-red hover border glow, no useState needed
 function ServiceCard({ icon, title, tagline, whatWeDo, outcome }) {
   return (
-    <div className="group p-px rounded-2xl cursor-default transition-all duration-300 bg-navy-edge hover:bg-gradient-to-br hover:from-sky hover:to-indigo hover:-translate-y-[6px] shadow-[0_4px_16px_rgba(0,0,0,0.2)] hover:shadow-[0_20px_48px_rgba(0,0,0,0.3),0_0_30px_rgba(14,165,233,0.15)]">
-      <div className="bg-navy-card rounded-2xl flex flex-col gap-5 p-7 h-full">
+    <div className="group flex flex-col gap-6 bg-card-dk rounded-xl border border-border-dk p-7 transition-all duration-300 hover:border-accent hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(0,0,0,0.4)]">
 
-        {/* Icon */}
-        <div className="w-[52px] h-[52px] rounded-xl flex items-center justify-center transition-all duration-300 bg-navy-edge/50 border border-navy-edge text-muted group-hover:bg-sky/[0.13] group-hover:border-sky/[0.27] group-hover:text-sky">
-          {icon}
-        </div>
+      {/* Icon */}
+      <div className="w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 bg-white/[0.05] border border-border-dk text-muted group-hover:bg-accent/10 group-hover:border-accent/30 group-hover:text-accent">
+        {icon}
+      </div>
 
-        {/* Title */}
-        <div>
-          <h3 className="text-xl font-semibold mb-1 text-white font-heading">{title}</h3>
-          <p className="text-sm text-muted">{tagline}</p>
-        </div>
+      {/* Title */}
+      <div>
+        <h3 className="text-lg font-semibold text-white mb-1">{title}</h3>
+        <p className="text-sm text-muted">{tagline}</p>
+      </div>
 
-        {/* What we do */}
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-widest mb-2 text-sky">What we do</p>
-          <p className="text-sm leading-relaxed text-muted">{whatWeDo}</p>
-        </div>
+      {/* What we do */}
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-widest mb-2 text-accent">What we do</p>
+        <p className="text-sm leading-relaxed text-muted">{whatWeDo}</p>
+      </div>
 
-        {/* Real outcome */}
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-widest mb-2 text-indigo">Real outcome</p>
-          <p className="text-sm leading-relaxed text-muted">{outcome}</p>
-        </div>
+      {/* Outcome */}
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-widest mb-2 text-accent/60">Real outcome</p>
+        <p className="text-sm leading-relaxed text-muted">{outcome}</p>
       </div>
     </div>
   )
 }
 
-// ── ServicesCards section ─────────────────────────────────────────────────────
+// ── Section ───────────────────────────────────────────────────────────────────
 
-// ServicesCards — dark-navy 3-column card grid showcasing core AI capabilities
+// ServicesCards — Section 3 (dark). 3-column card grid of core AI capabilities.
 function ServicesCards() {
   return (
-    <section className="bg-navy py-24 px-6 lg:px-16">
+    <section className="bg-dark py-24 px-6 md:px-10 lg:px-16">
       <div className="max-w-7xl mx-auto">
 
-        {/* Section header */}
+        {/* Header */}
         <div className="text-center mb-14">
-          <p className="text-xs font-semibold uppercase tracking-widest mb-3 text-sky">
+          <p className="text-xs font-semibold uppercase tracking-widest mb-3 text-accent">
             Core Capabilities
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white font-heading tracking-tight">
-            Our AI Capabilities
+          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Our <span className="text-accent">AI</span> Capabilities
           </h2>
           <p className="mt-4 text-base max-w-lg mx-auto text-muted">
             Three interlocking disciplines that take an AI idea from whiteboard to measurable business impact.
           </p>
         </div>
 
-        {/* Card grid */}
+        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {services.map((svc) => (
             <ServiceCard key={svc.title} {...svc} />
