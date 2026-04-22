@@ -1,42 +1,56 @@
-import { useState, useEffect, useRef } from 'react'
-import { cn } from '../../utils';
-import logoWhite from '../../assets/images/thotnr_logo_white.png';
-import logoRed from '../../assets/images/thotnr_logo_red.png';
+import { useState, useEffect } from 'react'
+import { cn } from '../../utils'
+import logoWhite from '../../assets/images/thotnr_logo_white.png'
+import logoRed from '../../assets/images/thotnr_logo_red.png'
 
-// ── Mega-dropdown content ─────────────────────────────────────────────────────
+// ── Dropdown Data ─────────────────────────────────────────────────────────────
 
-const whatWeOffer = [
-  { label: 'AI Strategy & Roadmap',   desc: 'Long-term AI vision aligned to business goals' },
-  { label: 'Custom AI Development',   desc: 'Tailored models built for your processes' },
-  { label: 'Enterprise Integration',  desc: 'Seamlessly embed AI into existing systems' },
-  { label: 'Training & Enablement',   desc: 'Upskill your teams for AI-led workflows' },
+const whatWeOfferItems = [
+  { label: 'Digital Engineering',      desc: 'Value-driven and technology savvy. We future-proof your business.' },
+  { label: 'Intelligent Enterprise',   desc: 'Helping you master your critical business applications, empowering your business to thrive.' },
+  { label: 'Experience and Design',    desc: 'Harness the power of design to drive a whole new level of success.' },
+  { label: 'AI & Data',                desc: 'Accelerate growth with intelligent automation and data-driven decisions.' },
+  { label: 'Enterprise Architecture',  desc: 'Modernise your technology landscape and build systems that scale.' },
+  { label: 'Cloud Services',           desc: 'Migrate, optimise, and operate with confidence across any cloud platform.' },
 ]
 
-const aiSolutions = [
-  { label: 'Natural Language Processing', desc: 'Text intelligence at enterprise scale' },
-  { label: 'Computer Vision',             desc: 'Visual AI for inspection & automation' },
-  { label: 'Predictive Analytics',        desc: 'Forecast outcomes before they happen' },
-  { label: 'Process Automation',          desc: 'Eliminate manual work with smart bots' },
-  { label: 'Conversational AI',           desc: 'Intelligent chatbots & voice agents' },
-  { label: 'Recommendation Systems',      desc: 'Personalise at scale across touchpoints' },
+const ourWorkItems = [
+  { label: 'Case Studies',                    desc: 'Real outcomes. Real clients. See how we deliver measurable impact.' },
+  { label: 'Nykaa — Quality Engineering',     desc: 'Redefined seller portal testing at e-commerce scale.' },
+  { label: 'Standard Bank — Architecture',    desc: 'Enterprise architecture transformation across Southern Africa.' },
+  { label: 'Tata International — Automation', desc: 'Intelligent process automation for automotive supply chain.' },
+  { label: 'Glytec — Clinical AI',            desc: 'AI-assisted insulin dosing for safer patient outcomes.' },
+  { label: 'Hero FinCorp — Data Platform',    desc: 'Unified data platform powering real-time lending decisions.' },
+]
+
+const insightsItems = [
+  { label: 'Latest Articles',                      desc: 'Perspectives on AI, architecture, and enterprise transformation.' },
+  { label: 'Why AI Projects Fail',                 desc: 'The mismatch between leadership expectations and enterprise reality.' },
+  { label: 'ROI of Intelligent Automation',        desc: 'Measuring second and third-order returns from automation in 2025.' },
+  { label: 'Building AI-Ready Organisations',      desc: 'The operating muscle companies need to absorb AI capability.' },
+  { label: 'Next-Gen User Experience',             desc: 'How human-centred design is reshaping enterprise software.' },
+  { label: 'Events & Webinars',                    desc: 'Join our upcoming sessions on enterprise AI and digital transformation.' },
+]
+
+const aiItems = [
+  { label: 'AI Strategy & Roadmap',       desc: 'Long-term AI vision aligned to your business goals and data maturity.' },
+  { label: 'Generative AI Engineering',   desc: 'Production-ready GenAI — RAG systems, copilots, and LLM integrations.' },
+  { label: 'Intelligent Automation',      desc: 'Replace manual workflows with context-aware AI-powered processes.' },
+  { label: 'NLP & Conversational AI',     desc: 'Text intelligence and voice agents built for enterprise environments.' },
+  { label: 'Computer Vision',             desc: 'Visual AI for inspection, recognition, and real-time decision-making.' },
+  { label: 'AI Governance & Risk',        desc: 'Responsible AI frameworks — compliant, explainable, and auditable.' },
 ]
 
 // ── Logo ──────────────────────────────────────────────────────────────────────
 
 function LogoMark({ size = 28, scrolled }) {
-  const c = scrolled ? 'var(--color-accent)' : 'var(--color-accent)'
-  return (  
+  return (
     <img
-      src={scrolled ? logoRed :logoWhite}
+      src={scrolled ? logoRed : logoWhite}
       alt="Thotnr Logo"
       width={size}
       height={size}
-      color={c}
-      style={{
-        objectFit: 'contain',
-        opacity: scrolled ? 0.9 : 1,
-        transition: 'opacity 0.2s ease',
-      }}
+      style={{ objectFit: 'contain', opacity: scrolled ? 0.9 : 1, transition: 'opacity 0.2s ease' }}
     />
   )
 }
@@ -47,69 +61,106 @@ function ChevronDown({ open }) {
   return (
     <svg
       width="13" height="13" viewBox="0 0 13 13" fill="none"
-      className="flex-shrink-0 transition-transform duration-200"
-      style={{ transform: open ? 'rotate(180deg)' : 'none' }}
+      className={`flex-shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
     >
-      <path d="M2.5 5l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M2.5 5l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
 }
 
-// ── Mega-menu panel ───────────────────────────────────────────────────────────
+// ── Full-width Mega Menu ──────────────────────────────────────────────────────
 
-function MegaMenu({ items, cols = 2 }) {
+function MegaMenu({ label, items }) {
   return (
     <div
-      className={cn('grid gap-0.5', cols === 3 ? 'grid-cols-3' : 'grid-cols-2')}
-      style={{ minWidth: cols === 3 ? 510 : 360 }}
+      className="fixed left-0 right-0 z-50 bg-white overflow-y-auto"
+      style={{
+        top: '64px',
+        minHeight: '500px',      // ← YE BADLO — 420px, 500px, 600px
+        borderTop: '2px solid var(--color-accent)',
+        borderBottom: '1px solid var(--color-gray-200)',
+        boxShadow: '0 16px 48px rgba(1,7,22,0.12)',
+      }}
     >
-      {items.map((item) => (
-        <a
-          key={item.label}
-          href="#"
-          className="flex flex-col gap-0.5 rounded-lg px-4 py-3 no-underline transition-colors duration-150 hover:bg-accent-soft"
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-10">
+
+        {/* Section label */}
+        <p
+          className="text-xs font-bold uppercase tracking-[0.16em] mb-6 m-0"
+          style={{ color: 'var(--color-accent)' }}
         >
-          <span className="text-sm font-semibold text-gray-900">{item.label}</span>
-          <span className="text-xs text-gray-500">{item.desc}</span>
-        </a>
-      ))}
+          {label}
+        </p>
+
+        {/* Items grid — 3 cols */}
+        <div className="grid grid-cols-3 gap-x-6 gap-y-1 mb-8">
+          {items.map((item) => (
+            <a
+              key={item.label}
+              href="#"
+              className="group flex flex-col gap-1 px-4 py-4 rounded-xl no-underline transition-all duration-150"
+              style={{ borderBottom: '1px solid var(--color-gray-100)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--color-accent-soft)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent' }}
+            >
+              <span
+                className="text-sm font-semibold transition-colors duration-150 group-hover:text-red-600"
+                style={{ color: 'var(--color-text-dark)' }}
+              >
+                {item.label}
+              </span>
+              <span
+                className="text-xs leading-relaxed"
+                style={{ color: 'var(--color-gray-500)' }}
+              >
+                {item.desc}
+              </span>
+            </a>
+          ))}
+        </div>
+
+        {/* Footer link */}
+        <div className="pt-4" style={{ borderTop: '1px solid var(--color-gray-200)' }}>
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 text-sm font-bold no-underline transition-all duration-200 hover:gap-3"
+            style={{ color: 'var(--color-accent)' }}
+          >
+            View all {label.toLowerCase()} →
+          </a>
+        </div>
+
+      </div>
     </div>
   )
 }
 
-// ── Dropdown item (desktop) ───────────────────────────────────────────────────
+// ── Dropdown Item (desktop) ───────────────────────────────────────────────────
 
-function DropdownItem({ label, items, cols, scrolled }) {
+function DropdownItem({ label, items, scrolled }) {
   const [open, setOpen] = useState(false)
-  const ref = useRef(null)
 
   return (
-    <div ref={ref} className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
       <button
         className={cn(
           'flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md transition-colors duration-150 bg-transparent border-none cursor-pointer',
-          open ? 'text-accent' : scrolled ? 'text-gray-700' : 'text-white'
+          open
+            ? 'text-red-600'
+            : scrolled
+            ? 'text-gray-700 hover:text-red-600'
+            : 'text-white hover:text-red-300'
         )}
       >
         {label}
         <ChevronDown open={open} />
       </button>
 
-      {open && (
-        <div
-          className="absolute top-full left-0 z-50 mt-1.5 bg-white p-2 shadow-xl"
-          style={{
-            border:       '1px solid var(--color-gray-200)',
-            borderTop:    '2px solid var(--color-accent)',
-            borderRadius: '0 12px 12px 12px',
-          }}
-        >
-          <p className="text-xs font-semibold uppercase tracking-widest px-4 py-2 mb-1 text-accent">
-            {label}
-          </p>
-          <MegaMenu items={items} cols={cols} />
-        </div>
-      )}
+      {open && <MegaMenu label={label} items={items} />}
     </div>
   )
 }
@@ -132,8 +183,6 @@ function HamburgerIcon({ open, scrolled }) {
 
 // ── Main Navbar ───────────────────────────────────────────────────────────────
 
-// Navbar — transparent over dark Hero, white/opaque on scroll
-// display is NEVER set in inline style — Tailwind's hidden/flex classes control it
 function Navbar() {
   const [scrolled,   setScrolled]   = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -154,17 +203,25 @@ function Navbar() {
     'fixed top-0 inset-x-0 z-50 h-16 items-center justify-between',
     'px-6 md:px-10 lg:px-16 transition-all duration-300',
     scrolled
-      ? 'bg-white/95 backdrop-blur-sm border-b border-border shadow-sm'
+      ? 'bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm'
       : 'bg-transparent border-b border-transparent'
   )
+
+  const mobileDropdowns = [
+    { label: 'What We Offer', key: 'offer',    items: whatWeOfferItems },
+    { label: 'Our Work',      key: 'work',     items: ourWorkItems     },
+    { label: 'Insights',      key: 'insights', items: insightsItems    },
+    { label: 'AI',            key: 'ai',       items: aiItems          },
+  ]
 
   return (
     <>
       {/* ── DESKTOP NAV ── */}
       <nav className={cn(navBase, 'hidden md:flex')}>
+
+        {/* Logo */}
         <a href="/" className="flex items-center gap-2.5 no-underline flex-shrink-0">
           <LogoMark scrolled={scrolled} />
-          
           <span className={cn('relative text-2xl font-black tracking-widest', scrolled ? 'text-gray-900' : 'text-white')}>
             THO
             <span className="text-red-500">T</span>
@@ -172,29 +229,34 @@ function Navbar() {
             <span className="absolute -bottom-0.5 left-0 w-full h-[2px] bg-gradient-to-r from-red-500 to-transparent" />
           </span>
         </a>
+
+        {/* Nav links */}
         <div className="flex justify-around w-full">
+
+          {/* Left — dropdown items */}
           <div className="flex items-center gap-1">
-            <DropdownItem label="What We Offer" items={whatWeOffer} cols={2} scrolled={scrolled} />
-            <DropdownItem label="Our work"  items={aiSolutions} cols={3} scrolled={scrolled} />
-            <DropdownItem label="Insights"  items={aiSolutions} cols={3} scrolled={scrolled} />
-            <DropdownItem label="AI"  items={aiSolutions} cols={3} scrolled={scrolled} />
+            <DropdownItem label="What We Offer" items={whatWeOfferItems} scrolled={scrolled} />
+            <DropdownItem label="Our Work"      items={ourWorkItems}     scrolled={scrolled} />
+            <DropdownItem label="Insights"      items={insightsItems}    scrolled={scrolled} />
+            <DropdownItem label="AI"            items={aiItems}          scrolled={scrolled} />
           </div>
+
+          {/* Right — simple links */}
           <div className="flex items-center gap-1">
             {['About', 'Contact', 'Join Us'].map((link) => (
-                <a
-                  key={link}
-                  href="#"
-                  className={cn(
-                    'px-3 py-2 text-sm font-medium rounded-md no-underline transition-colors duration-150 hover:text-accent',
-                    scrolled ? 'text-gray-700' : 'text-white'
-                  )}
-                >
-                  {link}
-                </a>
-              ))}
+              <a
+                key={link}
+                href="#"
+                className={cn(
+                  'px-3 py-2 text-sm font-medium rounded-md no-underline transition-colors duration-150 hover:text-red-600',
+                  scrolled ? 'text-gray-700' : 'text-white'
+                )}
+              >
+                {link}
+              </a>
+            ))}
           </div>
         </div>
-        
       </nav>
 
       {/* ── MOBILE NAV ── */}
@@ -202,10 +264,9 @@ function Navbar() {
         <a href="/" className="flex items-center gap-2 no-underline">
           <LogoMark size={24} scrolled={scrolled} />
           <span className={cn('text-lg font-bold', scrolled ? 'text-gray-900' : 'text-white')}>
-            THOTNR
+            THO<span className="text-red-500">T</span>NR
           </span>
         </a>
-
         <button
           onClick={() => setMobileOpen((o) => !o)}
           aria-label="Toggle navigation"
@@ -222,7 +283,8 @@ function Navbar() {
           mobileOpen ? 'translate-y-0 pointer-events-auto' : '-translate-y-[110%] pointer-events-none'
         )}
         style={{
-          top: 64, bottom: 0,
+          top: 64,
+          bottom: 0,
           background: '#ffffff',
           borderTop: '2px solid var(--color-accent)',
           boxShadow: '0 12px 40px rgba(0,0,0,0.12)',
@@ -230,15 +292,14 @@ function Navbar() {
         }}
       >
         <div className="flex flex-col gap-1 p-5 pb-12">
-          {[
-            { label: 'What We Offer', key: 'offer',     items: whatWeOffer },
-            { label: 'AI Solutions',  key: 'solutions', items: aiSolutions },
-          ].map(({ label, key, items }) => (
+
+          {/* Dropdown items */}
+          {mobileDropdowns.map(({ label, key, items }) => (
             <div key={key}>
               <button
                 className={cn(
-                  'w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-150 border-none cursor-pointer text-gray-800',
-                  mobileExp === key ? 'bg-accent-soft' : 'bg-transparent'
+                  'w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-150 border-none cursor-pointer',
+                  mobileExp === key ? 'text-red-600 bg-red-50' : 'text-gray-800 bg-transparent'
                 )}
                 onClick={() => setMobileExp(mobileExp === key ? null : key)}
               >
@@ -246,13 +307,16 @@ function Navbar() {
                 <ChevronDown open={mobileExp === key} />
               </button>
 
-              <div style={{ maxHeight: mobileExp === key ? 400 : 0, overflow: 'hidden', transition: 'max-height 0.3s ease' }}>
+              <div
+                className="overflow-hidden transition-all duration-300"
+                style={{ maxHeight: mobileExp === key ? 600 : 0 }}
+              >
                 <div className="ml-4 mt-1 mb-1 flex flex-col gap-0.5">
                   {items.map((item) => (
                     <a
                       key={item.label}
                       href="#"
-                      className="flex flex-col gap-0.5 px-4 py-2.5 rounded-lg no-underline transition-colors duration-150 hover:bg-accent-soft"
+                      className="flex flex-col gap-0.5 px-4 py-2.5 rounded-lg no-underline transition-colors duration-150 hover:bg-red-50"
                     >
                       <span className="text-sm font-semibold text-gray-900">{item.label}</span>
                       <span className="text-xs text-gray-500">{item.desc}</span>
@@ -263,19 +327,28 @@ function Navbar() {
             </div>
           ))}
 
-          {['Industries', 'Insights', 'About', 'Contact'].map((link) => (
+          {/* Simple links */}
+          {['Industries', 'About', 'Contact', 'Join Us'].map((link) => (
             <a
               key={link}
               href="#"
-              className="px-4 py-3 rounded-xl text-sm font-medium no-underline transition-colors duration-150 text-gray-700 hover:text-accent"
+              className="px-4 py-3 rounded-xl text-sm font-medium no-underline transition-colors duration-150 text-gray-700 hover:text-red-600"
             >
               {link}
             </a>
           ))}
 
-          <a href="#" className="mt-4 px-5 py-3 rounded-lg text-sm font-semibold text-center no-underline bg-accent text-white hover:bg-accent-dark transition-colors duration-200">
+          {/* CTA */}
+          <a
+            href="#"
+            className="mt-4 px-5 py-3 rounded-lg text-sm font-semibold text-center no-underline transition-colors duration-200 text-white"
+            style={{ background: 'var(--color-accent)' }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--color-accent-dark)' }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--color-accent)' }}
+          >
             Get Started
           </a>
+
         </div>
       </div>
     </>

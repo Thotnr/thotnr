@@ -8,7 +8,8 @@
 @theme {
   --color-dark:        #06041F;   /* dark-section background    */
   --color-card-dk:     #0E0C24;   /* card bg on dark sections   */
-  --color-accent:      #E11D48;   /* primary red accent         */
+  --color-accent:      #E11D48;
+  --color-accent-light: #BE123C;   /* primary red accent         */
   --color-accent-dark: #9F1239;   /* red on hover               */
   --color-accent-soft: #FFF1F2;   /* very light red tint        */
   --color-muted:       #94A3B8;   /* body text on dark bg       */
@@ -23,7 +24,7 @@
    DESIGN TOKENS (CSS custom properties for non-Tailwind usage)
 ───────────────────────────────────────────────────────────── */
 :root {
-  --color-bg-primary:   #FFFFFF;
+  /* --color-bg-primary:   #FFFFFF;
   --color-bg-secondary: #06041F;
   --color-text:         #010716;
 
@@ -40,7 +41,56 @@
 
   --color-accent:      #E11D48;
   --color-accent-dark: #9F1239;
-  --color-accent-soft: #FFF1F2;
+  --color-accent-soft: #FFF1F2; */
+
+
+   /* ─────────────────────────────────────────────
+     BACKGROUND SYSTEM
+  ───────────────────────────────────────────── */
+  --color-bg-primary:   #F1F5F9;   /* light sections (no pure white) */
+  --color-bg-secondary: #06041F;   /* dark sections */
+  --color-bg-card:      #111827;   /* cards */
+
+  /* ─────────────────────────────────────────────
+     TEXT SYSTEM
+  ───────────────────────────────────────────── */
+  --color-text-primary:   #F8FAFC; /* main text on dark */
+  --color-text-secondary: #94A3B8; /* muted text */
+  --color-text-dark:      #010716; /* text on light bg */
+
+  /* ─────────────────────────────────────────────
+     BORDER SYSTEM
+  ───────────────────────────────────────────── */
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-border-hover:  rgba(255, 255, 255, 0.15);
+
+  /* ─────────────────────────────────────────────
+     BRAND (STRICT USAGE)
+  ───────────────────────────────────────────── */
+  --color-accent:        #E11D48; 
+  --color-accent-light: #BE123C; /* ONLY: logo, CTA, labels */
+  --color-accent-dark:   #9F1239;
+  --color-accent-soft:   #FFF1F2;
+
+  /* ─────────────────────────────────────────────
+     SECONDARY ACCENT (TECH / AI)
+  ───────────────────────────────────────────── */
+  --color-tech:          #3B82F6;
+  --color-tech-soft:     rgba(59, 130, 246, 0.15);
+
+  /* ─────────────────────────────────────────────
+     GRAY SCALE (keep for flexibility)
+  ───────────────────────────────────────────── */
+  --color-gray-50:  #F8FAFC;
+  --color-gray-100: #F1F5F9;
+  --color-gray-200: #E2E8F0;
+  --color-gray-300: #CBD5E1;
+  --color-gray-400: #94A3B8;
+  --color-gray-500: #64748B;
+  --color-gray-600: #475569;
+  --color-gray-700: #334155;
+  --color-gray-800: #1E293B;
+  --color-gray-900: #0F172A;
 
   --font-sans: 'Inter', system-ui, sans-serif;
 }

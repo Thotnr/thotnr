@@ -1,84 +1,163 @@
-// ── Data ──────────────────────────────────────────────────────────────────────
+import img1 from '../../../assets/images/user-experience.jpg'
+import img2 from '../../../assets/images/security-risk.jpg'
+import img3 from '../../../assets/images/ai.jpg'
 
 const articles = [
   {
-    category: 'Strategy',
-    title:    'Why Most AI Projects Fail Before They Start',
-    date:     'April 14, 2025',
-    excerpt:  "The failure point for most enterprise AI initiatives isn't technical. It's the mismatch between what leadership expects and what the data, processes, and teams can actually support.",
+    image:    img1,
+    category: 'Experience Design',
+    title:    'The Next Generation User Experience Today',
+    excerpt:  'The computer user interface has perhaps been the most frustrating aspect of technology adoption since the dawn of the computer age. Humans had to adapt to using a computer. Operators have moved from punch cards to keyboards, and the mouse, finally arriving at a touch interface…',
+    href:     '#',
   },
   {
-    category: 'Technology',
-    title:    'The ROI of Intelligent Automation in 2025',
-    date:     'March 28, 2025',
-    excerpt:  'Beyond cost reduction: how leading enterprises are measuring second and third-order returns from automation — and why the headline numbers are only half the story.',
+    image:    img2,
+    category: 'Security',
+    title:    'Security Risks to Watch Out For in Your Web Application',
+    excerpt:  "This article deals with the top known vulnerabilities that exist in systems. These are regularly published as OWASP top 10. This article does not claim to be original research but discusses the known top vulnerabilities from a programmer's point of view...",
+    href:     '#',
   },
   {
-    category: 'Leadership',
-    title:    'Building an AI-Ready Organisation',
-    date:     'March 10, 2025',
-    excerpt:  "Technical readiness is table stakes. The organisations seeing compounding returns from AI share a different quality: they've built the operating muscle to absorb and direct AI capability.",
+    image:    img3,
+    category: 'Artificial Intelligence',
+    title:    'Postulates to Artificial Intelligence',
+    excerpt:  'This article forms an introductory discussion on the upcoming concept of Artificial Intelligence. This article defines what intelligence is and how one could identify artificial intelligence — not the tools, but the foundations...',
+    href:     '#',
   },
 ]
 
-// ── Card ──────────────────────────────────────────────────────────────────────
-
-// InsightCard — dark card on dark section background
-function InsightCard({ category, title, date, excerpt }) {
+function InsightCard({ image, category, title, excerpt, href }) {
   return (
-    <article className="group flex flex-col gap-4 bg-card-dk rounded-xl border border-border-dk p-6 transition-all duration-200 hover:border-accent hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,0,0,0.4)]">
+    <article
+      className="group flex flex-col rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2"
+      style={{
+        background: 'var(--color-bg-card)',
+        border: '1px solid var(--color-border-subtle)',
+        boxShadow: '0 2px 16px rgba(0,0,0,0.3)',
+      }}
+    >
+      <div className="relative overflow-hidden h-48 w-full">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(to top, rgba(17,24,39,0.7) 0%, transparent 60%)',
+          }}
+        />
+        <span
+          className="absolute top-3 left-3 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider"
+          style={{
+            background: 'var(--color-accent)',
+            color: '#fff',
+          }}
+        >
+          {category}
+        </span>
+      </div>
 
-      {/* Category */}
-      <span className="self-start text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider bg-accent/10 text-accent">
-        {category}
-      </span>
+      <div className="flex flex-col flex-1 gap-4 p-6">
+        <h3
+          className="text-lg font-semibold leading-snug transition-colors duration-200 group-hover:text-red-400"
+          style={{ color: 'var(--color-text-primary)' }}
+        >
+          {title}
+        </h3>
 
-      {/* Title */}
-      <h3 className="text-base font-semibold leading-snug text-white group-hover:text-accent transition-colors duration-200">{title}</h3>
+        <div
+          className="w-10 h-px"
+          style={{ background: 'var(--color-accent)', opacity: 0.5 }}
+        />
 
-      {/* Date */}
-      <p className="text-xs text-muted">{date}</p>
+        <p
+          className="text-sm leading-relaxed flex-1 line-clamp-4"
+          style={{ color: 'var(--color-text-secondary)' }}
+        >
+          {excerpt}
+        </p>
 
-      {/* Excerpt */}
-      <p className="text-sm leading-relaxed flex-1 text-muted">{excerpt}</p>
-
-      {/* Link */}
-      <a href="#" className="inline-flex items-center gap-1.5 text-sm font-medium mt-auto text-accent hover:text-accent-dark transition-colors duration-150">
-        Read More →
-      </a>
+        <a
+          href={href}
+          className="inline-flex items-center gap-2 text-sm font-semibold mt-auto w-fit transition-all duration-200 hover:gap-3"
+          style={{ color: 'var(--color-accent)' }}
+        >
+          Read More
+          <span
+            className="w-5 h-5 rounded-full flex items-center justify-center text-xs"
+            style={{
+              background: 'rgba(225,29,72,0.15)',
+              color: 'var(--color-accent)',
+            }}
+          >
+            →
+          </span>
+        </a>
+      </div>
     </article>
   )
 }
 
-// ── Section ───────────────────────────────────────────────────────────────────
-
-// Insights — Section 5 (dark). 3-column article card grid.
 function Insights() {
   return (
-    <section className="bg-dark py-24 px-6 md:px-10 lg:px-16">
-      <div className="max-w-7xl mx-auto">
+    <section
+      className="py-20 px-6 md:px-10 lg:px-16"
+      style={{ background: 'var(--color-bg-secondary)' }}
+    >
+      <div className="mx-auto">
 
-        {/* Header row */}
-        <div className="flex items-end justify-between mb-10 gap-4 flex-wrap">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-widest mb-2 text-accent">
-              Thinking Out Loud
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
-              Latest from <span className="text-accent">Thotnr</span>
-            </h2>
-          </div>
-          <a href="#" className="text-sm font-semibold whitespace-nowrap text-accent hover:text-accent-dark transition-colors duration-150">
-            View All Insights →
-          </a>
+        <div className="text-start mb-16">
+          <p
+            className="text-xs font-semibold uppercase tracking-widest mb-3"
+            style={{ color: 'var(--color-accent)' }}
+          >
+            Thinking Out Loud
+          </p>
+          <h2
+            className="text-4xl sm:text-5xl font-bold tracking-tight mb-4"
+            style={{ color: 'var(--color-text-primary)' }}
+          >
+            Our Insights
+          </h2>
+          <p
+            className="text-lg max-w-xl mx-auto leading-relaxed"
+            style={{ color: 'var(--color-text-secondary)' }}
+          >
+            Perspectives on technology, strategy, and the future of intelligent enterprise — from the Thotnr team.
+          </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
           {articles.map((a) => (
             <InsightCard key={a.title} {...a} />
           ))}
         </div>
+
+        <div className="flex justify-center">
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-lg text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5"
+            style={{
+              background: 'transparent',
+              border: '1px solid var(--color-accent)',
+              color: 'var(--color-accent)',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'var(--color-accent)'
+              e.currentTarget.style.color = '#fff'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'transparent'
+              e.currentTarget.style.color = 'var(--color-accent)'
+            }}
+          >
+            View All Insights
+            <span>→</span>
+          </a>
+        </div>
+
       </div>
     </section>
   )

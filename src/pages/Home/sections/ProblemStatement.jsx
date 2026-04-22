@@ -1,57 +1,94 @@
-// ProblemStatement — Section 2 (light). Narrative that articulates the enterprise AI execution gap.
 function ProblemStatement() {
   return (
-    <section className="bg-white py-24 px-6 md:px-10 lg:px-16">
-      <div className="max-w-3xl mx-auto">
+    <>
+      <style>{`
+        @keyframes slideInLeft {
+          from { opacity: 0; transform: translateX(-40px); }
+          to   { opacity: 1; transform: translateX(0);     }
+        }
+        @keyframes slideInUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to   { opacity: 1; transform: translateY(0);    }
+        }
+        @keyframes redGlowPulse {
+          0%, 100% {
+            text-shadow:
+              1px 1px 0 #7f0020,
+              2px 2px 0 #6b001a,
+              3px 3px 0 #570015,
+              4px 4px 10px rgba(0,0,0,0.3),
+              0 0 20px rgba(225,29,72,0.25);
+          }
+          50% {
+            text-shadow:
+              1px 1px 0 #9f0028,
+              2px 2px 0 #7f0020,
+              3px 3px 0 #6b001a,
+              4px 4px 12px rgba(0,0,0,0.4),
+              0 0 40px rgba(225,29,72,0.45),
+              0 0 60px rgba(225,29,72,0.15);
+          }
+        }
+        @keyframes whitePop {
+          from { opacity: 0; transform: translateY(20px) scale(0.97); }
+          to   { opacity: 1; transform: translateY(0)    scale(1);    }
+        }
+        @keyframes eyebrowFade {
+          from { opacity: 0; letter-spacing: 0.3em; }
+          to   { opacity: 1; letter-spacing: 0.1em; }
+        }
+        .ps-eyebrow  { animation: eyebrowFade 0.8s ease 0.1s both; }
+        .ps-headline { animation: slideInLeft 0.9s cubic-bezier(0.4,0,0.2,1) 0.3s both; }
+        .ps-closing  { animation: slideInUp   0.9s cubic-bezier(0.4,0,0.2,1) 0.6s both; }
+        .ps-red-headline {
+          display: inline;
+        
+        }
+        .ps-red-closing {
+          display: inline;
+          animation: redGlowPulse 3.5s ease-in-out 2s infinite;
+          text-shadow:
+            1px 1px 0 #7f0020,
+            2px 2px 0 #6b001a,
+            3px 3px 8px rgba(0,0,0,0.25),
+            0 0 16px rgba(225,29,72,0.2);
+        }
+        .ps-dark-text {
+          text-shadow:
+            0 1px 0 rgba(0,0,0,0.15),
+            0 2px 4px rgba(0,0,0,0.08);
+        }
+      `}</style>
 
-        {/* Eyebrow */}
-        <p className="text-xs font-semibold uppercase tracking-widest mb-4 text-accent">
-          The Reality Check
-        </p>
+      <section className="bg-white py-20 px-6 md:px-10 lg:px-16">
+        <div className="mx-auto">
 
-        {/* Headline */}
-        <h2 className="text-4xl sm:text-5xl font-bold leading-tight mb-10 text-gray-900 tracking-tight">
-          Most enterprises are drowning in AI pilots that{' '}
-          <span className="text-accent">never reach production.</span>
-        </h2>
+          {/* Eyebrow */}
+          <p className="ps-eyebrow text-xs font-semibold uppercase tracking-widest mb-4 text-accent">
+            The Reality Check
+          </p>
 
-        {/* Story */}
-        <div className="flex flex-col gap-6 text-base lg:text-lg leading-relaxed text-gray-600">
-          <p>
-            Every boardroom has an AI strategy deck. Every innovation team has run at least one pilot.
-            Vendors have been evaluated, budgets approved, use-cases workshopped. And yet — when you look
-            past the slides — the needle on real business outcomes barely moves.
-          </p>
-          <p>
-            The problem isn't a lack of technology. Foundation models are more capable than ever.
-            Cloud compute is cheap. Data pipelines exist. The real bottleneck is the gap between what a
-            model can do in a controlled demo and what it can reliably do inside a messy, regulated,
-            politically complex enterprise operation.
-          </p>
-          <p>
-            Most AI consultancies optimise for impressive prototypes. They hand over a polished
-            proof-of-concept, collect the milestone payment, and move on — leaving your team to figure
-            out governance, integration, change management, and why the model that scored 94% in
-            evaluation is producing nonsense in staging.
-          </p>
-          <p>
-            We've seen it repeatedly: talented engineering teams, genuine executive commitment, and a
-            use-case with real business value — all stalled because nobody asked the harder operational
-            questions before a single line of code was written.
-          </p>
-        </div>
-
-        {/* Closing statement */}
-        <div className="mt-12 pt-10 border-t border-border">
-          <p className="text-xl lg:text-2xl font-semibold leading-snug text-gray-900">
-            We don't just build AI solutions.{' '}
-            <span className="text-accent">
-              We make them work inside your real organisation.
+          {/* Headline */}
+          <h2 className="ps-headline ps-dark-text text-4xl sm:text-5xl font-bold leading-tight mb-10 text-gray-900 tracking-tight">
+            Most enterprises are drowning in AI pilots that{' '}
+            <span className="ps-red-headline text-accent">
+              never reach production.
             </span>
-          </p>
+          </h2>
+
+          {/* Closing statement */}
+          <div className="ps-closing pt-10 border-t border-border">
+            <p className="ps-dark-text text-xl lg:text-2xl font-semibold leading-snug text-gray-900">
+              We don't just build AI solutions.{' '}
+              <span className="text-accent">
+                We make them work inside your real organisation.
+              </span>
+            </p>
+          </div>
+
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
 

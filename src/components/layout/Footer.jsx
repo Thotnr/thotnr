@@ -1,3 +1,4 @@
+import logoRed from '../../assets/images/thotnr_logo_red.png'
 // ── Social icons ──────────────────────────────────────────────────────────────
 
 function LinkedInIcon() {
@@ -30,14 +31,16 @@ function InstagramIcon() {
 
 // ── Footer logo ───────────────────────────────────────────────────────────────
 
-function FooterLogo() {
+function FooterLogo({ size = 28}) {
   return (
     <div className="flex items-center gap-2.5">
-      <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
-        <polygon points="14,2 25,8 25,20 14,26 3,20 3,8" fill="none" stroke="var(--color-accent)" strokeWidth="1.8" />
-        <polygon points="14,7 21,11 21,19 14,23 7,19 7,11" fill="var(--color-accent)" opacity="0.2" />
-        <circle cx="14" cy="14" r="3.5" fill="var(--color-accent)" />
-      </svg>
+      <img
+            src={logoRed}
+            alt="Thotnr Logo"
+            width={size}
+            height={size}
+            style={{ objectFit: 'contain', opacity: 0.5}}
+          />
       <span className="text-lg font-bold text-white tracking-tight">THOTNR</span>
     </div>
   )
