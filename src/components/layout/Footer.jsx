@@ -66,8 +66,8 @@ function Footer() {
     <footer
       className="w-full border-t"
       style={{
-        background: '#ffffff',
-        borderColor: '#e2e8f0',
+        background: 'var(--color-surface)',
+        borderColor: 'var(--color-border)',
       }}
     >
       <div
@@ -85,13 +85,13 @@ function Footer() {
           />
           <span
             className="text-lg font-bold tracking-tight"
-            style={{ color: '#010716' }}
+            style={{ color: 'var(--color-ink)' }}
           >
             THOTNR
           </span>
           <span
             className="text-sm ml-1"
-            style={{ color: '#94a3b8' }}
+            style={{ color: 'var(--color-muted)' }}
           >
             ©{new Date().getFullYear()}
           </span>
@@ -104,9 +104,9 @@ function Footer() {
               key={label}
               href={href}
               className="text-sm no-underline transition-colors duration-150"
-              style={{ color: '#475569' }}
+              style={{ color: 'var(--color-muted-dk)' }}
               onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-accent)' }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = '#475569' }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-muted-dk)' }}
             >
               {label}
             </a>
@@ -122,15 +122,15 @@ function Footer() {
               aria-label={label}
               className="flex items-center justify-center w-8 h-8 rounded-full no-underline transition-all duration-200"
               style={{
-                color: '#64748b',
+                color: 'var(--color-slate)',
                 background: 'transparent',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = 'var(--color-accent)'
-                e.currentTarget.style.background = 'rgba(225,29,72,0.06)'
+                e.currentTarget.style.background = 'rgb(var(--color-accent-rgb) / 0.06)'
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = '#64748b'
+                e.currentTarget.style.color = 'var(--color-slate)'
                 e.currentTarget.style.background = 'transparent'
               }}
             >

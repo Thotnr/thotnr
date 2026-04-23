@@ -45,14 +45,14 @@ function InsightCard({ image, category, title, excerpt, href }) {
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(to top, rgba(17,24,39,0.7) 0%, transparent 60%)',
+            background: 'linear-gradient(to top, rgb(var(--color-card-rgb) / 0.7) 0%, transparent 60%)',
           }}
         />
         <span
-          className="absolute top-3 left-3 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider"
+          className="absolute top-3 left-3 t-caption px-3 py-1 rounded-full"
           style={{
             background: 'var(--color-accent)',
-            color: '#fff',
+            color: 'white',
           }}
         >
           {category}
@@ -61,7 +61,7 @@ function InsightCard({ image, category, title, excerpt, href }) {
 
       <div className="flex flex-col flex-1 gap-4 p-6">
         <h3
-          className="text-lg font-semibold leading-snug transition-colors duration-200 group-hover:text-red-400"
+          className="t-title transition-colors duration-200 group-hover:text-accent"
           style={{ color: 'var(--color-text-primary)' }}
         >
           {title}
@@ -73,14 +73,14 @@ function InsightCard({ image, category, title, excerpt, href }) {
         />
 
         <p
-          className="text-sm leading-relaxed flex-1 line-clamp-4"
+          className="t-body flex-1 line-clamp-4"
           style={{ color: 'var(--color-text-secondary)' }}
         >
           {excerpt}
         </p>
 
              <a   href={href}
-          className="inline-flex items-center gap-2 text-sm font-semibold mt-auto w-fit transition-all duration-200 hover:gap-3"
+          className="inline-flex items-center gap-2 t-label mt-auto w-fit transition-all duration-200 hover:gap-3"
           style={{ color: 'var(--color-accent)' }}
         >
           Read More...
@@ -101,19 +101,19 @@ function Insights() {
 
         <div className="text-start mb-16">
           <p
-            className="text-xs font-semibold uppercase tracking-widest mb-3"
+            className="t-eyebrow mb-3"
             style={{ color: 'var(--color-accent)' }}
           >
             Thinking Out Loud
           </p>
           <h2
-            className="text-4xl sm:text-5xl font-bold tracking-tight mb-4"
+            className="t-headline mb-4"
             style={{ color: 'var(--color-text-primary)' }}
           >
             Our Insights
           </h2>
           <p
-            className="text-lg max-w-xl mx-auto leading-relaxed"
+            className="t-sub max-w-xl mx-auto"
             style={{ color: 'var(--color-text-secondary)' }}
           >
             Perspectives on technology, strategy, and the future of intelligent enterprise — from the Thotnr team.
@@ -129,17 +129,16 @@ function Insights() {
         <div className="flex justify-center">
   
     <a href="#"
-    className="inline-flex items-center gap-2 px-8 py-3 rounded-lg text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5"
+    className="inline-flex items-center gap-2 px-8 py-3 rounded-lg t-label transition-all duration-200 hover:-translate-y-0.5"
     style={{
       background: 'transparent',
       border: '1px solid rgba(255,255,255,0.2)',
       color: 'var(--color-text-primary)',
-      letterSpacing: '0.04em',
     }}
     onMouseEnter={(e) => {
       e.currentTarget.style.background = 'rgba(255,255,255,0.08)'
       e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)'
-      e.currentTarget.style.color = '#ffffff'
+      e.currentTarget.style.color = 'white'
     }}
     onMouseLeave={(e) => {
       e.currentTarget.style.background = 'transparent'

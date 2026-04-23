@@ -35,28 +35,28 @@ function CTASplit() {
         @keyframes achievePop {
           0%, 100% {
             text-shadow:
-              1px 1px 0 #7f0020,
-              2px 2px 0 #6b001a,
-              3px 3px 0 #570015,
-              4px 4px 0 #450010,
-              5px 5px 0 #35000c,
+              1px 1px 0 var(--color-accent-sh2),
+              2px 2px 0 var(--color-accent-sh3),
+              3px 3px 0 var(--color-accent-sh4),
+              4px 4px 0 var(--color-accent-sh5),
+              5px 5px 0 var(--color-accent-sh6),
               6px 6px 18px rgba(0,0,0,0.4),
-              0 0 28px rgba(225,29,72,0.35),
-              0 0 55px rgba(225,29,72,0.12);
+              0 0 28px rgb(var(--color-accent-rgb) / 0.35),
+              0 0 55px rgb(var(--color-accent-rgb) / 0.12);
             transform: translateZ(0) scale(1);
           }
           50% {
             text-shadow:
-              1px 1px 0 #9f0028,
-              2px 2px 0 #8a0022,
-              3px 3px 0 #7f0020,
-              4px 4px 0 #6b001a,
-              5px 5px 0 #570015,
-              6px 6px 0 #450010,
+              1px 1px 0 var(--color-accent-sh0),
+              2px 2px 0 var(--color-accent-sh1),
+              3px 3px 0 var(--color-accent-sh2),
+              4px 4px 0 var(--color-accent-sh3),
+              5px 5px 0 var(--color-accent-sh4),
+              6px 6px 0 var(--color-accent-sh5),
               7px 7px 22px rgba(0,0,0,0.5),
-              0 0 45px rgba(225,29,72,0.65),
-              0 0 85px rgba(225,29,72,0.22),
-              0 0 110px rgba(225,29,72,0.08);
+              0 0 45px rgb(var(--color-accent-rgb) / 0.65),
+              0 0 85px rgb(var(--color-accent-rgb) / 0.22),
+              0 0 110px rgb(var(--color-accent-rgb) / 0.08);
             transform: translateZ(12px) scale(1.03);
           }
         }
@@ -105,13 +105,13 @@ function CTASplit() {
           transform: translateY(-12px) rotateX(5deg) rotateY(-4deg) scale(1.02);
           box-shadow:
             0 28px 56px rgba(0,0,0,0.15),
-            0 0 0 1px rgba(225,29,72,0.25),
-            0 0 40px rgba(225,29,72,0.07);
+            0 0 0 1px rgb(var(--color-accent-rgb) / 0.25),
+            0 0 40px rgb(var(--color-accent-rgb) / 0.07);
         }
         .outcomes-card:hover .scan-out { animation: scanRight 1.3s linear infinite; }
         .scan-out {
           position: absolute; left: 0; right: 0; height: 1.5px;
-          background: linear-gradient(to right, transparent, rgba(225,29,72,0.35), transparent);
+          background: linear-gradient(to right, transparent, rgb(var(--color-accent-rgb) / 0.35), transparent);
           top: -100%; opacity: 0; pointer-events: none; z-index: 10;
         }
         .oc-tl, .oc-tr, .oc-bl, .oc-br {
@@ -150,35 +150,34 @@ function CTASplit() {
 
           {/* Left */}
           <div>
-            <p className="cta-eyebrow text-xs font-semibold uppercase tracking-widest mb-4 text-accent">
+            <p className="cta-eyebrow t-eyebrow mb-4 text-accent">
               Let's Build Together
             </p>
 
             <h2
-              className="cta-headline text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6 tracking-tight"
+              className="cta-headline t-headline text-ink mb-6"
               style={{ transformStyle: 'preserve-3d', perspective: '600px' }}
             >
-              What can we help you{' '}
-              <span className="achieve-word">achieve?</span>
+              What can we help you achieve?
             </h2>
 
-            <p className="cta-sub text-base lg:text-lg leading-relaxed mb-8 text-gray-600">
+            <p className="cta-sub t-sub mb-8 text-muted-dk">
               Whether you're at the earliest stages of AI exploration or trying to rescue a stalled
               initiative, we bring the structure, experience, and candour to move things forward.
             </p>
 
             <a
               href="#"
-  className="cta-btn inline-flex items-center mt-6 px-5 py-2.5 rounded-lg text-sm font-bold text-black transition-all duration-200 hover:-translate-y-0.5"
+  className="cta-btn inline-flex items-center mt-6 px-5 py-2.5 rounded-lg t-label text-black transition-all duration-200 hover:-translate-y-0.5"
   style={{
-    background: 'rgba(190,18,60,0.03)',
-    border: '1px solid #BE123C',
+    background: 'rgb(var(--color-accent-light-rgb) / 0.03)',
+    border: '1px solid var(--color-accent-light)',
   }}
   onMouseEnter={(e) => {
-    e.currentTarget.style.background = 'rgba(190,18,60,0.07)'
+    e.currentTarget.style.background = 'rgb(var(--color-accent-light-rgb) / 0.07)'
   }}
   onMouseLeave={(e) => {
-    e.currentTarget.style.background = 'rgba(190,18,60,0.03)'
+    e.currentTarget.style.background = 'rgb(var(--color-accent-light-rgb) / 0.03)'
   }}
 >
   Start a Conversation
@@ -186,7 +185,7 @@ function CTASplit() {
           </div>
 
           {/* Right */}
-          <div className="outcomes-card rounded-2xl p-8 bg-gray-50 border border-gray-200">
+          <div className="outcomes-card rounded-2xl p-8 bg-surface-muted border border-border">
             <div className="scan-out" />
             <div className="oc-tl" />
             <div className="oc-tr" />
@@ -196,7 +195,7 @@ function CTASplit() {
             <div className="outcome-particle op2" />
             <div className="outcome-particle op3" />
 
-            <p className="text-xs font-semibold uppercase tracking-widest mb-6 text-gray-500 relative z-10">
+            <p className="t-eyebrow mb-6 text-slate relative z-10">
               Outcomes you can expect
             </p>
 
@@ -204,7 +203,7 @@ function CTASplit() {
               {outcomes.map((item) => (
                 <li key={item} className="outcome-item flex items-center gap-3 cursor-default">
                   <div className="check-icon"><CheckIcon /></div>
-                  <span className="outcome-text text-base font-medium text-gray-800 transition-colors duration-200">
+                  <span className="outcome-text t-body text-ink transition-colors duration-200">
                     {item}
                   </span>
                 </li>

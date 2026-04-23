@@ -10,6 +10,7 @@ import Newsletter       from './sections/Newsletter'
 import Navbar from '../../components/layout/Navbar'
 import Footer from '../../components/layout/Footer'
 
+
 // Home — assembles all page sections in order; each section manages its own background and layout
 function Home() {
   return (

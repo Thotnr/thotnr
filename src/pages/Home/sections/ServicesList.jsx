@@ -10,14 +10,12 @@ const featuredServices = [
     desc: 'We turn AI ambition into running systems — strategy, engineering, and deployment under one roof.',
     image: aiServiceImg,
     href: '#',
-    accentColor: '#E11D48',
-    softColor: '#FF6B8A',
-    hoverBorder: 'hover:border-red-500/40',
-    topLine: 'from-red-600',
-    tintBg: 'from-red-600/10',
-    statBg: 'bg-red-600/10 border border-red-600/25 text-red-400',
-    statDot: 'bg-red-500',
-    ctaColor: 'text-red-400',
+    hoverBorder: 'hover:border-accent/40',
+    topLine: 'from-accent',
+    tintBg: 'from-accent/10',
+    statBg: 'bg-accent/10 border border-accent/25 text-accent',
+    statDot: 'bg-accent',
+    ctaColor: 'text-accent',
   },
   {
     title: 'Enterprise Architecture',
@@ -26,14 +24,12 @@ const featuredServices = [
     desc: 'We map, modernise, and future-proof your technology landscape — built for the next decade.',
     image: enterpriseArchitectImg,
     href: '#',
-    accentColor: '#3B82F6',
-    softColor: '#93C5FD',
-    hoverBorder: 'hover:border-blue-500/40',
-    topLine: 'from-blue-500',
-    tintBg: 'from-blue-600/10',
-    statBg: 'bg-blue-600/10 border border-blue-500/25 text-blue-300',
-    statDot: 'bg-blue-500',
-    ctaColor: 'text-blue-300',
+    hoverBorder: 'hover:border-tech/40',
+    topLine: 'from-tech',
+    tintBg: 'from-tech/10',
+    statBg: 'bg-tech/10 border border-tech/25 text-tech',
+    statDot: 'bg-tech',
+    ctaColor: 'text-tech',
   },
   {
     title: 'Cloud',
@@ -42,14 +38,12 @@ const featuredServices = [
     desc: 'From lift-and-shift to cloud-native transformation — we engineer cloud strategies that actually reduce cost.',
     image: cloudImg,
     href: '#',
-    accentColor: '#8B5CF6',
-    softColor: '#C4B5FD',
-    hoverBorder: 'hover:border-violet-500/40',
-    topLine: 'from-violet-500',
-    tintBg: 'from-violet-600/10',
-    statBg: 'bg-violet-600/10 border border-violet-500/25 text-violet-300',
-    statDot: 'bg-violet-500',
-    ctaColor: 'text-violet-300',
+    hoverBorder: 'hover:border-purple/40',
+    topLine: 'from-purple',
+    tintBg: 'from-purple/10',
+    statBg: 'bg-purple/10 border border-purple/25 text-purple',
+    statDot: 'bg-purple',
+    ctaColor: 'text-purple',
   },
 ]
 
@@ -129,7 +123,7 @@ function ExpandingCard({ title, tagline, stat, desc, image, href, hoverBorder, t
       />
 
       {/* Dark gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[rgba(6,4,31,0.97)] via-[rgba(6,4,31,0.55)] to-[rgba(6,4,31,0.1)]" />
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgb(var(--color-dark-rgb) / 0.97), rgb(var(--color-dark-rgb) / 0.55), rgb(var(--color-dark-rgb) / 0.1))' }} />
 
       {/* Accent tint on hover */}
       <div
@@ -164,7 +158,7 @@ function ExpandingCard({ title, tagline, stat, desc, image, href, hoverBorder, t
 
         {/* Title */}
         <h3
-          className={`font-extrabold text-gray-50 m-0 leading-tight tracking-tight whitespace-nowrap transition-all duration-350 ${hovered ? 'text-2xl' : 'text-xl'}`}
+          className={`font-extrabold text-ink-soft m-0 leading-tight tracking-tight whitespace-nowrap transition-all duration-350 ${hovered ? 'text-2xl' : 'text-xl'}`}
         >
           {title}
         </h3>
@@ -199,12 +193,12 @@ function ServiceRow({ label }) {
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className={`flex items-center justify-between py-3 border-b border-gray-200 cursor-pointer transition-all duration-200 ${hovered ? 'pl-2.5' : 'pl-0'}`}
+      className={`flex items-center justify-between py-3 border-b border-border cursor-pointer transition-all duration-200 ${hovered ? 'pl-2.5' : 'pl-0'}`}
     >
-      <span className={`text-sm font-medium transition-colors duration-200 ${hovered ? 'text-red-600' : 'text-gray-700'}`}>
+      <span className={`text-sm font-medium transition-colors duration-200 ${hovered ? 'text-accent' : 'text-slate-dark'}`}>
         {label}
       </span>
-      <span className={`text-red-600 transition-opacity duration-200 shrink-0 ${hovered ? 'opacity-100' : 'opacity-0'}`}>
+      <span className={`text-accent transition-opacity duration-200 shrink-0 ${hovered ? 'opacity-100' : 'opacity-0'}`}>
         <ArrowIcon />
       </span>
     </div>
@@ -224,7 +218,7 @@ function ServicesList() {
 
         {/* ── Premium Header ── */}
           <div className="text-start mb-10">
-                <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-red-600 mb-4">
+                <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-accent mb-4">
                   What We Deliver
                 </p>
                 <>
@@ -232,28 +226,28 @@ function ServicesList() {
     @keyframes offerPop {
       0%, 100% {
         text-shadow:
-          1px 1px 0 #7f0020,
-          2px 2px 0 #6b001a,
-          3px 3px 0 #570015,
-          4px 4px 0 #450010,
-          5px 5px 0 #35000c,
+          1px 1px 0 var(--color-accent-sh2),
+          2px 2px 0 var(--color-accent-sh3),
+          3px 3px 0 var(--color-accent-sh4),
+          4px 4px 0 var(--color-accent-sh5),
+          5px 5px 0 var(--color-accent-sh6),
           6px 6px 18px rgba(0,0,0,0.5),
-          0 0 28px rgba(225,29,72,0.35),
-          0 0 55px rgba(225,29,72,0.12);
+          0 0 28px rgb(var(--color-accent-rgb) / 0.35),
+          0 0 55px rgb(var(--color-accent-rgb) / 0.12);
         transform: translateZ(0) scale(1);
       }
       50% {
         text-shadow:
-          1px 1px 0 #9f0028,
-          2px 2px 0 #8a0022,
-          3px 3px 0 #7f0020,
-          4px 4px 0 #6b001a,
-          5px 5px 0 #570015,
-          6px 6px 0 #450010,
+          1px 1px 0 var(--color-accent-sh0),
+          2px 2px 0 var(--color-accent-sh1),
+          3px 3px 0 var(--color-accent-sh2),
+          4px 4px 0 var(--color-accent-sh3),
+          5px 5px 0 var(--color-accent-sh4),
+          6px 6px 0 var(--color-accent-sh5),
           7px 7px 22px rgba(0,0,0,0.55),
-          0 0 45px rgba(225,29,72,0.65),
-          0 0 85px rgba(225,29,72,0.22),
-          0 0 110px rgba(225,29,72,0.08);
+          0 0 45px rgb(var(--color-accent-rgb) / 0.65),
+          0 0 85px rgb(var(--color-accent-rgb) / 0.22),
+          0 0 110px rgb(var(--color-accent-rgb) / 0.08);
         transform: translateZ(10px) scale(1.03);
       }
     }
@@ -270,10 +264,9 @@ function ServicesList() {
   >
     Services We{' '}
     <span
-      className="text-red-600"
+      className="text-accent"
       style={{
         display: 'inline-block',
-        
       }}
     >
       Offer
@@ -281,7 +274,7 @@ function ServicesList() {
   </h2>
 </>
                 <p className="text-base leading-relaxed m-0"
-                style={{ color: 'var(--color-gray-500)' }}
+                style={{ color: 'var(--color-slate)' }}
               >
                 End-to-end capabilities across AI, architecture, and cloud — engineered to move your enterprise from ambition to execution.
               </p>
@@ -295,7 +288,7 @@ function ServicesList() {
         </div>
 
         {/* ── All Services header ── */}
-        <div className="flex items-center justify-between border-t border-gray-200">
+        <div className="flex items-center justify-between border-t border-border">
           <h3 className="text-lg font-bold m-0" style={{ color: 'var(--color-text-dark)' }}>
             All Services
           </h3>
@@ -303,8 +296,8 @@ function ServicesList() {
             onClick={() => setExpanded((e) => !e)}
             className={`inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold cursor-pointer transition-all duration-200 border ${
               expanded
-                ? 'bg-red-50 border-red-600 text-red-600'
-                : 'bg-transparent border-gray-300 text-gray-600 hover:border-red-600 hover:text-red-600'
+                ? 'bg-accent-soft border-accent text-accent'
+                : 'bg-transparent border-border text-muted-dk hover:border-accent hover:text-accent'
             }`}
           >
             {expanded ? 'Hide' : 'Show All'}
@@ -317,7 +310,7 @@ function ServicesList() {
           className="overflow-hidden transition-all duration-500"
           style={{ maxHeight: expanded ? '900px' : '0px', transition: 'max-height 0.5s cubic-bezier(0.4,0,0.2,1)' }}
         >
-          <div className="border-t border-gray-200 mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12">
+          <div className="border-t border-border mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12">
             {[col1, col2, col3].map((col, ci) => (
               <div key={ci}>
                 {col.map((svc) => (

@@ -1,0 +1,131 @@
+/* Single source of truth for all typography.
+   Placed outside Tailwind's @layer — these rules win over utility overrides. */
+
+.t-display {
+  font-size: clamp(3.25rem, 7vw, 5.5rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+}
+
+.t-headline {
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+.t-headline-sm {
+  font-size: clamp(1.875rem, 3vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.t-title-lg {
+  font-size: clamp(1.375rem, 2.2vw, 1.875rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+.t-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+.t-sub {
+  font-size: clamp(0.9375rem, 1.3vw, 1.125rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.65;
+}
+
+.t-body-lg {
+  font-size: 1.0625rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.65;
+}
+
+.t-body {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 1.6;
+}
+
+.t-body-sm {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.55;
+}
+
+.t-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.t-tagline {
+  font-size: clamp(0.6875rem, 1.3vw, 1rem);
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.t-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+
+.t-caption {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+}
+
+.t-brand {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  line-height: 1;
+}
+
+.t-brand-sm {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.t-menu-heading {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.t-mono {
+  font-family: 'SF Mono', 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
+
+.t-hero-body {
+  font-size: clamp(0.8125rem, 1.3vw, 1.0625rem);
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  line-height: 1.65;
+}

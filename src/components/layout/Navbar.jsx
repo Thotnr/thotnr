@@ -133,12 +133,12 @@ function MegaMenu({ data }) {
         .mega-menu-wrap { animation: menuFadeIn 0.2s ease both; }
         .mega-left-item { transition: color 0.15s ease; }
         .mega-left-item:hover .mega-item-label { color: var(--color-accent); }
-        .mega-right-link { transition: color 0.15s ease; color: #334155; }
+        .mega-right-link { transition: color 0.15s ease; color: var(--color-slate-dark); }
         .mega-right-link:hover { color: var(--color-accent); }
         .mega-view-all {
           display: inline-flex; align-items: center; gap: 4px;
           font-size: 14px; font-weight: 500;
-          color: #334155; text-decoration: none;
+          color: var(--color-slate-dark); text-decoration: none;
           transition: color 0.15s ease;
           margin-top: 24px;
         }
@@ -154,17 +154,17 @@ function MegaMenu({ data }) {
         className="mega-menu-wrap fixed left-0 right-0 z-50 bg-white"
         style={{
           top: '64px',
-          borderBottom: '1px solid #e2e8f0',
-          boxShadow: '0 12px 40px rgba(1,7,22,0.1)',
+          borderBottom: '1px solid var(--color-border)',
+          boxShadow: '0 12px 40px rgb(var(--color-ink-rgb) / 0.1)',
         }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-12 flex gap-0">
 
           {/* LEFT — services/items with desc */}
-          <div className="w-[380px] flex-shrink-0 pr-12" style={{ borderRight: '1px solid #e2e8f0' }}>
+          <div className="w-[380px] flex-shrink-0 pr-12" style={{ borderRight: '1px solid var(--color-border)' }}>
             <h3
               className="text-2xl font-light mb-8 m-0"
-              style={{ color: '#0f172a', letterSpacing: '-0.3px' }}
+              style={{ color: 'var(--color-ink)', letterSpacing: '-0.3px' }}
             >
               {left.heading}
             </h3>
@@ -175,15 +175,15 @@ function MegaMenu({ data }) {
                   key={item.label}
                   href="#"
                   className="mega-left-item flex flex-col gap-0.5 py-3 no-underline"
-                  style={{ borderBottom: '1px solid #f1f5f9' }}
+                  style={{ borderBottom: '1px solid var(--color-surface-soft)' }}
                 >
                   <span
                     className="mega-item-label text-sm font-semibold"
-                    style={{ color: '#0f172a' }}
+                    style={{ color: 'var(--color-ink)' }}
                   >
                     {item.label}
                   </span>
-                  <span className="text-xs leading-relaxed" style={{ color: '#64748b' }}>
+                  <span className="text-xs leading-relaxed" style={{ color: 'var(--color-slate)' }}>
                     {item.desc}
                   </span>
                 </a>
@@ -191,7 +191,7 @@ function MegaMenu({ data }) {
             </div>
 
             <a href="#" className="mega-view-all"
-            style={{ color: '#0f172a' }}
+            style={{ color: 'var(--color-ink)' }}
             >
               {left.viewAll}
               <span className="mega-view-all-arrow">→</span>
@@ -202,7 +202,7 @@ function MegaMenu({ data }) {
           <div className="flex-1 pl-12">
             <h3
               className="text-2xl font-light mb-8"
-              style={{ color: '#0f172a', letterSpacing: '-0.3px' }}
+              style={{ color: 'var(--color-ink)', letterSpacing: '-0.3px' }}
             >
               {right.heading}
             </h3>
@@ -215,7 +215,7 @@ function MegaMenu({ data }) {
                       key={item}
                       href="#"
                       className="mega-right-link py-1.5 text-sm no-underline"
-                      style={{ borderBottom: '1px solid #f1f5f9' }}
+                      style={{ borderBottom: '1px solid var(--color-surface-soft)' }}
                     >
                       {item}
                     </a>
@@ -225,7 +225,7 @@ function MegaMenu({ data }) {
             </div>
 
             <a href="#" className="mega-view-all"
-            style={{ color: '#0f172a' }}
+            style={{ color: 'var(--color-ink)' }}
             >
               {right.viewAll}
               <span className="mega-view-all-arrow">→</span>
@@ -253,10 +253,10 @@ function DropdownItem({ label, data, scrolled }) {
         className={cn(
           'flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md transition-colors duration-150 bg-transparent border-none cursor-pointer',
           open
-            ? 'text-red-600'
+            ? 'text-accent'
             : scrolled
-            ? 'text-gray-700 hover:text-red-600'
-            : 'text-white hover:text-red-300'
+            ? 'text-slate-dark hover:text-accent'
+            : 'text-white hover:text-accent'
         )}
       >
         {label}
@@ -306,7 +306,7 @@ function Navbar() {
     'fixed top-0 inset-x-0 z-50 h-16 items-center justify-between',
     'px-6 md:px-10 lg:px-16 transition-all duration-300',
     scrolled
-      ? 'bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm'
+      ? 'bg-surface/95 backdrop-blur-sm border-b border-border shadow-sm'
       : 'bg-transparent border-b border-transparent'
   )
 
@@ -324,11 +324,11 @@ function Navbar() {
 
         <a href="/" className="flex items-center gap-2.5 no-underline flex-shrink-0">
           <LogoMark scrolled={scrolled} />
-          <span className={cn('relative text-2xl font-black tracking-widest', scrolled ? 'text-gray-900' : 'text-white')}>
+          <span className={cn('relative text-2xl font-black tracking-widest', scrolled ? 'text-ink' : 'text-white')}>
             THO
-            <span className="text-red-500">T</span>
+            <span className="text-accent">T</span>
             NR
-            <span className="absolute -bottom-0.5 left-0 w-full h-[2px] bg-gradient-to-r from-red-500 to-transparent" />
+            <span className="absolute -bottom-0.5 left-0 w-full h-[2px] bg-gradient-to-r from-accent to-transparent" />
           </span>
         </a>
 
@@ -346,8 +346,8 @@ function Navbar() {
                 key={link}
                 href="#"
                 className={cn(
-                  'px-3 py-2 text-sm font-medium rounded-md no-underline transition-colors duration-150 hover:text-red-600',
-                  scrolled ? 'text-gray-700' : 'text-white'
+                  'px-3 py-2 text-sm font-medium rounded-md no-underline transition-colors duration-150 hover:text-accent',
+                  scrolled ? 'text-slate-dark' : 'text-white'
                 )}
               >
                 {link}
@@ -361,8 +361,8 @@ function Navbar() {
       <nav className={cn(navBase, 'flex md:hidden px-5')}>
         <a href="/" className="flex items-center gap-2 no-underline">
           <LogoMark size={24} scrolled={scrolled} />
-          <span className={cn('text-lg font-bold', scrolled ? 'text-gray-900' : 'text-white')}>
-            THO<span className="text-red-500">T</span>NR
+          <span className={cn('text-lg font-bold', scrolled ? 'text-ink' : 'text-white')}>
+            THO<span className="text-accent">T</span>NR
           </span>
         </a>
         <button
@@ -382,7 +382,7 @@ function Navbar() {
         )}
         style={{
           top: 64, bottom: 0,
-          background: '#ffffff',
+          background: 'var(--color-surface)',
           borderTop: '2px solid var(--color-accent)',
           boxShadow: '0 12px 40px rgba(0,0,0,0.12)',
           transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1)',
@@ -394,7 +394,7 @@ function Navbar() {
               <button
                 className={cn(
                   'w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-150 border-none cursor-pointer',
-                  mobileExp === key ? 'text-red-600 bg-red-50' : 'text-gray-800 bg-transparent'
+                  mobileExp === key ? 'text-accent bg-accent-soft' : 'text-ink bg-transparent'
                 )}
                 onClick={() => setMobileExp(mobileExp === key ? null : key)}
               >
@@ -410,10 +410,10 @@ function Navbar() {
                     <a
                       key={item.label}
                       href="#"
-                      className="flex flex-col gap-0.5 px-4 py-2.5 rounded-lg no-underline transition-colors duration-150 hover:bg-red-50"
+                      className="flex flex-col gap-0.5 px-4 py-2.5 rounded-lg no-underline transition-colors duration-150 hover:bg-accent-soft"
                     >
-                      <span className="text-sm font-semibold text-gray-900">{item.label}</span>
-                      <span className="text-xs text-gray-500">{item.desc}</span>
+                      <span className="text-sm font-semibold text-ink">{item.label}</span>
+                      <span className="text-xs text-slate">{item.desc}</span>
                     </a>
                   ))}
                 </div>
@@ -425,7 +425,7 @@ function Navbar() {
             <a
               key={link}
               href="#"
-              className="px-4 py-3 rounded-xl text-sm font-medium no-underline transition-colors duration-150 text-gray-700 hover:text-red-600"
+              className="px-4 py-3 rounded-xl text-sm font-medium no-underline transition-colors duration-150 text-slate-dark hover:text-accent"
             >
               {link}
             </a>

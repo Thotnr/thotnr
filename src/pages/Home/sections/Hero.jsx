@@ -16,21 +16,21 @@ function Hero() {
         @keyframes glowPulse {
           0%, 100% {
             text-shadow:
-              1px 1px 0 #7f0020,
-              2px 2px 0 #6b001a,
-              3px 3px 0 #570015,
+              1px 1px 0 var(--color-accent-sh2),
+              2px 2px 0 var(--color-accent-sh3),
+              3px 3px 0 var(--color-accent-sh4),
               4px 4px 12px rgba(0,0,0,0.6),
-              0 0 30px rgba(225,29,72,0.3);
+              0 0 30px rgb(var(--color-accent-rgb) / 0.3);
           }
           50% {
             text-shadow:
-              1px 1px 0 #9f0028,
-              2px 2px 0 #7f0020,
-              3px 3px 0 #6b001a,
-              4px 4px 0 #570015,
+              1px 1px 0 var(--color-accent-sh0),
+              2px 2px 0 var(--color-accent-sh2),
+              3px 3px 0 var(--color-accent-sh3),
+              4px 4px 0 var(--color-accent-sh4),
               5px 5px 14px rgba(0,0,0,0.6),
-              0 0 55px rgba(225,29,72,0.55),
-              0 0 80px rgba(225,29,72,0.2);
+              0 0 55px rgb(var(--color-accent-rgb) / 0.55),
+              0 0 80px rgb(var(--color-accent-rgb) / 0.2);
           }
         }
         @keyframes lineGrow {
@@ -86,7 +86,7 @@ function Hero() {
           <div className="flex items-center gap-3">
             <div className="line-left h-px" style={{ background: 'var(--color-accent)' }} />
             <p
-              className="text-xs font-bold tracking-[0.22em] uppercase m-0"
+              className="t-tagline m-0"
               style={{ color: 'var(--color-accent)' }}
             >
               Architect AI Together
@@ -106,9 +106,9 @@ function Hero() {
               background: 'rgba(255,255,255,0.04)',
             }}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
             <span
-              className="text-xs font-semibold tracking-[0.14em] uppercase"
+              className="t-eyebrow"
               style={{ color: 'rgba(255,255,255,0.55)' }}
             >
               AI-First Technology Consulting
@@ -118,14 +118,12 @@ function Hero() {
           {/* Main Headline — 2 lines */}
           {/* Main Headline — fixed alignment */}
           <h1
-            className="hero-headline font-black tracking-tight m-0 mb-4"
+            className="hero-headline t-display m-0 mb-4"
             style={{
-              fontSize: 'clamp(52px, 7vw, 88px)',
-              lineHeight: '1.05',
               color: 'var(--color-text-primary)',
               textShadow: '1px 1px 0 rgba(0,0,0,0.6), 2px 2px 0 rgba(0,0,0,0.35), 4px 4px 14px rgba(0,0,0,0.4)',
               textAlign: 'center',
-              whiteSpace: 'nowrap',        
+              whiteSpace: 'nowrap',
             }}
           >
             Your <span className="thought-word">Thought</span> Partner
@@ -133,9 +131,8 @@ function Hero() {
 
           {/* Subheadline */}
           <p
-            className="hero-sub font-light tracking-[0.22em] uppercase pt-4 mb-10"
+            className="hero-sub t-tagline pt-4 mb-10"
             style={{
-              fontSize: 'clamp(11px, 1.3vw, 16px)',
               color: 'var(--color-text-secondary)',
               textShadow: '0 1px 6px rgba(0,0,0,0.5)',
             }}
@@ -156,15 +153,14 @@ function Hero() {
 
           {/* AI tagline */}
           <p
-            className="hero-desc font-light text-center m-0 px-6"
+            className="hero-desc t-hero-body text-center m-0 px-6"
             style={{
-              fontSize: 'clamp(13px, 1.3vw, 17px)',
-              color: 'rgba(248,250,252,0.45)',
-              whiteSpace: 'nowrap',         
+              color: 'rgb(var(--color-ink-soft-rgb) / 0.45)',
+              whiteSpace: 'nowrap',
             }}
           >
             We engineer AI that works inside your real enterprise —{' '}
-            <span style={{ color: 'rgba(248,250,252,0.75)', fontStyle: 'italic' }}>
+            <span style={{ color: 'rgb(var(--color-ink-soft-rgb) / 0.75)', fontStyle: 'italic' }}>
               not just in the demo.
             </span>
           </p>
@@ -172,7 +168,7 @@ function Hero() {
           {/* Scroll indicator */}
           <div className="hero-scroll flex flex-col items-center gap-2">
             <span
-              className="text-[10px] font-semibold tracking-[0.2em] uppercase"
+              className="t-caption"
               style={{ color: 'rgba(255,255,255,0.25)' }}
             >
               Scroll

@@ -68,16 +68,16 @@ function ServiceCard({ icon, title, tagline, whatWeDo, index }) {
           transform: translateY(-16px) rotateX(6deg) rotateY(${index === 0 ? '4deg' : index === 1 ? '0deg' : '-4deg'}) scale(1.03);
           box-shadow:
             0 30px 60px rgba(0,0,0,0.6),
-            0 0 0 1px rgba(59,130,246,0.4),
-            0 0 40px rgba(59,130,246,0.15),
-            0 0 80px rgba(59,130,246,0.06);
-          border-color: rgba(59,130,246,0.4) !important;
+            0 0 0 1px rgb(var(--color-tech-rgb) / 0.4),
+            0 0 40px rgb(var(--color-tech-rgb) / 0.15),
+            0 0 80px rgb(var(--color-tech-rgb) / 0.06);
+          border-color: rgb(var(--color-tech-rgb) / 0.4) !important;
         }
 
         .svc-card-${index}:hover .scan-line { animation: scanline 1.2s linear infinite; }
         .scan-line {
           position: absolute; left: 0; right: 0; height: 2px;
-          background: linear-gradient(to right, transparent, rgba(59,130,246,0.5), transparent);
+          background: linear-gradient(to right, transparent, rgb(var(--color-tech-rgb) / 0.5), transparent);
           pointer-events: none; top: -100%; opacity: 0;
         }
 
@@ -93,15 +93,15 @@ function ServiceCard({ icon, title, tagline, whatWeDo, index }) {
           position: absolute; width: 14px; height: 14px;
           opacity: 0; transition: opacity 0.3s ease;
         }
-        .corner-tl-${index} { top: 10px; left: 10px; border-top: 2px solid #4a9eff; border-left: 2px solid #4a9eff; }
-        .corner-tr-${index} { top: 10px; right: 10px; border-top: 2px solid #4a9eff; border-right: 2px solid #4a9eff; }
-        .corner-bl-${index} { bottom: 10px; left: 10px; border-bottom: 2px solid #4a9eff; border-left: 2px solid #4a9eff; }
-        .corner-br-${index} { bottom: 10px; right: 10px; border-bottom: 2px solid #4a9eff; border-right: 2px solid #4a9eff; }
+        .corner-tl-${index} { top: 10px; left: 10px; border-top: 2px solid var(--color-tech-bright); border-left: 2px solid var(--color-tech-bright); }
+        .corner-tr-${index} { top: 10px; right: 10px; border-top: 2px solid var(--color-tech-bright); border-right: 2px solid var(--color-tech-bright); }
+        .corner-bl-${index} { bottom: 10px; left: 10px; border-bottom: 2px solid var(--color-tech-bright); border-left: 2px solid var(--color-tech-bright); }
+        .corner-br-${index} { bottom: 10px; right: 10px; border-bottom: 2px solid var(--color-tech-bright); border-right: 2px solid var(--color-tech-bright); }
 
         .svc-card-${index}:hover .particle-${index} { animation: particleRise 1.5s ease-out infinite; }
         .particle-${index} {
           position: absolute; width: 3px; height: 3px;
-          border-radius: 50%; background: #4a9eff; opacity: 0;
+          border-radius: 50%; background: var(--color-tech-bright); opacity: 0;
         }
         .p1-${index} { bottom: 20%; left: 20%; animation-delay: 0s; }
         .p2-${index} { bottom: 15%; left: 45%; animation-delay: 0.4s; }
@@ -109,10 +109,10 @@ function ServiceCard({ icon, title, tagline, whatWeDo, index }) {
         .p4-${index} { bottom: 10%; left: 30%; animation-delay: 1.1s; }
 
         .svc-card-${index}:hover .icon-img-${index} {
-          filter: drop-shadow(0 0 16px rgba(74,158,255,0.5)) drop-shadow(0 0 32px rgba(74,158,255,0.25));
+          filter: drop-shadow(0 0 16px rgb(var(--color-tech-bright-rgb) / 0.5)) drop-shadow(0 0 32px rgb(var(--color-tech-bright-rgb) / 0.25));
         }
         .icon-img-${index} {
-          filter: drop-shadow(0 4px 12px rgba(74,158,255,0.15));
+          filter: drop-shadow(0 4px 12px rgb(var(--color-tech-bright-rgb) / 0.15));
           transition: filter 0.4s ease;
         }
 
@@ -123,7 +123,7 @@ function ServiceCard({ icon, title, tagline, whatWeDo, index }) {
             2px 2px 0 rgba(0,0,0,0.5),
             3px 3px 0 rgba(0,0,0,0.3),
             4px 4px 12px rgba(0,0,0,0.4),
-            0 0 20px rgba(248,250,252,0.08);
+            0 0 20px rgb(var(--color-ink-soft-rgb) / 0.08);
           transform: translateZ(20px);
         }
         .card-title-${index} {
@@ -135,7 +135,7 @@ function ServiceCard({ icon, title, tagline, whatWeDo, index }) {
         .hover-overlay-${index} {
           opacity: 0;
           transition: opacity 0.4s ease;
-          background: linear-gradient(135deg, rgba(59,130,246,0.08) 0%, rgba(59,130,246,0.03) 40%, transparent 70%);
+          background: linear-gradient(135deg, rgb(var(--color-tech-rgb) / 0.08) 0%, rgb(var(--color-tech-rgb) / 0.03) 40%, transparent 70%);
         }
       `}</style>
 
@@ -169,7 +169,7 @@ function ServiceCard({ icon, title, tagline, whatWeDo, index }) {
           {/* Title */}
           <div className="relative z-10">
             <h3
-              className={`card-title-${index} text-3xl font-semibold mb-1`}
+              className={`card-title-${index} t-title-lg mb-1`}
               style={{ color: 'var(--color-text-primary)' }}
             >
               {title}
@@ -179,7 +179,7 @@ function ServiceCard({ icon, title, tagline, whatWeDo, index }) {
           {/* Body — line-clamp keeps equal height */}
           <div className="relative z-10">
             <p
-              className="text-lg leading-relaxed line-clamp-5"
+              className="t-body-lg line-clamp-5"
               style={{ color: 'var(--color-text-secondary)' }}
             >
               {whatWeDo}
@@ -207,18 +207,18 @@ function ServicesCards() {
         @keyframes aiPop {
           0%, 100% {
             text-shadow:
-              1px 1px 0 #7f0020, 2px 2px 0 #6b001a, 3px 3px 0 #570015,
-              4px 4px 0 #450010, 5px 5px 0 #35000c,
+              1px 1px 0 var(--color-accent-sh2), 2px 2px 0 var(--color-accent-sh3), 3px 3px 0 var(--color-accent-sh4),
+              4px 4px 0 var(--color-accent-sh5), 5px 5px 0 var(--color-accent-sh6),
               6px 6px 16px rgba(0,0,0,0.7),
-              0 0 30px rgba(225,29,72,0.4), 0 0 60px rgba(225,29,72,0.15);
+              0 0 30px rgb(var(--color-accent-rgb) / 0.4), 0 0 60px rgb(var(--color-accent-rgb) / 0.15);
             transform: translateZ(0px) scale(1);
           }
           50% {
             text-shadow:
-              1px 1px 0 #9f0028, 2px 2px 0 #8a0022, 3px 3px 0 #7f0020,
-              4px 4px 0 #6b001a, 5px 5px 0 #570015, 6px 6px 0 #450010,
+              1px 1px 0 var(--color-accent-sh0), 2px 2px 0 var(--color-accent-sh1), 3px 3px 0 var(--color-accent-sh2),
+              4px 4px 0 var(--color-accent-sh3), 5px 5px 0 var(--color-accent-sh4), 6px 6px 0 var(--color-accent-sh5),
               7px 7px 20px rgba(0,0,0,0.7),
-              0 0 50px rgba(225,29,72,0.65), 0 0 90px rgba(225,29,72,0.25);
+              0 0 50px rgb(var(--color-accent-rgb) / 0.65), 0 0 90px rgb(var(--color-accent-rgb) / 0.25);
             transform: translateZ(8px) scale(1.02);
           }
         }
@@ -231,7 +231,7 @@ function ServicesCards() {
           50% {
             text-shadow:
               1px 1px 0 rgba(0,0,0,0.7), 2px 2px 0 rgba(0,0,0,0.4),
-              3px 3px 12px rgba(0,0,0,0.3), 0 0 20px rgba(248,250,252,0.05);
+              3px 3px 12px rgba(0,0,0,0.3), 0 0 20px rgb(var(--color-ink-soft-rgb) / 0.05);
           }
         }
         .sc-eyebrow { animation: eyebrowFade 0.8s ease 0.1s both; }
@@ -242,11 +242,7 @@ function ServicesCards() {
         .ai-word {
           display: inline-block;
           color: var(--color-accent);
-          animation: aiPop 3s ease-in-out 1s infinite;
-          text-shadow:
-            1px 1px 0 #7f0020, 2px 2px 0 #6b001a, 3px 3px 0 #570015,
-            4px 4px 0 #450010, 5px 5px 0 #35000c,
-            6px 6px 16px rgba(0,0,0,0.7), 0 0 30px rgba(225,29,72,0.4);
+        
         }
         .rest-word {
           display: inline-block;
@@ -265,14 +261,14 @@ function ServicesCards() {
 
           <div className="text-start mb-16">
             <p
-              className="sc-eyebrow text-xs font-semibold uppercase tracking-widest mb-3"
+              className="sc-eyebrow t-eyebrow mb-3"
               style={{ color: 'var(--color-accent)' }}
             >
               Core Capabilities
             </p>
 
             <h2
-              className="sc-headline text-4xl sm:text-4xl font-semibold tracking-tight"
+              className="sc-headline t-headline"
               style={{
                 color: 'var(--color-text-primary)',
                 transformStyle: 'preserve-3d',
@@ -285,7 +281,7 @@ function ServicesCards() {
             </h2>
 
             <p
-              className="sc-sub mt-4 text-lg"
+              className="sc-sub t-sub mt-4"
               style={{ color: 'var(--color-text-secondary)' }}
             >
               Three interlocking disciplines that take an AI idea from whiteboard

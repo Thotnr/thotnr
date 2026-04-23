@@ -34,28 +34,28 @@ function Newsletter() {
         @keyframes aiCurvePop {
           0%, 100% {
             text-shadow:
-              1px 1px 0 #7f0020,
-              2px 2px 0 #6b001a,
-              3px 3px 0 #570015,
-              4px 4px 0 #450010,
-              5px 5px 0 #35000c,
+              1px 1px 0 var(--color-accent-sh2),
+              2px 2px 0 var(--color-accent-sh3),
+              3px 3px 0 var(--color-accent-sh4),
+              4px 4px 0 var(--color-accent-sh5),
+              5px 5px 0 var(--color-accent-sh6),
               6px 6px 18px rgba(0,0,0,0.6),
-              0 0 28px rgba(225,29,72,0.4),
-              0 0 55px rgba(225,29,72,0.12);
+              0 0 28px rgb(var(--color-accent-rgb) / 0.4),
+              0 0 55px rgb(var(--color-accent-rgb) / 0.12);
             transform: translateZ(0) scale(1);
           }
           50% {
             text-shadow:
-              1px 1px 0 #9f0028,
-              2px 2px 0 #8a0022,
-              3px 3px 0 #7f0020,
-              4px 4px 0 #6b001a,
-              5px 5px 0 #570015,
-              6px 6px 0 #450010,
+              1px 1px 0 var(--color-accent-sh0),
+              2px 2px 0 var(--color-accent-sh1),
+              3px 3px 0 var(--color-accent-sh2),
+              4px 4px 0 var(--color-accent-sh3),
+              5px 5px 0 var(--color-accent-sh4),
+              6px 6px 0 var(--color-accent-sh5),
               7px 7px 22px rgba(0,0,0,0.65),
-              0 0 50px rgba(225,29,72,0.7),
-              0 0 90px rgba(225,29,72,0.25),
-              0 0 120px rgba(225,29,72,0.08);
+              0 0 50px rgb(var(--color-accent-rgb) / 0.7),
+              0 0 90px rgb(var(--color-accent-rgb) / 0.25),
+              0 0 120px rgb(var(--color-accent-rgb) / 0.08);
             transform: translateZ(14px) scale(1.04);
           }
         }
@@ -78,12 +78,12 @@ function Newsletter() {
           100% { transform: translateY(-80px) scale(0); opacity: 0; }
         }
         @keyframes mailPulse {
-          0%, 100% { box-shadow: 0 0 0 0 rgba(225,29,72,0.3); transform: scale(1); }
-          50%       { box-shadow: 0 0 0 8px rgba(225,29,72,0.06); transform: scale(1.06); }
+          0%, 100% { box-shadow: 0 0 0 0 rgb(var(--color-accent-rgb) / 0.3); transform: scale(1); }
+          50%       { box-shadow: 0 0 0 8px rgb(var(--color-accent-rgb) / 0.06); transform: scale(1.06); }
         }
         @keyframes inputGlow {
           0%, 100% { box-shadow: none; }
-          50%       { box-shadow: 0 0 20px rgba(225,29,72,0.1); }
+          50%       { box-shadow: 0 0 20px rgb(var(--color-accent-rgb) / 0.1); }
         }
 
         .nl-eyebrow  { animation: eyebrowFade  0.8s ease 0.1s both; }
@@ -108,13 +108,13 @@ function Newsletter() {
           transform: translateY(-10px) rotateX(4deg) scale(1.015);
           box-shadow:
             0 30px 60px rgba(0,0,0,0.5),
-            0 0 0 1px rgba(225,29,72,0.3),
-            0 0 40px rgba(225,29,72,0.1);
+            0 0 0 1px rgb(var(--color-accent-rgb) / 0.3),
+            0 0 40px rgb(var(--color-accent-rgb) / 0.1);
         }
         .nl-box:hover .nl-scan { animation: scanNews 1.4s linear infinite; }
         .nl-scan {
           position: absolute; left: 0; right: 0; height: 1.5px;
-          background: linear-gradient(to right, transparent, rgba(225,29,72,0.4), transparent);
+          background: linear-gradient(to right, transparent, rgb(var(--color-accent-rgb) / 0.4), transparent);
           top: -100%; opacity: 0; pointer-events: none; z-index: 10;
         }
         .nl-corner-tl, .nl-corner-tr, .nl-corner-bl, .nl-corner-br {
@@ -150,11 +150,11 @@ function Newsletter() {
 
           {/* Header */}
           <div className="text-center mb-12">
-            <p className="nl-eyebrow text-xs font-semibold uppercase tracking-widest mb-3 text-accent">
+            <p className="nl-eyebrow t-eyebrow mb-3 text-accent">
               Stay Informed
             </p>
             <h2
-              className="nl-headline text-3xl sm:text-4xl font-bold text-white tracking-tight"
+              className="nl-headline t-headline text-white"
               style={{ transformStyle: 'preserve-3d', perspective: '600px' }}
             >
               Stay Ahead of the{' '}
@@ -183,13 +183,13 @@ function Newsletter() {
             <div className="flex items-center gap-3 mb-4 relative z-10">
               <div
                 className="mail-icon-wrap w-10 h-10 rounded-lg flex items-center justify-center"
-                style={{ background: 'rgba(225,29,72,0.1)', color: 'var(--color-accent)' }}
+                style={{ background: 'rgb(var(--color-accent-rgb) / 0.1)', color: 'var(--color-accent)' }}
               >
                 <MailIcon />
               </div>
               <div>
                 <h3
-                  className="text-lg font-semibold"
+                  className="t-title"
                   style={{
                     color: 'var(--color-text-primary)',
                     textShadow: '1px 1px 0 rgba(0,0,0,0.5), 2px 2px 6px rgba(0,0,0,0.3)',
@@ -197,14 +197,14 @@ function Newsletter() {
                 >
                   The AI Intelligence Brief
                 </h3>
-                <p className="text-xs" style={{ color: 'var(--color-text-secondary)' }}>
+                <p className="t-caption" style={{ color: 'var(--color-text-secondary)' }}>
                   Weekly · No spam · Unsubscribe anytime
                 </p>
               </div>
             </div>
 
             {/* Description */}
-            <p className="text-sm leading-relaxed mb-6 relative z-10" style={{ color: 'var(--color-text-secondary)' }}>
+            <p className="t-body mb-6 relative z-10" style={{ color: 'var(--color-text-secondary)' }}>
               Curated analysis of enterprise AI trends, case studies, and strategic frameworks —
               delivered every Tuesday to 8,000+ AI leaders and practitioners.
             </p>
@@ -218,7 +218,7 @@ function Newsletter() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@company.com"
                   required
-                  className="nl-input flex-1 px-4 py-3 rounded-lg text-sm outline-none transition-all duration-200"
+                  className="nl-input t-body flex-1 px-4 py-3 rounded-lg outline-none transition-all duration-200"
                   style={{
                     background: 'var(--color-bg-secondary)',
                     border: '1px solid var(--color-border-subtle)',
@@ -228,10 +228,10 @@ function Newsletter() {
                 />
                 <button
                   type="submit"
-                  className="px-5 py-3 rounded-lg text-sm font-semibold whitespace-nowrap text-white transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 cursor-pointer border-none"
+                  className="px-5 py-3 rounded-lg t-label whitespace-nowrap text-white transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 cursor-pointer border-none"
                   style={{
-                    background: '#BE123C',
-                    boxShadow: '0 4px 16px rgba(190,18,60,0.4)',
+                    background: 'var(--color-accent-light)',
+                    boxShadow: '0 4px 16px rgb(var(--color-accent-light-rgb) / 0.4)',
                   }}
                 >
                   Subscribe Free
@@ -241,8 +241,8 @@ function Newsletter() {
               <div
                 className="flex items-center gap-3 px-5 py-4 rounded-lg text-sm font-medium relative z-10"
                 style={{
-                  background: 'rgba(225,29,72,0.1)',
-                  border: '1px solid rgba(225,29,72,0.3)',
+                  background: 'rgb(var(--color-accent-rgb) / 0.1)',
+                  border: '1px solid rgb(var(--color-accent-rgb) / 0.3)',
                   color: 'var(--color-accent)',
                 }}
               >
@@ -251,7 +251,7 @@ function Newsletter() {
             )}
 
             {/* Trust line */}
-            <p className="text-xs mt-4 text-center relative z-10" style={{ color: 'var(--color-text-secondary)' }}>
+            <p className="t-caption mt-4 text-center relative z-10" style={{ color: 'var(--color-text-secondary)' }}>
               Join 8,000+ enterprise leaders from Goldman Sachs, Unilever, and Siemens.
             </p>
           </div>

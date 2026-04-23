@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./styles/typography.css";
 
 /* ─────────────────────────────────────────────────────────────
    TAILWIND THEME — generates utility classes from design tokens
@@ -17,6 +18,19 @@
   --color-border:      #E2E8F0;   /* card / divider on light bg */
   --color-border-dk:   #1E2D45;   /* card border on dark bg     */
 
+  /* ── Extended palette ── */
+  --color-surface:        #ffffff;    /* pure white bg              */
+  --color-surface-soft:   #F1F5F9;   /* light-section bg           */
+  --color-surface-muted:  #F8FAFC;   /* gray-50 card bg            */
+  --color-card:           #111827;   /* card bg on dark sections   */
+  --color-ink:            #010716;   /* primary text on light bg   */
+  --color-ink-soft:       #F8FAFC;   /* primary text on dark bg    */
+  --color-slate:          #64748B;   /* secondary text (gray-500)  */
+  --color-slate-dark:     #334155;   /* medium text (gray-700)     */
+  --color-tech:           #3B82F6;   /* blue – AI / tech cards     */
+  --color-tech-bright:    #4A9EFF;   /* blue hover highlight       */
+  --color-purple:         #8B5CF6;   /* violet – cloud cards       */
+
   --font-sans: 'Inter', system-ui, sans-serif;
 }
 
@@ -24,26 +38,6 @@
    DESIGN TOKENS (CSS custom properties for non-Tailwind usage)
 ───────────────────────────────────────────────────────────── */
 :root {
-  /* --color-bg-primary:   #FFFFFF;
-  --color-bg-secondary: #06041F;
-  --color-text:         #010716;
-
-  --color-gray-50:  #F8FAFC;
-  --color-gray-100: #F1F5F9;
-  --color-gray-200: #E2E8F0;
-  --color-gray-300: #CBD5E1;
-  --color-gray-400: #94A3B8;
-  --color-gray-500: #64748B;
-  --color-gray-600: #475569;
-  --color-gray-700: #334155;
-  --color-gray-800: #1E293B;
-  --color-gray-900: #0F172A;
-
-  --color-accent:      #E11D48;
-  --color-accent-dark: #9F1239;
-  --color-accent-soft: #FFF1F2; */
-
-
    /* ─────────────────────────────────────────────
      BACKGROUND SYSTEM
   ───────────────────────────────────────────── */
@@ -92,6 +86,25 @@
   --color-gray-800: #1E293B;
   --color-gray-900: #0F172A;
 
+  /* ── Accent 3D shadow steps (used in text-shadow depth effects) ── */
+  --color-accent-sh0:       #9f0028;
+  --color-accent-sh1:       #8a0022;
+  --color-accent-sh2:       #7f0020;
+  --color-accent-sh3:       #6b001a;
+  --color-accent-sh4:       #570015;
+  --color-accent-sh5:       #450010;
+  --color-accent-sh6:       #35000c;
+
+  /* ── RGB components for opacity variants  ── */
+  --color-accent-rgb:         225 29 72;
+  --color-accent-light-rgb:   190 18 60;
+  --color-tech-rgb:           59 130 246;
+  --color-tech-bright-rgb:    74 158 255;
+  --color-ink-rgb:            1 7 22;
+  --color-dark-rgb:           6 4 31;
+  --color-card-rgb:           17 24 39;
+  --color-ink-soft-rgb:       248 250 252;
+
   --font-sans: 'Inter', system-ui, sans-serif;
 }
 
@@ -114,9 +127,10 @@ body {
   padding: 0;
   font-family: var(--font-sans);
   background-color: var(--color-bg-primary);
-  color: var(--color-text);
+  color: var(--color-ink);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
@@ -125,9 +139,6 @@ body {
 ───────────────────────────────────────────────────────────── */
 h1, h2, h3, h4 {
   margin: 0;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
 }
 
 p { margin: 0; }

@@ -13,20 +13,20 @@ function ProblemStatement() {
         @keyframes redGlowPulse {
           0%, 100% {
             text-shadow:
-              1px 1px 0 #7f0020,
-              2px 2px 0 #6b001a,
-              3px 3px 0 #570015,
+              1px 1px 0 var(--color-accent-sh2),
+              2px 2px 0 var(--color-accent-sh3),
+              3px 3px 0 var(--color-accent-sh4),
               4px 4px 10px rgba(0,0,0,0.3),
-              0 0 20px rgba(225,29,72,0.25);
+              0 0 20px rgb(var(--color-accent-rgb) / 0.25);
           }
           50% {
             text-shadow:
-              1px 1px 0 #9f0028,
-              2px 2px 0 #7f0020,
-              3px 3px 0 #6b001a,
+              1px 1px 0 var(--color-accent-sh0),
+              2px 2px 0 var(--color-accent-sh2),
+              3px 3px 0 var(--color-accent-sh3),
               4px 4px 12px rgba(0,0,0,0.4),
-              0 0 40px rgba(225,29,72,0.45),
-              0 0 60px rgba(225,29,72,0.15);
+              0 0 40px rgb(var(--color-accent-rgb) / 0.45),
+              0 0 60px rgb(var(--color-accent-rgb) / 0.15);
           }
         }
         @keyframes whitePop {
@@ -48,10 +48,10 @@ function ProblemStatement() {
           display: inline;
           animation: redGlowPulse 3.5s ease-in-out 2s infinite;
           text-shadow:
-            1px 1px 0 #7f0020,
-            2px 2px 0 #6b001a,
+            1px 1px 0 var(--color-accent-sh2),
+            2px 2px 0 var(--color-accent-sh3),
             3px 3px 8px rgba(0,0,0,0.25),
-            0 0 16px rgba(225,29,72,0.2);
+            0 0 16px rgb(var(--color-accent-rgb) / 0.2);
         }
         .ps-dark-text {
           text-shadow:
