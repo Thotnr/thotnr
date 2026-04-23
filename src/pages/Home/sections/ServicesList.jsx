@@ -219,7 +219,7 @@ function ServicesList() {
   const col3 = allServices.slice(20)
 
   return (
-    <section className="py-20 px-6 md:px-10 lg:px-16" style={{ background: 'var(--color-bg-primary)' }}>
+    <section className="pt-20 pb-10 px-6 md:px-10 lg:px-16" style={{ background: 'var(--color-bg-primary)' }}>
       <div className="max-w-7xl mx-auto">
 
         {/* ── Premium Header ── */}

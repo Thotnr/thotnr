@@ -169,14 +169,20 @@ function CTASplit() {
 
             <a
               href="#"
-              className="cta-btn inline-flex items-center mt-6 px-5 py-2.5 rounded-lg text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5"
-              style={{
-                background: '#BE123C',
-                boxShadow: '0 4px 16px rgba(190,18,60,0.35)',
-              }}
-            >
-              Start a Conversation
-            </a>
+  className="cta-btn inline-flex items-center mt-6 px-5 py-2.5 rounded-lg text-sm font-bold text-black transition-all duration-200 hover:-translate-y-0.5"
+  style={{
+    background: 'rgba(190,18,60,0.03)',
+    border: '1px solid #BE123C',
+  }}
+  onMouseEnter={(e) => {
+    e.currentTarget.style.background = 'rgba(190,18,60,0.07)'
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.style.background = 'rgba(190,18,60,0.03)'
+  }}
+>
+  Start a Conversation
+</a>
           </div>
 
           {/* Right */}

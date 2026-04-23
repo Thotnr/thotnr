@@ -5,41 +5,92 @@ import logoRed from '../../assets/images/thotnr_logo_red.png'
 
 // ── Dropdown Data ─────────────────────────────────────────────────────────────
 
-const whatWeOfferItems = [
-  { label: 'Digital Engineering',      desc: 'Value-driven and technology savvy. We future-proof your business.' },
-  { label: 'Intelligent Enterprise',   desc: 'Helping you master your critical business applications, empowering your business to thrive.' },
-  { label: 'Experience and Design',    desc: 'Harness the power of design to drive a whole new level of success.' },
-  { label: 'AI & Data',                desc: 'Accelerate growth with intelligent automation and data-driven decisions.' },
-  { label: 'Enterprise Architecture',  desc: 'Modernise your technology landscape and build systems that scale.' },
-  { label: 'Cloud Services',           desc: 'Migrate, optimise, and operate with confidence across any cloud platform.' },
-]
+const whatWeOfferData = {
+  left: {
+    heading: 'services',
+    items: [
+      { label: 'Digital Engineering',     desc: 'Value-driven and technology savvy. We future-proof your business.' },
+      { label: 'Intelligent Enterprise',  desc: 'Helping you master your critical business applications, empowering your business to thrive.' },
+      { label: 'Experience and Design',   desc: 'Harness the power of design to drive a whole new level of success.' },
+    ],
+    viewAll: 'view all services',
+  },
+  right: {
+    heading: 'industries',
+    cols: [
+      ['Banking & Financial Services', 'Healthcare & Life Sciences', 'Automotive', 'Energy & Utilities', 'Gaming & Entertainment', 'Insurance'],
+      ['Media & Publishing', 'Non-profits & Education', 'Private Equity', 'Public Sector', 'Retail & CPG', 'Industry & Automation'],
+      ['Smart Buildings', 'Software & Hi-tech', 'Sports AI', 'Telecommunications', 'Travel & Logistics'],
+    ],
+    viewAll: 'view all industries',
+  },
+}
 
-const ourWorkItems = [
-  { label: 'Case Studies',                    desc: 'Real outcomes. Real clients. See how we deliver measurable impact.' },
-  { label: 'Nykaa — Quality Engineering',     desc: 'Redefined seller portal testing at e-commerce scale.' },
-  { label: 'Standard Bank — Architecture',    desc: 'Enterprise architecture transformation across Southern Africa.' },
-  { label: 'Tata International — Automation', desc: 'Intelligent process automation for automotive supply chain.' },
-  { label: 'Glytec — Clinical AI',            desc: 'AI-assisted insulin dosing for safer patient outcomes.' },
-  { label: 'Hero FinCorp — Data Platform',    desc: 'Unified data platform powering real-time lending decisions.' },
-]
+const ourWorkData = {
+  left: {
+    heading: 'our work',
+    items: [
+      { label: 'Nykaa — Quality Engineering',      desc: 'Redefined seller portal testing at e-commerce scale.' },
+      { label: 'Standard Bank — Architecture',     desc: 'Enterprise architecture transformation across Southern Africa.' },
+      { label: 'Tata International — Automation',  desc: 'Intelligent process automation for automotive supply chain.' },
+    
+    ],
+    viewAll: 'view all case studies',
+  },
+  right: {
+    heading: 'industries served',
+    cols: [
+      ['Banking & Finance', 'Healthcare', 'E-commerce & Retail', 'Automotive', 'Energy & Utilities'],
+      ['Financial Services', 'Logistics & Supply Chain', 'Education', 'Insurance', 'Media & Publishing'],
+      ['SaaS & Software', 'Public Sector', 'Travel & Hospitality'],
+    ],
+    viewAll: 'view all industries',
+  },
+}
 
-const insightsItems = [
-  { label: 'Latest Articles',                      desc: 'Perspectives on AI, architecture, and enterprise transformation.' },
-  { label: 'Why AI Projects Fail',                 desc: 'The mismatch between leadership expectations and enterprise reality.' },
-  { label: 'ROI of Intelligent Automation',        desc: 'Measuring second and third-order returns from automation in 2025.' },
-  { label: 'Building AI-Ready Organisations',      desc: 'The operating muscle companies need to absorb AI capability.' },
-  { label: 'Next-Gen User Experience',             desc: 'How human-centred design is reshaping enterprise software.' },
-  { label: 'Events & Webinars',                    desc: 'Join our upcoming sessions on enterprise AI and digital transformation.' },
-]
+const insightsData = {
+  left: {
+    heading: 'insights',
+    items: [
+      { label: 'Why AI Projects Fail Before They Start',   desc: 'The mismatch between leadership expectations and enterprise reality.' },
+      { label: 'The ROI of Intelligent Automation',        desc: 'Measuring second and third-order returns from automation in 2025.' },
+      { label: 'Building an AI-Ready Organisation',        desc: 'The operating muscle companies need to absorb AI capability.' },
+    
+    ],
+    viewAll: 'view all insights',
+  },
+  right: {
+    heading: 'topics',
+    cols: [
+      ['AI Strategy', 'Generative AI', 'Machine Learning', 'Data Engineering', 'MLOps'],
+      ['Enterprise Architecture', 'Cloud & DevOps', 'Cybersecurity', 'Digital Transformation', 'Product Engineering'],
+      ['UX & Design', 'Leadership & Culture', 'Events & Webinars'],
+    ],
+    viewAll: 'view all topics',
+  },
+}
 
-const aiItems = [
-  { label: 'AI Strategy & Roadmap',       desc: 'Long-term AI vision aligned to your business goals and data maturity.' },
-  { label: 'Generative AI Engineering',   desc: 'Production-ready GenAI — RAG systems, copilots, and LLM integrations.' },
-  { label: 'Intelligent Automation',      desc: 'Replace manual workflows with context-aware AI-powered processes.' },
-  { label: 'NLP & Conversational AI',     desc: 'Text intelligence and voice agents built for enterprise environments.' },
-  { label: 'Computer Vision',             desc: 'Visual AI for inspection, recognition, and real-time decision-making.' },
-  { label: 'AI Governance & Risk',        desc: 'Responsible AI frameworks — compliant, explainable, and auditable.' },
-]
+const aiData = {
+  left: {
+    heading: 'AI solutions',
+    items: [
+      { label: 'AI Strategy & Roadmap',      desc: 'Long-term AI vision aligned to your business goals and data maturity.' },
+      { label: 'Generative AI Engineering',  desc: 'Production-ready GenAI — RAG systems, copilots, and LLM integrations.' },
+      { label: 'Intelligent Automation',     desc: 'Replace manual workflows with context-aware AI-powered processes.' },
+      
+    ],
+    viewAll: 'view all AI services',
+  },
+  right: {
+    heading: 'AI by industry',
+    cols: [
+      ['AI in Banking', 'AI in Healthcare', 'AI in Retail', 'AI in Manufacturing', 'AI in Logistics'],
+      ['AI in Insurance', 'AI in Energy', 'AI in Media', 'AI in Education', 'AI in Public Sector'],
+      ['AI Governance', 'Responsible AI', 'AI Readiness Assessment'],
+    ],
+    viewAll: 'view all AI by industry',
+  },
+}
 
 // ── Logo ──────────────────────────────────────────────────────────────────────
 
@@ -68,76 +119,128 @@ function ChevronDown({ open }) {
   )
 }
 
-// ── Full-width Mega Menu ──────────────────────────────────────────────────────
+// ── Nagarro-style Mega Menu ───────────────────────────────────────────────────
 
-function MegaMenu({ label, items }) {
+function MegaMenu({ data }) {
+  const { left, right } = data
   return (
-    <div
-      className="fixed left-0 right-0 z-50 bg-white overflow-y-auto"
-      style={{
-        top: '64px',
-        minHeight: '500px',      // ← YE BADLO — 420px, 500px, 600px
-        borderTop: '2px solid var(--color-accent)',
-        borderBottom: '1px solid var(--color-gray-200)',
-        boxShadow: '0 16px 48px rgba(1,7,22,0.12)',
-      }}
-    >
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-10">
+    <>
+      <style>{`
+        @keyframes menuFadeIn {
+          from { opacity: 0; transform: translateY(-8px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .mega-menu-wrap { animation: menuFadeIn 0.2s ease both; }
+        .mega-left-item { transition: color 0.15s ease; }
+        .mega-left-item:hover .mega-item-label { color: var(--color-accent); }
+        .mega-right-link { transition: color 0.15s ease; color: #334155; }
+        .mega-right-link:hover { color: var(--color-accent); }
+        .mega-view-all {
+          display: inline-flex; align-items: center; gap: 4px;
+          font-size: 14px; font-weight: 500;
+          color: #334155; text-decoration: none;
+          transition: color 0.15s ease;
+          margin-top: 24px;
+        }
+        .mega-view-all:hover { color: var(--color-accent); }
+        .mega-view-all-arrow {
+          display: inline-block;
+          transition: transform 0.2s ease;
+        }
+        .mega-view-all:hover .mega-view-all-arrow { transform: translateX(4px); }
+      `}</style>
 
-        {/* Section label */}
-        <p
-          className="text-xs font-bold uppercase tracking-[0.16em] mb-6 m-0"
-          style={{ color: 'var(--color-accent)' }}
-        >
-          {label}
-        </p>
+      <div
+        className="mega-menu-wrap fixed left-0 right-0 z-50 bg-white"
+        style={{
+          top: '64px',
+          borderBottom: '1px solid #e2e8f0',
+          boxShadow: '0 12px 40px rgba(1,7,22,0.1)',
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-12 flex gap-0">
 
-        {/* Items grid — 3 cols */}
-        <div className="grid grid-cols-3 gap-x-6 gap-y-1 mb-8">
-          {items.map((item) => (
-            <a
-              key={item.label}
-              href="#"
-              className="group flex flex-col gap-1 px-4 py-4 rounded-xl no-underline transition-all duration-150"
-              style={{ borderBottom: '1px solid var(--color-gray-100)' }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--color-accent-soft)' }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent' }}
+          {/* LEFT — services/items with desc */}
+          <div className="w-[380px] flex-shrink-0 pr-12" style={{ borderRight: '1px solid #e2e8f0' }}>
+            <h3
+              className="text-2xl font-light mb-8 m-0"
+              style={{ color: '#0f172a', letterSpacing: '-0.3px' }}
             >
-              <span
-                className="text-sm font-semibold transition-colors duration-150 group-hover:text-red-600"
-                style={{ color: 'var(--color-text-dark)' }}
-              >
-                {item.label}
-              </span>
-              <span
-                className="text-xs leading-relaxed"
-                style={{ color: 'var(--color-gray-500)' }}
-              >
-                {item.desc}
-              </span>
+              {left.heading}
+            </h3>
+
+            <div className="flex flex-col gap-1 pt-4">
+              {left.items.map((item) => (
+                <a
+                  key={item.label}
+                  href="#"
+                  className="mega-left-item flex flex-col gap-0.5 py-3 no-underline"
+                  style={{ borderBottom: '1px solid #f1f5f9' }}
+                >
+                  <span
+                    className="mega-item-label text-sm font-semibold"
+                    style={{ color: '#0f172a' }}
+                  >
+                    {item.label}
+                  </span>
+                  <span className="text-xs leading-relaxed" style={{ color: '#64748b' }}>
+                    {item.desc}
+                  </span>
+                </a>
+              ))}
+            </div>
+
+            <a href="#" className="mega-view-all"
+            style={{ color: '#0f172a' }}
+            >
+              {left.viewAll}
+              <span className="mega-view-all-arrow">→</span>
             </a>
-          ))}
-        </div>
+          </div>
 
-        {/* Footer link */}
-        <div className="pt-4" style={{ borderTop: '1px solid var(--color-gray-200)' }}>
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 text-sm font-bold no-underline transition-all duration-200 hover:gap-3"
-            style={{ color: 'var(--color-accent)' }}
-          >
-            View all {label.toLowerCase()} →
-          </a>
-        </div>
+          {/* RIGHT — industry/topic columns */}
+          <div className="flex-1 pl-12">
+            <h3
+              className="text-2xl font-light mb-8"
+              style={{ color: '#0f172a', letterSpacing: '-0.3px' }}
+            >
+              {right.heading}
+            </h3>
 
+            <div className="grid grid-cols-3 gap-y-0 pt-4">
+              {right.cols.map((col, ci) => (
+                <div key={ci} className="flex flex-col gap-0">
+                  {col.map((item) => (
+                    <a
+                      key={item}
+                      href="#"
+                      className="mega-right-link py-1.5 text-sm no-underline"
+                      style={{ borderBottom: '1px solid #f1f5f9' }}
+                    >
+                      {item}
+                    </a>
+                  ))}
+                </div>
+              ))}
+            </div>
+
+            <a href="#" className="mega-view-all"
+            style={{ color: '#0f172a' }}
+            >
+              {right.viewAll}
+              <span className="mega-view-all-arrow">→</span>
+            </a>
+          </div>
+
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
-// ── Dropdown Item (desktop) ───────────────────────────────────────────────────
+// ── Dropdown Item ─────────────────────────────────────────────────────────────
 
-function DropdownItem({ label, items, scrolled }) {
+function DropdownItem({ label, data, scrolled }) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -160,7 +263,7 @@ function DropdownItem({ label, items, scrolled }) {
         <ChevronDown open={open} />
       </button>
 
-      {open && <MegaMenu label={label} items={items} />}
+      {open && <MegaMenu data={data} />}
     </div>
   )
 }
@@ -208,10 +311,10 @@ function Navbar() {
   )
 
   const mobileDropdowns = [
-    { label: 'What We Offer', key: 'offer',    items: whatWeOfferItems },
-    { label: 'Our Work',      key: 'work',     items: ourWorkItems     },
-    { label: 'Insights',      key: 'insights', items: insightsItems    },
-    { label: 'AI',            key: 'ai',       items: aiItems          },
+    { label: 'What We Offer', key: 'offer',    items: whatWeOfferData.left.items },
+    { label: 'Our Work',      key: 'work',     items: ourWorkData.left.items     },
+    { label: 'Insights',      key: 'insights', items: insightsData.left.items    },
+    { label: 'AI',            key: 'ai',       items: aiData.left.items          },
   ]
 
   return (
@@ -219,7 +322,6 @@ function Navbar() {
       {/* ── DESKTOP NAV ── */}
       <nav className={cn(navBase, 'hidden md:flex')}>
 
-        {/* Logo */}
         <a href="/" className="flex items-center gap-2.5 no-underline flex-shrink-0">
           <LogoMark scrolled={scrolled} />
           <span className={cn('relative text-2xl font-black tracking-widest', scrolled ? 'text-gray-900' : 'text-white')}>
@@ -230,18 +332,14 @@ function Navbar() {
           </span>
         </a>
 
-        {/* Nav links */}
         <div className="flex justify-around w-full">
-
-          {/* Left — dropdown items */}
           <div className="flex items-center gap-1">
-            <DropdownItem label="What We Offer" items={whatWeOfferItems} scrolled={scrolled} />
-            <DropdownItem label="Our Work"      items={ourWorkItems}     scrolled={scrolled} />
-            <DropdownItem label="Insights"      items={insightsItems}    scrolled={scrolled} />
-            <DropdownItem label="AI"            items={aiItems}          scrolled={scrolled} />
+            <DropdownItem label="What We Offer" data={whatWeOfferData} scrolled={scrolled} />
+            <DropdownItem label="Our Work"      data={ourWorkData}     scrolled={scrolled} />
+            <DropdownItem label="Insights"      data={insightsData}    scrolled={scrolled} />
+            <DropdownItem label="AI"            data={aiData}          scrolled={scrolled} />
           </div>
 
-          {/* Right — simple links */}
           <div className="flex items-center gap-1">
             {['About', 'Contact', 'Join Us'].map((link) => (
               <a
@@ -283,8 +381,7 @@ function Navbar() {
           mobileOpen ? 'translate-y-0 pointer-events-auto' : '-translate-y-[110%] pointer-events-none'
         )}
         style={{
-          top: 64,
-          bottom: 0,
+          top: 64, bottom: 0,
           background: '#ffffff',
           borderTop: '2px solid var(--color-accent)',
           boxShadow: '0 12px 40px rgba(0,0,0,0.12)',
@@ -292,8 +389,6 @@ function Navbar() {
         }}
       >
         <div className="flex flex-col gap-1 p-5 pb-12">
-
-          {/* Dropdown items */}
           {mobileDropdowns.map(({ label, key, items }) => (
             <div key={key}>
               <button
@@ -306,7 +401,6 @@ function Navbar() {
                 {label}
                 <ChevronDown open={mobileExp === key} />
               </button>
-
               <div
                 className="overflow-hidden transition-all duration-300"
                 style={{ maxHeight: mobileExp === key ? 600 : 0 }}
@@ -327,7 +421,6 @@ function Navbar() {
             </div>
           ))}
 
-          {/* Simple links */}
           {['Industries', 'About', 'Contact', 'Join Us'].map((link) => (
             <a
               key={link}
@@ -338,7 +431,6 @@ function Navbar() {
             </a>
           ))}
 
-          {/* CTA */}
           <a
             href="#"
             className="mt-4 px-5 py-3 rounded-lg text-sm font-semibold text-center no-underline transition-colors duration-200 text-white"
@@ -348,7 +440,6 @@ function Navbar() {
           >
             Get Started
           </a>
-
         </div>
       </div>
     </>

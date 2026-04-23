@@ -79,21 +79,12 @@ function InsightCard({ image, category, title, excerpt, href }) {
           {excerpt}
         </p>
 
-        <a
-          href={href}
+             <a   href={href}
           className="inline-flex items-center gap-2 text-sm font-semibold mt-auto w-fit transition-all duration-200 hover:gap-3"
           style={{ color: 'var(--color-accent)' }}
         >
-          Read More
-          <span
-            className="w-5 h-5 rounded-full flex items-center justify-center text-xs"
-            style={{
-              background: 'rgba(225,29,72,0.15)',
-              color: 'var(--color-accent)',
-            }}
-          >
-            →
-          </span>
+          Read More...
+          
         </a>
       </div>
     </article>
@@ -136,27 +127,30 @@ function Insights() {
         </div>
 
         <div className="flex justify-center">
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-lg text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5"
-            style={{
-              background: 'transparent',
-              border: '1px solid var(--color-accent)',
-              color: 'var(--color-accent)',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'var(--color-accent)'
-              e.currentTarget.style.color = '#fff'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'transparent'
-              e.currentTarget.style.color = 'var(--color-accent)'
-            }}
-          >
-            View All Insights
-            <span>→</span>
-          </a>
-        </div>
+  
+    <a href="#"
+    className="inline-flex items-center gap-2 px-8 py-3 rounded-lg text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5"
+    style={{
+      background: 'transparent',
+      border: '1px solid rgba(255,255,255,0.2)',
+      color: 'var(--color-text-primary)',
+      letterSpacing: '0.04em',
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.background = 'rgba(255,255,255,0.08)'
+      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)'
+      e.currentTarget.style.color = '#ffffff'
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.background = 'transparent'
+      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'
+      e.currentTarget.style.color = 'rgba(255,255,255,0.75)'
+    }}
+  >
+    View All Insights
+    <span>→</span>
+  </a>
+</div>
 
       </div>
     </section>

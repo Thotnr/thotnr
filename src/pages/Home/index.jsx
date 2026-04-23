@@ -40,8 +40,6 @@ function Home() {
       {/* Section 8 — CTA split with outcomes checklist (dark navy) */}
       <CTASplit />
 
-      {/* Section 9 — Newsletter subscription (white) */}
-      <Newsletter />
       <Footer/>
     </>
   )

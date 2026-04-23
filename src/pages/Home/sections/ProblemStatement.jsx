@@ -70,19 +70,13 @@ function ProblemStatement() {
 
           {/* Headline */}
           <h2 className="ps-headline ps-dark-text text-4xl sm:text-5xl font-bold leading-tight mb-10 text-gray-900 tracking-tight">
-            Most enterprises are drowning in AI pilots that{' '}
-            <span className="ps-red-headline text-accent">
-              never reach production.
-            </span>
+            Most enterprises are drowning in AI pilots that never reach production.
           </h2>
 
           {/* Closing statement */}
           <div className="ps-closing pt-10 border-t border-border">
             <p className="ps-dark-text text-xl lg:text-2xl font-semibold leading-snug text-gray-900">
-              We don't just build AI solutions.{' '}
-              <span className="text-accent">
-                We make them work inside your real organisation.
-              </span>
+              We don't just build AI solutions. We make them work inside your real organisation.
             </p>
           </div>
 
