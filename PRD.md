@@ -322,6 +322,13 @@ thotnr/
 
 ---
 
+### Rules- Color usage in whole website
+1. Mostly use color #ffffff for background or whole website(60%)
+2. Second use color #06041F (30%)
+3. Least use color #E11D48(5%)
+4. Rest use other colors (5%)
+
+
 ## 5. Pages to Build
 
 ### 5.1 Home Page — `src/pages/Home/`
@@ -349,41 +356,71 @@ thotnr/
 **F1: Case Studies Section**
 
 - **File to create:** `src/pages/Home/sections/CaseStudies.jsx`
-- **Background:** Dark (`#06041F`) — follows CTASplit (white), so dark is correct
-- **Layout:** 2–3 featured case study cards in a grid
-- **Card contents:**
-  - Industry tag (small pill, accent-colored)
-  - Project headline (bold, white)
-  - Result metric (e.g., "40% reduction in deployment time") — prominent, accent-colored
-  - 1–2 sentence description
-  - "Read Case Study →" CTA link
-- **Card style:** Match dark card style from ServicesCards — `bg-card`, subtle border, 3D hover with scanline + corner brackets
-- **Note:** `CaseStudies` is already imported in `Home/index.jsx` — only the file is missing
-
+- **Background:** White (#ffffff) — follows CTASplit (dark), so white is correct
+- **Layout:** Featured + supporting split
+  - One large featured card (dark bg `#06041F`) spanning ~60% width — left
+  - Two smaller supporting cards (light gray `#F1F5F9`) stacked — right
+  - Responsive: stacks to single column on mobile
+- **Large card contents:**
+  - Industry tag (small caps, accent red)
+  - Metric (very large, accent red, e.g. "73%")
+  - Metric label below it (e.g. "faster decisioning")
+  - Bold headline (white)
+  - 2-sentence description (muted)
+  - "Read Case Study →" CTA (accent red)
+- **Small card contents:**
+  - Industry tag
+  - Metric + label (dark ink, prominent)
+  - Headline (dark)
+  - "Read Case Study →" CTA
+- **No 3D hover or scanline decorators** — keep hover to simple
+  `translateY(-6px)` with subtle shadow, matching the white-bg 
+  light card convention from ProcessTimeline
+- **Note:** `CaseStudies` is already imported in `Home/index.jsx` — 
+  only the file is missing
 ---
 
 **F2: Clients / Partners Logo Grid Section**
 
 - **File to create:** `src/pages/Home/sections/Clients.jsx` (add import to `Home/index.jsx`)
-- **Background:** White — acts as palette break after dark CaseStudies
-- **Layout:** Trust statement headline + logo grid (2 rows, 4–6 logos each)
-- **Style:** Grayscale logos at 60% opacity, full opacity on hover. Minimal — no cards, just the grid
-- **Optional:** Single trust statement above: e.g., "Trusted by teams building AI at scale"
+- **Background:** Dark
+- **Layout:** center of screen tagline - Our Client + logo moves all around tagline (total we have 22 clients) , on hover logo flip and show client name
+- **Style:** Dark, very minimum red texture logos at 70% opacity, full opacity on hover. Minimal — no cards, just the grid
 - **Note:** Placeholder logos are acceptable for now — use styled divs or text if assets aren't ready
+-**Note2** Assets aren't ready yet so write code as we add assest in future
+
 
 ---
 
 **F3: Our Products Section**
 
-- **File to create:** `src/pages/Home/sections/Products.jsx`
-- **Background:** Dark (`#06041F`) — follows white Clients section
-- **Layout:** 3-card grid matching ServicesCards aesthetic
-- **Card contents:**
-  - Product name (large, bold, white)
-  - One-line description
-  - 2–3 feature tags (small pills, tech-blue or accent-colored)
-  - "Learn More →" or "Request Access →" CTA
-- **Card style:** Dark card with 3D hover, icon float, scanline/corner decorators
+**File to create:** `src/pages/Home/sections/Products.jsx`
+**Background:** White (`#FFFFFF`) — follows dark Clients section
+**Content**: Four product and name -Djubo, Qamp, Edumarshel,Citt
+- **Layout:** - 
+     -Single row, 4 equal columns separated by vertical dividers (`border-right`)
+     - Last column has no right border
+     - All columns vertically centered, `text-align: center`
+     - No card borders, no shadows, no backgrounds — clean white surface
+     -Product logo — 64×64px, rounded-xl, soft colored background unique per product (not white, not dark — use brand-adjacent tint e.g. red-50, blue-50, green-50, orange-50)
+     -Product name — 14px, font-weight 500, dark
+     -One-line description — 11–12px, muted gray, max 10 words
+     -"Learn More" — 11px, red accent, font-weight 500, no underline
+     - Logo image imported from `assets/logos/`
+     - Displayed inside a 64×64 tinted container — logo visible, background adds color identity
+     - Each product gets a distinct tint color (no two products same color)
+**Animations**
+- `fadeSlideUp` on scroll — staggered `0.1s` delay per column
+- No 3D hover, no scanlines, no corner brackets — keep it minimal
+
+**Style rules**
+- No card borders or card backgrounds
+- Dividers: `border-right: 0.5px solid #E2E8F0` between columns
+- Tags/pills: removed — description replaces them
+- Section header above strip:
+  - Eyebrow label: `OUR PRODUCTS` — red accent, uppercase, tracking-widest
+  - Headline: `Built for Enterprise. Ready for Production.` — dark, bold
+  - Subtext: one line — muted gray
 - **Note:** `Products` is already imported in `Home/index.jsx` — only the file is missing
 
 ---

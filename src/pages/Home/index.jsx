@@ -7,8 +7,11 @@ import ServicesList     from './sections/ServicesList'
 import Events           from './sections/Events'
 import CTASplit         from './sections/CTASplit'
 import Newsletter       from './sections/Newsletter'
+import CaseStudies      from './sections/CaseStudies'
+import Clients         from './sections/Clients'
 import Navbar from '../../components/layout/Navbar'
 import Footer from '../../components/layout/Footer'
+import Products from './sections/Products'
 
 
 // Home — assembles all page sections in order; each section manages its own background and layout
@@ -38,9 +41,17 @@ function Home() {
       {/* Section 7 — Upcoming events and workshops (white) */}
       <Events />
 
-      {/* Section 8 — CTA split with outcomes checklist (dark navy) */}
+      {/* Section 8 — CTA split with outcomes checklist (white) */}
       <CTASplit />
 
+      <Clients/>
+      {/* Section 9 — Case Studies with metrics (white) */}
+      <CaseStudies />
+
+      <Products/>
+
+      {/* Section 10 — Clients / Partners orbital logo grid (dark) */}
+      
       <Footer/>
     </>
   )

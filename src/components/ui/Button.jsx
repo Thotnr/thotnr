@@ -4,7 +4,7 @@ function Button({ children, onClick, variant = 'primary', className = '', ...pro
 
   const variants = {
     primary:   'bg-accent border-accent text-white hover:bg-accent-dark hover:border-accent-dark',
-    secondary: 'bg-transparent border-border text-gray-700 hover:border-accent hover:text-accent',
+    secondary: 'bg-transparent border-border text-white hover:border-accent hover:text-accent',
     ghost:     'bg-transparent border-transparent text-gray-600 hover:text-accent',
   }
 
