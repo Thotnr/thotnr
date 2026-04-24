@@ -134,7 +134,7 @@ function MegaMenu({ data }) {
         .mega-left-item { transition: color 0.15s ease; }
         .mega-left-item:hover .mega-item-label { color: var(--color-accent); }
         .mega-right-link { transition: color 0.15s ease; color: var(--color-slate-dark); }
-        .mega-right-link:hover { color: var(--color-accent); }
+        .mega-right-link:hover { color: var(--color-highlight); }
         .mega-view-all {
           display: inline-flex; align-items: center; gap: 4px;
           font-size: 14px; font-weight: 500;
@@ -151,25 +151,25 @@ function MegaMenu({ data }) {
       `}</style>
 
       <div
-        className="mega-menu-wrap fixed left-0 right-0 z-50 bg-white"
+        className="mega-menu-wrap fixed left-0 right-0 z-50 bg-[var(--color-primary)]"
         style={{
           top: '64px',
           borderBottom: '1px solid var(--color-border)',
           boxShadow: '0 12px 40px rgb(var(--color-ink-rgb) / 0.1)',
         }}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-12 flex gap-0">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-8 flex gap-0">
 
           {/* LEFT — services/items with desc */}
           <div className="w-[380px] flex-shrink-0 pr-12" style={{ borderRight: '1px solid var(--color-border)' }}>
             <h3
-              className="text-2xl font-light mb-8 m-0"
+              className="text-2xl font-light mb-4 m-0"
               style={{ color: 'var(--color-ink)', letterSpacing: '-0.3px' }}
             >
               {left.heading}
             </h3>
 
-            <div className="flex flex-col gap-1 pt-4">
+            <div className="flex flex-col gap-1">
               {left.items.map((item) => (
                 <a
                   key={item.label}
@@ -198,10 +198,12 @@ function MegaMenu({ data }) {
             </a>
           </div>
 
+          {/* VERTICAL DIVIDER */}
+          <div className="w-[0.1px] bg-gray-300 "></div>          
           {/* RIGHT — industry/topic columns */}
           <div className="flex-1 pl-12">
             <h3
-              className="text-2xl font-light mb-8"
+              className="text-2xl font-light mb-4"
               style={{ color: 'var(--color-ink)', letterSpacing: '-0.3px' }}
             >
               {right.heading}
@@ -215,7 +217,7 @@ function MegaMenu({ data }) {
                       key={item}
                       href="#"
                       className="mega-right-link py-1.5 text-sm no-underline"
-                      style={{ borderBottom: '1px solid var(--color-surface-soft)' }}
+                  
                     >
                       {item}
                     </a>
@@ -242,28 +244,58 @@ function MegaMenu({ data }) {
 
 function DropdownItem({ label, data, scrolled }) {
   const [open, setOpen] = useState(false)
+  let timeout
+
+  const handleEnter = () => {
+    clearTimeout(timeout)
+    setOpen(true)
+  }
+
+  const handleLeave = () => {
+    timeout = setTimeout(() => {
+      setOpen(false)
+    }, 120) // small delay prevents flicker
+  }
 
   return (
     <div
       className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
     >
+      {/* NAV ITEM */}
       <button
-        className={cn(
-          'flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md transition-colors duration-150 bg-transparent border-none cursor-pointer',
-          open
-            ? 'text-accent'
+        className="flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md transition-colors duration-150 bg-transparent border-none cursor-pointer"
+        style={{
+          color: open
+            ? 'var(--color-highlight)'
             : scrolled
-            ? 'text-slate-dark hover:text-accent'
-            : 'text-white hover:text-accent'
-        )}
+            ? 'var(--color-text-primary)'
+            : '#ffffff',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.color = 'var(--color-highlight)'
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.color = open
+            ? 'var(--color-highlight)'
+            : scrolled
+            ? 'var(--color-text-primary)'
+            : '#ffffff'
+        }}
       >
         {label}
-        <ChevronDown open={open} />
       </button>
 
-      {open && <MegaMenu data={data} />}
+      {/* DROPDOWN */}
+      {open && (
+        <div
+          onMouseEnter={handleEnter}
+          onMouseLeave={handleLeave}
+        >
+          <MegaMenu data={data} />
+        </div>
+      )}
     </div>
   )
 }
@@ -306,21 +338,26 @@ function Navbar() {
     'fixed top-0 inset-x-0 z-50 h-16 items-center justify-between',
     'px-6 md:px-10 lg:px-16 transition-all duration-300',
     scrolled
-      ? 'bg-surface/95 backdrop-blur-sm border-b border-border shadow-sm'
-      : 'bg-transparent border-b border-transparent'
+  ? 'border-b border-border shadow-sm'
+  : 'border-b border-transparent'
   )
 
   const mobileDropdowns = [
-    { label: 'What We Offer', key: 'offer',    items: whatWeOfferData.left.items },
-    { label: 'Our Work',      key: 'work',     items: ourWorkData.left.items     },
-    { label: 'Insights',      key: 'insights', items: insightsData.left.items    },
-    { label: 'AI',            key: 'ai',       items: aiData.left.items          },
+    { label: 'what we offer', key: 'offer',    items: whatWeOfferData.left.items },
+    { label: 'our work',      key: 'work',     items: ourWorkData.left.items     },
+    { label: 'insights',      key: 'insights', items: insightsData.left.items    },
+    { label: 'AI',           key: 'ai',       items: aiData.left.items          },
   ]
 
   return (
     <>
       {/* ── DESKTOP NAV ── */}
-      <nav className={cn(navBase, 'hidden md:flex')}>
+      <nav
+  className={cn(navBase, 'hidden md:flex')}
+  style={{
+    background: scrolled ? 'var(--color-primary)' : 'transparent',
+  }}
+>
 
         <a href="/" className="flex items-center gap-2.5 no-underline flex-shrink-0">
           <LogoMark scrolled={scrolled} />
@@ -334,24 +371,32 @@ function Navbar() {
 
         <div className="flex justify-around w-full">
           <div className="flex items-center gap-1">
-            <DropdownItem label="What We Offer" data={whatWeOfferData} scrolled={scrolled} />
-            <DropdownItem label="Our Work"      data={ourWorkData}     scrolled={scrolled} />
-            <DropdownItem label="Insights"      data={insightsData}    scrolled={scrolled} />
+            <DropdownItem label="what we offer" data={whatWeOfferData} scrolled={scrolled} />
+            <DropdownItem label="our work"      data={ourWorkData}     scrolled={scrolled} />
+            <DropdownItem label="insights"      data={insightsData}    scrolled={scrolled} />
             <DropdownItem label="AI"            data={aiData}          scrolled={scrolled} />
           </div>
 
           <div className="flex items-center gap-1">
             {['About', 'Contact', 'Join Us'].map((link) => (
               <a
-                key={link}
-                href="#"
-                className={cn(
-                  'px-3 py-2 text-sm font-medium rounded-md no-underline transition-colors duration-150 hover:text-accent',
-                  scrolled ? 'text-slate-dark' : 'text-white'
-                )}
-              >
-                {link}
-              </a>
+  key={link}
+  href="#"
+  className="px-3 py-2 text-sm font-medium rounded-md no-underline transition-colors duration-150"
+  style={{
+    color: scrolled ? 'var(--color-text-primary)' : '#ffffff',
+  }}
+  onMouseEnter={(e) => {
+    e.currentTarget.style.color = 'var(--color-highlight)'
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.style.color = scrolled
+      ? 'var(--color-text-primary)'
+      : '#ffffff'
+  }}
+>
+  {link}
+</a>
             ))}
           </div>
         </div>

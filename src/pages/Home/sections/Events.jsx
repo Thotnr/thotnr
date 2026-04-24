@@ -47,7 +47,7 @@ function Events() {
         }
       `}</style>
 
-      <section className="pt-20 px-6 md:px-10 lg:px-16 bg-white">
+      <section className="py-16 px-6 md:px-10 lg:px-16 bg-white">
         <div className="max-w-7xl mx-auto">
 
           {/* Header */}
@@ -55,7 +55,7 @@ function Events() {
             <div>
               <p
                 className="ev-eyebrow t-eyebrow mb-2"
-                style={{ color: 'var(--color-accent)' }}
+                style={{ color: 'var(--color-highlight)' }}
               >
                 Upcoming
               </p>
@@ -89,7 +89,7 @@ function Events() {
             <div className="flex flex-col justify-start gap-4 flex-1 px-10 py-2">
               <p
                 className="t-label"
-                style={{ color: 'var(--color-accent)' }}
+                style={{ color: 'var(--color-highlight)' }}
               >
                 Upcoming event | May 14, 2026
               </p>
@@ -115,7 +115,7 @@ function Events() {
             <div className="flex flex-col justify-start gap-4 flex-1 px-10 py-2">
               <p
                 className="t-label"
-                style={{ color: 'var(--color-accent)' }}
+                style={{ color: 'var(--color-highlight)' }}
               >
                 Upcoming event | May 12, 2026
               </p>

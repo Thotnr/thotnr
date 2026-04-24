@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import aiServiceImg from '../../../assets/images/ai-service.jpg';
-import enterpriseArchitectImg from '../../../assets/images/enterprise-architect.jpg';
-import cloudImg from '../../../assets/images/cloud.jpg';
+import aiServiceImg from '../../../assets/images/ai-service.jpg'
+import enterpriseArchitectImg from '../../../assets/images/enterprise-architect.jpg'
+import cloudImg from '../../../assets/images/cloud.jpg'
+
 const featuredServices = [
   {
     title: 'Artificial Intelligence',
@@ -10,12 +11,6 @@ const featuredServices = [
     desc: 'We turn AI ambition into running systems — strategy, engineering, and deployment under one roof.',
     image: aiServiceImg,
     href: '#',
-    hoverBorder: 'hover:border-accent/40',
-    topLine: 'from-accent',
-    tintBg: 'from-accent/10',
-    statBg: 'bg-accent/10 border border-accent/25 text-accent',
-    statDot: 'bg-accent',
-    ctaColor: 'text-accent',
   },
   {
     title: 'Enterprise Architecture',
@@ -24,12 +19,6 @@ const featuredServices = [
     desc: 'We map, modernise, and future-proof your technology landscape — built for the next decade.',
     image: enterpriseArchitectImg,
     href: '#',
-    hoverBorder: 'hover:border-tech/40',
-    topLine: 'from-tech',
-    tintBg: 'from-tech/10',
-    statBg: 'bg-tech/10 border border-tech/25 text-tech',
-    statDot: 'bg-tech',
-    ctaColor: 'text-tech',
   },
   {
     title: 'Cloud',
@@ -38,68 +27,18 @@ const featuredServices = [
     desc: 'From lift-and-shift to cloud-native transformation — we engineer cloud strategies that actually reduce cost.',
     image: cloudImg,
     href: '#',
-    hoverBorder: 'hover:border-purple/40',
-    topLine: 'from-purple',
-    tintBg: 'from-purple/10',
-    statBg: 'bg-purple/10 border border-purple/25 text-purple',
-    statDot: 'bg-purple',
-    ctaColor: 'text-purple',
   },
-]
-
-const allServices = [
-  'AI Strategy & Consulting',
-  'NLP & Conversational AI',
-  'Computer Vision',
-  'Predictive Analytics',
-  'Process Automation',
-  'MLOps & Deployment',
-  'Decision Intelligence',
-  'Risk AI',
-  'Customer AI',
-  'Data Engineering',
-  'AI Governance',
-  'AI Training & Enablement',
-  'Enterprise Architecture',
-  'Application Modernisation',
-  'API & Integration',
-  'ERP Consulting',
-  'Digital Supply Chain',
-  'Business Process Consulting',
-  'Cloud Migration',
-  'Cloud Native Development',
-  'FinOps',
-  'Site Reliability Engineering',
-  'DevOps & Platform Engineering',
-  'Resilience Engineering',
-  'Customer Experience & Design',
-  'Product Engineering',
-  'Web 3.0 & Blockchain',
-  'AR / VR & Immersive Tech',
-  'Cybersecurity',
-  'Low Code Platforms',
 ]
 
 function ArrowIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-      <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
     </svg>
   )
 }
 
-function ChevronIcon({ open }) {
-  return (
-    <svg
-      width="16" height="16" viewBox="0 0 16 16" fill="none"
-      className={`transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
-    >
-      <path d="M3 6l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  )
-}
-
-function ExpandingCard({ title, tagline, stat, desc, image, href, hoverBorder, topLine, tintBg, statBg, statDot, ctaColor, index }) {
+function ExpandingCard({ title, tagline, stat, desc, image, href, index }) {
   const [hovered, setHovered] = useState(false)
 
   return (
@@ -107,218 +46,114 @@ function ExpandingCard({ title, tagline, stat, desc, image, href, hoverBorder, t
       href={href}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className={`relative flex flex-col justify-end overflow-hidden rounded-2xl cursor-pointer no-underline border border-white/8 ${hoverBorder} transition-all duration-500`}
+      className="relative flex flex-col justify-end overflow-hidden rounded-2xl border border-white/10 transition-all duration-500"
       style={{
-        flex: hovered ? '2.8' : '1',
+        flex: hovered ? '2.5' : '1',
         minHeight: '420px',
-        transition: 'flex 0.5s cubic-bezier(0.4,0,0.2,1), border-color 0.3s ease',
       }}
     >
-      {/* Background image */}
+      {/* Background */}
       <img
         src={image}
         alt={title}
-        className={`absolute inset-0 w-full h-full object-cover transition-transform duration-600 ${hovered ? 'scale-107' : 'scale-100'}`}
-        style={{ transition: 'transform 0.6s cubic-bezier(0.4,0,0.2,1)' }}
+        className={`absolute inset-0 w-full h-full object-cover transition-transform duration-500 ${
+          hovered ? 'scale-105' : 'scale-100'
+        }`}
       />
 
-      {/* Dark gradient overlay */}
-      <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgb(var(--color-dark-rgb) / 0.97), rgb(var(--color-dark-rgb) / 0.55), rgb(var(--color-dark-rgb) / 0.1))' }} />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/70" />
 
-      {/* Accent tint on hover */}
+      {/* Subtle accent tint (VERY LIGHT) */}
       <div
-        className={`absolute inset-0 bg-gradient-to-br ${tintBg} to-transparent transition-opacity duration-400 ${hovered ? 'opacity-100' : 'opacity-0'}`}
+        className={`absolute inset-0 transition-opacity duration-500 ${
+          hovered ? 'opacity-100' : 'opacity-0'
+        }`}
+        style={{
+          background: 'linear-gradient(to top, rgb(var(--color-highlight-rgb) / 0.08), transparent)',
+        }}
       />
-
-      {/* Top accent line on hover */}
-      <div
-        className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${topLine} to-transparent transition-opacity duration-300 ${hovered ? 'opacity-100' : 'opacity-0'}`}
-      />
-
-      {/* Index number */}
-      <div className="absolute top-5 right-5 font-mono text-[11px] font-bold text-white/18 tracking-widest">
-        0{index + 1}
-      </div>
 
       {/* Content */}
-      <div className="relative z-10 p-7 flex flex-col gap-2.5">
+      <div className="relative z-10 p-6 flex flex-col gap-2">
 
-        {/* Stat pill */}
+        {/* Stat (only accent usage) */}
         <div
-          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold tracking-wide w-fit ${statBg} transition-all duration-350 ${hovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2.5'}`}
+          className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium transition-all ${
+            hovered ? 'opacity-100' : 'opacity-0'
+          }`}
+          style={{
+            background: 'rgb(var(--color-highlight-rgb) / 0.08)',
+            color: 'var(--color-highlight)',
+          }}
         >
-          <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${statDot}`} />
+          <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--color-highlight)' }} />
           {stat}
         </div>
 
-        {/* Tagline */}
-        <p className="text-xs text-white/45 m-0 tracking-wide truncate">
-          {tagline}
-        </p>
+        <p className="text-xs text-white/50">{tagline}</p>
 
-        {/* Title */}
-        <h3
-          className={`font-extrabold text-ink-soft m-0 leading-tight tracking-tight whitespace-nowrap transition-all duration-350 ${hovered ? 'text-2xl' : 'text-xl'}`}
-        >
+        <h3 className="text-xl font-semibold text-white leading-tight">
           {title}
         </h3>
 
-        {/* Description — expand on hover */}
         <div
-          className="overflow-hidden transition-all duration-400"
-          style={{ maxHeight: hovered ? '80px' : '0px', transition: 'max-height 0.4s cubic-bezier(0.4,0,0.2,1)' }}
+          className="overflow-hidden transition-all duration-300"
+          style={{ maxHeight: hovered ? '80px' : '0px' }}
         >
-          <p className="text-[13px] text-white/60 leading-relaxed m-0 pt-1">
-            {desc}
-          </p>
+          <p className="text-sm text-white/70 pt-2">{desc}</p>
         </div>
 
-        {/* CTA */}
         <div
-          className={`flex items-center gap-2 text-[13px] font-semibold ${ctaColor} transition-all duration-300 ${hovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2.5'}`}
-          style={{ transitionDelay: hovered ? '120ms' : '0ms' }}
+          className={`flex items-center gap-2 text-sm font-medium transition-all ${
+            hovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'
+          }`}
+          style={{ color: 'var(--color-highlight)' }}
         >
-          Explore
-          <ArrowIcon />
+          Explore <ArrowIcon />
         </div>
+
       </div>
     </a>
   )
 }
 
-function ServiceRow({ label }) {
-  const [hovered, setHovered] = useState(false)
-
-  return (
-    <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className={`flex items-center justify-between py-3 border-b border-border cursor-pointer transition-all duration-200 ${hovered ? 'pl-2.5' : 'pl-0'}`}
-    >
-      <span className={`text-sm font-medium transition-colors duration-200 ${hovered ? 'text-accent' : 'text-slate-dark'}`}>
-        {label}
-      </span>
-      <span className={`text-accent transition-opacity duration-200 shrink-0 ${hovered ? 'opacity-100' : 'opacity-0'}`}>
-        <ArrowIcon />
-      </span>
-    </div>
-  )
-}
-
 function ServicesList() {
-  const [expanded, setExpanded] = useState(false)
-
-  const col1 = allServices.slice(0, 10)
-  const col2 = allServices.slice(10, 20)
-  const col3 = allServices.slice(20)
-
   return (
-    <section className="pt-20 pb-10 px-6 md:px-10 lg:px-16" style={{ background: 'var(--color-bg-primary)' }}>
+    <section
+      className="py-16 px-6 md:px-10 lg:px-16"
+      style={{ background: 'var(--color-secondary)' }}
+    >
       <div className="max-w-7xl mx-auto">
 
-        {/* ── Premium Header ── */}
-          <div className="text-start mb-10">
-                <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-accent mb-4">
-                  What We Deliver
-                </p>
-                <>
-  <style>{`
-    @keyframes offerPop {
-      0%, 100% {
-        text-shadow:
-          1px 1px 0 var(--color-accent-sh2),
-          2px 2px 0 var(--color-accent-sh3),
-          3px 3px 0 var(--color-accent-sh4),
-          4px 4px 0 var(--color-accent-sh5),
-          5px 5px 0 var(--color-accent-sh6),
-          6px 6px 18px rgba(0,0,0,0.5),
-          0 0 28px rgb(var(--color-accent-rgb) / 0.35),
-          0 0 55px rgb(var(--color-accent-rgb) / 0.12);
-        transform: translateZ(0) scale(1);
-      }
-      50% {
-        text-shadow:
-          1px 1px 0 var(--color-accent-sh0),
-          2px 2px 0 var(--color-accent-sh1),
-          3px 3px 0 var(--color-accent-sh2),
-          4px 4px 0 var(--color-accent-sh3),
-          5px 5px 0 var(--color-accent-sh4),
-          6px 6px 0 var(--color-accent-sh5),
-          7px 7px 22px rgba(0,0,0,0.55),
-          0 0 45px rgb(var(--color-accent-rgb) / 0.65),
-          0 0 85px rgb(var(--color-accent-rgb) / 0.22),
-          0 0 110px rgb(var(--color-accent-rgb) / 0.08);
-        transform: translateZ(10px) scale(1.03);
-      }
-    }
-  `}</style>
+        {/* Header */}
+        <div className="mb-12">
+          <p
+            className="text-label text-[var(--color-highlight)]"
+           
+          >
+            What We Deliver
+          </p>
 
-  <h2
-    className="text-4xl sm:text-5xl font-extrabold leading-tight m-0 shrink-0"
-    style={{
-      color: 'var(--color-text-dark)',
-      letterSpacing: '-1.5px',
-      transformStyle: 'preserve-3d',
-      perspective: '600px',
-    }}
-  >
-    Services We{' '}
-    <span
-      className="text-accent"
-      style={{
-        display: 'inline-block',
-      }}
-    >
-      Offer
-    </span>
-  </h2>
-</>
-                <p className="text-base leading-relaxed m-0"
-                style={{ color: 'var(--color-slate)' }}
-              >
-                End-to-end capabilities across AI, architecture, and cloud — engineered to move your enterprise from ambition to execution.
-              </p>
-          </div>
+          <h2
+            className="text-h1 text-white"
+          >
+            Services We Offer
+          </h2>
 
-        {/* ── Expanding cards ── */}
-        <div className="flex gap-3 mb-10" style={{ minHeight: '420px' }}>
+          <p
+            className="text-body text-white/70 mt-2 max-w-2xl"
+            
+          >
+            End-to-end capabilities across AI, architecture, and cloud — engineered to move your enterprise from ambition to execution.
+          </p>
+        </div>
+
+        {/* Cards */}
+        <div className="flex gap-4" style={{ minHeight: '420px' }}>
           {featuredServices.map((svc, i) => (
             <ExpandingCard key={svc.title} {...svc} index={i} />
           ))}
-        </div>
-
-        {/* ── All Services header ── */}
-        <div className="flex items-center justify-between border-t border-border">
-          <h3 className="text-lg font-bold m-0" style={{ color: 'var(--color-text-dark)' }}>
-            All Services
-          </h3>
-          <button
-            onClick={() => setExpanded((e) => !e)}
-            className={`inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold cursor-pointer transition-all duration-200 border ${
-              expanded
-                ? 'bg-accent-soft border-accent text-accent'
-                : 'bg-transparent border-border text-muted-dk hover:border-accent hover:text-accent'
-            }`}
-          >
-            {expanded ? 'Hide' : 'Show All'}
-            <ChevronIcon open={expanded} />
-          </button>
-        </div>
-
-        {/* ── Expandable list ── */}
-        <div
-          className="overflow-hidden transition-all duration-500"
-          style={{ maxHeight: expanded ? '900px' : '0px', transition: 'max-height 0.5s cubic-bezier(0.4,0,0.2,1)' }}
-        >
-          <div className="border-t border-border mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12">
-            {[col1, col2, col3].map((col, ci) => (
-              <div key={ci}>
-                {col.map((svc) => (
-                  <ServiceRow key={svc} label={svc} />
-                ))}
-              </div>
-            ))}
-          </div>
         </div>
 
       </div>

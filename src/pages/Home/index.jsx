@@ -12,6 +12,7 @@ import Clients         from './sections/Clients'
 import Navbar from '../../components/layout/Navbar'
 import Footer from '../../components/layout/Footer'
 import Products from './sections/Products'
+import SubscribeSection from './sections/SubscribeSection'
 
 
 // Home — assembles all page sections in order; each section manages its own background and layout
@@ -19,40 +20,30 @@ function Home() {
   return (
     <>
 
-      <Navbar/>
-      {/* Section 1 — Full-viewport hero with headline and CTAs */}
-      <Hero />
+      <Navbar />
 
-      {/* Section 2 — Narrative problem statement (white) */}
+      {/* 1. CLARITY */}
+      <Hero />
       <ProblemStatement />
 
-      {/* Section 3 — Core AI capability cards (dark navy) */}
+      {/* 2. SOLUTION */}
       <ServicesCards />
-
-      {/* Section 4 — Engagement methodology timeline (white) */}
       <ProcessTimeline />
-
-      {/* Section 5 — Latest articles and insights (white) */}
-      <Insights />
-
-      {/* Section 6 — Services overview with expandable grid (dark navy) */}
       <ServicesList />
 
-      {/* Section 7 — Upcoming events and workshops (white) */}
-      <Events />
-
-      {/* Section 8 — CTA split with outcomes checklist (white) */}
-      <CTASplit />
-
-      <Clients/>
-      {/* Section 9 — Case Studies with metrics (white) */}
+      {/* 3. TRUST */}
       <CaseStudies />
+      <Clients />
 
-      <Products/>
-
-      {/* Section 10 — Clients / Partners orbital logo grid (dark) */}
+      {/* 4. EXPANSION */}
+      <Products />
+      <Events />
+      <Insights />
       
-      <Footer/>
+      <SubscribeSection/>
+
+      {/* 5. CLOSE */}
+      <Footer />
     </>
   )
 }

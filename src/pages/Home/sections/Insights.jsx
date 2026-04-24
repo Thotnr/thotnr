@@ -29,127 +29,118 @@ const articles = [
 function InsightCard({ image, category, title, excerpt, href }) {
   return (
     <article
-      className="group flex flex-col rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2"
+      className="group flex flex-col rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
       style={{
-        background: 'var(--color-bg-card)',
+        background: '#ffffff',
         border: '1px solid var(--color-border-subtle)',
-        boxShadow: '0 2px 16px rgba(0,0,0,0.3)',
       }}
     >
-      <div className="relative overflow-hidden h-48 w-full">
+      {/* Image */}
+      <div className="overflow-hidden h-48 w-full">
         <img
           src={image}
           alt={title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div
-          className="absolute inset-0"
-          style={{
-            background: 'linear-gradient(to top, rgb(var(--color-card-rgb) / 0.7) 0%, transparent 60%)',
-          }}
-        />
+      </div>
+
+      <div className="flex flex-col flex-1 gap-4 p-5">
+
+        {/* Category (ONLY highlight usage) */}
         <span
-          className="absolute top-3 left-3 t-caption px-3 py-1 rounded-full"
-          style={{
-            background: 'var(--color-accent)',
-            color: 'white',
-          }}
+          className="text-[11px] font-semibold uppercase tracking-wide"
+          style={{ color: 'var(--color-highlight)' }}
         >
           {category}
         </span>
-      </div>
 
-      <div className="flex flex-col flex-1 gap-4 p-6">
+        {/* Title */}
         <h3
-          className="t-title transition-colors duration-200 group-hover:text-accent"
+          className="text-lg font-semibold leading-snug"
           style={{ color: 'var(--color-text-primary)' }}
         >
           {title}
         </h3>
 
-        <div
-          className="w-10 h-px"
-          style={{ background: 'var(--color-accent)', opacity: 0.5 }}
-        />
-
+        {/* Description */}
         <p
-          className="t-body flex-1 line-clamp-4"
+          className="text-sm leading-relaxed line-clamp-4"
           style={{ color: 'var(--color-text-secondary)' }}
         >
           {excerpt}
         </p>
 
-             <a   href={href}
-          className="inline-flex items-center gap-2 t-label mt-auto w-fit transition-all duration-200 hover:gap-3"
-          style={{ color: 'var(--color-accent)' }}
+        {/* CTA (neutral, no highlight) */}
+        <a
+          href={href}
+          className="text-sm font-medium mt-auto inline-flex items-center gap-1 transition-all duration-200 hover:gap-2"
+          style={{ color: 'var(--color-text-primary)' }}
         >
-          Read More...
-          
+          Read more..
         </a>
       </div>
     </article>
   )
 }
-
 function Insights() {
   return (
     <section
-      className="py-20 px-6 md:px-10 lg:px-16"
-      style={{ background: 'var(--color-bg-secondary)' }}
+      className="py-16 px-6 md:px-10 lg:px-16"
+      style={{ background: 'var(--color-primary)' }} // ✅ fixed
     >
-      <div className="mx-auto">
+      <div className="max-w-7xl mx-auto">
 
-        <div className="text-start mb-16">
+        {/* Header */}
+        <div className="mb-14 max-w-xl">
           <p
-            className="t-eyebrow mb-3"
-            style={{ color: 'var(--color-accent)' }}
+            className="text-xs font-semibold uppercase tracking-widest"
+            style={{ color: 'var(--color-highlight)' }} // 1st usage
           >
             Thinking Out Loud
           </p>
+
           <h2
-            className="t-headline mb-4"
+            className="text-4xl md:text-5xl font-bold mb-2"
             style={{ color: 'var(--color-text-primary)' }}
           >
             Our Insights
           </h2>
+
           <p
-            className="t-sub max-w-xl mx-auto"
+            className="text-base leading-relaxed"
             style={{ color: 'var(--color-text-secondary)' }}
           >
-            Perspectives on technology, strategy, and the future of intelligent enterprise — from the Thotnr team.
+            Perspectives on technology, strategy, and the future of intelligent enterprise.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {articles.map((a) => (
             <InsightCard key={a.title} {...a} />
           ))}
         </div>
 
-        <div className="flex justify-center">
-  
-    <a href="#"
-    className="inline-flex items-center gap-2 px-8 py-3 rounded-lg t-label transition-all duration-200 hover:-translate-y-0.5"
-    style={{
-      background: 'transparent',
-      border: '1px solid rgba(255,255,255,0.2)',
-      color: 'var(--color-text-primary)',
-    }}
-    onMouseEnter={(e) => {
-      e.currentTarget.style.background = 'rgba(255,255,255,0.08)'
-      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)'
-      e.currentTarget.style.color = 'white'
-    }}
-    onMouseLeave={(e) => {
-      e.currentTarget.style.background = 'transparent'
-      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'
-      e.currentTarget.style.color = 'rgba(255,255,255,0.75)'
-    }}
-  >
-    View All Insights
-    <span>→</span>
-  </a>
-</div>
+        {/* CTA */}
+        <div className="text-center">
+          <button
+  className="px-6 py-3 rounded-full text-sm font-medium border transition-all duration-300"
+  style={{
+    border: '1px solid var(--color-text-primary)',
+    color: 'var(--color-text-primary)',
+  }}
+  onMouseEnter={(e) => {
+    e.currentTarget.style.background = 'var(--color-text-primary)'
+    e.currentTarget.style.color = 'var(--color-white)'
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.style.background = 'transparent'
+    e.currentTarget.style.color = 'var(--color-text-primary)'
+  }}
+>
+  View all insights
+</button>
+        </div>
 
       </div>
     </section>

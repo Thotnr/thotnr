@@ -1,151 +1,93 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=Source+Serif+4:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+/* 1. Tailwind import */
 @import "tailwindcss";
-@import "./styles/typography.css";
 
-/* ─────────────────────────────────────────────────────────────
-   TAILWIND THEME — generates utility classes from design tokens
-   --color-NAME  →  bg-NAME  text-NAME  border-NAME  from-NAME …
-   --font-NAME   →  font-NAME
-───────────────────────────────────────────────────────────── */
-@theme {
-  --color-dark:        #06041F;   /* dark-section background    */
-  --color-card-dk:     #0E0C24;   /* card bg on dark sections   */
-  --color-accent:      #E11D48;
-  --color-accent-light: #BE123C;   /* primary red accent         */
-  --color-accent-dark: #9F1239;   /* red on hover               */
-  --color-accent-soft: #FFF1F2;   /* very light red tint        */
-  --color-muted:       #94A3B8;   /* body text on dark bg       */
-  --color-muted-dk:    #475569;   /* body text on light bg      */
-  --color-border:      #E2E8F0;   /* card / divider on light bg */
-  --color-border-dk:   #1E2D45;   /* card border on dark bg     */
+/* 2. Google Fonts */
 
-  /* ── Extended palette ── */
-  --color-surface:        #ffffff;    /* pure white bg              */
-  --color-surface-soft:   #F1F5F9;   /* light-section bg           */
-  --color-surface-muted:  #F8FAFC;   /* gray-50 card bg            */
-  --color-card:           #111827;   /* card bg on dark sections   */
-  --color-ink:            #010716;   /* primary text on light bg   */
-  --color-ink-soft:       #F8FAFC;   /* primary text on dark bg    */
-  --color-slate:          #64748B;   /* secondary text (gray-500)  */
-  --color-slate-dark:     #334155;   /* medium text (gray-700)     */
-  --color-tech:           #3B82F6;   /* blue – AI / tech cards     */
-  --color-tech-bright:    #4A9EFF;   /* blue hover highlight       */
-  --color-purple:         #8B5CF6;   /* violet – cloud cards       */
-
-  --font-sans: 'Inter', system-ui, sans-serif;
-}
-
-/* ─────────────────────────────────────────────────────────────
-   DESIGN TOKENS (CSS custom properties for non-Tailwind usage)
-───────────────────────────────────────────────────────────── */
+/* 3. Design Tokens */
 :root {
-   /* ─────────────────────────────────────────────
-     BACKGROUND SYSTEM
-  ───────────────────────────────────────────── */
-  --color-bg-primary:   #F1F5F9;   /* light sections (no pure white) */
-  --color-bg-secondary: #06041F;   /* dark sections */
-  --color-bg-card:      #111827;   /* cards */
+  --color-primary: #F1FAEE;
+  --color-secondary: #1D3557;
+  --color-tertiary: #457B9D;
+  
 
-  /* ─────────────────────────────────────────────
-     TEXT SYSTEM
-  ───────────────────────────────────────────── */
-  --color-text-primary:   #F8FAFC; /* main text on dark */
-  --color-text-secondary: #94A3B8; /* muted text */
-  --color-text-dark:      #010716; /* text on light bg */
+  --color-accent: #A8DADC;
+  --color-highlight: #E63946;
 
-  /* ─────────────────────────────────────────────
-     BORDER SYSTEM
-  ───────────────────────────────────────────── */
-  --color-border-subtle: rgba(255, 255, 255, 0.08);
-  --color-border-hover:  rgba(255, 255, 255, 0.15);
+  --color-text-primary: #0B0F19;
+  --color-text-secondary: #2B2D42;
+  --color-text-tertiary: #6C757D;
+  --color-text-white: #ffffff;
 
-  /* ─────────────────────────────────────────────
-     BRAND (STRICT USAGE)
-  ───────────────────────────────────────────── */
-  --color-accent:        #E11D48; 
-  --color-accent-light: #BE123C; /* ONLY: logo, CTA, labels */
-  --color-accent-dark:   #9F1239;
-  --color-accent-soft:   #FFF1F2;
-
-  /* ─────────────────────────────────────────────
-     SECONDARY ACCENT (TECH / AI)
-  ───────────────────────────────────────────── */
-  --color-tech:          #3B82F6;
-  --color-tech-soft:     rgba(59, 130, 246, 0.15);
-
-  /* ─────────────────────────────────────────────
-     GRAY SCALE (keep for flexibility)
-  ───────────────────────────────────────────── */
-  --color-gray-50:  #F8FAFC;
-  --color-gray-100: #F1F5F9;
-  --color-gray-200: #E2E8F0;
-  --color-gray-300: #CBD5E1;
-  --color-gray-400: #94A3B8;
-  --color-gray-500: #64748B;
-  --color-gray-600: #475569;
-  --color-gray-700: #334155;
-  --color-gray-800: #1E293B;
-  --color-gray-900: #0F172A;
-
-  /* ── Accent 3D shadow steps (used in text-shadow depth effects) ── */
-  --color-accent-sh0:       #9f0028;
-  --color-accent-sh1:       #8a0022;
-  --color-accent-sh2:       #7f0020;
-  --color-accent-sh3:       #6b001a;
-  --color-accent-sh4:       #570015;
-  --color-accent-sh5:       #450010;
-  --color-accent-sh6:       #35000c;
-
-  /* ── RGB components for opacity variants  ── */
-  --color-accent-rgb:         225 29 72;
-  --color-accent-light-rgb:   190 18 60;
-  --color-tech-rgb:           59 130 246;
-  --color-tech-bright-rgb:    74 158 255;
-  --color-ink-rgb:            1 7 22;
-  --color-dark-rgb:           6 4 31;
-  --color-card-rgb:           17 24 39;
-  --color-ink-soft-rgb:       248 250 252;
-
-  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Sora', sans-serif;
+  --font-body: 'Source Serif 4', serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-accent: 'Playfair Display', serif;
 }
 
-/* ─────────────────────────────────────────────────────────────
-   GLOBAL RESET
-───────────────────────────────────────────────────────────── */
-*, *::before, *::after {
-  box-sizing: border-box;
+/* 4. Base Styles */
+body {
+  font-family: var(--font-body);
 }
 
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+}
+
+/* 5. Typography Utilities */
+
+/* Display */
+.text-display {
+  font-family: var(--font-accent);
+  font-size: 72px;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Headings */
+.text-h1 { font-size: 40px; }
+.text-h2 { font-size: 32px; }
+.text-h3 { font-size: 24px; }
+.text-h4 { font-size: 18px; }
+
+/* Body */
+.text-body-lg { font-size: 18px; line-height: 1.7; }
+.text-body { font-size: 16px; line-height: 1.75; }
+.text-body-sm { font-size: 14px; }
+
+/* Mono */
+.text-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.text-caption {
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+/* HTML Reset */
 html {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 
+/* Body Base */
 body {
   margin: 0;
   padding: 0;
-  font-family: var(--font-sans);
-  background-color: var(--color-bg-primary);
-  color: var(--color-ink);
-  line-height: 1.5;
+
+  font-family: var(--font-body);
+  line-height: 1.6;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
   overflow-x: hidden;
 }
 
-/* ─────────────────────────────────────────────────────────────
-   TYPOGRAPHY
-───────────────────────────────────────────────────────────── */
-h1, h2, h3, h4 {
-  margin: 0;
-}
-
-p { margin: 0; }
-
-a { text-decoration: none; }
-
-#root {
-  width: 100%;
-  min-height: 100vh;
-}
