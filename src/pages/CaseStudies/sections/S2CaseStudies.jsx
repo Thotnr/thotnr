@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import img1 from '../../../assets/images/case1.jpg'
 import img2 from '../../../assets/images/case2.jpg'
 import img3 from '../../../assets/images/ai-service.jpg'
@@ -10,6 +11,7 @@ import img8 from '../../../assets/images/security-risk.jpg'
 const cases = [
   {
     id: 1,
+    slug: 'financial-services',
     industry: 'Financial Services',
     headline: 'How a Global Bank Transformed Credit Risk with AI',
     desc: 'We embedded an end-to-end ML decisioning layer into a tier-1 bank\'s credit origination stack, reducing decision time by 73% while improving portfolio quality. Seamless automation allowed the bank to scale loan processing capacity without increasing operational overhead.',
@@ -17,6 +19,7 @@ const cases = [
   },
   {
     id: 2,
+    slug: 'healthcare',
     industry: 'Healthcare',
     headline: 'AI-Powered Clinical Triage Across 12 Hospitals',
     desc: 'We deployed intelligent triage systems that reduced patient wait times and improved diagnosis prioritisation across multiple hospital networks. Real-time data analysis empowered clinicians to focus on high-acuity cases, delivering faster, more effective patient outcomes.',
@@ -24,6 +27,7 @@ const cases = [
   },
   {
     id: 3,
+    slug: 'generative-ai',
     industry: 'Artificial Intelligence',
     headline: 'Building a Production-Grade GenAI Platform for a Retail Giant',
     desc: 'A leading retail enterprise needed a personalisation engine that could process millions of customer signals daily. We architected a RAG-based recommendation system that increased basket size by 28% and cut time-to-insight from days to seconds.',
@@ -31,6 +35,7 @@ const cases = [
   },
   {
     id: 4,
+    slug: 'enterprise-architecture',
     industry: 'Enterprise Architecture',
     headline: 'Modernising a Legacy Architecture Across 40 Business Units',
     desc: 'A multinational conglomerate was running on fragmented, decade-old systems that blocked AI adoption. We delivered a phased enterprise architecture transformation — aligning technology to business capability and unlocking a 60% faster delivery cycle.',
@@ -38,6 +43,7 @@ const cases = [
   },
   {
     id: 5,
+    slug: 'cloud',
     industry: 'Cloud',
     headline: '40% Infrastructure Cost Reduction Through Cloud-Native Redesign',
     desc: 'We migrated a high-traffic SaaS platform from on-premise monoliths to a cloud-native microservices architecture on AWS. The result: 40% lower infrastructure cost, 99.97% uptime, and the platform\'s first successful Black Friday without incident.',
@@ -45,6 +51,7 @@ const cases = [
   },
   {
     id: 6,
+    slug: 'manufacturing',
     industry: 'Manufacturing',
     headline: 'Predictive Maintenance That Reduced Downtime by 65%',
     desc: 'A global manufacturer was losing millions annually to unplanned equipment failures. We built sensor-data pipelines and ML anomaly detection models that gave maintenance teams a 72-hour advance warning window — cutting unplanned downtime by 65%.',
@@ -52,6 +59,7 @@ const cases = [
   },
   {
     id: 7,
+    slug: 'experience-design',
     industry: 'Experience Design',
     headline: 'Redesigning the Enterprise UX for a 50,000-Seat ERP Rollout',
     desc: 'Enterprise software adoption was stalling due to poor user experience. We led the end-to-end UX redesign of a core ERP interface, cutting training time by half and increasing daily active usage by 3x within the first quarter of launch.',
@@ -59,6 +67,15 @@ const cases = [
   },
   {
     id: 8,
+    slug: 'cybersecurity',
+    industry: 'Cybersecurity',
+    headline: 'AI-Driven Threat Detection for a National Financial Network',
+    desc: 'We built a real-time threat detection system that processes over 2 billion network events daily across a national payments infrastructure. Anomaly detection latency dropped from 8 minutes to under 4 seconds, stopping three major breach attempts in the first year.',
+    image: img8,
+  },
+  {
+    id: 9,
+    slug: 'cybersecurity',
     industry: 'Cybersecurity',
     headline: 'AI-Driven Threat Detection for a National Financial Network',
     desc: 'We built a real-time threat detection system that processes over 2 billion network events daily across a national payments infrastructure. Anomaly detection latency dropped from 8 minutes to under 4 seconds, stopping three major breach attempts in the first year.',
@@ -74,7 +91,7 @@ function ArrowIcon() {
   )
 }
 
-function CaseBlock({ industry, headline, desc, image, index }) {
+function CaseBlock({ industry, headline, desc, image, slug, index }) {
   const isImageLeft = index % 2 === 0
 
   return (
@@ -104,17 +121,15 @@ function CaseBlock({ industry, headline, desc, image, index }) {
         </h2>
 
         <p className="text-body-lg mb-8" style={{ color: 'var(--color-text-secondary)' }}>
-          {desc} 
-          <a
-          href="#"
-          className="ml-2 inline-flex items-center gap-2 text-sm font-semibold transition-all duration-200 hover:gap-3"
-          style={{ color: 'var(--color-secondary)' }}
-        >
-          Read More..
-        </a>
+          {desc}
+          <Link
+            to={`/case-studies/${slug}`}
+            className="ml-2 inline-flex items-center gap-2 text-lg font-semibold no-underline transition-all duration-200 hover:gap-3"
+            style={{ color: 'var(--color-secondary)' }}
+          >
+            Read More..
+          </Link>
         </p>
-
-        
 
       </div>
     </div>
