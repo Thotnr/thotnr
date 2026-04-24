@@ -30,7 +30,7 @@ function ProcessTimeline() {
 
         {/* Header */}
         <div className="mb-8">
-          <p className="text-label text-[var(--color-highlight)]">
+          <p className="text-h3 text-[var(--color-highlight)]">
             Our Methodology
           </p>
 

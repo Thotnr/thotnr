@@ -105,7 +105,7 @@ function Footer() {
               href={href}
               className="text-sm no-underline transition-colors duration-150"
               style={{ color: 'var(--color-muted-dk)' }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-accent)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-highlight)' }}
               onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-muted-dk)' }}
             >
               {label}
@@ -126,8 +126,8 @@ function Footer() {
                 background: 'transparent',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = 'var(--color-accent)'
-                e.currentTarget.style.background = 'rgb(var(--color-accent-rgb) / 0.06)'
+                e.currentTarget.style.color = 'var(--color-highlight)'
+                e.currentTarget.style.background = 'rgb(var(--color-highlight-rgb) / 0.06)'
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.color = 'var(--color-slate)'

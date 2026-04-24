@@ -1,7 +1,7 @@
 /* Single source of truth for all typography.
    Placed outside Tailwind's @layer — these rules win over utility overrides. */
 
-.t-display {
+/* .t-display {
   font-size: clamp(3.25rem, 7vw, 5.5rem);
   font-weight: 900;
   letter-spacing: -0.03em;
@@ -128,4 +128,4 @@
   font-weight: 300;
   letter-spacing: 0.01em;
   line-height: 1.65;
-}
+} */

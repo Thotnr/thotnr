@@ -167,7 +167,7 @@ function ServicesCards() {
         <div>
 
           <div className="mb-16">
-            <p className="text-label text-[var(--color-highlight)]">
+            <p className="text-h3 text-[var(--color-highlight)]">
               Core Capabilities
             </p>
 

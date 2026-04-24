@@ -129,7 +129,7 @@ function ServicesList() {
         {/* Header */}
         <div className="mb-12">
           <p
-            className="text-label text-[var(--color-highlight)]"
+            className="text-h3 text-[var(--color-highlight)]"
            
           >
             What We Deliver

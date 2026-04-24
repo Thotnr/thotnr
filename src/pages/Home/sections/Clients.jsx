@@ -75,7 +75,7 @@ function Clients() {
             {/* TOP CONTENT */}
             <div>
               <p
-                className="text-label text-[var(--color-highlight)]"
+                className="text-h3 text-[var(--color-highlight)]"
               >
                 Trusted By Brands
               </p>

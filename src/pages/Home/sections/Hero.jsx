@@ -14,6 +14,20 @@ function Hero() {
         }}
       />
 
+      {/* Hero gradient overlays */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none',
+          zIndex: 1,
+          background: `
+            linear-gradient(to bottom, rgba(0,0,0,0.62) 0%, transparent 35%),
+            linear-gradient(to left,   rgba(0,0,0,0.72) 0%, transparent 45%)
+          `,
+        }}
+      />
+
 
       {/* LEFT PREMIUM CONTENT (Main Focus) */}
       <div className="absolute z-10 left-[10%] top-[60%] -translate-y-1/2 ">

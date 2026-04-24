@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { cn } from '../../utils'
 import logoWhite from '../../assets/images/thotnr_logo_white.png'
 import logoRed from '../../assets/images/thotnr_logo_red.png'
 
 // ── Dropdown Data ─────────────────────────────────────────────────────────────
+
 
 const whatWeOfferData = {
   left: {
@@ -242,8 +244,9 @@ function MegaMenu({ data }) {
 
 // ── Dropdown Item ─────────────────────────────────────────────────────────────
 
-function DropdownItem({ label, data, scrolled }) {
+function DropdownItem({ label, data, scrolled, to }) {
   const [open, setOpen] = useState(false)
+  const navigate = useNavigate()
   let timeout
 
   const handleEnter = () => {
@@ -273,6 +276,7 @@ function DropdownItem({ label, data, scrolled }) {
             ? 'var(--color-text-primary)'
             : '#ffffff',
         }}
+        onClick={() => to && navigate(to)}
         onMouseEnter={(e) => {
           e.currentTarget.style.color = 'var(--color-highlight)'
         }}
@@ -373,31 +377,22 @@ function Navbar() {
           <div className="flex items-center gap-1">
             <DropdownItem label="what we offer" data={whatWeOfferData} scrolled={scrolled} />
             <DropdownItem label="our work"      data={ourWorkData}     scrolled={scrolled} />
-            <DropdownItem label="insights"      data={insightsData}    scrolled={scrolled} />
-            <DropdownItem label="AI"            data={aiData}          scrolled={scrolled} />
+            <DropdownItem label="insights"      data={insightsData}    scrolled={scrolled} to="/insights"/>
+            <DropdownItem label="AI"            data={aiData}          scrolled={scrolled} to="/ai" />
           </div>
 
           <div className="flex items-center gap-1">
-            {['About', 'Contact', 'Join Us'].map((link) => (
-              <a
-  key={link}
-  href="#"
-  className="px-3 py-2 text-sm font-medium rounded-md no-underline transition-colors duration-150"
-  style={{
-    color: scrolled ? 'var(--color-text-primary)' : '#ffffff',
-  }}
-  onMouseEnter={(e) => {
-    e.currentTarget.style.color = 'var(--color-highlight)'
-  }}
-  onMouseLeave={(e) => {
-    e.currentTarget.style.color = scrolled
-      ? 'var(--color-text-primary)'
-      : '#ffffff'
-  }}
->
-  {link}
-</a>
-            ))}
+            {['About', 'Contact', 'Join Us'].map((link) => {
+              const routes = { About: '/about', Contact: '/contact', 'Join Us': '/join-us' }                                                                 
+              const to = routes[link] ?? null  
+              const cls = 'px-3 py-2 text-sm font-medium rounded-md no-underline transition-colors duration-150'
+              const style = { color: scrolled ? 'var(--color-text-primary)' : '#ffffff' }
+              const onEnter = (e) => { e.currentTarget.style.color = 'var(--color-highlight)' }
+              const onLeave = (e) => { e.currentTarget.style.color = scrolled ? 'var(--color-text-primary)' : '#ffffff' }
+              return to
+                ? <Link key={link} to={to} className={cls} style={style} onMouseEnter={onEnter} onMouseLeave={onLeave}>{link}</Link>
+                : <a key={link} href="#" className={cls} style={style} onMouseEnter={onEnter} onMouseLeave={onLeave}>{link}</a>
+            })}
           </div>
         </div>
       </nav>
@@ -466,15 +461,13 @@ function Navbar() {
             </div>
           ))}
 
-          {['Industries', 'About', 'Contact', 'Join Us'].map((link) => (
-            <a
-              key={link}
-              href="#"
-              className="px-4 py-3 rounded-xl text-sm font-medium no-underline transition-colors duration-150 text-slate-dark hover:text-accent"
-            >
-              {link}
-            </a>
-          ))}
+          {['Industries', 'About', 'Contact', 'Join Us'].map((link) => {
+            const to = link === 'About' ? '/about' : null
+            const cls = 'px-4 py-3 rounded-xl text-sm font-medium no-underline transition-colors duration-150 text-slate-dark hover:text-accent'
+            return to
+              ? <Link key={link} to={to} className={cls}>{link}</Link>
+              : <a key={link} href="#" className={cls}>{link}</a>
+          })}
 
           <a
             href="#"

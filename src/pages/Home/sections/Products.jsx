@@ -90,7 +90,7 @@ export default function Products() {
 
   {/* Tagline */}
   <p
-    className="text-xs font-semibold uppercase tracking-widest mb-4"
+    className="text-h3 font-semibold uppercase tracking-widest mb-4"
     style={{ color: 'var(--color-highlight)' }}
   >
     Build for Enterprises

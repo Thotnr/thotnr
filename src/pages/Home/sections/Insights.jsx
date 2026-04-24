@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import img1 from '../../../assets/images/user-experience.jpg'
 import img2 from '../../../assets/images/security-risk.jpg'
 import img3 from '../../../assets/images/ai.jpg'
@@ -49,7 +50,7 @@ function InsightCard({ image, category, title, excerpt, href }) {
         {/* Category (ONLY highlight usage) */}
         <span
           className="text-[11px] font-semibold uppercase tracking-wide"
-          style={{ color: 'var(--color-highlight)' }}
+          style={{ color: 'var(--color-secondary)' }}
         >
           {category}
         </span>
@@ -71,13 +72,13 @@ function InsightCard({ image, category, title, excerpt, href }) {
         </p>
 
         {/* CTA (neutral, no highlight) */}
-        <a
-          href={href}
-          className="text-sm font-medium mt-auto inline-flex items-center gap-1 transition-all duration-200 hover:gap-2"
+        <Link
+          to="/insights"
+          className="text-sm font-medium mt-auto inline-flex items-center gap-1 no-underline transition-all duration-200 hover:gap-2"
           style={{ color: 'var(--color-text-primary)' }}
         >
           Read more..
-        </a>
+        </Link>
       </div>
     </article>
   )
@@ -93,8 +94,7 @@ function Insights() {
         {/* Header */}
         <div className="mb-14 max-w-xl">
           <p
-            className="text-xs font-semibold uppercase tracking-widest"
-            style={{ color: 'var(--color-highlight)' }} // 1st usage
+            className="text-h3 text-[var(--color-highlight)]"
           >
             Thinking Out Loud
           </p>
@@ -123,23 +123,15 @@ function Insights() {
 
         {/* CTA */}
         <div className="text-center">
-          <button
-  className="px-6 py-3 rounded-full text-sm font-medium border transition-all duration-300"
-  style={{
-    border: '1px solid var(--color-text-primary)',
-    color: 'var(--color-text-primary)',
-  }}
-  onMouseEnter={(e) => {
-    e.currentTarget.style.background = 'var(--color-text-primary)'
-    e.currentTarget.style.color = 'var(--color-white)'
-  }}
-  onMouseLeave={(e) => {
-    e.currentTarget.style.background = 'transparent'
-    e.currentTarget.style.color = 'var(--color-text-primary)'
-  }}
->
-  View all insights
-</button>
+          <Link
+            to="/insights"
+            className="inline-block px-6 py-3 rounded-full text-sm font-medium border no-underline transition-all duration-300"
+            style={{ border: '1px solid var(--color-text-primary)', color: 'var(--color-text-primary)' }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--color-text-primary)'; e.currentTarget.style.color = '#fff' }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--color-text-primary)' }}
+          >
+            View all insights
+          </Link>
         </div>
 
       </div>

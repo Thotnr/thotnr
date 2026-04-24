@@ -3,11 +3,6 @@ function ProblemStatement() {
     <section className="bg-[var(--color-primary)] py-16 px-6 md:px-10 lg:px-16">
       <div>
 
-        {/* Eyebrow */}
-        <p className="text-label text-[var(--color-highlight)]">
-          The Reality Check
-        </p>
-
         {/* Headline */}
         <h2 className="text-h1 text-[var(--color-text-primary)] leading-tight mb-4">
           Most enterprises are drowning in AI pilots that never reach production.

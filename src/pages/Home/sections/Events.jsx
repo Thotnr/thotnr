@@ -54,8 +54,7 @@ function Events() {
           <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
             <div>
               <p
-                className="ev-eyebrow t-eyebrow mb-2"
-                style={{ color: 'var(--color-highlight)' }}
+               className="text-h3 text-[var(--color-highlight)]"
               >
                 Upcoming
               </p>

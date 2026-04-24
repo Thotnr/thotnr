@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import caseImg1 from '../../../assets/images/case1.jpg'
 import caseImg2 from '../../../assets/images/case2.jpg'
 
@@ -29,8 +30,7 @@ function CaseStudies() {
         {/* Header */}
         <div className="mb-8">
           <p
-            className="text-xs font-semibold tracking-widest uppercase"
-            style={{ color: 'var(--color-highlight)' }}   // subtle accent use (1)
+            className="text-h3 text-[var(--color-highlight)]"
           >
             Real Impact
           </p>
@@ -58,8 +58,8 @@ function CaseStudies() {
           {/* Content */}
           <div>
             <p
-              className="text-sm mb-3"
-              style={{ color: 'var(--color-highlight)' }} // subtle accent use (2)
+              className="text-h4 mb-3"
+              style={{ color: 'var(--color-secondary)' }} // subtle accent use (2)
             >
               {caseStudies[0].industry}
             </p>
@@ -78,13 +78,13 @@ function CaseStudies() {
               {caseStudies[0].description}
             </p>
 
-            <a
-              href="#"
-              className="text-sm font-medium"
+            <Link
+              to="/case-studies"
+              className="text-sm font-medium no-underline"
               style={{ color: 'var(--color-text-primary)' }}
             >
               Read more..
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -94,8 +94,8 @@ function CaseStudies() {
           {/* Content */}
           <div className="order-2 md:order-1">
             <p
-              className="text-sm mb-3"
-              style={{ color: 'var(--color-highlight)' }}
+              className="text-h4 mb-3"
+              style={{ color: 'var(--color-secondary)' }}
             >
               {caseStudies[1].industry}
             </p>
@@ -114,13 +114,13 @@ function CaseStudies() {
               {caseStudies[1].description}
             </p>
 
-            <a
-              href="#"
-              className="text-sm font-medium"
+            <Link
+              to="/case-studies"
+              className="text-sm font-medium no-underline"
               style={{ color: 'var(--color-text-primary)' }}
             >
               Read more..
-            </a>
+            </Link>
           </div>
 
           {/* Image */}
@@ -135,23 +135,15 @@ function CaseStudies() {
 
         {/* CTA */}
         <div className="text-center">
-          <button
-  className="px-6 py-3 rounded-full text-sm font-medium border transition-all duration-300"
-  style={{
-    border: '1px solid var(--color-text-primary)',
-    color: 'var(--color-text-primary)',
-  }}
-  onMouseEnter={(e) => {
-    e.currentTarget.style.background = 'var(--color-text-primary)'
-    e.currentTarget.style.color = 'var(--color-white)'
-  }}
-  onMouseLeave={(e) => {
-    e.currentTarget.style.background = 'transparent'
-    e.currentTarget.style.color = 'var(--color-text-primary)'
-  }}
->
-  View all studies
-</button>
+          <Link
+            to="/case-studies"
+            className="inline-block px-6 py-3 rounded-full text-sm font-medium border no-underline transition-all duration-300"
+            style={{ border: '1px solid var(--color-text-primary)', color: 'var(--color-text-primary)' }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--color-text-primary)'; e.currentTarget.style.color = '#fff' }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--color-text-primary)' }}
+          >
+            View all studies
+          </Link>
         </div>
 
       </div>
