@@ -25,6 +25,7 @@ const whatWeOfferData = {
       ['Smart Buildings', 'Software & Hi-tech', 'Sports AI', 'Telecommunications', 'Travel & Logistics'],
     ],
     viewAll: 'view all industries',
+    rightTo: '/industries',
   },
 }
 
@@ -228,12 +229,17 @@ function MegaMenu({ data }) {
               ))}
             </div>
 
-            <a href="#" className="mega-view-all"
-            style={{ color: 'var(--color-ink)' }}
-            >
-              {right.viewAll}
-              <span className="mega-view-all-arrow">→</span>
-            </a>
+            {right.rightTo ? (
+              <Link to={right.rightTo} className="mega-view-all" style={{ color: 'var(--color-ink)' }}>
+                {right.viewAll}
+                <span className="mega-view-all-arrow">→</span>
+              </Link>
+            ) : (
+              <a href="#" className="mega-view-all" style={{ color: 'var(--color-ink)' }}>
+                {right.viewAll}
+                <span className="mega-view-all-arrow">→</span>
+              </a>
+            )}
           </div>
 
         </div>
@@ -348,9 +354,7 @@ function Navbar() {
 
   const mobileDropdowns = [
     { label: 'what we offer', key: 'offer',    items: whatWeOfferData.left.items },
-    { label: 'our work',      key: 'work',     items: ourWorkData.left.items     },
     { label: 'insights',      key: 'insights', items: insightsData.left.items    },
-    { label: 'AI',           key: 'ai',       items: aiData.left.items          },
   ]
 
   return (
@@ -376,9 +380,25 @@ function Navbar() {
         <div className="flex justify-around w-full">
           <div className="flex items-center gap-1">
             <DropdownItem label="what we offer" data={whatWeOfferData} scrolled={scrolled} />
-            <DropdownItem label="our work"      data={ourWorkData}     scrolled={scrolled} />
+            <Link
+              to="/industries"
+              className="px-3 py-2 text-sm font-medium rounded-md no-underline transition-colors duration-150"
+              style={{ color: scrolled ? 'var(--color-text-primary)' : '#ffffff' }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-highlight)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = scrolled ? 'var(--color-text-primary)' : '#ffffff' }}
+            >
+              our work
+            </Link>
             <DropdownItem label="insights"      data={insightsData}    scrolled={scrolled} to="/insights"/>
-            <DropdownItem label="AI"            data={aiData}          scrolled={scrolled} to="/ai" />
+            <Link
+              to="/ai"
+              className="px-3 py-2 text-sm font-medium rounded-md no-underline transition-colors duration-150"
+              style={{ color: scrolled ? 'var(--color-text-primary)' : '#ffffff' }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-highlight)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = scrolled ? 'var(--color-text-primary)' : '#ffffff' }}
+            >
+              AI
+            </Link>
           </div>
 
           <div className="flex items-center gap-1">
@@ -461,13 +481,21 @@ function Navbar() {
             </div>
           ))}
 
-          {['Industries', 'About', 'Contact', 'Join Us'].map((link) => {
-            const to = link === 'About' ? '/about' : null
-            const cls = 'px-4 py-3 rounded-xl text-sm font-medium no-underline transition-colors duration-150 text-slate-dark hover:text-accent'
-            return to
-              ? <Link key={link} to={to} className={cls}>{link}</Link>
-              : <a key={link} href="#" className={cls}>{link}</a>
-          })}
+          {[
+            { label: 'Our Work', to: '/case-studies' },
+            { label: 'AI',       to: '/ai'           },
+            { label: 'About',    to: '/about'        },
+            { label: 'Contact',  to: '/contact'      },
+            { label: 'Join Us',  to: '/join-us'      },
+          ].map(({ label, to }) => (
+            <Link
+              key={label}
+              to={to}
+              className="px-4 py-3 rounded-xl text-sm font-medium no-underline transition-colors duration-150 text-slate-dark hover:text-accent"
+            >
+              {label}
+            </Link>
+          ))}
 
           <a
             href="#"

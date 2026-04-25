@@ -8,6 +8,7 @@ import CaseStudyDetail  from './pages/CaseStudyDetail'
 import AI               from './pages/AI'
 import Insights         from './pages/Insights'
 import InsightDetail    from './pages/InsightDetail'
+import Industry         from './pages/Industry'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/ai"                    element={<AI />}              />
         <Route path="/insights"              element={<Insights />}        />
         <Route path="/insights/:slug"        element={<InsightDetail />}   />
+        <Route path="/industries"            element={<Industry />}        />
       </Routes>
     </BrowserRouter>
   )

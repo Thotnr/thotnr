@@ -1,19 +1,18 @@
-import Navbar from '../../components/layout/Navbar'
-import Footer from '../../components/layout/Footer'
+import Navbar       from '../../components/layout/Navbar'
+import Footer       from '../../components/layout/Footer'
+import S1Hero       from './sections/S1Hero'
+import S2WhyJoinUs  from './sections/S2WhyJoinUs'
+import S3OpenRoles  from './sections/S3OpenRoles'
+import S4ApplyForm  from './sections/S4ApplyForm'
 
 function JoinUs() {
   return (
     <>
       <Navbar />
-      <section
-        className="min-h-screen flex items-center justify-center px-6"
-        style={{ background: 'var(--color-primary)' }}
-      >
-        <div className="text-center">
-          <p className="text-label text-[var(--color-highlight)]">Coming Soon</p>
-          <h1 className="text-h1 mt-2" style={{ color: 'var(--color-text-primary)' }}>Join Us</h1>
-        </div>
-      </section>
+      <S1Hero />
+      <S2WhyJoinUs />
+      <S3OpenRoles />
+      <S4ApplyForm />
       <Footer />
     </>
   )
