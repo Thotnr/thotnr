@@ -104,14 +104,14 @@ function ExpandingCard({ title, tagline, stat, desc, image, href, index }) {
           <p className="text-sm text-white/70 pt-2">{desc}</p>
         </div>
 
-        <div
+        {/* <div
           className={`flex items-center gap-2 text-sm font-medium transition-all ${
             hovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'
           }`}
           style={{ color: 'var(--color-highlight)' }}
         >
           Explore <ArrowIcon />
-        </div>
+        </div> */}
 
       </div>
     </a>

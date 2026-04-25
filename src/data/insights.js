@@ -1,13 +1,19 @@
 import imgAiSummit    from '../assets/images/ai-summit.jpg'
-import imgUX          from '../assets/images/user-experience.jpg'
-import imgSecurity    from '../assets/images/security-risk.jpg'
+import imgUX          from '../assets/images/insites/terraform.png'
+import imgSecurity    from '../assets/images/insites/cloud-usecase.jpg'
+import imgTechPartner    from '../assets/images/insites/tech-partner.jpeg'
+import imgExperience    from '../assets/images/insites/user-experience.jpg'
+import imgPostulates    from '../assets/images/insites/ai.jpg'
+import imgContainers    from '../assets/images/insites/containers.jpg'
+import imgOwasp    from '../assets/images/insites/security.jpg'
+import imgRpa    from '../assets/images/insites/rpa.jpeg'
+import imgDna    from '../assets/images/insites/dna.jpg'
 import imgAI          from '../assets/images/ai.jpg'
-import imgAIService   from '../assets/images/ai-service.jpg'
-import imgEnterprise  from '../assets/images/enterprise-architect.jpg'
-import imgCloud       from '../assets/images/cloud.jpg'
+import imgAIService   from '../assets/images/insites/cloud.jpg'
+import imgEnterprise  from '../assets/images/insites/rest-api.jpeg'
+import imgCloud       from '../assets/images/insites/cloud-migration.jpeg'
 import imgCase1       from '../assets/images/case1.jpg'
 import imgCase2       from '../assets/images/case2.jpg'
-
 import authorGauravK  from '../assets/images/about-us_Gaurav-Kumar.jpg'
 import authorSankalp  from '../assets/images/about-us_Sankalp.jpg'
 import authorGauravV  from '../assets/images/about-us_Gaurav-Verma.jpg'
@@ -80,575 +86,922 @@ export const insights = [
     ],
   },
 
-  {
-    slug: 'next-gen-ux',
-    coverImg: imgUX,
-    tagline: 'Experience Design',
-    subheadline: 'The Next Generation User Experience Today',
-    authorName: 'Neha Jaiswal',
-    authorRole: 'Head of Experience Design',
-    authorImage: authorNeha,
-    publishDate: 'February 2025',
-    contentBlocks: [
-      {
-        type: 'intro',
-        text: 'The computer user interface has perhaps been the most frustrating aspect of technology adoption since the dawn of the computer age. Humans had to adapt to using a computer — and AI is finally reversing that dynamic.',
-      },
-      {
-        type: 'paragraph',
-        text: 'For decades, the burden of translation sat entirely with the user. You had to learn the machine\'s language — its menus, its shortcuts, its folder hierarchies, its error codes. The machine did not learn yours. This asymmetry was accepted because there was no alternative. There is now.',
-      },
-      {
-        type: 'heading',
-        text: 'From Interfaces to Intentions',
-      },
-      {
-        type: 'paragraph',
-        text: 'The shift AI enables is not cosmetic. It is architectural. When an interface can interpret intent — when it can infer what you are trying to accomplish from incomplete or ambiguous input — the entire design contract changes. You no longer design around the constraints of what a system can parse. You design around the mental models of what a human wants to do.',
-      },
-      {
-        type: 'image_text',
-        image: imgUX,
-        imageAlt: 'Next generation user experience',
-        imageLeft: true,
-        text: 'In enterprise software, this shift is long overdue. The average knowledge worker switches between over a dozen applications per day, losing roughly 40 minutes to context switching alone. AI-native interfaces can collapse this fragmentation — not by replacing the applications, but by surfacing the right capability from the right system at the right moment, without requiring the user to know which application houses it.',
-      },
-      {
-        type: 'heading',
-        text: 'The Design Principles That Actually Matter',
-      },
-      {
-        type: 'bullets',
-        items: [
-          'Design for interruption recovery, not just task completion. Users are constantly pulled away. Interfaces need to understand where they left off.',
-          'Ambient intelligence over explicit commands. The best AI experiences feel inevitable, not instructed.',
-          'Transparency about uncertainty. Users trust AI more when it acknowledges what it does not know.',
-          'Preserve agency. Intelligent suggestions should accelerate decisions, not remove them.',
-        ],
-      },
-      {
-        type: 'paragraph',
-        text: 'The next generation of enterprise UX will not be built by designers who know AI — it will be built by designers who understand work. The technology is a new material. The discipline is the same: understand what people are actually trying to do, and make that easier. AI just raised the ceiling on what "easier" can mean.',
-      },
-    ],
-  },
+{
+  slug: 'terraform-iaac',
+  coverImg: imgUX,
+  tagline: 'DevOps',
+  subheadline: 'Terraform – IaaC',
+  authorName: 'Neha Jaiswal',
+  authorRole: 'Head of Experience Design',
+  authorImage: authorNeha,
+  publishDate: 'January 09, 2023',
+  contentBlocks: [
+    {
+      type: 'intro',
+      text: "Most IT organizations have already adopted cloud computing as their preferred IT infrastructure services in order to increase IT efficiency and reduce operational costs. However, managing IT infrastructure across multiple clouds, data centers, environments and servers become even more complex when different teams within an organization may need similar infrastructure for their slightly different requirements. Infrastructure as a code solution called Terraform has emerged as one of the best solutions for an IT organization to reduce such complexity while growing infrastructure at scale."
+    },
+    {
+      type: 'paragraph',
+      text: 'In this article, we will briefly discuss Terraform, its workflow and feature set.'
+    },
+    {
+      type: 'heading',
+      text: "Terraform and its Use Case"
+    },
+    {
+      type: 'paragraph',
+      text: "Terraform is an infrastructure-as-code tool created by HashiCorp which helps in provisioning of cloud resources. This is majorly used by DevOps to automate various infrastructure tasks. Terraform describes complete infrastructure in the form of code which acts as a common language for servers that may come from different cloud service providers such as Azure, AWS or Google Cloud Platform which helps to build and manage these resources in parallel across providers."
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Providing an Infrastructure-as-code for cloud service providers like Azure or AWS. Provisioning of public clouds via a provider, a plugin that wraps existing APIs with languages like Azure biceps to create Terraform syntax.',
+        'Terraform helps in deploying large systems that involve highly complex topology.',
+        'Terraform has the capability to deploy resources into multiple cloud providers utilizing the same syntax without having engineers familiarize with multiple tools and technologies.',
+        'Terraform allows you to perform orchestration of resources for multi cloud and hybrid cloud platforms.',
+      ]
+    },
+    {
+      type: 'heading',
+      text: 'Benefits of Using Terraform'
+    },
+    {
+      type: 'image_text',
+      image: imgUX,
+      imageAlt: 'Terraform infrastructure as code',
+      imageLeft: true,
+      text: 'Better collaboration and tracking within team — Infrastructure-as-code can be linked with issue tracking systems where teams can collaborate, share and save their codes for future reference. Automated infrastructure management lets Terraform create configuration file templates that can be used multiple times to create the same development, test and production environments, reducing manual effort, time and development cost significantly.'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Better collaboration and tracking within team – Infrastructure-as-code can be linked with issue tracking systems where teams can collaborate, share and save their codes for future reference.',
+        'Automated infrastructure management – Terraform creates configuration file templates that can be used multiple times to create the same development, test and production environments.',
+        'Reduced development cost – As the same configuration file templates can be reused, it reduces manual efforts, resources, time and development cost.',
+        'Enhanced Security – Infrastructure-as-code is an automated process that needs less human intervention, hence increasing overall security of computing architecture and data.',
+      ]
+    },
+    {
+      type: 'heading',
+      text: 'How Does Terraform Work?'
+    },
+    {
+      type: 'paragraph',
+      text: 'Terraform gives you the options to define and manage your infrastructure using configuration files and version controls. There are two main components of Terraform architecture: Core and Providers.'
+    },
+    {
+      type: 'quote',
+      text: 'Terraform takes both inputs and compares desired output with the current state to determine the gap — creating, updating, or deleting resources to provision infrastructure as per desired output.',
+      attribution: 'Terraform Core Workflow'
+    },
+    {
+      type: 'paragraph',
+      text: 'The Core workflow takes inputs from users about what resources to create or provision, plus the current state of infrastructure. It then determines the gap and configures the architecture accordingly.'
+    },
+    {
+      type: 'paragraph',
+      text: 'Terraform has more than a hundred cloud providers that grant access to their resources — including Azure, AWS and GCP. Providers enable interacting with specific APIs and expose the resources Terraform has defined using Go language. Once a provider is configured and authenticated, it gives access to create multiple available resources. For AWS, for instance, Terraform will also have access to EC2 instances and resources within the tech stack.'
+    },
+    {
+      type: 'paragraph',
+      text: 'The Configuration and Providers of Terraform enable you to create, alter, and improve infrastructure in a safe and predictable manner using infrastructure-as-code.'
+    },
+  ]
+},
+
+{
+  slug: 'datacenter-migration',
+  coverImg: imgSecurity,
+  tagline: 'Cloud & Infrastructure',
+  subheadline: 'Datacenter to Cloud Migration',
+  authorName: 'Neha Jaiswal',
+  authorRole: 'Head of Experience Design',
+  authorImage: authorNeha,
+  publishDate: 'January 09, 2023',
+  contentBlocks: [
+    {
+      type: 'intro',
+      text: "Moving from On Premise to Cloud is a strategic decision and needs a long-term vision for an organization. It will require a change in mindset of employees besides putting investment of money. Migration approach can be divided in 4 phases: Consolidation of Details, Migration Planning, Migration Execution and Migration Optimization."
+    },
+    {
+      type: 'paragraph',
+      text: 'It looks simple in concept but practically it changes the day to day working of an organization. The company needs to transition all existing hardware, software, networking and operations into a different environment. Migration journey often starts with a desire to save cost or to become cloud native.'
+    },
+    {
+      type: 'heading',
+      text: 'Consolidation of Details'
+    },
+    {
+      type: 'image_text',
+      image: imgSecurity,
+      imageAlt: 'Data center consolidation and planning',
+      imageLeft: true,
+      text: 'First Phase is the Detailing phase. Upcoming cloud partners prepare documents of the entire Data Center footprint — OS and hardware details, applications installed, storage details, network details, maintenance & patching details, license details and asset details. The objective is to obtain a detailed view of all relevant assets of the current Data Centre. Cross functional discussions among all business units should also be started to align all important stakeholders for upcoming changes.'
+    },
+    {
+      type: 'heading',
+      text: 'Migration Planning'
+    },
+    {
+      type: 'paragraph',
+      text: 'All details gathered in the detailing phase are leveraged to create a detailed migration plan. Migration may have multiple waves with each wave migrating some part of it. As a best practice, non-production waves should be targeted first.'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Current server details like computing, storage, virtualization mapping to cloud. First phase can be started keeping all stats the same as in the datacenter.',
+        'Multiple waves can be planned as per need — by Production / Non-production waves.',
+        'Sufficient time for testing should be planned post deployment of infrastructure.',
+        'Applications with less dependencies should be migrated first. Target simple & predictable migrations to gain confidence.',
+        'Necessary training to staff should be planned so they can be allocated to work in a cloud environment.',
+      ]
+    },
+    {
+      type: 'heading',
+      text: 'Migration Execution'
+    },
+    {
+      type: 'paragraph',
+      text: 'This phase executes the plans prepared in the migration planning phase. Organizations need to keep track of exact steps and configurations — the same steps will be repeated for production and non-production waves. All required infrastructure components must be configured similar to the existing datacenter, with required access to databases and dependent softwares verified, and application performance tested.'
+    },
+    {
+      type: 'quote',
+      text: 'Success of the execution phase depends on aggressive testing, debugging and closure of defects. Multiple iterations should be used to ensure that the application is working properly on new infrastructure.',
+      attribution: 'Migration Execution Best Practice'
+    },
+    {
+      type: 'heading',
+      text: 'Migration Optimization'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Review Computing Power and Storage — To further save costs or improve performance.',
+        'Plan more automation activities to reduce operational overhead.',
+      ]
+    },
+    {
+      type: 'paragraph',
+      text: 'Post migration and periodic review, one will have better visibility on resource consumption and cost. Over a period of time, better plans can be selected for compute resources, storage and virtual machines as per the need.'
+    },
+    {
+      type: 'quote',
+      text: 'Performing data center migration is a big task but following the above mentioned strategy, the complete process can be broken down in multiple small phases which makes the overall process simple.',
+      attribution: 'A phased approach across Consolidation, Planning, Execution and Optimization ensures risks are minimized at every wave, and the organization steadily builds cloud confidence from non-production to full production migration.'
+    },
+  ]
+},
 
   {
-    slug: 'security-risks-web-apps',
-    coverImg: imgSecurity,
-    tagline: 'Security',
-    subheadline: 'Security Risks to Watch Out For in Your Web Application',
-    authorName: 'Hariraj Singh',
-    authorRole: 'Security Architecture Lead',
-    authorImage: authorHariraj,
-    publishDate: 'January 2025',
-    contentBlocks: [
-      {
-        type: 'intro',
-        text: 'This article deals with the top known vulnerabilities that exist in systems — regularly published as the OWASP Top 10 — from a practitioner\'s point of view. Not the theory. The reality of what these look like when they show up in production code.',
-      },
-      {
-        type: 'paragraph',
-        text: 'The OWASP Top 10 has been maintained since 2003. In that time, the specific entries have evolved, but the underlying themes have not: injection, broken authentication, misconfiguration, and inadequate logging persist across every update. This is not because the industry lacks knowledge. It is because the incentive structure of software development consistently deprioritises security until after a breach.',
-      },
-      {
-        type: 'heading',
-        text: 'The Vulnerabilities That Still Catch Enterprises Out',
-      },
-      {
-        type: 'bullets',
-        items: [
-          'Injection flaws — SQL, NoSQL, OS, and LDAP injection remain common because input validation is treated as a feature, not a baseline. Every external input is a potential attack surface.',
-          'Broken access control — Vertical privilege escalation (accessing admin endpoints without admin rights) is found in the majority of penetration tests we conduct. Path traversal vulnerabilities are similarly routine.',
-          'Security misconfiguration — Cloud infrastructure defaults are rarely hardened. S3 buckets left public, API gateways without rate limiting, debug endpoints left enabled in production.',
-          'Cryptographic failures — Using MD5 or SHA-1 for passwords in 2025. Transmitting sensitive data without TLS. Storing secrets in source code.',
-          'SSRF (Server-Side Request Forgery) — Particularly dangerous in cloud environments where internal metadata services can be reached from application servers.',
-        ],
-      },
-      {
-        type: 'quote',
-        text: 'The most dangerous vulnerabilities are not the sophisticated zero-days. They are the well-documented, easily preventable ones that teams knew about and chose to ship anyway.',
-        attribution: 'Hariraj Singh, Security Architecture Lead',
-      },
-      {
-        type: 'heading',
-        text: 'Building Security In, Not Bolting It On',
-      },
-      {
-        type: 'paragraph',
-        text: 'The pattern we consistently see in organisations with strong security postures is that security considerations are embedded in the development lifecycle, not appended at the end. Threat modelling happens during design. Static analysis runs in CI. Penetration testing is scheduled, not reactive. And critically, security findings are tracked with the same rigour as feature bugs — not parked in a separate queue that engineering leadership never sees.',
-      },
-      {
-        type: 'paragraph',
-        text: 'If your organisation is not conducting regular penetration tests, not running automated SAST/DAST tooling, and not maintaining an active vulnerability management programme, these are not nice-to-haves. They are foundational practices that the threat landscape now demands. The cost of a breach has never been higher. The cost of prevention has never been lower.',
-      },
-    ],
-  },
+  slug: 'cloud-migration-benefits',
+  coverImg: imgAIService,
+  tagline: 'Cloud',
+  subheadline: 'Benefits of Migrating to Cloud',
+  authorName: 'Neha Jaiswal',
+  authorRole: 'Head of Experience Design',
+  authorImage: authorNeha,
+  publishDate: 'January 09, 2023',
+  contentBlocks: [
+    {
+      type: 'intro',
+      text: "Migrating to cloud increases IT efficiency and reduces IT costs, but there are some challenges to consider such as planning and costs. Here is how migration benefits and challenges are addressed across Cost Optimisation, Flexibility, Security, Compliance, Backup and Monitoring."
+    },
+    {
+      type: 'heading',
+      text: 'Benefits of Migrating to Cloud'
+    },
+    {
+      type: 'heading',
+      text: 'Cost Optimisation'
+    },
+    {
+      type: 'image_text',
+      image: imgAIService,
+      imageAlt: 'Cloud cost optimisation',
+      imageLeft: true,
+      text: 'Cloud computing is an efficient and cost-effective way to reduce operational costs while improving IT processes. By moving to the cloud, your company benefits from only paying for what you need — without maintaining costly data centers.'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Pay as you use — The pay-as-you-go model allows you to pay only for the services you use, drastically reducing costs and customising your setup based on usage.',
+        'Reduce Carbon Footprint — Reduce energy costs in terms of electricity and cooling by outsourcing to a cloud provider that offers more energy-efficient infrastructure.',
+        'IT Operations — Reduce the need for expensive IT technicians to manage and maintain hardware.',
+        'Reduce Office Footprint — Reducing real estate costs and encouraging more decentralized offices.',
+      ]
+    },
+    {
+      type: 'heading',
+      text: 'Flexibility & Scalability'
+    },
+    {
+      type: 'paragraph',
+      text: 'With cloud computing, your company can scale up and down based on its IT needs and business plan. Organizations can reshape their infrastructure and workloads to better meet today\'s needs without being confined by outdated equipment and assets.'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Automate Scaling — As demand spikes or if the organization needs more powerful compute resources, resource allocation can be instantly altered.',
+        'Change Ready — As applications and usage evolve, infrastructure can also evolve quickly without requiring major changes.',
+        'Support Hybrid-Cloud — Utilize both public and private clouds to maximize resource efficiency.',
+        'Support Global Presence — Improve performance by running workloads close to where users and customers are located using cloud platforms with a global presence.',
+      ]
+    },
+    {
+      type: 'heading',
+      text: 'Improved Security'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Shared Responsibility — The shared responsibility model requires you to create and maintain a secure cloud environment for your users while the provider secures the underlying infrastructure.',
+        'Stronger Security — Cloud computing offers much stronger security than traditional data centers by storing business information centrally, with security analytics and cross-enterprise visibility.',
+        'Automatic Updates — Most cloud providers keep their network and resources secure by performing periodic tests and patching vulnerabilities as soon as they are detected.',
+      ]
+    },
+    {
+      type: 'heading',
+      text: 'Compliance, Backup & Monitoring'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Certification — Many cloud providers hold compliance certifications such as ISO27001, PCI-DSS, AICPA/SOC and HIPAA, ensuring your data meets industry-specific regulatory requirements.',
+        'Business Continuity — Most providers offer robust DR and business continuity features, with data stored across multiple data centers and geographical regions.',
+        'High Availability — If one server fails, other servers take over the workload, ensuring no single point of failure.',
+        'Central Management Tools — Cloud providers offer centralized tools for managing and monitoring both on-premises and cloud infrastructure from one place.',
+        'Monitoring — Centralized logging and monitoring helps operational services by providing information on hotspots and potential issues.',
+      ]
+    },
+    {
+      type: 'heading',
+      text: 'Challenges to Migration'
+    },
+    {
+      type: 'quote',
+      text: 'If properly planned and contingencies are in place, the migration can be a smooth one.',
+      attribution: 'Cloud Migration Best Practice'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Cost — A lift-and-shift may initially be higher due to legacy applications, but making small changes toward cloud-native services reduces cost in the medium to long term. Using provider tools to monitor resource usage is highly recommended.',
+        'Security & Privacy — Network security and potential vulnerabilities must be assessed before migration. Key checks include end-to-end encryption, real-time threat monitoring, data backup, and alignment with compliance standards like HIPAA, PCI DSS and CCPA.',
+        'Downtime — The biggest risk when moving large amounts of data is network outages. Creating a backup IT environment as a temporary server during migration is a common workaround, though temporary servers may be unable to handle peak loads.',
+      ]
+    },
+    {
+      type: 'paragraph',
+      text: 'Cloud migration, when approached with thorough planning and the right contingencies, delivers lasting gains in cost efficiency, security, scalability and operational visibility — far outweighing the short-term challenges of the transition itself.'
+    },
+  ]
+},
 
   {
-    slug: 'postulates-to-ai',
-    coverImg: imgAI,
-    tagline: 'Artificial Intelligence',
-    subheadline: 'Postulates to Artificial Intelligence',
-    authorName: 'Sankalp',
-    authorRole: 'Principal Research Engineer',
-    authorImage: authorSankalp,
-    publishDate: 'December 2024',
-    contentBlocks: [
-      {
-        type: 'intro',
-        text: 'An introductory discussion on what intelligence actually is, and what it means to call something artificial — the foundations, not the tools.',
-      },
-      {
-        type: 'paragraph',
-        text: 'Before we can build artificial intelligence, we must agree on what we mean by intelligence. This turns out to be harder than it sounds. Psychologists, neuroscientists, and computer scientists have each defined it differently — and none of those definitions fully satisfies the others. The disagreement is not academic. It shapes what we build, how we evaluate it, and whether we understand what we have made.',
-      },
-      {
-        type: 'heading',
-        text: 'What Intelligence Is Not',
-      },
-      {
-        type: 'paragraph',
-        text: 'Intelligence is not the ability to perform a single task with superhuman speed. A calculator outperforms any human at arithmetic. A chess engine outperforms any human at chess. Neither is considered intelligent in any meaningful sense. What these systems lack is not capability — it is generalisation. They cannot transfer what they know to a novel domain, adapt to a rule change they were not trained on, or reason about their own reasoning.',
-      },
-      {
-        type: 'quote',
-        text: 'A large language model that can pass a bar exam cannot tell you whether it has understood the question or merely pattern-matched to a plausible answer. That distinction matters enormously.',
-      },
-      {
-        type: 'heading',
-        text: 'The Three Postulates',
-      },
-      {
-        type: 'bullets',
-        items: [
-          'Intelligence is relational, not absolute. It only makes sense to speak of intelligence in relation to a domain, a context, and a standard of performance. There is no intelligence in the abstract.',
-          'Intelligence requires the capacity for error. A system that cannot be wrong in a domain it operates in is not exhibiting intelligence — it is executing a lookup. The possibility of being wrong is what makes reasoning meaningful.',
-          'Intelligence is observable only through behaviour. We cannot inspect intelligence directly. We infer it from how a system responds to novel, ambiguous, or adversarial inputs — not from its performance on benchmarks designed by its own creators.',
-        ],
-      },
-      {
-        type: 'paragraph',
-        text: 'These postulates do not resolve the debate about whether current AI systems are truly intelligent. They do help clarify the debate. When someone claims that GPT-5 or a future model "is intelligent," they are making a claim about generalisation, error-capacity, and observable behaviour — not about benchmark scores or parameter count. Holding that line, in both research and practice, keeps us honest about what we have built and what remains to be done.',
-      },
-    ],
-  },
+  slug: 'rest-game-changer',
+  coverImg: imgEnterprise,
+  tagline: 'Enterprise Architecture',
+  subheadline: 'Is REST The Biggest Game Changer Of All?',
+  authorName: 'Gaurav Verma',
+  authorRole: 'Enterprise Architecture Lead',
+  authorImage: authorGauravV,
+  publishDate: 'January 09, 2023',
+  contentBlocks: [
+    {
+      type: 'intro',
+      text: "Within the computer industry it is sacrilege to call a technology a game changer. Game changers are claimed everyday but seldom live more than a couple of years. Some, however, have been true to their name — microprocessors, RDBMS, the internet. This brings us to REST, defined in Roy Fielding's PhD thesis in 2000, which quietly and fundamentally changed how software systems communicate."
+    },
+    {
+      type: 'paragraph',
+      text: "Fielding's dissertation defined a framework for understanding software architecture via architectural styles and demonstrated how styles can be used to guide the architectural design of network-based application software. The web and HTTP by their very nature are scalable, reliable and simple to use. It is only obvious to expose services over the web using web standards. This is simply REST."
+    },
+    {
+      type: 'heading',
+      text: 'REST and RDBMS — A Parallel'
+    },
+    {
+      type: 'image_text',
+      image: imgEnterprise,
+      imageAlt: 'REST architecture and standardisation',
+      imageLeft: false,
+      text: 'The author draws an analogy between REST and RDBMS — both have an identical approach towards simplicity and address a similar set of problems. In database design, normalization and creation of entities is the art form while CRUD operations are standardised. On similar lines, it is the design of entity structure — the formation of nouns in the design space — that is the challenge. Once URIs and resource representation are fulfilled, the remainder is simple CRUD-like operations.'
+    },
+    {
+      type: 'quote',
+      text: 'REST is successful for the same reasons RDBMS are — they bring standardisation towards sharing resources and processes. It naturally is decentralised and scales as the web scales.',
+      attribution: 'Architectural Parallel — REST & RDBMS'
+    },
+    {
+      type: 'heading',
+      text: 'Why REST Works at Scale'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'REST needs no special privileges — most IT infrastructure already allows HTTP(S), making adoption frictionless across environments.',
+        'Simple consumption — most client systems allow HTTP access with no special libraries or structures, usable on both mobile and web.',
+        'Naturally decentralised — scales as the web scales, with no central bottleneck or proprietary protocol dependency.',
+      ]
+    },
+    {
+      type: 'heading',
+      text: 'Where REST Falls Short'
+    },
+    {
+      type: 'paragraph',
+      text: "Some design principles of true REST are difficult to achieve in practice. From Roy Fielding's original paper:"
+    },
+    {
+      type: 'quote',
+      text: 'Communication must be stateless in nature, such that each request from client to server must contain all of the information necessary to understand the request, and cannot take advantage of any stored context on the server.',
+      attribution: 'Roy Fielding, Architectural Styles and the Design of Network-based Software Architectures (2000)'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Most applications have a concept of a session — not all requests contain complete information for fulfilment, breaking true statelessness.',
+        'Many clients do not allow PUT and DELETE verbs and some firewalls disallow them, requiring creative solutions such as X-HTTP-METHOD-OVERRIDE.',
+        'Workflows do not fall cleanly into REST whose primary purpose is to expose resources — not to model complex multi-step processes.',
+      ]
+    },
+    {
+      type: 'paragraph',
+      text: "As the article started with REST being a game changer, the author believes the same to be true — primarily because it has such a large use case for implementation. Its constraints, even where imperfectly observed, have produced a more consistent, interoperable and scalable web than any proprietary alternative could have."
+    },
+  ]
+},
+
+ {
+  slug: 'when-cloud-not-needed',
+  coverImg: imgCloud,
+  tagline: 'Cloud',
+  subheadline: '6 Use Cases When Cloud Is Not Needed',
+  authorName: 'Bharat Garg',
+  authorRole: 'Cloud Engineering Lead',
+  authorImage: authorBharat,
+  publishDate: 'January 09, 2023',
+  contentBlocks: [
+    {
+      type: 'intro',
+      text: "The shift to cloud has brought cost savings, flexibility and ease of use — and it would not be an exaggeration to say cloud is one of the cornerstones that allowed the startup revolution. But all technologies have a place. This article highlights the scenarios where cloud may not be applicable — because a poor craftsman blames the tool."
+    },
+    {
+      type: 'paragraph',
+      text: "Cloud computing has a large problem space, however there exist scenarios where it is not the right fit. Under those circumstances it is prudent to use the proper tool rather than force cloud into an unsuitable use case."
+    },
+    {
+      type: 'heading',
+      text: 'Six Scenarios Where Cloud Falls Short'
+    },
+    {
+      type: 'image_text',
+      image: imgCloud,
+      imageAlt: 'Cloud limitations and use cases',
+      imageLeft: false,
+      text: 'Clouds are best suited for open source deployments that allow easy scaling at a moment\'s notice. This scenario changes when licensed databases or proprietary software are used — licenses prohibit such scale out, leaving cloud to be just another data center with licensing costs and cycles coming into picture. If the software is available from the vendor as PAAS, it should be considered, though PAAS brings its own set of challenges.'
+    },
+    {
+      type: 'bullets',
+      items: [
+        '#1 Software License — Licensed or proprietary software prohibits the scale-out that makes cloud valuable, effectively reducing cloud to an expensive data center.',
+        '#2 Using PAAS Software — PAAS offers managed services and lower staffing costs, but risks vendor lock-in and makes it hard to migrate large databases out of a cloud platform.',
+        '#3 Long Term Cost — Cloud has a low cost of entry with hourly billing and on-demand scaling. However as predictability comes in and costs accumulate, a long-term move back to a data center may be the prudent strategy.',
+        '#4 Data Security and Regulations — Cloud may not follow all regulations. Data residency laws, cross-border restrictions and compliance requirements can make cloud unsuitable or force odd strategies like splitting data and applications across separate physical locations.',
+        '#5 VPN to a Data Center — Accessing private data center applications over VPN is slow, unreliable and increases complexity requiring a dedicated network engineering team. Where database access is needed, deploying the application in a datacenter next to the DB is recommended instead.',
+        '#6 Applications Not Designed for Cloud — Many applications are not designed to scale out. Cloud is designed for horizontal scale — deploying applications that cannot support this, or building VMs inside cloud VMs, is a strategy to fail.',
+      ]
+    },
+    {
+      type: 'quote',
+      text: 'Cloud like any tool has a set of use cases and when used in an unintended manner will only cause sorrow.',
+      attribution: 'Cloud Strategy — Know Your Use Case'
+    },
+    {
+      type: 'paragraph',
+      text: 'Suitable precautions should be taken before committing to cloud. Security should be built over the application and exposed over services rather than relying on VPN. And when licensing, regulation or architecture constraints apply, deploying on-premise is not a step backward — it is the right engineering decision.'
+    },
+  ]
+},
 
   {
-    slug: 'ai-ready-organisation',
-    coverImg: imgAIService,
-    tagline: 'AI Strategy',
-    subheadline: 'Building an AI-Ready Organisation',
-    authorName: 'Gaurav Kumar',
-    authorRole: 'CEO, Thotnr',
-    authorImage: authorGauravK,
-    publishDate: 'November 2024',
-    contentBlocks: [
-      {
-        type: 'intro',
-        text: 'The operating muscle companies need to absorb AI capability is not built overnight. Here is how leading enterprises are developing it deliberately — and what the laggards are getting wrong.',
-      },
-      {
-        type: 'paragraph',
-        text: 'AI readiness is not a technical condition. It is an organisational one. The enterprises that consistently extract value from AI investments share a set of structural and cultural characteristics that precede any specific technology deployment. These characteristics are not outcomes of AI adoption — they are preconditions for it.',
-      },
-      {
-        type: 'heading',
-        text: 'The Five Dimensions of AI Readiness',
-      },
-      {
-        type: 'bullets',
-        items: [
-          'Data Infrastructure — Not just data warehouses, but governed, accessible, well-documented datasets that teams can actually use for model training without months of remediation.',
-          'Decision Architecture — Explicit mapping of which business decisions should be augmented or automated by AI, with clear ownership and feedback loops.',
-          'AI Literacy — A baseline of conceptual understanding across leadership and middle management, sufficient to evaluate AI proposals, interpret outputs, and spot the hallmarks of a flawed deployment.',
-          'Talent and Partnerships — A realistic model for building vs. buying AI capability, with partnerships that transfer knowledge rather than creating permanent dependency.',
-          'Ethics and Governance — Frameworks for evaluating AI outputs for bias, fairness, and regulatory compliance before deployment — not as an afterthought.',
-        ],
-      },
-      {
-        type: 'image_text',
-        image: imgAIService,
-        imageAlt: 'Building AI capability',
-        imageLeft: true,
-        text: 'Most organisations have made progress on the technical dimensions of readiness — they have data lakes, they have hired data scientists, they have run proof of concepts. The gap is almost always on the governance and decision architecture dimensions. Who in the organisation owns the responsibility for ensuring that AI outputs are correct? Who reviews model performance over time? The absence of clear answers to these questions is what transforms promising AI initiatives into liability.',
-      },
-      {
-        type: 'quote',
-        text: 'AI readiness is not the presence of a data science team. It is the presence of a system for converting data science outputs into better business decisions.',
-      },
-      {
-        type: 'paragraph',
-        text: 'Building AI readiness is a two- to three-year programme, not a quarter initiative. It requires sustained investment in infrastructure, people, and process — and it requires executive sponsors who understand that the payoff is not a single project, but a compounding organisational capability. The enterprises making this investment now will be structurally advantaged in every market they compete in for the next decade.',
-      },
-    ],
-  },
+  slug: 'tech-partner-guide-founders',
+  coverImg: imgTechPartner,
+  tagline: 'AI Strategy',
+  subheadline: "Non-Tech Founder's Tech Partner Checklist",
+  authorName: 'Gaurav Kumar',
+  authorRole: 'CEO, Thotnr',
+  authorImage: authorGauravK,
+  publishDate: 'January 09, 2023',
+  contentBlocks: [
+    {
+      type: 'intro',
+      text: "Non-technical founders risk being seen as unqualified when dealing with technology — but Jack Ma, Rashmi Sinha and Evan Spiegel prove otherwise. The success of a technology project depends more on you as founder than on the vendor. Ideas need multiple iterations. If a vendor says he understood everything after the first discussion, just walk away."
+    },
+    {
+      type: 'paragraph',
+      text: "You should educate yourself on concepts like waterfall, agile and risk. With that basic understanding, here are the top nine aspects to watch out for when looking for a technology partner."
+    },
+    {
+      type: 'heading',
+      text: 'Own Your Source Code, Email and Environments'
+    },
+    {
+      type: 'image_text',
+      image: imgTechPartner,
+      imageAlt: 'Founder owning intellectual property and source code',
+      imageLeft: true,
+      text: 'Source code is your intellectual property and should remain with you. As founder you need complete control — be an administrator of all systems, own the hardware, domain names, SSL certificates and environments. These should be paid by your credit cards and you should have commercial rights on them. Beware of deals too good to be true — vendors who manage and own everything in a package will eventually milk you. Ensure you sign a contract that clearly spells out that source code and environments are your IP.'
+    },
+    {
+      type: 'heading',
+      text: 'Evaluate Multiple Technology Options'
+    },
+    {
+      type: 'quote',
+      text: 'When the only tool you have is a hammer then all problems look like nails.',
+      attribution: 'On choosing the right technology stack'
+    },
+    {
+      type: 'paragraph',
+      text: 'Technology is just a tool and you need to ensure your craftsman knows how to use more than one. Run away from shops that insist there exists only one option. Ask for technology options, understand the design choices and short and long term benefits, costs and risks of each. Individuals who are one-technology shops often fail — they may not use the best tool for the job.'
+    },
+    {
+      type: 'heading',
+      text: 'Vendor Selection and Commercial Models'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Steer Away from WordPress, Magento & In-the-Box Vendors — As a startup you are building something never done before. Existing packaged software will require heavy unintended customisation and will lead to issues. Vendors who rely on prepackaged solutions cannot run with you to new horizons.',
+        'Understand Commercial Models — Fixed bid fixes scope and risk sits with the vendor. Time and material buys hours. Ask for proposals for both. Software development is an art with many risks — a vendor who does not understand these models has no experience building systems.',
+        'Fortnightly Demos and Payment Milestones — Insist on a plan with fortnightly deliverables that can be demoed and tested. This allows a private beta early on and enables feedback. Tie payments to deliveries — pay when milestones are met.',
+      ]
+    },
+    {
+      type: 'heading',
+      text: 'Execution, QA and Team Practices'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Weekly Risk and Issues Reviews — Projects do not slip by a month on the last day, they slip one day at a time. Risks and issues managed in time have minimal impact. If a vendor is not raising concerns, they are likely not managing them.',
+        'Build a QA Practice — Learn to define bug priority and insist on acceptance criteria. Tie fortnightly payment milestones to the said acceptance criteria for greater predictability on product delivery.',
+        'Have the Team Work From Your Site — Close collaboration is key to success. Insist that the team works from your office with you.',
+        'Estimate the Project Yourself — Insist on detailed proposals with team size, experience and time. Find market salaries for those roles, calculate and add a profit markup. If the vendor is not earning a decent profit, they will not deliver your project.',
+      ]
+    },
+    {
+      type: 'paragraph',
+      text: 'Being a non-technical founder is not a disadvantage — it is a different vantage point. Armed with the right questions, the right contracts and the right commercial understanding, you can hold any technology partner accountable and build something genuinely new.'
+    },
+  ]
+},
 
   {
-    slug: 'cost-of-legacy-architecture',
-    coverImg: imgEnterprise,
-    tagline: 'Enterprise Architecture',
-    subheadline: 'The True Cost of Legacy Architecture',
-    authorName: 'Gaurav Verma',
-    authorRole: 'Enterprise Architecture Lead',
-    authorImage: authorGauravV,
-    publishDate: 'October 2024',
-    contentBlocks: [
-      {
-        type: 'intro',
-        text: 'Technical debt is not just a developer\'s problem. It is a strategic liability that compounds — blocking AI adoption, slowing delivery, and inflating operating cost every quarter it stays.',
-      },
-      {
-        type: 'paragraph',
-        text: 'The term "technical debt" was coined by Ward Cunningham in 1992 as a metaphor for the accumulated cost of shortcuts taken in software development. Thirty years later, most enterprises are not paying interest on that debt — they are drowning in it. Systems built in the 1990s are running core operations in banking, insurance, logistics, and healthcare. The cost of keeping them alive now exceeds the cost of replacing them, but the risk of replacement is perceived as too high to approve.',
-      },
-      {
-        type: 'heading',
-        text: 'The Hidden Accounting',
-      },
-      {
-        type: 'bullets',
-        items: [
-          'Velocity tax — Legacy architectures impose a consistent overhead on every delivery. New features require understanding systems nobody documented and nobody from the original team is still around to explain.',
-          'AI blockade — Modern AI and analytics capabilities require clean, accessible, well-structured data. Legacy systems produce exactly the opposite. The enterprise that cannot modernise its architecture cannot adopt AI at scale.',
-          'Integration debt — Each point-to-point integration between legacy systems adds another potential failure mode, another team responsible for another part of the mesh, another budget line that cannot be redirected.',
-          'Talent cost — Engineers with skills in COBOL, legacy ERP platforms, and mainframe administration command premium rates, retire, and do not get replaced. The knowledge walks out the door.',
-        ],
-      },
-      {
-        type: 'quote',
-        text: 'We have seen organisations spend more maintaining a legacy system in a single year than a full modernisation programme would have cost. The status quo is not safe — it is just the risk you are used to.',
-        attribution: 'Gaurav Verma, Enterprise Architecture Lead',
-      },
-      {
-        type: 'heading',
-        text: 'The Path Forward Is Not a Big Bang',
-      },
-      {
-        type: 'paragraph',
-        text: 'The failure mode most enterprises fear — the multi-year, over-budget "rip and replace" — is real, but it is a failure of approach, not of intent. Architecture modernisation done well is incremental. It uses techniques like the strangler fig pattern, domain-driven decomposition, and capability-based roadmapping to extract value from legacy systems while systematically reducing dependence on them. The goal is not a single transformation event. It is a sustained reduction in architectural drag, pursued with the same rigour as any other strategic investment.',
-      },
-      {
-        type: 'paragraph',
-        text: 'The enterprises that are winning the next decade are not the ones with the largest AI budgets. They are the ones with architectures capable of absorbing AI capability as it matures. That capability does not arrive fully formed — it is built, quarter by quarter, by organisations that chose to invest in their foundations while their competitors were still debating whether to start.',
-      },
-    ],
-  },
+  slug: 'robotic-process-automation',
+  coverImg: imgRpa,
+  tagline: 'Automation',
+  subheadline: 'What is RPA?',
+  authorName: 'Deepak Bindal',
+  authorRole: 'ML Engineering Lead',
+  authorImage: authorDeepak,
+  publishDate: 'January 09, 2023',
+  contentBlocks: [
+    {
+      type: 'intro',
+      text: "The global RPA market is expected to reach $22 billion by 2025, according to Forrester. Robotic Process Automation is the use of software bots to automate repetitive, rules-based tasks within or between computer systems — working against existing user interfaces with no need to construct original software integrations, and requiring no changes to existing technology."
+    },
+    {
+      type: 'paragraph',
+      text: "RPA is different from other automation technologies in that it is a client-side technology — not a server-side technology. It works against user interfaces, not server APIs. This allows organisations to automate operations using their existing applications exactly as they are."
+    },
+    {
+      type: 'heading',
+      text: 'The Technology Behind RPA'
+    },
+    {
+      type: 'image_text',
+      image: imgRpa,
+      imageAlt: 'Robotic process automation technology',
+      imageLeft: false,
+      text: 'The software used to create bots is called an RPA authoring tool. These tools expose the application UI model as an interactable interface to author user workflows. Although RPA is marketed as an end-user tool designed to replace human interaction with computers, it requires some degree of skill to customise and define a flow — especially to handle error scenarios, configurability and high-level abstractions, since end users are seldom trained for abstract computer modelling.'
+    },
+    {
+      type: 'heading',
+      text: 'Attended vs. Unattended RPA'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Attended RPA — Requires some level of human intervention. Used in the front office, working alongside human workers. Can still be triggered by system events.',
+        'Unattended RPA — Requires no human intervention to complete tasks. Can be triggered by system events or scheduled to run automatically. Works on enterprise data behind the scenes on back-end servers.',
+      ]
+    },
+    {
+      type: 'heading',
+      text: 'Where RPA Is Most Useful'
+    },
+    {
+      type: 'paragraph',
+      text: 'RPA may be used to perform any repetitive task a human does. The RPA journey begins with the business defining a process and a detailed workflow with errors, exceptions and scenarios — which is then automated using an RPA tool. Tools may be scheduled and time-shared; for example, during business hours the bot may work a HRMS while late at night it handles end-of-day processes.'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Downloading and sending reports via email.',
+        'Copying files from a remote location.',
+        'Resetting passwords on request.',
+        'Repetitive data manipulation such as in spreadsheets.',
+        'Automating QA processes.',
+      ]
+    },
+    {
+      type: 'quote',
+      text: 'While RPA tools allow simple decision making and flow control, they are not currently suited for areas that require creative input or a high level of intelligence.',
+      attribution: 'RPA Scope and Limitations'
+    },
+    {
+      type: 'heading',
+      text: 'Benefits of RPA'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Boosting Productivity — RPA allows employees to focus on high-value tasks that only they can do, while leaving repetitive work to bots.',
+        'Improve Efficiency to Generate Savings — Faster processing times and reduced errors lower processing costs and increase per-employee output.',
+        'Accuracy and Consistency — Achieving 100% error-free data accuracy is within reach as automation eliminates errors on repetitive tasks.',
+        'Better Data Security — RPA reduces the number of human touches required to process personal information, keeping data more secure.',
+        'Scale on Demand — RPA can scale up and down instantly to handle any volume of work, making it a particular advantage in workflows with irregular volume.',
+        'Better Customer Service — By spending less time on rote administrative tasks, staff can turn their attention back to customers.',
+      ]
+    },
+    {
+      type: 'paragraph',
+      text: 'As existing applications require no reconfiguration or development, RPA sits uniquely apart from other software — it consumes and uses existing applications rather than replacing them. This makes it one of the lowest-friction paths to operational automation available to enterprises today.'
+    },
+  ]
+},
 
   {
-    slug: 'cloud-migration-regret',
-    coverImg: imgCloud,
-    tagline: 'Cloud',
-    subheadline: 'Cloud Migration Without the Regret',
-    authorName: 'Bharat Garg',
-    authorRole: 'Cloud Engineering Lead',
-    authorImage: authorBharat,
-    publishDate: 'September 2024',
-    contentBlocks: [
-      {
-        type: 'intro',
-        text: 'Most cloud migrations deliver less than half their projected savings. Here is the framework we use to ensure the economics actually work — before a single workload moves.',
-      },
-      {
-        type: 'paragraph',
-        text: 'Cloud migration regret is a documented phenomenon. Gartner, IDC, and practitioners across the industry have catalogued the pattern: organisations migrate to cloud expecting dramatic cost reduction and operational simplification, then discover eighteen months later that costs have increased and complexity has compounded. The technology was not the problem. The approach was.',
-      },
-      {
-        type: 'heading',
-        text: 'Why Lift-and-Shift Fails',
-      },
-      {
-        type: 'paragraph',
-        text: 'The root cause of most cloud migration disappointment is treating cloud as a hosting provider rather than a platform capability. Lifting an on-premise workload to a cloud VM and paying cloud-tier pricing for it produces the worst of both worlds: the operational model of on-premise without the cost advantages of cloud-native architecture. This is the lift-and-shift trap, and it is where the majority of cloud project budgets go to die.',
-      },
-      {
-        type: 'image_text',
-        image: imgCloud,
-        imageAlt: 'Cloud architecture',
-        imageLeft: false,
-        text: 'Cloud-native migration — the genuine article — involves redesigning workloads to exploit the elasticity, managed services, and pay-as-you-go economics that cloud platforms actually offer. It takes longer and costs more upfront. But it is the only approach that delivers durable cost reduction, because it replaces fixed infrastructure costs with variable costs that scale with actual demand.',
-      },
-      {
-        type: 'heading',
-        text: 'The Pre-Migration Checklist',
-      },
-      {
-        type: 'bullets',
-        items: [
-          'Application portfolio rationalisation — Not every application should move to cloud. Some should be retired. Some should be replaced with SaaS. Migrating technical debt to cloud multiplies it.',
-          'Total cost of ownership modelling — Include egress costs, support tiers, licensing under cloud pricing, and the operational cost of managing cloud infrastructure. Cloud is often cheaper, but rarely by the margin the initial estimate suggests.',
-          'Data gravity assessment — Applications that process large volumes of data on-premise often generate significant egress costs in cloud. These need to be modelled before migration, not discovered after.',
-          'Workload classification — Tier your applications by migration approach: retain, retire, rehost, replatform, refactor, or replace. The proportion in each tier determines your overall programme economics.',
-        ],
-      },
-      {
-        type: 'paragraph',
-        text: 'Cloud migration done well is one of the highest-return infrastructure investments an enterprise can make. The barrier is not the technology — it is the discipline to model honestly, migrate selectively, and redesign where redesign is warranted. Organisations that approach cloud as an architecture discipline rather than an infrastructure project consistently achieve the outcomes that the others read about in case studies and assume are exceptional.',
-      },
-    ],
-  },
+  slug: 'next-generation-user-experience',
+  coverImg: imgExperience,
+  tagline: 'Experience Design',
+  subheadline: 'The Next Generation User Experience Today',
+  authorName: 'Neha Jaiswal',
+  authorRole: 'Head of Experience Design',
+  authorImage: authorNeha,
+  publishDate: 'January 09, 2023',
+  contentBlocks: [
+    {
+      type: 'intro',
+      text: "The computer user interface has perhaps been the most frustrating aspect of technology adoption since the dawn of the computer age. Humans had to adapt to using a computer — from punch cards to keyboards to touch. The new style of user interaction will not be an evolution of the human hand but a revolution in how humans interact with computers. And the good news is this is available today, commercially, out of research labs."
+    },
+    {
+      type: 'paragraph',
+      text: "All such experiences required us to do something unnatural — guided and limited by how the application wishes the user to behave. This article discusses consumer technologies available today to design what is possible now, short of surgical implants into cognitive processing."
+    },
+    {
+      type: 'heading',
+      text: 'Voice as the New Interface'
+    },
+    {
+      type: 'image_text',
+      image: imgExperience,
+      imageAlt: 'Voice driven user experience and natural interfaces',
+      imageLeft: false,
+      text: '"Ok Google, send a message to John Doe" or "Siri, call Jane Doe" — these work today, yet most applications have not exploited these abilities. This voice-driven user experience will have no text inputs. Users will not be authenticated by what they know such as passwords, but by what they are — fingerprints, voice and face recognition, as already used by Amazon, the App Store and Play Store. Speech-to-text and natural language processing are commercially available through Dialogflow, Watson Conversation and Amazon Lex — the heavy lifting is already done, waiting to be unwrapped.'
+    },
+    {
+      type: 'quote',
+      text: 'All that remains is to plug in the business and exploit what will truly be the greatest shift in how applications have been designed.',
+      attribution: 'On the natural user experience opportunity'
+    },
+    {
+      type: 'heading',
+      text: 'The Impedance Between Human Thinking and Computer Interaction'
+    },
+    {
+      type: 'paragraph',
+      text: 'Humans see tasks as a means to an end. A sales executive thinks: "I need the YTD report for last quarter to replan my yearly targets." The computer action required is to navigate a reports page, select a report, and input a date range. Similarly, purchasing a product online has moved from requesting a salesperson to searching, filtering and comparing — when the natural ask was simply "I would like to buy a brown formal shoe under $100."'
+    },
+    {
+      type: 'paragraph',
+      text: 'It is this translation of asks — and the extra steps required to precisely define the ask — that causes the impedance. One should notice how voice-driven design is oriented towards being a human being and not a slave to a machine. We recognise each other by faces, we request tasks, give instructions and provide feedback all using speech.'
+    },
+    {
+      type: 'heading',
+      text: 'Industries Ready for This Shift'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Cab applications — requesting a ride in natural language without navigating pickup, destination and payment screens.',
+        'Online shopping — especially groceries, where a natural spoken request replaces search, filter and compare.',
+        'Messaging, calendaring and personal assistants — already partially exploited but far from mainstream adoption.',
+        'Business reporting tools — goal-oriented queries replacing multi-step report navigation.',
+      ]
+    },
+    {
+      type: 'paragraph',
+      text: 'Both B2B and B2C segments can exploit this shift. The back-end technology is commercially available and mobile penetration is sufficient to consume this experience. If you have APIs, services and mobile apps — you are most likely ready. The need to expose business as a service is the primary prerequisite. The computers will continue to work as they always have, but the impedance of interaction is now also absorbed by the machines. The question is not whether this shift will happen — a natural user experience is inevitable and will affect every possible application. The question is whether your business will lead it or follow it.'
+    },
+  ]
+},
+
+{
+  slug: 'owasp-security-guide',
+  coverImg: imgOwasp,
+  tagline: 'Security',
+  subheadline: 'Security Risks to Watch Out For in Your Web Application',
+  authorName: 'Hariraj Singh',
+  authorRole: 'Security Architecture Lead',
+  authorImage: authorHariraj,
+  publishDate: 'January 09, 2023',
+  contentBlocks: [
+    {
+      type: 'intro',
+      text: "OWASP — the Open Web Application Security Project — is a worldwide not-for-profit organization focused on improving software security, regularly publishing the top security holes across applications and suggestions for fixing them. The major cause of security issues is that security is an afterthought. Security should be baked into the design of the application, not patched in later."
+    },
+    {
+      type: 'paragraph',
+      text: "This article borrows heavily from OWASP and presents the same from a developer's point of view. The sections below provide an overview of each vulnerability and point to detailed resources, describing possible technologies used and marking potential risks."
+    },
+    {
+      type: 'heading',
+      text: 'Injection'
+    },
+    {
+      type: 'image_text',
+      image: imgOwasp,
+      imageAlt: 'Application security and injection attacks',
+      imageLeft: false,
+      text: 'An injection attack occurs when user input is entered such that executing code produces undesired data. This happens when input is not validated or filtered — famously in SQL injection but equally applicable to NoSQL, ORM and LDAP. Consider a login query using username and password fields — if a user enters "username ; Select * From Users;" the query evaluates and exposes all users. All sources of input — cookies, form fields, JSON, headers — must be validated. Filtering code ensures protection.'
+    },
+    {
+      type: 'heading',
+      text: 'Authentication, Access and Data Vulnerabilities'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Broken Authentication — Exploited via brute force attacks on known username and password databases, and session hijacking. Fixed by enforcing strong passwords, Single Sign-On, SSL, and two-factor authentication.',
+        'Sensitive Data Exposure — If data is intercepted it should not be usable. Man-in-the-middle attacks must be stopped. Sensitive data must be salted and encrypted in motion and at rest — credit cards, FTP files and all shared data must travel over TLS/SSL with strong algorithms and keys.',
+        'Broken Access Control — Authentication controls who has access but not what kind of access. Defining access control only in UI without enforcing it on the API or business layer is poor practice. Claims-based or role-based authorization frameworks greatly improve protection against unprivileged access.',
+        'XML External Entities — XML and JSON parsers can have vulnerabilities allowing execution of unwanted code. In modern dynamic languages, code scripts may be embedded in data and executed server-side.',
+      ]
+    },
+    {
+      type: 'heading',
+      text: 'Infrastructure, Code and Runtime Vulnerabilities'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Security Misconfiguration — Poor hardening leaves vulnerabilities open — especially items left configured for development debugging that reach production. Running processes as root, exposing stack traces and incorrect directory privileges all increase attack surface. Once patched, the surface area is greatly reduced.',
+        'Cross-Site Scripting (XSS) — JavaScript may be embedded in user input and stored in a database, then executed on a victim\'s computer to transmit vital information or redirect users. Anti-XSS filters on incoming HTTP streams prevent this.',
+        'Insecure Deserialization — Serialized input when deserialized may exploit underlying issues such as buffer overflow. Strict type checks and deserialization into known entities provide safety, though this is harder to manage in dynamic languages.',
+        'Using Components with Known Vulnerabilities — New vulnerabilities are found regularly in applications and libraries. Attackers rely on long patch cycles. It is imperative to apply patches as and when they become available.',
+      ]
+    },
+    {
+      type: 'quote',
+      text: 'Excellent logging not only helps prevent and circumvent attacks but also informs of security problems that may be fixed before they are exploited.',
+      attribution: 'On Insufficient Logging & Monitoring'
+    },
+    {
+      type: 'paragraph',
+      text: 'Monitoring and alerting are primary tools for finding and taking immediate corrective action. When an attack occurs, logs are the primary tool for response and postmortem. Tools such as Splunk, ELK and Logstash may be employed to actively respond to attacks. Security is not a feature to be added — it is a discipline to be designed in from the start.'
+    },
+  ]
+},
 
   {
-    slug: 'design-systems-enterprise',
-    coverImg: imgUX,
-    tagline: 'Experience Design',
-    subheadline: 'Design Systems for the Enterprise',
-    authorName: 'Neha Jaiswal',
-    authorRole: 'Head of Experience Design',
-    authorImage: authorNeha,
-    publishDate: 'August 2024',
-    contentBlocks: [
-      {
-        type: 'intro',
-        text: 'A design system is not a component library. It is an operating agreement between design and engineering about what "good" means — and in large organisations, that agreement is worth more than any individual feature.',
-      },
-      {
-        type: 'paragraph',
-        text: 'Enterprise software is built by teams. Often dozens of teams, working in parallel, on adjacent products that users must navigate as a coherent whole. Without a shared design system, each team makes its own decisions about spacing, typography, interaction patterns, and error states. The result is an interface that feels like it was assembled from parts of twenty different products — because it was.',
-      },
-      {
-        type: 'heading',
-        text: 'What a Design System Actually Contains',
-      },
-      {
-        type: 'bullets',
-        items: [
-          'Design tokens — The abstract values (colour, spacing, typography, motion) that establish the visual grammar of the product. These should be single-sourced and consumed by both design tools and code.',
-          'Component library — Tested, accessible, documented UI components with clear usage guidelines and explicit "do / do not" patterns.',
-          'Interaction patterns — Documented standards for common UX flows: form validation, error handling, loading states, empty states. These prevent teams from solving the same problem differently.',
-          'Content guidelines — Voice, tone, label conventions, and microcopy standards. Inconsistent language is as confusing as inconsistent UI.',
-          'Governance model — Who owns the system, how contributions are reviewed, how breaking changes are communicated, and how consuming teams are supported.',
-        ],
-      },
-      {
-        type: 'quote',
-        text: 'A design system that engineering teams do not adopt is a design system that does not exist. Adoption is a product problem, not a documentation problem.',
-      },
-      {
-        type: 'paragraph',
-        text: 'The governance model is what separates design systems that scale from those that atrophy. Without a clear process for how the system evolves, consuming teams either fork it or ignore it — and after eighteen months you have three slightly different versions of the same component in production. The investment required to maintain a healthy design system is real, but it is trivial compared to the cost of the inconsistency it prevents.',
-      },
-    ],
-  },
+  slug: 'postulates-to-ai',
+  coverImg: imgPostulates,
+  tagline: 'Artificial Intelligence',
+  subheadline: 'Postulates to Artificial Intelligence',
+  authorName: 'Deepak Bindal',
+  authorRole: 'ML Engineering Lead',
+  authorImage: authorDeepak,
+  publishDate: 'January 09, 2023',
+  contentBlocks: [
+    {
+      type: 'intro',
+      text: "What is intelligence — and can a machine possess it? This article begins with that philosophical question, traces it through the Turing Test and the Chinese Room argument, and arrives at the distinction between Specialized AI and General AI. It then pivots to one of the most practical technology shifts in modern computing: containers — what they are, how they differ from virtual machines, and why enterprises should start investing in them now."
+    },
+    {
+      type: 'paragraph',
+      text: "Denis Diderot wrote in Pensées Philosophiques: 'If they find a parrot who could answer to everything, I would claim it to be an intelligent being without hesitation.' Extended to machines — would a machine that answers everything as a human would, be intelligent? These questions remain largely philosophical, open to interpretation, and as yet unanswered."
+    },
+    {
+      type: 'heading',
+      text: 'The Turing Test — Defining Machine Intelligence'
+    },
+    {
+      type: 'image_text',
+      image: imgPostulates,
+      imageAlt: 'Turing test and machine intelligence',
+      imageLeft: false,
+      text: 'Alan Turing, one of the first pioneers in machine intelligence, proposed: "If a machine behaves as intelligently as a human being, then it is as intelligent as a human being." In a 1950 paper he reduced the problem of defining intelligence to a simple question of conversation — if a human interrogator talking to either a human or a computer behind closed screens cannot distinguish between the two, the computer may be considered intelligent.'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Intelligence vs Consciousness — Would a machine have consciousness and be able to feel? Is consciousness required for intelligence?',
+        'Dualism — Does intelligence have only physical components, or does it also have non-physical ones?',
+        'Scope of AI — A machine that can solve all problems a human can. To achieve this, all aspects of learning and features of intelligence must be precisely defined so a machine may simulate them.',
+      ]
+    },
+    {
+      type: 'heading',
+      text: 'The Chinese Room — Strong AI vs Weak AI'
+    },
+    {
+      type: 'paragraph',
+      text: 'One of the top criticisms of the Turing Test is the Chinese Room argument. Assume a computer program accepts input in Chinese and produces a response in Chinese, passing the Turing Test. Does the program understand Chinese — or is it simulating understanding? If it understands, it is Strong AI. If it merely simulates, it is Weak AI.'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Why should intelligence be defined in terms of human capabilities and limitations — should intelligence not be larger than human capacity?',
+        'Human intelligence is driven by experience, instincts and the unconscious mind that does not follow fixed rules.',
+        'The Turing Test is unable to distinguish intelligence as defined by babies or children.',
+        'What if the program maps every neuron in a human brain? Would intelligence require functioning within limited capacity and resources, as humans do?',
+      ]
+    },
+    {
+      type: 'quote',
+      text: 'Artificial General Intelligence is the creation of machine intelligence that could do anything a human can — an active area of research that requires understanding human intelligence before it may be synthesized.',
+      attribution: 'Specialized AI vs General AI'
+    },
+    {
+      type: 'paragraph',
+      text: 'Systems such as machine learning and deep learning produce Specialized AI — good at one trained task such as playing chess or classifying images, requiring retraining for new problem classes. Artificial General Intelligence — the ability to solve a large class of problems as a human would — remains the frontier.'
+    },
+    {
+      type: 'heading',
+      text: 'Containers — Virtualization Evolved'
+    },
+    {
+      type: 'paragraph',
+      text: 'In the world we live in, computer technology is expanding at an unprecedented rate. One concept borrowed from the mainframe world — containers — has taken the tech world by storm. To understand containers, one must first understand virtualization: the ability to create a virtual instance of a resource — hardware, device or operating system.'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Hypervisor — Virtualizes hardware by creating virtual disks, CPUs and network interfaces. The VM hosts an OS which hosts applications. Type 1 (bare metal) runs directly on hardware; Type 2 requires a host OS.',
+        'Abstract Computers (JVM, CLR) — Run inside an OS and provide a completely different instruction set than raw hardware. Essentially programming models making software development friendlier.',
+        'LPAR — Logical partitioning of mainframe resources, allowing separate virtualized computers with separate operating systems.',
+        'Containers — Virtualize the operating system itself, not the hardware. The OS kernel allows multiple isolated user-space instances. Each container feels like a real OS but competing resources are managed by the underlying OS.',
+      ]
+    },
+    {
+      type: 'image_text',
+      image: imgEnterprise,
+      imageAlt: 'Docker containers and DevOps deployment',
+      imageLeft: true,
+      text: 'Containers have several benefits over traditional hypervisors. Each VM instance does not require a separate OS installation — reducing memory, CPU footprint and licensing costs for OS and antivirus. Startup and shutdown times drop from minutes to single-digit seconds. From a DevOps perspective, a container guarantees identical configuration and software across all environments — no configuration mismatch between development, test and production. The build process prepares a container image; that image is what gets deployed.'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Challenge — Containers require load balancers that can work across different ports, unlike VMs where no such port mapping is needed.',
+        'Risk — If the host OS fails, it may bring down multiple containers simultaneously — unlike VMs where one VM failure does not affect others.',
+        'Isolation — VMs provide stronger isolation; users managing containers have access to all containers on a machine. Databases are particularly hard to manage in containers.',
+        'Distribution — Container instances should be distributed across separate physical OS instances. Tools like CoreOS manage containers across separate physical machines for reliability.',
+      ]
+    },
+    {
+      type: 'quote',
+      text: 'Enterprises should start investing in containers and take the first steps they took for VMs and clouds. This transition will need a mindset change where DB, application and network teams trust each other.',
+      attribution: 'Container Adoption — The Path Forward'
+    },
+    {
+      type: 'paragraph',
+      text: 'Virtualization is also moving beyond servers — new techniques now exist to virtualize the mobile ecosystem, allowing a single phone to run multiple mobile VMs with different images for home and work. From machine intelligence to container infrastructure, these are not isolated concepts — they are converging threads of a computing landscape expanding faster than at any point in history. Container virtualization is here to stay. Start preparing.'
+    },
+  ]
+},
 
   {
-    slug: 'zero-trust-architecture',
-    coverImg: imgSecurity,
-    tagline: 'Security',
-    subheadline: 'Zero Trust Architecture in Practice',
-    authorName: 'Hariraj Singh',
-    authorRole: 'Security Architecture Lead',
-    authorImage: authorHariraj,
-    publishDate: 'July 2024',
-    contentBlocks: [
-      {
-        type: 'intro',
-        text: 'Zero Trust has been a security industry buzzword for over a decade. Most organisations that say they have implemented it have not. Here is what implementation actually looks like — and why the gap between the name and the reality matters.',
-      },
-      {
-        type: 'paragraph',
-        text: 'The core principle of Zero Trust is simple: never trust, always verify. No user, device, or network connection is inherently trusted, even if it originates inside the corporate perimeter. Every access request is authenticated, authorised, and continuously validated. This sounds straightforward until you try to implement it across an organisation with fifteen years of implicit-trust assumptions baked into its network architecture, application design, and operational processes.',
-      },
-      {
-        type: 'heading',
-        text: 'The Layers That Must Change',
-      },
-      {
-        type: 'bullets',
-        items: [
-          'Identity and access management — Every identity, human and machine, must be strongly authenticated. Shared accounts, service accounts with excessive privileges, and password-only authentication are incompatible with Zero Trust.',
-          'Network micro-segmentation — Lateral movement is the attacker\'s friend. Flat networks where any internal host can reach any other internal host must be replaced with segmented architecture where access is granted by policy, not by geography.',
-          'Device trust — Not all devices are equal. Managed, compliant, up-to-date devices should receive different access privileges than unmanaged or personal devices, even when the user identity is the same.',
-          'Continuous authorisation — Validating identity at login is not sufficient. Access decisions should be re-evaluated continuously against current context: device health, location, behaviour patterns.',
-        ],
-      },
-      {
-        type: 'quote',
-        text: 'The perimeter never really protected you. You just did not know it until someone breached it. Zero Trust is the honest acknowledgement that the insider and the outsider threat are the same problem.',
-      },
-      {
-        type: 'paragraph',
-        text: 'Implementing Zero Trust is a multi-year programme. The organisations that have done it successfully took an incremental approach: start with identity (the highest-value, lowest-disruption layer), then network segmentation, then device trust, then application-level controls. Each layer delivers independent value. And critically, they maintained executive sponsorship throughout — because Zero Trust consistently requires trading user convenience for security resilience, and that trade-off needs to be owned at the top.',
-      },
-    ],
-  },
-
-  {
-    slug: 'llms-in-production',
-    coverImg: imgAI,
-    tagline: 'Artificial Intelligence',
-    subheadline: 'LLMs in Production: What Actually Works',
-    authorName: 'Deepak Bindal',
-    authorRole: 'ML Engineering Lead',
-    authorImage: authorDeepak,
-    publishDate: 'June 2024',
-    contentBlocks: [
-      {
-        type: 'intro',
-        text: 'Deploying large language models in enterprise production is a categorically different challenge from the demos that make it look easy. Here is what we have learned from deployments at scale.',
-      },
-      {
-        type: 'paragraph',
-        text: 'The LLM demo that impresses a boardroom takes an afternoon to build. The production system that reliably serves that capability to fifty thousand users — with acceptable latency, cost, accuracy, and safety properties — takes six to twelve months and involves engineering challenges that no benchmark paper prepares you for.',
-      },
-      {
-        type: 'heading',
-        text: 'The Production Problems Nobody Warns You About',
-      },
-      {
-        type: 'bullets',
-        items: [
-          'Latency under load — LLM inference is computationally expensive. Response time that feels acceptable in a demo becomes a UX failure at production concurrency. Batching, caching, and model distillation are not optional — they are prerequisites.',
-          'Hallucination management — All LLMs hallucinate. In production, you need systematic detection and mitigation: retrieval augmentation, output validation, confidence scoring, and graceful degradation for low-confidence outputs.',
-          'Prompt injection attacks — Adversarial users will attempt to override system instructions through crafted inputs. Robust system prompt architecture and output validation are essential for any externally-facing deployment.',
-          'Cost at scale — Token costs that are negligible in a prototype become material at production volume. Cost modelling, caching strategies, and tiered model selection (using smaller models where large models are overkill) are essential.',
-          'Evaluation infrastructure — You cannot improve what you cannot measure. Production LLM systems require evaluation pipelines that can assess output quality at scale — automated where possible, human review where necessary.',
-        ],
-      },
-      {
-        type: 'quote',
-        text: 'The model is the smallest part of the problem. The hard work is everything around it: the data pipelines, the retrieval systems, the evaluation infrastructure, and the operational processes that keep it honest over time.',
-        attribution: 'Deepak Bindal, ML Engineering Lead',
-      },
-      {
-        type: 'paragraph',
-        text: 'The enterprises succeeding with LLMs in production are not the ones with the largest context windows or the most parameters. They are the ones that treated deployment as a systems engineering problem from the start — investing in the infrastructure around the model as seriously as in the model itself. The path from prototype to production is not a straight line. It is an architecture problem that requires patience, instrumentation, and a willingness to rebuild when the first approach proves insufficient.',
-      },
-    ],
-  },
-
-  {
-    slug: 'ai-talent-gap',
-    coverImg: imgAIService,
-    tagline: 'AI Strategy',
-    subheadline: 'The AI Talent Gap and How to Close It',
-    authorName: 'Love Singhal',
-    authorRole: 'Head of Talent & Organisation',
-    authorImage: authorLove,
-    publishDate: 'May 2024',
-    contentBlocks: [
-      {
-        type: 'intro',
-        text: 'The AI talent shortage is real. But the conventional response — competing for a small pool of PhDs with inflated compensation — is not the solution. Here is a more durable approach.',
-      },
-      {
-        type: 'paragraph',
-        text: 'Every large enterprise is competing for roughly the same population of machine learning engineers, data scientists, and AI product managers. Supply has grown significantly since 2020, but not at anywhere near the rate of demand. The result is a market where the best candidates have multiple offers, where retention is as hard as recruitment, and where organisations without the brand recognition of a FAANG are structurally disadvantaged in the contest for talent.',
-      },
-      {
-        type: 'heading',
-        text: 'Rethinking the Talent Model',
-      },
-      {
-        type: 'paragraph',
-        text: 'The organisations closing the AI talent gap most effectively are doing so through a portfolio of approaches, not a single strategy. They are building internal capability through deliberate upskilling programmes for existing engineering and analyst talent. They are partnering with specialist firms to access expertise without the overhead of full-time hiring. And they are redesigning roles to make AI work more tractable for talent with adjacent skills — domain experts who can be trained in AI methodology faster than AI experts can be trained in domain knowledge.',
-      },
-      {
-        type: 'bullets',
-        items: [
-          'Internal upskilling — The fastest path to AI capability is often through people who already understand your business, your data, and your domain. Structured ML training programmes for senior engineers and analysts yield disproportionate returns.',
-          'Strategic partnerships — The right partner transfers knowledge, not just deliverables. Embedded advisory models that build internal capability alongside delivery are more valuable than pure outsourcing.',
-          'Role redesign — AI Engineer, ML Ops, AI Product Manager, and Prompt Engineer are roles that did not exist five years ago. Your talent architecture needs to reflect where work actually happens now.',
-          'Research adjacency — Partnerships with universities, participation in research consortia, and structured internship pipelines into permanent roles are long-cycle but high-quality talent channels.',
-        ],
-      },
-      {
-        type: 'paragraph',
-        text: 'The AI talent gap will not be solved by any single hire or any single programme. It is solved by the organisations that build talent development as a genuine strategic function — with the same rigour, resourcing, and leadership attention that they give to product or technology strategy. Those organisations will not win every talent contest. But they will stop losing the ones that matter.',
-      },
-    ],
-  },
-
-  {
-    slug: 'domain-driven-design',
-    coverImg: imgEnterprise,
-    tagline: 'Enterprise Architecture',
-    subheadline: 'Domain-Driven Design at Enterprise Scale',
-    authorName: 'Gaurav Verma',
-    authorRole: 'Enterprise Architecture Lead',
-    authorImage: authorGauravV,
-    publishDate: 'April 2024',
-    contentBlocks: [
-      {
-        type: 'intro',
-        text: 'Domain-Driven Design was conceived for complex software problems. At enterprise scale — with hundreds of teams, thousands of services, and decades of accumulated technical decisions — its principles become not just useful but essential.',
-      },
-      {
-        type: 'paragraph',
-        text: 'Eric Evans published Domain-Driven Design in 2003 for an audience of software architects building complex systems with rich business logic. Two decades later, the enterprises grappling with the hardest architectural challenges are discovering that the conceptual tools Evans provided — bounded contexts, ubiquitous language, context mapping, aggregates — are exactly the vocabulary they need to reason about systems of a complexity Evans could not have anticipated.',
-      },
-      {
-        type: 'heading',
-        text: 'Why DDD Scales',
-      },
-      {
-        type: 'paragraph',
-        text: 'The central insight of DDD is that software complexity is not primarily a technical problem — it is a communication problem. When the model in the code does not match the model in the domain expert\'s head, every conversation between engineering and the business generates friction. Every requirement is slightly mistranslated. Every feature shipped is slightly not what was needed. DDD provides tools for aligning these models — and at enterprise scale, that alignment is worth more than any technical optimisation.',
-      },
-      {
-        type: 'bullets',
-        items: [
-          'Bounded contexts define clear ownership boundaries between teams and between services — the foundation of an autonomous, scalable engineering organisation.',
-          'Ubiquitous language eliminates the translation tax between domain experts and engineers. When both sides use the same terms to mean the same things, requirements become specifications.',
-          'Context mapping makes inter-team dependencies explicit, manageable, and improvable — rather than the invisible political tensions that accumulate in large engineering organisations.',
-          'Aggregates provide a principled approach to transactional consistency in distributed systems, directly addressing one of the hardest problems in microservices architecture.',
-        ],
-      },
-      {
-        type: 'quote',
-        text: 'DDD at scale is not a software methodology. It is an organisational design tool with a software implementation.',
-      },
-      {
-        type: 'paragraph',
-        text: 'The organisations we have seen apply DDD most successfully treat it as a multi-year capability development programme, not a project. They invest in EventStorming workshops, in domain modelling with business experts, in evolutionary architecture reviews. They accept that a codebase that reflects the domain correctly is harder to build but dramatically easier to maintain, extend, and reason about. In a large enterprise, the compounding return on that investment is enormous.',
-      },
-    ],
-  },
-
-  {
-    slug: 'finops-cloud-economics',
-    coverImg: imgCloud,
-    tagline: 'Cloud',
-    subheadline: 'FinOps: Making Cloud Economics Actually Work',
-    authorName: 'Bharat Garg',
-    authorRole: 'Cloud Engineering Lead',
-    authorImage: authorBharat,
-    publishDate: 'March 2024',
-    contentBlocks: [
-      {
-        type: 'intro',
-        text: 'Cloud spend without FinOps is a commitment to recurring cost surprises. Here is how to build the financial discipline that makes cloud economics actually work at enterprise scale.',
-      },
-      {
-        type: 'paragraph',
-        text: 'The average large enterprise wastes 32% of its cloud spend, according to Flexera\'s annual State of the Cloud report. This is not because cloud is expensive — it is because cloud purchases are made without the financial discipline that any other major expenditure category would require. Compute is provisioned speculatively and never rightsized. Storage accumulates without lifecycle policies. Reserved instance commitments expire unreplaced. And the teams generating the cost are rarely the teams responsible for paying it.',
-      },
-      {
-        type: 'heading',
-        text: 'FinOps Is a Practice, Not a Tool',
-      },
-      {
-        type: 'paragraph',
-        text: 'The most common mistake organisations make when addressing cloud cost is buying a cost management tool and expecting it to solve the problem. Tools surface data. They do not change behaviour. FinOps — the Cloud Financial Management discipline formalised by the FinOps Foundation — is a practice that changes the relationship between engineering teams and the economic consequences of their technical decisions.',
-      },
-      {
-        type: 'bullets',
-        items: [
-          'Visibility first — You cannot optimise what you cannot see. Tagging standards, cost allocation by team and product, and real-time spend dashboards are the foundation of everything else.',
-          'Showback before chargeback — Making teams aware of their cloud costs, even before those costs are formally allocated to their budgets, changes spending behaviour significantly.',
-          'Engineering-Finance collaboration — FinOps requires sustained dialogue between engineers (who understand what the cost buys) and finance (who understand the budget context). Neither function can do this alone.',
-          'Continuous optimisation cadence — Weekly review of rightsizing recommendations, reserved instance utilisation, and savings plan coverage should be part of the operating rhythm of every platform engineering team.',
-        ],
-      },
-      {
-        type: 'quote',
-        text: 'Every percentage point of cloud waste that FinOps recovers is reinvestment capacity for the work that actually matters. At enterprise cloud scale, those points add up to millions.',
-        attribution: 'Bharat Garg, Cloud Engineering Lead',
-      },
-      {
-        type: 'paragraph',
-        text: 'The organisations with mature FinOps practices are not those with the lowest cloud spend — they are those with the highest return on cloud spend. They invest more deliberately, waste less structurally, and redeploy the savings into the capabilities that drive competitive differentiation. FinOps is not cost-cutting by another name. It is the discipline that makes cloud investment go further.',
-      },
-    ],
-  },
+  slug: 'containers-overview',
+  coverImg: imgContainers,
+  tagline: 'Enterprise Architecture',
+  subheadline: 'An Overview of Containers',
+  authorName: 'Gaurav Verma',
+  authorRole: 'Enterprise Architecture Lead',
+  authorImage: authorGauravV,
+  publishDate: 'January 09, 2023',
+  contentBlocks: [
+    {
+      type: 'intro',
+      text: "One concept borrowed from the mainframe world — containers — has taken the tech world by storm. To understand containers, we must start with virtualization: the ability to create a virtual instance of a resource, whether hardware, device or operating system. This covers hypervisors, abstract computers like JVM, LPARs and OS-level containers. On the face of it these technologies may seem similar — but they are not."
+    },
+    {
+      type: 'heading',
+      text: 'The Virtualization Landscape'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Hypervisor — Virtualizes hardware by creating virtual disks, CPUs and network interfaces. The virtual machine hosts an OS which in turn hosts applications. Type 1 (bare) hypervisors run directly on hardware; Type 2 require a host OS.',
+        'Abstract Computers (JVM / CLR) — Run inside an OS and provide a completely different instruction set than raw hardware. They are programming models designed to make software development friendly.',
+        'LPAR — A technique to logically divide and allocate resources of a mainframe, allowing separate virtualized computers that may host separate operating systems.',
+        'Containers — Virtualize the operating system itself rather than the hardware. The OS kernel allows multiple isolated user-space instances, each feeling like a real OS while the kernel manages competing resources.',
+      ]
+    },
+    {
+      type: 'heading',
+      text: 'How Containers Work — Docker'
+    },
+    {
+      type: 'image_text',
+      image: imgContainers,
+      imageAlt: 'Docker containers and OS virtualization',
+      imageLeft: true,
+      text: 'Containers are OS-level virtualization. Each container feels it has access to a root directory but using chroot, each is in a separate directory. For example, running a Tomcat container maps its internal port 8080 to an external port 8888 on the real machine — something hardware virtualization does not require. This allows multiple container instances to run within one OS, each mapped to a different physical port. The primary deployment benefit is that a container guarantees configuration and software across all environments — a Tomcat 8 container with JDK 8 is identical everywhere, with no configuration mismatch.'
+    },
+    {
+      type: 'heading',
+      text: 'Containers vs. Hypervisors — Benefits and Challenges'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'No separate OS per instance — Containers do not require a full operating system installation per instance, reducing memory, CPU footprint and licensing costs for OS, antivirus and related software.',
+        'Faster startup — Launching a container takes single-digit seconds versus minutes for a VM, since no full OS boot sequence is required.',
+        'Lower isolation — If the host OS fails, it may bring down multiple containers. In the VM world, one VM failing does not affect others. Type 1 hypervisors (standard in commercial clouds) further minimise risk.',
+        'Resource management still required — Containers, like VMs, require resource allocation to ensure no starvation occurs across instances.',
+        'Load balancing complexity — Containers introduce the need for load balancers that can work across applications on different ports.',
+        'Databases are harder to manage — Containers are not well suited to stateful workloads like databases. Users managing containers have access to all containers on a machine, reducing isolation.',
+      ]
+    },
+    {
+      type: 'quote',
+      text: 'Containers are the future and are here to stay. Enterprises should start investing in containers and take the first steps like they took for VMs and clouds.',
+      attribution: 'On Enterprise Container Adoption'
+    },
+    {
+      type: 'paragraph',
+      text: 'To improve reliability, container instances should be distributed across separate physical OS instances. Tools like CoreOS — a distributed Linux OS — manage containers across separate physical machines. This transition will require a mindset change where DB, application and network teams trust each other and collaborate on shared infrastructure.'
+    },
+    {
+      type: 'paragraph',
+      text: 'Finally, virtualization is no longer limited to servers. New techniques now exist to virtualize the mobile ecosystem — a single mobile phone could run multiple mobile VMs, enabling one device for both home and work with separate images, and reducing development and testing overhead by building against a VM deployable on any hardware.'
+    },
+  ]
+},
+{
+  slug: 'dna-data-storage-future',
+  coverImg: imgDna,
+  tagline: 'Deep Storage',
+  subheadline: 'DNA For Storage and Archival of Data',
+  authorName: 'Deepak Bindal',
+  authorRole: 'ML Engineering Lead',
+  authorImage: authorDeepak,
+  publishDate: 'January 09, 2023',
+  contentBlocks: [
+    {
+      type: 'intro',
+      text: "This is one of those million-years-into-the-future kind of articles — part of a larger series on uncharted horizons, technologies in their inception phase or sitting in someone's lab. DNA for computing and data storage are upcoming biological technologies currently in development. This article explores DNA as a medium for long-term storage, redundancy, data replication and error correction."
+    },
+    {
+      type: 'heading',
+      text: 'What Makes DNA a Great Medium for Data Storage?'
+    },
+    {
+      type: 'image_text',
+      image: imgDna,
+      imageAlt: 'DNA data storage biological computing',
+      imageLeft: true,
+      text: 'DNA has several advantages over traditional storage mechanisms — from magnetic mediums to solid state drives. One gram of DNA can store over 200 petabytes of data for a period of two millennia. As a biological building block designed to replicate, DNA has extreme self-correcting measures built in — checking itself against mutation at every step. And being a product of biological evolution, DNA is potentially apocalypse-proof: even if a planet-wide disaster sent future generations down a different technological path, DNA could still be read.'
+    },
+    {
+      type: 'bullets',
+      items: [
+        'Extreme density — One gram of DNA can store over 200 petabytes of data per gram for a period of two millennia, far exceeding any current storage medium.',
+        'Self-error correcting — DNA is designed to replicate and has built-in mechanisms to check and correct itself against mutation.',
+        'Very long life — DNA survives for millennia but requires a cold and dry environment for preservation.',
+        'Apocalypse-proof — As a biological medium independent of current technology stacks, DNA could potentially still be read by future generations even after a civilisation-level disruption.',
+      ]
+    },
+    {
+      type: 'heading',
+      text: 'Where the Technology Stands Today'
+    },
+    {
+      type: 'paragraph',
+      text: 'Current DNA storage technologies are not commercially available and tend to be read-only. Until recently, access to data on DNA has been sequential and hence extremely slow. New research by Microsoft is creating synthetic DNA and using a library of primers attached to DNA sequences — primers combined with polymerase chain reaction allow targeting of specific DNA sequences, moving toward random access rather than sequential reads.'
+    },
+    {
+      type: 'quote',
+      text: 'The study of DNA for storage also leads to DNA computing — where biological models like DNA and molecules may be used for computing itself, not just storage.',
+      attribution: 'On the broader implications of biological computing'
+    },
+    {
+      type: 'paragraph',
+      text: 'This technology is not available today but is a must to watch. As research from labs like Microsoft advances synthetic DNA and random-access retrieval, what is today a theoretical horizon may become the foundational storage architecture of a future that current mediums simply cannot sustain.'
+    },
+  ]
+}
 ]

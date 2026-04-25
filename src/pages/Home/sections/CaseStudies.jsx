@@ -1,23 +1,58 @@
 import { Link } from 'react-router-dom'
-import caseImg1 from '../../../assets/images/case1.jpg'
-import caseImg2 from '../../../assets/images/case2.jpg'
+import { caseStudies } from '../../../data/caseStudies'
 
-const caseStudies = [
-  {
-    industry: 'Financial Services',
-    headline: 'How a Global Bank Transformed Credit Risk with AI',
-    description:
-"We embedded an end-to-end ML decisioning layer into a tier-1 bank's credit origination stack, reducing decision time by 73% while improving portfolio quality. This seamless automation allowed the bank to scale its loan processing capacity without increasing operational overhead.",
-    image: caseImg1,
-  },
-  {
-    industry: 'Healthcare',
-    headline: 'AI-Powered Clinical Triage Across 12 Hospitals',
-    description:
-"We deployed intelligent triage systems that reduced patient wait times and improved diagnosis prioritisation across multiple hospital networks. By integrating real-time data analysis, we empowered clinicians to focus their expertise on high-acuity cases, ultimately leading to faster, more effective patient outcomes.",
-    image: caseImg2,
-  },
-]
+const featured = caseStudies.slice(0, 2)
+
+function CaseRow({ industry, headline, description, image, slug, index }) {
+  const isReversed = index % 2 !== 0
+
+  return (
+    <div className={`grid md:grid-cols-2 gap-12 items-center mb-12`}>
+
+      {/* Image */}
+      <div className={isReversed ? 'order-1 md:order-2' : ''}>
+        <img
+          src={image}
+          alt={headline}
+          className="w-full h-[320px] object-cover rounded-xl"
+        />
+      </div>
+
+      {/* Content */}
+      <div className={isReversed ? 'order-2 md:order-1' : ''}>
+        <p
+          className="text-h4 mb-3"
+          style={{ color: 'var(--color-secondary)' }}
+        >
+          {industry}
+        </p>
+
+        <h3
+          className="text-2xl font-semibold mb-4"
+          style={{ color: 'var(--color-text-primary)' }}
+        >
+          {headline}
+        </h3>
+
+        <p
+          className="text-base mb-2 line-clamp-4"
+          style={{ color: 'var(--color-text-secondary)' }}
+        >
+          {description}
+        </p>
+
+        <Link
+          to={`/case-studies/${slug}`}
+          className="text-sm font-medium no-underline"
+          style={{ color: 'var(--color-text-primary)' }}
+        >
+          Read more..
+        </Link>
+      </div>
+
+    </div>
+  )
+}
 
 function CaseStudies() {
   return (
@@ -29,9 +64,7 @@ function CaseStudies() {
 
         {/* Header */}
         <div className="mb-8">
-          <p
-            className="text-h3 text-[var(--color-highlight)]"
-          >
+          <p className="text-h3 text-[var(--color-highlight)]">
             Real Impact
           </p>
 
@@ -43,98 +76,20 @@ function CaseStudies() {
           </h2>
         </div>
 
-        {/* Row 1 */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
-
-          {/* Image */}
-          <div>
-            <img
-              src={caseStudies[0].image}
-              alt=""
-              className="w-full h-[320px] object-cover rounded-xl"
-            />
-          </div>
-
-          {/* Content */}
-          <div>
-            <p
-              className="text-h4 mb-3"
-              style={{ color: 'var(--color-secondary)' }} // subtle accent use (2)
-            >
-              {caseStudies[0].industry}
-            </p>
-
-            <h3
-              className="text-2xl font-semibold mb-4"
-              style={{ color: 'var(--color-text-primary)' }}
-            >
-              {caseStudies[0].headline}
-            </h3>
-
-            <p
-              className="text-base mb-2"
-              style={{ color: 'var(--color-text-secondary)' }}
-            >
-              {caseStudies[0].description}
-            </p>
-
-            <Link
-              to="/case-studies"
-              className="text-sm font-medium no-underline"
-              style={{ color: 'var(--color-text-primary)' }}
-            >
-              Read more..
-            </Link>
-          </div>
-        </div>
-
-        {/* Row 2 (REVERSED) */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-
-          {/* Content */}
-          <div className="order-2 md:order-1">
-            <p
-              className="text-h4 mb-3"
-              style={{ color: 'var(--color-secondary)' }}
-            >
-              {caseStudies[1].industry}
-            </p>
-
-            <h3
-              className="text-2xl font-semibold mb-4"
-              style={{ color: 'var(--color-text-primary)' }}
-            >
-              {caseStudies[1].headline}
-            </h3>
-
-            <p
-              className="text-base mb-2"
-              style={{ color: 'var(--color-text-secondary)' }}
-            >
-              {caseStudies[1].description}
-            </p>
-
-            <Link
-              to="/case-studies"
-              className="text-sm font-medium no-underline"
-              style={{ color: 'var(--color-text-primary)' }}
-            >
-              Read more..
-            </Link>
-          </div>
-
-          {/* Image */}
-          <div className="order-1 md:order-2">
-            <img
-              src={caseStudies[1].image}
-              alt=""
-              className="w-full h-[320px] object-cover rounded-xl"
-            />
-          </div>
-        </div>
+        {featured.map((c, i) => (
+          <CaseRow
+            key={c.slug}
+            industry={c.meta.sector}
+            headline={c.coverTagline}
+            description={c.challenge.description}
+            image={c.coverImg}
+            slug={c.slug}
+            index={i}
+          />
+        ))}
 
         {/* CTA */}
-        <div className="text-center">
+        <div className="text-center mt-4">
           <Link
             to="/case-studies"
             className="inline-block px-6 py-3 rounded-full text-sm font-medium border no-underline transition-all duration-300"
