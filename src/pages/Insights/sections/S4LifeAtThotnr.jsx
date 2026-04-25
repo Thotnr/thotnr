@@ -75,13 +75,6 @@ function S4LifeAtThotnr() {
               We give people the time, trust, and resources to do their best thinking —
               because the problems we work on deserve it.
             </p>
-            <a
-              href="#"
-              className="mt-5 text-sm font-semibold no-underline inline-flex items-center gap-1 transition-all duration-150 hover:gap-2"
-              style={{ color: 'var(--color-highlight)' }}
-            >
-              Join us →
-            </a>
           </div>
 
         </div>

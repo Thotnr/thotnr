@@ -65,15 +65,8 @@ function Events() {
                 Featured Events
               </h2>
             </div>
-            <a
-              href="#"
-              className="t-label no-underline transition-colors duration-150"
-              style={{ color: 'var(--color-ink)' }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-accent)' }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-ink)' }}
-            >
-              View All Events →
-            </a>
+            
+           
           </div>
 
           {/* Single row — exactly Nagarro */}

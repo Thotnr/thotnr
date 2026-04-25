@@ -1,124 +1,125 @@
 import { useState } from 'react'
-import aiServiceImg from '../../../assets/images/ai-service.jpg'
+import aiServiceImg          from '../../../assets/images/ai-service.jpg'
 import enterpriseArchitectImg from '../../../assets/images/enterprise-architect.jpg'
-import cloudImg from '../../../assets/images/cloud.jpg'
+import cloudImg              from '../../../assets/images/cloud.jpg'
 
 const featuredServices = [
   {
-    title: 'Artificial Intelligence',
+    title:   'Artificial Intelligence',
     tagline: 'From strategy to production-ready AI',
-    stat: '3x faster AI adoption',
-    desc: 'We turn AI ambition into running systems — strategy, engineering, and deployment under one roof.',
-    image: aiServiceImg,
-    href: '#',
+    stat:    '3× faster AI adoption',
+    desc:    'We turn AI ambition into running systems — strategy, engineering, and deployment under one roof.',
+    image:   aiServiceImg,
   },
   {
-    title: 'Enterprise Architecture',
+    title:   'Enterprise Architecture',
     tagline: 'Systems that scale with your ambition',
-    stat: '60% faster review cycles',
-    desc: 'We map, modernise, and future-proof your technology landscape — built for the next decade.',
-    image: enterpriseArchitectImg,
-    href: '#',
+    stat:    '60% faster delivery cycles',
+    desc:    'We map, modernise, and future-proof your technology landscape — built for the next decade.',
+    image:   enterpriseArchitectImg,
   },
   {
-    title: 'Cloud',
+    title:   'Cloud',
     tagline: 'Migrate, modernise, operate at scale',
-    stat: '40% infrastructure savings',
-    desc: 'From lift-and-shift to cloud-native transformation — we engineer cloud strategies that actually reduce cost.',
-    image: cloudImg,
-    href: '#',
+    stat:    '40% infrastructure savings',
+    desc:    'From lift-and-shift to cloud-native transformation — we engineer cloud strategies that reduce cost.',
+    image:   cloudImg,
   },
 ]
 
-function ArrowIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-      <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-    </svg>
-  )
-}
+const allServices = [
+  // column 1
+  ['Artificial Intelligence', 'Generative AI', 'Machine Learning', 'Intelligent Automation', 'AI Strategy & Roadmap', 'MLOps', 'Data Engineering'],
+  // column 2
+  ['Enterprise Architecture', 'API & Integration Architecture', 'Enterprise Modernisation', 'Digital Transformation', 'Product Engineering', 'Quality Engineering', 'Cloud Engineering'],
+  // column 3
+  ['Cloud Migration', 'Infrastructure Engineering', 'DevOps & Platform Engineering', 'Cybersecurity', 'Experience Design', 'UX Research', 'Data Platform & Analytics'],
+]
 
-function ExpandingCard({ title, tagline, stat, desc, image, href, index }) {
+function ExpandingCard({ title, tagline, stat, desc, image }) {
   const [hovered, setHovered] = useState(false)
 
   return (
-    <a
-      href={href}
+    <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative flex flex-col justify-end overflow-hidden rounded-2xl border border-white/10 transition-all duration-500"
-      style={{
-        flex: hovered ? '2.5' : '1',
-        minHeight: '420px',
-      }}
+      className="relative flex flex-col justify-end overflow-hidden rounded-2xl transition-all duration-500 cursor-default"
+      style={{ flex: hovered ? '2.5' : '1', minHeight: '420px' }}
     >
-      {/* Background */}
+      {/* Background image */}
       <img
         src={image}
         alt={title}
-        className={`absolute inset-0 w-full h-full object-cover transition-transform duration-500 ${
-          hovered ? 'scale-105' : 'scale-100'
-        }`}
+        className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 ${hovered ? 'scale-105' : 'scale-100'}`}
       />
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/70" />
-
-      {/* Subtle accent tint (VERY LIGHT) */}
+      {/* Gradient overlay — cinematic, heavier at bottom */}
       <div
-        className={`absolute inset-0 transition-opacity duration-500 ${
-          hovered ? 'opacity-100' : 'opacity-0'
-        }`}
+        className="absolute inset-0"
         style={{
-          background: 'linear-gradient(to top, rgb(var(--color-highlight-rgb) / 0.08), transparent)',
+          background: hovered
+            ? 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.18) 100%)'
+            : 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.40) 60%, rgba(0,0,0,0.10) 100%)',
+          transition: 'background 0.5s ease',
         }}
       />
 
       {/* Content */}
-      <div className="relative z-10 p-6 flex flex-col gap-2">
+      <div className="relative z-10 p-7 flex flex-col gap-2">
 
-        {/* Stat (only accent usage) */}
+        {/* Stat badge — visible on hover */}
         <div
-          className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium transition-all ${
-            hovered ? 'opacity-100' : 'opacity-0'
-          }`}
+          className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold mb-1 transition-all duration-300"
           style={{
-            background: 'rgb(var(--color-highlight-rgb) / 0.08)',
+            background: 'rgba(230,57,70,0.15)',
             color: 'var(--color-highlight)',
+            border: '1px solid rgba(230,57,70,0.25)',
+            opacity: hovered ? 1 : 0,
+            transform: hovered ? 'translateY(0)' : 'translateY(6px)',
+            width: 'fit-content',
           }}
         >
-          <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--color-highlight)' }} />
+          <span
+            className="w-1.5 h-1.5 rounded-full"
+            style={{ background: 'var(--color-highlight)' }}
+          />
           {stat}
         </div>
 
-        <p className="text-xs text-white/50">{tagline}</p>
+        {/* Tagline */}
+        <p
+          className="text-xs font-medium uppercase tracking-widest"
+          style={{ color: 'rgba(255,255,255,0.55)', letterSpacing: '0.1em' }}
+        >
+          {tagline}
+        </p>
 
-        <h3 className="text-xl font-semibold text-white leading-tight">
+        {/* Title */}
+        <h3
+          className="font-semibold text-white leading-tight"
+          style={{ fontSize: hovered ? '1.35rem' : '1.2rem', transition: 'font-size 0.3s ease' }}
+        >
           {title}
         </h3>
 
+        {/* Desc — expands on hover */}
         <div
-          className="overflow-hidden transition-all duration-300"
-          style={{ maxHeight: hovered ? '80px' : '0px' }}
+          className="overflow-hidden transition-all duration-400"
+          style={{ maxHeight: hovered ? '80px' : '0px', opacity: hovered ? 1 : 0 }}
         >
-          <p className="text-sm text-white/70 pt-2">{desc}</p>
+          <p className="text-sm leading-relaxed pt-1" style={{ color: 'rgba(255,255,255,0.72)' }}>
+            {desc}
+          </p>
         </div>
 
-        {/* <div
-          className={`flex items-center gap-2 text-sm font-medium transition-all ${
-            hovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'
-          }`}
-          style={{ color: 'var(--color-highlight)' }}
-        >
-          Explore <ArrowIcon />
-        </div> */}
-
       </div>
-    </a>
+    </div>
   )
 }
 
 function ServicesList() {
+  const [showAll, setShowAll] = useState(false)
+
   return (
     <section
       className="py-16 px-6 md:px-10 lg:px-16"
@@ -128,32 +129,83 @@ function ServicesList() {
 
         {/* Header */}
         <div className="mb-12">
-          <p
-            className="text-h3 text-[var(--color-highlight)]"
-           
-          >
-            What We Deliver
-          </p>
-
-          <h2
-            className="text-h1 text-white"
-          >
-            Services We Offer
-          </h2>
-
-          <p
-            className="text-body text-white/70 mt-2 max-w-2xl"
-            
-          >
+          <p className="text-h3 text-[var(--color-highlight)]">What We Deliver</p>
+          <h2 className="text-h1 text-white">Services We Offer</h2>
+          <p className="text-body text-white/70 mt-2 max-w-2xl">
             End-to-end capabilities across AI, architecture, and cloud — engineered to move your enterprise from ambition to execution.
           </p>
         </div>
 
-        {/* Cards */}
+        {/* Expanding Cards */}
         <div className="flex gap-4" style={{ minHeight: '420px' }}>
-          {featuredServices.map((svc, i) => (
-            <ExpandingCard key={svc.title} {...svc} index={i} />
+          {featuredServices.map((svc) => (
+            <ExpandingCard key={svc.title} {...svc} />
           ))}
+        </div>
+
+        {/* All Services Bar */}
+        <div
+          className="flex items-center justify-between mt-14 pt-8"
+          style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}
+        >
+          <h3
+            className="text-h2 text-white"
+          >
+            All Services
+          </h3>
+
+          <button
+            onClick={() => setShowAll((v) => !v)}
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-200 cursor-pointer bg-transparent"
+            style={{
+              border: '1px solid rgba(255,255,255,0.25)',
+              color: '#ffffff',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = 'var(--color-highlight)'
+              e.currentTarget.style.color = 'var(--color-highlight)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'
+              e.currentTarget.style.color = '#ffffff'
+            }}
+          >
+            {showAll ? 'Hide' : 'Show'}
+            <svg
+              width="12" height="12" viewBox="0 0 12 12" fill="none"
+              style={{
+                transform: showAll ? 'rotate(180deg)' : 'rotate(0deg)',
+                transition: 'transform 0.25s ease',
+              }}
+            >
+              <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        {/* Expandable services list */}
+        <div
+          className="overflow-hidden transition-all duration-500"
+          style={{ maxHeight: showAll ? '600px' : '0px', opacity: showAll ? 1 : 0 }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-0 pt-8 pb-4">
+            {allServices.map((col, ci) => (
+              <div key={ci} className="flex flex-col">
+                {col.map((svc) => (
+                  <span
+                    key={svc}
+                    className="py-3 text-sm"
+                    style={{
+                      color: 'rgba(255,255,255,0.72)',
+                      borderBottom: '1px solid rgba(255,255,255,0.07)',
+                    }}
+                  >
+                    {svc}
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
 
       </div>

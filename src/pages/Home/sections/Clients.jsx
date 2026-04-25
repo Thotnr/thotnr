@@ -1,56 +1,50 @@
-import client1 from '../../../assets/images/client1.png'
-import client2 from '../../../assets/images/client2.png'
-import client3 from '../../../assets/images/client3.png'
-import client4 from '../../../assets/images/client4.png'
+import csav       from '../../../assets/images/clients/csav.png'
+import djubo      from '../../../assets/images/clients/djubo.png'
+import heroFincorp from '../../../assets/images/clients/hero-fincorp.png'
+import kingdom    from '../../../assets/images/clients/kingdom.png'
+import nykaa      from '../../../assets/images/clients/nykaa.png'
+import rio2016    from '../../../assets/images/clients/Rio_2016.png'
+import swayam     from '../../../assets/images/clients/swayam.png'
+import tata       from '../../../assets/images/clients/tata.png'
 
 const clients = [
-  { id: 1, name: "Rio 2016", logo: client1 },
-  { id: 2, name: "OpenSky Resorts", logo: client2 },
-  { id: 3, name: "Lexus", logo: client3 },
-  { id: 4, name: "Bookclip.com", logo: client4 },
-  { id: 5, name: "Health Scroll", logo: client1 },
-  { id: 6, name: "Servitium", logo: client2 },
-  { id: 7, name: "ZS Associates", logo: client3 },
-  { id: 8, name: "VMT", logo: client4 },
+  { id: 1, name: 'CSAV',          logo: csav        },
+  { id: 2, name: 'Djubo',         logo: djubo       },
+  { id: 3, name: 'Hero Fincorp',  logo: heroFincorp },
+  { id: 4, name: 'Kingdom',       logo: kingdom     },
+  { id: 5, name: 'Nykaa',         logo: nykaa       },
+  { id: 6, name: 'Rio 2016',      logo: rio2016     },
+  { id: 7, name: 'Swayam',        logo: swayam      },
+  { id: 8, name: 'Tata',          logo: tata        },
 ]
 
-function LogoCard({ client }) {
+const stats = [
+  { value: '8+',   label: 'Enterprise Clients'   },
+  { value: '12+',  label: 'Years of Delivery'    },
+  { value: '100%', label: 'Retention Rate'        },
+]
+
+function LogoCard({ logo, name }) {
   return (
     <div
-      className="
-        flex items-center justify-center
-        h-full min-h-[90px]
-        p-1
-        rounded-xl
-        border transition-all duration-300
-        bg-[var(--color-primary)] backdrop-blur-sm
-      "
-      style={{ borderColor: 'rgba(255,255,255,0.08)' }}
+      className="flex items-center justify-center rounded-2xl transition-all duration-300 hover:scale-[1.03]"
+      style={{
+        background: 'var(--color-primary)',
+        border: '1px solid rgba(255,255,255,0.10)',
+        minHeight: '100px',
+        backdropFilter: 'blur(6px)',
+      }}
     >
-      <div className="flex flex-col items-center justify-center">
-
-        {/* LOGO */}
-        <img
-          src={client.logo}
-          alt={client.name}
-          className="
-            max-h-14 md:max-h-16 object-contain
-            transition-all duration-300
-          "
-        />
-
-        {/* NAME */}
-        <span
-          className="text-sm md:text-base font-semibold tracking-tight text-center"
-          style={{ color: 'var(--color-text-secondary)' }}
-        >
-          {client.name}
-        </span>
-
-      </div>
+      <img
+        src={logo}
+        alt={name}
+        className="object-contain"
+        style={{ maxHeight: '52px', maxWidth: '80%' }}
+      />
     </div>
   )
 }
+
 function Clients() {
   return (
     <section
@@ -59,92 +53,58 @@ function Clients() {
     >
       <div className="max-w-7xl mx-auto">
 
-        {/* SPLIT LAYOUT */}
-        <div className="grid md:grid-cols-2 gap-16 items-stretch">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
 
-          {/* LEFT → GRID */}
-          <div className="grid grid-cols-2 gap-5 h-full">
+          {/* LEFT — logo grid */}
+          <div className="grid grid-cols-2 gap-4">
             {clients.map((client) => (
-              <LogoCard key={client.id} client={client} />
+              <LogoCard key={client.id} logo={client.logo} name={client.name} />
             ))}
           </div>
 
-          {/* RIGHT → CONTENT */}
-          <div className="flex flex-col  h-full max-w-md">
+          {/* RIGHT — content */}
+          <div className="flex flex-col gap-8 max-w-md">
 
-            {/* TOP CONTENT */}
+            {/* Eyebrow + Heading */}
             <div>
-              <p
-                className="text-h3 text-[var(--color-highlight)]"
-              >
-                Trusted By Brands
-              </p>
-
-              <h2
-                className="text-h1 text-white"
-              >
-                Our CLients
-              </h2>
-
-              <p
-                className="text-body text-white/70 mt-2 max-w-2xl"
-              >
-                In an ever-evolving market, success requires more than expertise—it requires a partner who understands your unique DNA. We collaborate with forward-thinking enterprises to transform operational hurdles into competitive advantages. Through a fusion of data-driven strategy and execution-focused support, we deliver high-impact results that are measurable, repeatable, and aligned with your bottom line.
+              <p className="text-h3 text-[var(--color-highlight)]">Trusted By Brands</p>
+              <h2 className="text-h1 text-white mt-1">Our Clients</h2>
+              <p className="text-body text-white/65 mt-4 leading-relaxed">
+                We partner with forward-thinking enterprises to turn operational complexity into competitive clarity. Every engagement is built on long-term trust, measurable outcomes, and a commitment to delivery that does not stop at go-live.
               </p>
             </div>
 
-            {/* BOTTOM CTA */}
-           
-
-            <div className="mt-14">
-  <div className="flex gap-4 flex-wrap">
-
-    {/* PRIMARY */}
-    <button
-      className="px-6 py-3 rounded-full text-sm font-medium transition-all duration-300"
-      style={{
-        background: 'var(--color-white)',
-        color: 'var(--color-secondary)',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.background = 'rgba(255,255,255,0.85)' // slight dim
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.background = 'var(--color-white)'
-      }}
-    >
-      See all clients
-    </button>
-
-    {/* SECONDARY */}
-    <button
-      className="px-6 py-3 rounded-full text-sm font-medium border transition-all duration-300"
-      style={{
-        border: '1px solid rgba(255,255,255,0.2)',
-        color: 'var(--color-white)',
-        background: 'transparent',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.background = 'rgba(255,255,255,0.08)' // subtle fill
-        e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)'
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.background = 'transparent'
-        e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'
-      }}
-    >
-      Become a client
-    </button>
-
-  </div>
-</div>
+            {/* Stats */}
+            <div
+              className="grid grid-cols-3 gap-0 pt-8"
+              style={{ borderTop: '1px solid rgba(255,255,255,0.10)' }}
+            >
+              {stats.map((s, i) => (
+                <div
+                  key={s.label}
+                  className="flex flex-col gap-1 px-4"
+                  style={{
+                    borderLeft: i > 0 ? '1px solid rgba(255,255,255,0.10)' : 'none',
+                  }}
+                >
+                  <span
+                    className="text-3xl font-bold"
+                    style={{ color: 'var(--color-highlight)' }}
+                  >
+                    {s.value}
+                  </span>
+                  <span className="text-xs font-medium uppercase tracking-widest" style={{ color: 'rgba(255,255,255,0.45)' }}>
+                    {s.label}
+                  </span>
+                </div>
+              ))}
             </div>
 
           </div>
 
         </div>
 
-      
+      </div>
     </section>
   )
 }

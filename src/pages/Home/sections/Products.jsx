@@ -1,7 +1,7 @@
-import djuboLogo from '../../../assets/images/product1.png'
-import qampLogo from '../../../assets/images/product3.png'
-import edumarshelLogo from '../../../assets/images/product1.png'
-import cittLogo from '../../../assets/images/product3.png'
+import djuboLogo   from '../../../assets/images/clients/djubo.png'
+import kingdomLogo  from '../../../assets/images/clients/kingdom.png'
+import nykaaLogo    from '../../../assets/images/clients/nykaa.png'
+import rioLogo      from '../../../assets/images/clients/Rio_2016.png'
 
 const products = [
   {
@@ -13,24 +13,24 @@ const products = [
   },
   {
     id: 2,
-    name: "Qamp",
+    name: "Edumarshal",
     tagline: "Growth Engine",
     desc: "Campaign workflows built for growth teams",
-    logo: qampLogo,
+    logo: kingdomLogo,
   },
   {
     id: 3,
-    name: "Edumarshel",
+    name: "Nykaa",
     tagline: "Edu Platform",
     desc: "Education platform for modern institutions",
-    logo: edumarshelLogo,
+    logo: nykaaLogo,
   },
   {
     id: 4,
-    name: "Citt",
+    name: "Rio 2016",
     tagline: "Smart Infra",
     desc: "Smart city infrastructure and data systems",
-    logo: cittLogo,
+    logo: rioLogo,
   },
 ]
 
@@ -122,31 +122,6 @@ export default function Products() {
     across your organisation.
   </p>
 
-  {/* CTA */}
-  <div>
-    <button
-      className="
-        px-6 py-3 rounded-lg text-sm font-semibold
-        transition-all duration-300
-        border
-      "
-      style={{
-        background: 'var(--color-text-primary)',
-        color: 'var(--color-white)',
-        borderColor: 'var(--color-text-primary)',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.background = 'transparent'
-        e.currentTarget.style.color = 'var(--color-text-primary)'
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.background = 'var(--color-text-primary)'
-        e.currentTarget.style.color = 'var(--color-white)'
-      }}
-    >
-      Explore Products
-    </button>
-  </div>
 
 </div>
 

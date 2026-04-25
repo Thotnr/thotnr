@@ -6,16 +6,14 @@ import logoRed from '../../assets/images/thotnr_logo_red.png'
 
 // ── Dropdown Data ─────────────────────────────────────────────────────────────
 
-
 const whatWeOfferData = {
   left: {
     heading: 'services',
     items: [
-      { label: 'Digital Engineering',     desc: 'Value-driven and technology savvy. We future-proof your business.' },
-      { label: 'Intelligent Enterprise',  desc: 'Helping you master your critical business applications, empowering your business to thrive.' },
-      { label: 'Experience and Design',   desc: 'Harness the power of design to drive a whole new level of success.' },
+      { label: 'Artificial Intelligence',    desc: 'Strategy, engineering, and deployment of AI systems that operate at enterprise scale.' },
+      { label: 'Enterprise Architecture',    desc: 'Modernise your technology foundation to enable speed, coherence, and AI readiness.' },
+      { label: 'Cloud',                       desc: 'Cloud-native design, migration, and engineering that cuts cost and eliminates fragility.' },
     ],
-    viewAll: 'view all services',
   },
   right: {
     heading: 'industries',
@@ -26,72 +24,6 @@ const whatWeOfferData = {
     ],
     viewAll: 'view all industries',
     rightTo: '/industries',
-  },
-}
-
-const ourWorkData = {
-  left: {
-    heading: 'our work',
-    items: [
-      { label: 'Nykaa — Quality Engineering',      desc: 'Redefined seller portal testing at e-commerce scale.' },
-      { label: 'Standard Bank — Architecture',     desc: 'Enterprise architecture transformation across Southern Africa.' },
-      { label: 'Tata International — Automation',  desc: 'Intelligent process automation for automotive supply chain.' },
-    
-    ],
-    viewAll: 'view all case studies',
-  },
-  right: {
-    heading: 'industries served',
-    cols: [
-      ['Banking & Finance', 'Healthcare', 'E-commerce & Retail', 'Automotive', 'Energy & Utilities'],
-      ['Financial Services', 'Logistics & Supply Chain', 'Education', 'Insurance', 'Media & Publishing'],
-      ['SaaS & Software', 'Public Sector', 'Travel & Hospitality'],
-    ],
-    viewAll: 'view all industries',
-  },
-}
-
-const insightsData = {
-  left: {
-    heading: 'insights',
-    items: [
-      { label: 'Why AI Projects Fail Before They Start',   desc: 'The mismatch between leadership expectations and enterprise reality.' },
-      { label: 'The ROI of Intelligent Automation',        desc: 'Measuring second and third-order returns from automation in 2025.' },
-      { label: 'Building an AI-Ready Organisation',        desc: 'The operating muscle companies need to absorb AI capability.' },
-    
-    ],
-    viewAll: 'view all insights',
-  },
-  right: {
-    heading: 'topics',
-    cols: [
-      ['AI Strategy', 'Generative AI', 'Machine Learning', 'Data Engineering', 'MLOps'],
-      ['Enterprise Architecture', 'Cloud & DevOps', 'Cybersecurity', 'Digital Transformation', 'Product Engineering'],
-      ['UX & Design', 'Leadership & Culture', 'Events & Webinars'],
-    ],
-    viewAll: 'view all topics',
-  },
-}
-
-const aiData = {
-  left: {
-    heading: 'AI solutions',
-    items: [
-      { label: 'AI Strategy & Roadmap',      desc: 'Long-term AI vision aligned to your business goals and data maturity.' },
-      { label: 'Generative AI Engineering',  desc: 'Production-ready GenAI — RAG systems, copilots, and LLM integrations.' },
-      { label: 'Intelligent Automation',     desc: 'Replace manual workflows with context-aware AI-powered processes.' },
-      
-    ],
-    viewAll: 'view all AI services',
-  },
-  right: {
-    heading: 'AI by industry',
-    cols: [
-      ['AI in Banking', 'AI in Healthcare', 'AI in Retail', 'AI in Manufacturing', 'AI in Logistics'],
-      ['AI in Insurance', 'AI in Energy', 'AI in Media', 'AI in Education', 'AI in Public Sector'],
-      ['AI Governance', 'Responsible AI', 'AI Readiness Assessment'],
-    ],
-    viewAll: 'view all AI by industry',
   },
 }
 
@@ -122,7 +54,7 @@ function ChevronDown({ open }) {
   )
 }
 
-// ── Nagarro-style Mega Menu ───────────────────────────────────────────────────
+// ── Mega Menu ─────────────────────────────────────────────────────────────────
 
 function MegaMenu({ data }) {
   const { left, right } = data
@@ -136,8 +68,6 @@ function MegaMenu({ data }) {
         .mega-menu-wrap { animation: menuFadeIn 0.2s ease both; }
         .mega-left-item { transition: color 0.15s ease; }
         .mega-left-item:hover .mega-item-label { color: var(--color-accent); }
-        .mega-right-link { transition: color 0.15s ease; color: var(--color-slate-dark); }
-        .mega-right-link:hover { color: var(--color-highlight); }
         .mega-view-all {
           display: inline-flex; align-items: center; gap: 4px;
           font-size: 14px; font-weight: 500;
@@ -146,10 +76,7 @@ function MegaMenu({ data }) {
           margin-top: 24px;
         }
         .mega-view-all:hover { color: var(--color-accent); }
-        .mega-view-all-arrow {
-          display: inline-block;
-          transition: transform 0.2s ease;
-        }
+        .mega-view-all-arrow { display: inline-block; transition: transform 0.2s ease; }
         .mega-view-all:hover .mega-view-all-arrow { transform: translateX(4px); }
       `}</style>
 
@@ -163,7 +90,7 @@ function MegaMenu({ data }) {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-8 flex gap-0">
 
-          {/* LEFT — services/items with desc */}
+          {/* LEFT — services */}
           <div className="w-[380px] flex-shrink-0 pr-12" style={{ borderRight: '1px solid var(--color-border)' }}>
             <h3
               className="text-2xl font-light mb-4 m-0"
@@ -192,18 +119,12 @@ function MegaMenu({ data }) {
                 </a>
               ))}
             </div>
-
-            <a href="#" className="mega-view-all"
-            style={{ color: 'var(--color-ink)' }}
-            >
-              {left.viewAll}
-              <span className="mega-view-all-arrow">→</span>
-            </a>
           </div>
 
           {/* VERTICAL DIVIDER */}
-          <div className="w-[0.1px] bg-gray-300 "></div>          
-          {/* RIGHT — industry/topic columns */}
+          <div className="w-[0.1px] bg-gray-300" />
+
+          {/* RIGHT — industries (non-clickable) */}
           <div className="flex-1 pl-12">
             <h3
               className="text-2xl font-light mb-4"
@@ -216,30 +137,22 @@ function MegaMenu({ data }) {
               {right.cols.map((col, ci) => (
                 <div key={ci} className="flex flex-col gap-0">
                   {col.map((item) => (
-                    <a
+                    <span
                       key={item}
-                      href="#"
-                      className="mega-right-link py-1.5 text-sm no-underline"
-                  
+                      className="py-1.5 text-sm"
+                      style={{ color: 'var(--color-slate-dark)' }}
                     >
                       {item}
-                    </a>
+                    </span>
                   ))}
                 </div>
               ))}
             </div>
 
-            {right.rightTo ? (
-              <Link to={right.rightTo} className="mega-view-all" style={{ color: 'var(--color-ink)' }}>
-                {right.viewAll}
-                <span className="mega-view-all-arrow">→</span>
-              </Link>
-            ) : (
-              <a href="#" className="mega-view-all" style={{ color: 'var(--color-ink)' }}>
-                {right.viewAll}
-                <span className="mega-view-all-arrow">→</span>
-              </a>
-            )}
+            <Link to={right.rightTo} className="mega-view-all" style={{ color: 'var(--color-ink)' }}>
+              {right.viewAll}
+              <span className="mega-view-all-arrow">→</span>
+            </Link>
           </div>
 
         </div>
@@ -250,9 +163,8 @@ function MegaMenu({ data }) {
 
 // ── Dropdown Item ─────────────────────────────────────────────────────────────
 
-function DropdownItem({ label, data, scrolled, to }) {
+function DropdownItem({ label, data, scrolled }) {
   const [open, setOpen] = useState(false)
-  const navigate = useNavigate()
   let timeout
 
   const handleEnter = () => {
@@ -261,18 +173,11 @@ function DropdownItem({ label, data, scrolled, to }) {
   }
 
   const handleLeave = () => {
-    timeout = setTimeout(() => {
-      setOpen(false)
-    }, 120) // small delay prevents flicker
+    timeout = setTimeout(() => setOpen(false), 120)
   }
 
   return (
-    <div
-      className="relative"
-      onMouseEnter={handleEnter}
-      onMouseLeave={handleLeave}
-    >
-      {/* NAV ITEM */}
+    <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
       <button
         className="flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md transition-colors duration-150 bg-transparent border-none cursor-pointer"
         style={{
@@ -282,10 +187,7 @@ function DropdownItem({ label, data, scrolled, to }) {
             ? 'var(--color-text-primary)'
             : '#ffffff',
         }}
-        onClick={() => to && navigate(to)}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.color = 'var(--color-highlight)'
-        }}
+        onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-highlight)' }}
         onMouseLeave={(e) => {
           e.currentTarget.style.color = open
             ? 'var(--color-highlight)'
@@ -295,14 +197,11 @@ function DropdownItem({ label, data, scrolled, to }) {
         }}
       >
         {label}
+        <ChevronDown open={open} />
       </button>
 
-      {/* DROPDOWN */}
       {open && (
-        <div
-          onMouseEnter={handleEnter}
-          onMouseLeave={handleLeave}
-        >
+        <div onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
           <MegaMenu data={data} />
         </div>
       )}
@@ -347,26 +246,21 @@ function Navbar() {
   const navBase = cn(
     'fixed top-0 inset-x-0 z-50 h-16 items-center justify-between',
     'px-6 md:px-10 lg:px-16 transition-all duration-300',
-    scrolled
-  ? 'border-b border-border shadow-sm'
-  : 'border-b border-transparent'
+    scrolled ? 'border-b border-border shadow-sm' : 'border-b border-transparent'
   )
 
-  const mobileDropdowns = [
-    { label: 'what we offer', key: 'offer',    items: whatWeOfferData.left.items },
-    { label: 'insights',      key: 'insights', items: insightsData.left.items    },
-  ]
+  const linkStyle = (scrolled) => ({ color: scrolled ? 'var(--color-text-primary)' : '#ffffff' })
+  const onEnter   = (e) => { e.currentTarget.style.color = 'var(--color-highlight)' }
+  const onLeave   = (e, scrolled) => { e.currentTarget.style.color = scrolled ? 'var(--color-text-primary)' : '#ffffff' }
+  const linkCls   = 'px-3 py-2 text-sm font-medium rounded-md no-underline transition-colors duration-150'
 
   return (
     <>
       {/* ── DESKTOP NAV ── */}
       <nav
-  className={cn(navBase, 'hidden md:flex')}
-  style={{
-    background: scrolled ? 'var(--color-primary)' : 'transparent',
-  }}
->
-
+        className={cn(navBase, 'hidden md:flex')}
+        style={{ background: scrolled ? 'var(--color-primary)' : 'transparent' }}
+      >
         <a href="/" className="flex items-center gap-2.5 no-underline flex-shrink-0">
           <LogoMark scrolled={scrolled} />
           <span className={cn('relative text-2xl font-black tracking-widest', scrolled ? 'text-ink' : 'text-white')}>
@@ -379,40 +273,59 @@ function Navbar() {
 
         <div className="flex justify-around w-full">
           <div className="flex items-center gap-1">
+            {/* What We Offer — dropdown */}
             <DropdownItem label="what we offer" data={whatWeOfferData} scrolled={scrolled} />
+
+            {/* Our Work — direct link to Case Studies */}
             <Link
-              to="/industries"
-              className="px-3 py-2 text-sm font-medium rounded-md no-underline transition-colors duration-150"
-              style={{ color: scrolled ? 'var(--color-text-primary)' : '#ffffff' }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-highlight)' }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = scrolled ? 'var(--color-text-primary)' : '#ffffff' }}
+              to="/case-studies"
+              className={linkCls}
+              style={linkStyle(scrolled)}
+              onMouseEnter={onEnter}
+              onMouseLeave={(e) => onLeave(e, scrolled)}
             >
               our work
             </Link>
-            <DropdownItem label="insights"      data={insightsData}    scrolled={scrolled} to="/insights"/>
+
+            {/* Insights — direct link, no dropdown */}
+            <Link
+              to="/insights"
+              className={linkCls}
+              style={linkStyle(scrolled)}
+              onMouseEnter={onEnter}
+              onMouseLeave={(e) => onLeave(e, scrolled)}
+            >
+              insights
+            </Link>
+
             <Link
               to="/ai"
-              className="px-3 py-2 text-sm font-medium rounded-md no-underline transition-colors duration-150"
-              style={{ color: scrolled ? 'var(--color-text-primary)' : '#ffffff' }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-highlight)' }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = scrolled ? 'var(--color-text-primary)' : '#ffffff' }}
+              className={linkCls}
+              style={linkStyle(scrolled)}
+              onMouseEnter={onEnter}
+              onMouseLeave={(e) => onLeave(e, scrolled)}
             >
               AI
             </Link>
           </div>
 
           <div className="flex items-center gap-1">
-            {['About', 'Contact', 'Join Us'].map((link) => {
-              const routes = { About: '/about', Contact: '/contact', 'Join Us': '/join-us' }                                                                 
-              const to = routes[link] ?? null  
-              const cls = 'px-3 py-2 text-sm font-medium rounded-md no-underline transition-colors duration-150'
-              const style = { color: scrolled ? 'var(--color-text-primary)' : '#ffffff' }
-              const onEnter = (e) => { e.currentTarget.style.color = 'var(--color-highlight)' }
-              const onLeave = (e) => { e.currentTarget.style.color = scrolled ? 'var(--color-text-primary)' : '#ffffff' }
-              return to
-                ? <Link key={link} to={to} className={cls} style={style} onMouseEnter={onEnter} onMouseLeave={onLeave}>{link}</Link>
-                : <a key={link} href="#" className={cls} style={style} onMouseEnter={onEnter} onMouseLeave={onLeave}>{link}</a>
-            })}
+            {[
+              { label: 'about',   to: '/about'   },
+              { label: 'contact', to: '/contact'  },
+              { label: 'join us', to: '/join-us'  },
+            ].map(({ label, to }) => (
+              <Link
+                key={label}
+                to={to}
+                className={linkCls}
+                style={linkStyle(scrolled)}
+                onMouseEnter={onEnter}
+                onMouseLeave={(e) => onLeave(e, scrolled)}
+              >
+                {label}
+              </Link>
+            ))}
           </div>
         </div>
       </nav>
@@ -449,44 +362,44 @@ function Navbar() {
         }}
       >
         <div className="flex flex-col gap-1 p-5 pb-12">
-          {mobileDropdowns.map(({ label, key, items }) => (
-            <div key={key}>
-              <button
-                className={cn(
-                  'w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-150 border-none cursor-pointer',
-                  mobileExp === key ? 'text-accent bg-accent-soft' : 'text-ink bg-transparent'
-                )}
-                onClick={() => setMobileExp(mobileExp === key ? null : key)}
-              >
-                {label}
-                <ChevronDown open={mobileExp === key} />
-              </button>
-              <div
-                className="overflow-hidden transition-all duration-300"
-                style={{ maxHeight: mobileExp === key ? 600 : 0 }}
-              >
-                <div className="ml-4 mt-1 mb-1 flex flex-col gap-0.5">
-                  {items.map((item) => (
-                    <a
-                      key={item.label}
-                      href="#"
-                      className="flex flex-col gap-0.5 px-4 py-2.5 rounded-lg no-underline transition-colors duration-150 hover:bg-accent-soft"
-                    >
-                      <span className="text-sm font-semibold text-ink">{item.label}</span>
-                      <span className="text-xs text-slate">{item.desc}</span>
-                    </a>
-                  ))}
-                </div>
+          {/* What We Offer accordion */}
+          <div>
+            <button
+              className={cn(
+                'w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-150 border-none cursor-pointer',
+                mobileExp === 'offer' ? 'text-accent bg-accent-soft' : 'text-ink bg-transparent'
+              )}
+              onClick={() => setMobileExp(mobileExp === 'offer' ? null : 'offer')}
+            >
+              what we offer
+              <ChevronDown open={mobileExp === 'offer'} />
+            </button>
+            <div
+              className="overflow-hidden transition-all duration-300"
+              style={{ maxHeight: mobileExp === 'offer' ? 600 : 0 }}
+            >
+              <div className="ml-4 mt-1 mb-1 flex flex-col gap-0.5">
+                {whatWeOfferData.left.items.map((item) => (
+                  <a
+                    key={item.label}
+                    href="#"
+                    className="flex flex-col gap-0.5 px-4 py-2.5 rounded-lg no-underline transition-colors duration-150 hover:bg-accent-soft"
+                  >
+                    <span className="text-sm font-semibold text-ink">{item.label}</span>
+                    <span className="text-xs text-slate">{item.desc}</span>
+                  </a>
+                ))}
               </div>
             </div>
-          ))}
+          </div>
 
           {[
-            { label: 'Our Work', to: '/case-studies' },
-            { label: 'AI',       to: '/ai'           },
-            { label: 'About',    to: '/about'        },
-            { label: 'Contact',  to: '/contact'      },
-            { label: 'Join Us',  to: '/join-us'      },
+            { label: 'Our Work',  to: '/case-studies' },
+            { label: 'Insights',  to: '/insights'     },
+            { label: 'AI',        to: '/ai'           },
+            { label: 'About',     to: '/about'        },
+            { label: 'Contact',   to: '/contact'      },
+            { label: 'Join Us',   to: '/join-us'      },
           ].map(({ label, to }) => (
             <Link
               key={label}
@@ -496,16 +409,6 @@ function Navbar() {
               {label}
             </Link>
           ))}
-
-          <a
-            href="#"
-            className="mt-4 px-5 py-3 rounded-lg text-sm font-semibold text-center no-underline transition-colors duration-200 text-white"
-            style={{ background: 'var(--color-accent)' }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--color-accent-dark)' }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--color-accent)' }}
-          >
-            Get Started
-          </a>
         </div>
       </div>
     </>
