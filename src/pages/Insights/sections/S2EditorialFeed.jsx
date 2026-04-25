@@ -46,16 +46,16 @@ function ArticleRow({ tagline, subheadline, desc, coverImg, slug, index }) {
           {subheadline}
         </h3>
 
-        <p className="text-body mb-6 line-clamp-3" style={{ color: 'var(--color-text-secondary)' }}>
+        <p className="text-body mb-1 line-clamp-3" style={{ color: 'var(--color-text-secondary)' }}>
           {insights.find(i => i.slug === slug)?.contentBlocks?.find(b => b.type === 'intro')?.text}
-          <Link
-            to={`/insights/${slug}`}
-            className="ml-2 text-sm font-semibold inline-flex items-center gap-1 no-underline transition-all duration-150 hover:gap-2"
-            style={{ color: 'var(--color-secondary)' }}
-          >
-            Read more..
-          </Link>
         </p>
+        <Link
+          to={`/insights/${slug}`}
+          className="mb-4 text-sm font-semibold inline-flex items-center gap-1 no-underline transition-all duration-150 hover:gap-2"
+          style={{ color: 'var(--color-secondary)' }}
+        >
+          Read more..
+        </Link>
       </div>
     </div>
   )
