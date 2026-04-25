@@ -189,7 +189,7 @@ function RoleRow({ role, open, onToggle }) {
             <p className="text-body text-white/70 mb-7">{role.description}</p>
 
             <div className="mb-6">
-              <p className="text-label text-[var(--color-highlight)] mb-3">Responsibilities</p>
+              <p className="text-h4 text-[var(--color-highlight)] mb-3">Responsibilities</p>
               <ul className="flex flex-col gap-2">
                 {role.responsibilities.map((r) => (
                   <li key={r} className="flex items-start gap-3">
@@ -204,7 +204,7 @@ function RoleRow({ role, open, onToggle }) {
             </div>
 
             <div>
-              <p className="text-label text-[var(--color-highlight)] mb-3">Requirements</p>
+              <p className="text-h4 text-[var(--color-highlight)] mb-3">Requirements</p>
               <ul className="flex flex-col gap-2">
                 {role.requirements.map((r) => (
                   <li key={r} className="flex items-start gap-3">

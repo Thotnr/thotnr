@@ -90,7 +90,7 @@ function Footer() {
 
   return (
     <footer
-      className="w-full border-t"
+      className="w-full"
       style={{
         background: 'var(--color-surface)',
         borderColor: 'var(--color-border)',
