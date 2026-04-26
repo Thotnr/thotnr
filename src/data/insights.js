@@ -23,6 +23,22 @@ import authorHariraj  from '../assets/images/about-us_Hariraj.jpg'
 import authorDeepak   from '../assets/images/about-us_Deepak.jpg'
 import authorNeha     from '../assets/images/about-us_Neha.jpg'
 
+
+import case1     from '../assets/images/insites/case1.jpg'
+import case2     from '../assets/images/insites/case2.jpg'
+import case3     from '../assets/images/insites/case3.jpg'
+import case4     from '../assets/images/insites/case4.jpg'
+import case5     from '../assets/images/insites/case5.jpg'
+import case6     from '../assets/images/insites/case6.jpg'
+import case7     from '../assets/images/insites/case7.jpg'
+import case8     from '../assets/images/insites/case8.jpg'
+import case9     from '../assets/images/insites/case9.jpg'
+import case10     from '../assets/images/insites/case10.jpg'
+import case11     from '../assets/images/insites/case11.jpg'
+import case12     from '../assets/images/insites/case12.jpg'
+import case13     from '../assets/images/insites/case13.jpg'
+
+
 export const insights = [
   {
     slug: 'why-enterprise-ai-fails',
@@ -70,7 +86,7 @@ export const insights = [
       },
       {
         type: 'image_text',
-        image: imgCase1,
+        image: case1,
         imageAlt: 'Enterprise AI deployment',
         imageLeft: false,
         text: 'The organisations that successfully scale AI share one counterintuitive trait: they invest in the boring infrastructure before they invest in the exciting models. Data governance, feature pipelines, monitoring frameworks, and change management programmes are the unglamorous prerequisites that determine whether a model ever reaches production — and stays there.',
@@ -127,7 +143,7 @@ export const insights = [
     },
     {
       type: 'image_text',
-      image: imgUX,
+      image: case2,
       imageAlt: 'Terraform infrastructure as code',
       imageLeft: true,
       text: 'Better collaboration and tracking within team — Infrastructure-as-code can be linked with issue tracking systems where teams can collaborate, share and save their codes for future reference. Automated infrastructure management lets Terraform create configuration file templates that can be used multiple times to create the same development, test and production environments, reducing manual effort, time and development cost significantly.'
@@ -193,7 +209,7 @@ export const insights = [
     },
     {
       type: 'image_text',
-      image: imgSecurity,
+      image: case3,
       imageAlt: 'Data center consolidation and planning',
       imageLeft: true,
       text: 'First Phase is the Detailing phase. Upcoming cloud partners prepare documents of the entire Data Center footprint — OS and hardware details, applications installed, storage details, network details, maintenance & patching details, license details and asset details. The objective is to obtain a detailed view of all relevant assets of the current Data Centre. Cross functional discussions among all business units should also be started to align all important stakeholders for upcoming changes.'
@@ -276,7 +292,7 @@ export const insights = [
     },
     {
       type: 'image_text',
-      image: imgAIService,
+      image: case4,
       imageAlt: 'Cloud cost optimisation',
       imageLeft: true,
       text: 'Cloud computing is an efficient and cost-effective way to reduce operational costs while improving IT processes. By moving to the cloud, your company benefits from only paying for what you need — without maintaining costly data centers.'
@@ -381,7 +397,7 @@ export const insights = [
     },
     {
       type: 'image_text',
-      image: imgEnterprise,
+      image: case5,
       imageAlt: 'REST architecture and standardisation',
       imageLeft: false,
       text: 'The author draws an analogy between REST and RDBMS — both have an identical approach towards simplicity and address a similar set of problems. In database design, normalization and creation of entities is the art form while CRUD operations are standardised. On similar lines, it is the design of entity structure — the formation of nouns in the design space — that is the challenge. Once URIs and resource representation are fulfilled, the remainder is simple CRUD-like operations.'
@@ -455,7 +471,7 @@ export const insights = [
     },
     {
       type: 'image_text',
-      image: imgCloud,
+      image: case6,
       imageAlt: 'Cloud limitations and use cases',
       imageLeft: false,
       text: 'Clouds are best suited for open source deployments that allow easy scaling at a moment\'s notice. This scenario changes when licensed databases or proprietary software are used — licenses prohibit such scale out, leaving cloud to be just another data center with licensing costs and cycles coming into picture. If the software is available from the vendor as PAAS, it should be considered, though PAAS brings its own set of challenges.'
@@ -507,7 +523,7 @@ export const insights = [
     },
     {
       type: 'image_text',
-      image: imgTechPartner,
+      image: case7,
       imageAlt: 'Founder owning intellectual property and source code',
       imageLeft: true,
       text: 'Source code is your intellectual property and should remain with you. As founder you need complete control — be an administrator of all systems, own the hardware, domain names, SSL certificates and environments. These should be paid by your credit cards and you should have commercial rights on them. Beware of deals too good to be true — vendors who manage and own everything in a package will eventually milk you. Ensure you sign a contract that clearly spells out that source code and environments are your IP.'
@@ -581,7 +597,7 @@ export const insights = [
     },
     {
       type: 'image_text',
-      image: imgRpa,
+      image: case8,
       imageAlt: 'Robotic process automation technology',
       imageLeft: false,
       text: 'The software used to create bots is called an RPA authoring tool. These tools expose the application UI model as an interactable interface to author user workflows. Although RPA is marketed as an end-user tool designed to replace human interaction with computers, it requires some degree of skill to customise and define a flow — especially to handle error scenarios, configurability and high-level abstractions, since end users are seldom trained for abstract computer modelling.'
@@ -666,7 +682,7 @@ export const insights = [
     },
     {
       type: 'image_text',
-      image: imgExperience,
+      image: case9,
       imageAlt: 'Voice driven user experience and natural interfaces',
       imageLeft: false,
       text: '"Ok Google, send a message to John Doe" or "Siri, call Jane Doe" — these work today, yet most applications have not exploited these abilities. This voice-driven user experience will have no text inputs. Users will not be authenticated by what they know such as passwords, but by what they are — fingerprints, voice and face recognition, as already used by Amazon, the App Store and Play Store. Speech-to-text and natural language processing are commercially available through Dialogflow, Watson Conversation and Amazon Lex — the heavy lifting is already done, waiting to be unwrapped.'
@@ -732,7 +748,7 @@ export const insights = [
     },
     {
       type: 'image_text',
-      image: imgOwasp,
+      image: case10,
       imageAlt: 'Application security and injection attacks',
       imageLeft: false,
       text: 'An injection attack occurs when user input is entered such that executing code produces undesired data. This happens when input is not validated or filtered — famously in SQL injection but equally applicable to NoSQL, ORM and LDAP. Consider a login query using username and password fields — if a user enters "username ; Select * From Users;" the query evaluates and exposes all users. All sources of input — cookies, form fields, JSON, headers — must be validated. Filtering code ensures protection.'
@@ -799,7 +815,7 @@ export const insights = [
     },
     {
       type: 'image_text',
-      image: imgPostulates,
+      image: case11,
       imageAlt: 'Turing test and machine intelligence',
       imageLeft: false,
       text: 'Alan Turing, one of the first pioneers in machine intelligence, proposed: "If a machine behaves as intelligently as a human being, then it is as intelligent as a human being." In a 1950 paper he reduced the problem of defining intelligence to a simple question of conversation — if a human interrogator talking to either a human or a computer behind closed screens cannot distinguish between the two, the computer may be considered intelligent.'
@@ -916,7 +932,7 @@ export const insights = [
     },
     {
       type: 'image_text',
-      image: imgContainers,
+      image: case12,
       imageAlt: 'Docker containers and OS virtualization',
       imageLeft: true,
       text: 'Containers are OS-level virtualization. Each container feels it has access to a root directory but using chroot, each is in a separate directory. For example, running a Tomcat container maps its internal port 8080 to an external port 8888 on the real machine — something hardware virtualization does not require. This allows multiple container instances to run within one OS, each mapped to a different physical port. The primary deployment benefit is that a container guarantees configuration and software across all environments — a Tomcat 8 container with JDK 8 is identical everywhere, with no configuration mismatch.'
@@ -971,7 +987,7 @@ export const insights = [
     },
     {
       type: 'image_text',
-      image: imgDna,
+      image: case13,
       imageAlt: 'DNA data storage biological computing',
       imageLeft: true,
       text: 'DNA has several advantages over traditional storage mechanisms — from magnetic mediums to solid state drives. One gram of DNA can store over 200 petabytes of data for a period of two millennia. As a biological building block designed to replicate, DNA has extreme self-correcting measures built in — checking itself against mutation at every step. And being a product of biological evolution, DNA is potentially apocalypse-proof: even if a planet-wide disaster sent future generations down a different technological path, DNA could still be read.'

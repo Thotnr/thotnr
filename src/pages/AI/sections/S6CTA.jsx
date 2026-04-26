@@ -20,7 +20,7 @@ function S6CTA() {
             Works?
           </h2>
 
-          <p className="text-body text-white/70 mb-10 max-w-md">
+          <p className="text-body mb-10 max-w-md" style={{ color: 'rgba(255,255,255,0.68)' }}>
             Most AI projects stall at the prototype stage. We specialise in taking
             them the rest of the way — into production, into your workflows, and
             into measurable business value.
@@ -29,9 +29,9 @@ function S6CTA() {
           <a
             href="/contact"
             className="inline-block px-8 py-3 rounded-full text-sm font-semibold no-underline transition-all duration-200"
-            style={{ background: 'var(--color-highlight)', color: '#fff' }}
-            onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.88' }}
-            onMouseLeave={(e) => { e.currentTarget.style.opacity = '1' }}
+            style={{ background: '#ffffff', color: 'var(--color-secondary)' }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.88)' }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = '#ffffff' }}
           >
             Start a Conversation
           </a>

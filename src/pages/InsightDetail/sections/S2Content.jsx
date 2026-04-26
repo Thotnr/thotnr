@@ -1,8 +1,26 @@
-import userAvatar from '../../../assets/images/user-avatar.png';
+function Intro({ text }) {
+  return (
+    <p
+      className="text-body-lg leading-relaxed"
+      style={{
+        color: 'var(--color-text-secondary)',
+        lineHeight: '1.9',
+        borderLeft: '3px solid var(--color-highlight)',
+        paddingLeft: '1.25rem',
+        fontStyle: 'italic',
+      }}
+    >
+      {text}
+    </p>
+  )
+}
 
 function Paragraph({ text }) {
   return (
-    <p className="text-body-lg" style={{ color: 'var(--color-text-secondary)', lineHeight: '1.88' }}>
+    <p
+      className="text-body-lg"
+      style={{ color: 'var(--color-text-secondary)', lineHeight: '1.88' }}
+    >
       {text}
     </p>
   )
@@ -11,7 +29,7 @@ function Paragraph({ text }) {
 function SectionHeading({ text }) {
   return (
     <h2
-      className="text-h1 mt-16 mb-2"
+      className="text-h2 mt-4"
       style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-heading)' }}
     >
       {text}
@@ -21,16 +39,17 @@ function SectionHeading({ text }) {
 
 function BulletList({ items }) {
   return (
-    <ul className="flex flex-col gap-3 ml-1">
+    <ul className="flex flex-col gap-4 ml-1">
       {items.map((item, i) => (
-        <li key={i} className="flex gap-3 items-start">
+        <li key={i} className="flex gap-4 items-start">
           <span
-            className="flex-shrink-0 mt-1"
-            style={{ color: 'var(--color-accent)', fontWeight: 700, fontSize: '1.1rem', lineHeight: 1 }}
+            className="flex-shrink-0 mt-[6px] w-1.5 h-1.5 rounded-full"
+            style={{ background: 'var(--color-highlight)' }}
+          />
+          <span
+            className="text-body-lg"
+            style={{ color: 'var(--color-text-secondary)', lineHeight: '1.88' }}
           >
-            —
-          </span>
-          <span className="text-body-lg" style={{ color: 'var(--color-text-secondary)', lineHeight: '1.88' }}>
             {item}
           </span>
         </li>
@@ -42,11 +61,15 @@ function BulletList({ items }) {
 function QuoteBlock({ text, attribution }) {
   return (
     <blockquote
-      className="py-5 pl-8"
-      style={{ borderLeft: '3px solid var(--color-accent)' }}
+      className="py-6 pl-8 my-4"
+      style={{
+        borderLeft: '3px solid var(--color-accent)',
+        background: 'rgba(69,123,157,0.05)',
+        borderRadius: '0 8px 8px 0',
+      }}
     >
       <p
-        className="text-h2 italic leading-snug"
+        className="text-h3 italic leading-snug mb-3"
         style={{ color: 'var(--color-secondary)', fontFamily: 'var(--font-heading)' }}
       >
         &ldquo;{text}&rdquo;
@@ -57,7 +80,7 @@ function QuoteBlock({ text, attribution }) {
 
 function ImageTextBlock({ image, imageAlt, text, imageLeft }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center my-4">
       <div className={imageLeft ? '' : 'md:order-2'}>
         <img
           src={image}
@@ -67,7 +90,10 @@ function ImageTextBlock({ image, imageAlt, text, imageLeft }) {
         />
       </div>
       <div className={imageLeft ? '' : 'md:order-1'}>
-        <p className="text-body-lg" style={{ color: 'var(--color-text-secondary)', lineHeight: '1.88' }}>
+        <p
+          className="text-body-lg"
+          style={{ color: 'var(--color-text-secondary)', lineHeight: '1.88' }}
+        >
           {text}
         </p>
       </div>
@@ -77,10 +103,11 @@ function ImageTextBlock({ image, imageAlt, text, imageLeft }) {
 
 function BlockRenderer({ block }) {
   switch (block.type) {
-    case 'paragraph':   return <Paragraph  text={block.text} />
+    case 'intro':       return <Intro        text={block.text} />
+    case 'paragraph':   return <Paragraph    text={block.text} />
     case 'heading':     return <SectionHeading text={block.text} />
-    case 'bullets':     return <BulletList items={block.items} />
-    case 'quote':       return <QuoteBlock text={block.text} attribution={block.attribution} />
+    case 'bullets':     return <BulletList   items={block.items} />
+    case 'quote':       return <QuoteBlock   text={block.text} attribution={block.attribution} />
     case 'image_text':  return <ImageTextBlock {...block} />
     default:            return null
   }
@@ -88,7 +115,7 @@ function BlockRenderer({ block }) {
 
 function LinkedInIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
       <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
       <circle cx="4" cy="4" r="2" />
     </svg>
@@ -97,65 +124,139 @@ function LinkedInIcon() {
 
 function TwitterIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
     </svg>
   )
 }
 
 function S2Content({ data }) {
-  const introBlock = data.contentBlocks.find(b => b.type === 'intro') || data.contentBlocks[0]
-  const bodyBlocks = data.contentBlocks.filter(b => b.type !== 'intro')
-
   return (
     <section
       className="py-16 px-6 md:px-10 lg:px-16"
       style={{ background: 'var(--color-primary)' }}
     >
-      <div className="max-w-3xl mx-auto flex flex-col gap-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-16 xl:gap-24 items-start">
 
-        {/* Author Intro Row */}
-        <div
-          className="grid grid-cols-1 md:grid-cols-[110px_1fr_90px] gap-8 pb-12"
-          style={{ borderBottom: '1px solid rgba(108,117,125,0.18)' }}
-        >
-          {/* Author Card */}
-          <div className="flex flex-col items-center gap-2">
-            <img
-              src={userAvatar}
-              alt="avatar"
-              className="w-20 h-20 rounded-full object-cover object-top"
-            />
-            <p
-              className="text-body-sm font-semibold text-center"
-              style={{ color: 'var(--color-text-tertiary)' }}
-              
-            >
-              by <span style={{ color: 'var(--color-text-secondary)' }}>Thotnr</span>            
+          {/* ── MAIN CONTENT ── */}
+          <article className="flex flex-col gap-8 min-w-0">
+            {data.contentBlocks.map((block, i) => (
+              <BlockRenderer key={i} block={block} />
+            ))}
+          </article>
+
+          {/* ── SIDEBAR ── */}
+          <aside
+            className="flex flex-col gap-8 lg:sticky"
+            style={{ top: '6rem' }}
+          >
+
+            {/* Table of Contents */}
+            {(() => {
+              const headings = data.contentBlocks.filter(b => b.type === 'heading')
+              if (!headings.length) return null
+              return (
+                <div>
+                  <p
+                    className="text-xs uppercase mb-4"
+                    style={{ color: 'var(--color-text-tertiary)', letterSpacing: '0.08em' }}
+                  >
+                    In this article
+                  </p>
+                  <div className="flex flex-col gap-0">
+                    {headings.map((h, i) => (
+                      <span
+                        key={i}
+                        className="text-body-sm py-2.5"
+                        style={{
+                          color: 'var(--color-text-secondary)',
+                          borderBottom: '1px solid rgba(108,117,125,0.12)',
+                          lineHeight: '1.5',
+                        }}
+                      >
+                        {h.text}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )
+            })()}
+
+            {/* Divider */}
+            <div style={{ height: '1px', background: 'rgba(108,117,125,0.15)' }} />
+
+            {/* Meta */}
+            <div className="flex flex-col gap-5">
+              <div>
+                <p
+                  className="text-xs uppercase mb-1"
+                  style={{ color: 'var(--color-text-tertiary)', letterSpacing: '0.08em' }}
+                >
+                  Category
+                </p>
+                <p
+                  className="text-body-sm font-semibold"
+                  style={{ color: 'var(--color-highlight)' }}
+                >
+                  {data.tagline}
+                </p>
+              </div>
+
+              <div>
+                <p
+                  className="text-xs uppercase mb-1"
+                  style={{ color: 'var(--color-text-tertiary)', letterSpacing: '0.08em' }}
+                >
+                  Published
+                </p>
+                <p
+                  className="text-body-sm"
+                  style={{ color: 'var(--color-text-secondary)' }}
+                >
+                  {data.publishDate}
+                </p>
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div style={{ height: '1px', background: 'rgba(108,117,125,0.15)' }} />
+
+            {/* Share */}
+            <div>
+              <p
+                className="text-xs uppercase mb-3"
+                style={{ color: 'var(--color-text-tertiary)', letterSpacing: '0.08em' }}
+              >
+                Share
               </p>
-            
-          </div>
+              <div className="flex gap-3">
+                {[
+                  { icon: <LinkedInIcon />, label: 'LinkedIn' },
+                  { icon: <TwitterIcon />, label: 'X' },
+                ].map(({ icon, label }) => (
+                  <button
+                    key={label}
+                    aria-label={`Share on ${label}`}
+                    className="flex items-center justify-center w-9 h-9 rounded-full border transition-all duration-200 cursor-pointer bg-transparent"
+                    style={{ border: '1px solid rgba(108,117,125,0.25)', color: 'var(--color-text-tertiary)' }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = 'var(--color-highlight)'
+                      e.currentTarget.style.color = 'var(--color-highlight)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = 'rgba(108,117,125,0.25)'
+                      e.currentTarget.style.color = 'var(--color-text-tertiary)'
+                    }}
+                  >
+                    {icon}
+                  </button>
+                ))}
+              </div>
+            </div>
 
-          {/* Intro Paragraph */}
-          <div className="flex flex-col justify-center gap-2">
-            <p className="text-label" style={{ color: 'var(--color-text-tertiary)' }}>
-              {data.publishDate}
-            </p>
-            <p
-              className="text-body-lg"
-              style={{ color: 'var(--color-text-secondary)', lineHeight: '1.88' }}
-            >
-              {introBlock?.text}
-            </p>
-          </div>
-
+          </aside>
         </div>
-
-        {/* Article Body */}
-        {bodyBlocks.map((block, i) => (
-          <BlockRenderer key={i} block={block} />
-        ))}
-
       </div>
     </section>
   )
