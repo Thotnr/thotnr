@@ -23,12 +23,12 @@ function FeatureBlock({ imageLeft, dark, image, eyebrow, headline, paragraph, bl
 
           {/* Content — first in DOM so mobile shows it first */}
           <div className={imageLeft ? 'md:order-2' : ''}>
-            <p className="text-h3 text-[var(--color-highlight)] mb-3">
+            <p className="text-h4 text-[var(--color-highlight)]">
               {eyebrow}
             </p>
 
             <h2
-              className={`text-h1 leading-tight mb-5 ${headingCls}`}
+              className={`text-h1 leading-tight ${headingCls}`}
               style={headingStyle}
             >
               {headline}

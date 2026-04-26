@@ -138,7 +138,7 @@ function S4ApplyForm() {
 
         {/* Header */}
         <div className="text-center mb-10">
-          <p className="text-h3 text-[var(--color-highlight)] mb-3">Join Us</p>
+          <p className="text-h4 text-[var(--color-highlight)]">Join Us</p>
           <h2 className="text-h1 leading-tight" style={{ color: 'var(--color-text-primary)' }}>
             Let's Build Something<br />Meaningful Together
           </h2>

@@ -19,7 +19,7 @@ function S4LifeAtThotnr() {
             className="flex flex-col justify-center px-10 py-12 rounded-2xl"
             style={{ background: 'var(--color-secondary)' }}
           >
-            <p className="text-h3 text-[var(--color-highlight)] mb-4">
+            <p className="text-h4 text-[var(--color-highlight)]">
               Life at Thotnr
             </p>
             <h2 className="text-h1 text-white leading-tight mb-5">

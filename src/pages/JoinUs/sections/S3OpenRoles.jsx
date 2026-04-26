@@ -246,7 +246,7 @@ function S3OpenRoles() {
 
         {/* Header */}
         <div className="mb-12">
-          <p className="text-h3 text-[var(--color-highlight)] mb-3">Open Roles</p>
+          <p className="text-h4 text-[var(--color-highlight)]">Open Roles</p>
           <h2 className="text-h1 text-white leading-tight">Current Opportunities</h2>
           <p className="text-body text-white/70 mt-2 max-w-2xl">
             We're growing deliberately — every hire is a long-term bet on the right person,

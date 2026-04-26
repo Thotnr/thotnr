@@ -6,7 +6,7 @@ function S5FeaturedArticle() {
     >
       <div className="max-w-3xl mx-auto text-center">
 
-        <p className="text-label text-[var(--color-highlight)] mb-6">
+        <p className="text-h4 text-[var(--color-highlight)]">
           Deep Dive
         </p>
 

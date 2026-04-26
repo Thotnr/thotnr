@@ -10,7 +10,7 @@ function S6CTA() {
 
         {/* Left — content */}
         <div>
-          <p className="text-h3 text-[var(--color-highlight)] mb-4">
+          <p className="text-h4 text-[var(--color-highlight)]">
             Get Started
           </p>
 

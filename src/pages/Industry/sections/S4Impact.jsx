@@ -40,7 +40,7 @@ function S4Impact() {
 
         {/* Left — Case Highlight */}
         <div>
-          <p className="text-h3 text-[var(--color-highlight)] mb-3">Measured Outcomes</p>
+          <p className="text-h4 text-[var(--color-highlight)]">Measured Outcomes</p>
 
           <h2 className="text-h1 leading-tight mb-5" style={{ color: 'var(--color-text-primary)' }}>
             Results That Hold Up<br />

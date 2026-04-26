@@ -111,7 +111,7 @@ function S2Industries() {
 
         {/* Header */}
         <div className="mb-12">
-          <p className="text-h3 text-[var(--color-highlight)] mb-3">Sectors</p>
+          <p className="text-h4 text-[var(--color-highlight)]">Sectors</p>
           <h2 className="text-h1 leading-tight" style={{ color: 'var(--color-text-primary)' }}>
             Industries We Serve
           </h2>

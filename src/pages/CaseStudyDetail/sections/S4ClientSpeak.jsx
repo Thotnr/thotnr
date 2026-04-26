@@ -26,7 +26,7 @@ function S4ClientSpeak() {
 
         {/* Header */}
         <div className="mb-16">
-          <p className="text-h3 text-[var(--color-highlight)] mb-3">
+          <p className="text-h4 text-[var(--color-highlight)]">
             How We Work
           </p>
           <h2 className="text-h1 text-white max-w-xl leading-snug">

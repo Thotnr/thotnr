@@ -24,7 +24,7 @@ function CaseBlock({ industry, headline, desc, image, slug, index }) {
 
       {/* Content */}
       <div className="w-full md:w-[45%] flex flex-col justify-center gap-4">
-        <p className="text-h3" style={{ color: 'var(--color-highlight)' }}>
+        <p className="text-h4" style={{ color: 'var(--color-highlight)' }}>
           {industry}
         </p>
 

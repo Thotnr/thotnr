@@ -102,7 +102,7 @@ function S3ContactAction() {
 
         {/* Left — Direct Contact */}
         <div>
-          <p className="text-h3 text-[var(--color-highlight)] mb-3">Get in Touch</p>
+          <p className="text-h4 text-[var(--color-highlight)]">Get in Touch</p>
           <h2 className="text-h1 text-white leading-tight mb-10">
             Reach Us Directly
           </h2>

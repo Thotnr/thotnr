@@ -55,11 +55,11 @@ function S3HowWeWork() {
 
         {/* Header */}
         <div className="text-center mb-14">
-          <p className="text-h3 text-[var(--color-highlight)] mb-3">Our Process</p>
+          <p className="text-h4 text-[var(--color-highlight)]">Our Process</p>
           <h2 className="text-h1 text-white leading-tight">
             How We Work Across Industries
           </h2>
-          <p className="text-body text-white/70 mt-3 max-w-2xl mx-auto">
+          <p className="text-body text-white/70 mt-2 max-w-2xl mx-auto">
             A repeatable execution model built for the complexity of enterprise environments —
             regardless of sector.
           </p>

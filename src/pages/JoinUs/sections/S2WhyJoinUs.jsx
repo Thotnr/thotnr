@@ -42,7 +42,7 @@ function S2WhyJoinUs() {
 
         {/* Left — Narrative */}
         <div>
-          <p className="text-h3 text-[var(--color-highlight)] mb-3">Why Join Us</p>
+          <p className="text-h4 text-[var(--color-highlight)]">Why Join Us</p>
 
           <h2 className="text-h1 leading-tight" style={{ color: 'var(--color-text-primary)' }}>
             Work That Matters.<br />
