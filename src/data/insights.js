@@ -107,7 +107,7 @@ export const insights = [
   coverImg: imgUX,
   tagline: 'DevOps',
   subheadline: 'Terraform – IaaC',
-  authorName: 'Neha Jaiswal',
+  authorName: 'Thotnr',
   authorRole: 'Head of Experience Design',
   authorImage: authorNeha,
   publishDate: 'January 09, 2023',
@@ -190,7 +190,7 @@ export const insights = [
   coverImg: imgSecurity,
   tagline: 'Cloud & Infrastructure',
   subheadline: 'Datacenter to Cloud Migration',
-  authorName: 'Neha Jaiswal',
+  authorName: 'Thotnr',
   authorRole: 'Head of Experience Design',
   authorImage: authorNeha,
   publishDate: 'January 09, 2023',
@@ -273,10 +273,10 @@ export const insights = [
   coverImg: imgAIService,
   tagline: 'Cloud',
   subheadline: 'Benefits of Migrating to Cloud',
-  authorName: 'Neha Jaiswal',
+  authorName: 'Thotnr',
   authorRole: 'Head of Experience Design',
   authorImage: authorNeha,
-  publishDate: 'January 09, 2023',
+  publishDate: 'January 05, 2023',
   contentBlocks: [
     {
       type: 'intro',
@@ -378,10 +378,10 @@ export const insights = [
   coverImg: imgEnterprise,
   tagline: 'Enterprise Architecture',
   subheadline: 'Is REST The Biggest Game Changer Of All?',
-  authorName: 'Gaurav Verma',
+  authorName: 'Sankalp',
   authorRole: 'Enterprise Architecture Lead',
   authorImage: authorGauravV,
-  publishDate: 'January 09, 2023',
+  publishDate: 'September 19, 2022',
   contentBlocks: [
     {
       type: 'intro',
@@ -452,10 +452,10 @@ export const insights = [
   coverImg: imgCloud,
   tagline: 'Cloud',
   subheadline: '6 Use Cases When Cloud Is Not Needed',
-  authorName: 'Bharat Garg',
+  authorName: 'Sankalp',
   authorRole: 'Cloud Engineering Lead',
   authorImage: authorBharat,
-  publishDate: 'January 09, 2023',
+  publishDate: 'September 19, 2022',
   contentBlocks: [
     {
       type: 'intro',
@@ -504,10 +504,10 @@ export const insights = [
   coverImg: imgTechPartner,
   tagline: 'AI Strategy',
   subheadline: "Non-Tech Founder's Tech Partner Checklist",
-  authorName: 'Gaurav Kumar',
+  authorName: 'Sankalp',
   authorRole: 'CEO, Thotnr',
   authorImage: authorGauravK,
-  publishDate: 'January 09, 2023',
+  publishDate: 'September 19, 2022',
   contentBlocks: [
     {
       type: 'intro',
@@ -578,10 +578,10 @@ export const insights = [
   coverImg: imgRpa,
   tagline: 'Automation',
   subheadline: 'What is RPA?',
-  authorName: 'Deepak Bindal',
+  authorName: 'Sankalp',
   authorRole: 'ML Engineering Lead',
   authorImage: authorDeepak,
-  publishDate: 'January 09, 2023',
+  publishDate: 'September 19, 2022',
   contentBlocks: [
     {
       type: 'intro',
@@ -663,10 +663,10 @@ export const insights = [
   coverImg: imgExperience,
   tagline: 'Experience Design',
   subheadline: 'The Next Generation User Experience Today',
-  authorName: 'Neha Jaiswal',
+  authorName: 'Sankalp',
   authorRole: 'Head of Experience Design',
   authorImage: authorNeha,
-  publishDate: 'January 09, 2023',
+  publishDate: 'August 23, 2022',
   contentBlocks: [
     {
       type: 'intro',
@@ -729,10 +729,10 @@ export const insights = [
   coverImg: imgOwasp,
   tagline: 'Security',
   subheadline: 'Security Risks to Watch Out For in Your Web Application',
-  authorName: 'Hariraj Singh',
+  authorName: 'Sankalp',
   authorRole: 'Security Architecture Lead',
   authorImage: authorHariraj,
-  publishDate: 'January 09, 2023',
+  publishDate: 'August 23, 2022',
   contentBlocks: [
     {
       type: 'intro',
@@ -796,10 +796,10 @@ export const insights = [
   coverImg: imgPostulates,
   tagline: 'Artificial Intelligence',
   subheadline: 'Postulates to Artificial Intelligence',
-  authorName: 'Deepak Bindal',
+  authorName: 'Sankalp',
   authorRole: 'ML Engineering Lead',
   authorImage: authorDeepak,
-  publishDate: 'January 09, 2023',
+  publishDate: 'August 23, 2022',
   contentBlocks: [
     {
       type: 'intro',
@@ -904,10 +904,10 @@ export const insights = [
   coverImg: imgContainers,
   tagline: 'Enterprise Architecture',
   subheadline: 'An Overview of Containers',
-  authorName: 'Gaurav Verma',
+  authorName: 'Sankalp',
   authorRole: 'Enterprise Architecture Lead',
   authorImage: authorGauravV,
-  publishDate: 'January 09, 2023',
+  publishDate: 'August 23, 2022',
   contentBlocks: [
     {
       type: 'intro',
@@ -972,10 +972,10 @@ export const insights = [
   coverImg: imgDna,
   tagline: 'Deep Storage',
   subheadline: 'DNA For Storage and Archival of Data',
-  authorName: 'Deepak Bindal',
+  authorName: 'Sankalp',
   authorRole: 'ML Engineering Lead',
   authorImage: authorDeepak,
-  publishDate: 'January 09, 2023',
+  publishDate: 'August 23, 2022',
   contentBlocks: [
     {
       type: 'intro',

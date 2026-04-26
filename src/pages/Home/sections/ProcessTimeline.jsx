@@ -30,7 +30,7 @@ function ProcessTimeline() {
 
         {/* Header */}
         <div className="mb-8">
-          <p className="text-h3 text-[var(--color-highlight)]">
+          <p className="text-h4 text-[var(--color-highlight)]">
             Our Methodology
           </p>
 
@@ -38,7 +38,7 @@ function ProcessTimeline() {
             How AI Thinking Works in Practice
           </h2>
 
-          <p className="t-sub text-[var(--color-text-secondary)]">
+          <p className="text-body text-[var(--color-text-secondary)] mt-2 max-w-2xl">
             A five-phase engagement designed to move at the speed of your organisation while never sacrificing depth.
           </p>
         </div>

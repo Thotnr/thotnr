@@ -1,7 +1,7 @@
 import djuboLogo   from '../../../assets/images/clients/djubo.png'
 import kingdomLogo  from '../../../assets/images/clients/kingdom.png'
-import nykaaLogo    from '../../../assets/images/clients/nykaa.png'
-import rioLogo      from '../../../assets/images/clients/Rio_2016.png'
+import nykaaLogo    from '../../../assets/images/citta.png'
+import rioLogo      from '../../../assets/images/qamp.png'
 
 const products = [
   {
@@ -20,14 +20,14 @@ const products = [
   },
   {
     id: 3,
-    name: "Nykaa",
+    name: "Citta",
     tagline: "Edu Platform",
     desc: "Education platform for modern institutions",
     logo: nykaaLogo,
   },
   {
     id: 4,
-    name: "Rio 2016",
+    name: "Qamp",
     tagline: "Smart Infra",
     desc: "Smart city infrastructure and data systems",
     logo: rioLogo,
@@ -98,7 +98,7 @@ export default function Products() {
 
   {/* Headline */}
   <h2
-    className="text-4xl md:text-5xl font-bold leading-tight mb-6"
+    className="text-h1 md:text-5xl font-bold leading-tight mb-6"
     style={{ color: 'var(--color-text-primary)' }}
   >
     Our Products

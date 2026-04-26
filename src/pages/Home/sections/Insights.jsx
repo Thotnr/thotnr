@@ -71,15 +71,15 @@ function Insights() {
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="mb-14 max-w-xl">
-          <p className="text-h3 text-[var(--color-highlight)]">Thinking Out Loud</p>
+        <div className="mb-8 max-w-xl">
+          <p className="text-h4 text-[var(--color-highlight)]">Thinking Out Loud</p>
           <h2
-            className="text-4xl md:text-5xl font-bold mb-2"
+            className="text-h1"
             style={{ color: 'var(--color-text-primary)' }}
           >
             Our Insights
           </h2>
-          <p className="text-base leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
+          <p className="text-body leading-relaxed mt-2 max-w-2xl" style={{ color: 'var(--color-text-secondary)' }}>
             Perspectives on technology, strategy, and the future of intelligent enterprise.
           </p>
         </div>

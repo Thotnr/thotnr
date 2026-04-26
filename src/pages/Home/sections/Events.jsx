@@ -37,7 +37,7 @@ function Events() {
           display: block;
           transition: color 0.2s ease;
         }
-        .ev-card-title:hover { color: var(--color-accent); }
+        
 
         .ev-divider {
           width: 1px;
@@ -51,19 +51,19 @@ function Events() {
         <div className="max-w-7xl mx-auto">
 
           {/* Header */}
-          <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
+          <div className="flex items-end justify-between mb-8 flex-wrap gap-4">
             <div>
               <p
-               className="text-h3 text-[var(--color-highlight)]"
+               className="text-h4 text-[var(--color-highlight)]"
               >
                 Upcoming
               </p>
-              <h2
-                className="ev-headline t-headline-sm"
+              <h1
+                className="ev-headline t-headline-sm text-h1"
                 style={{ color: 'var(--color-ink)' }}
               >
                 Featured Events
-              </h2>
+              </h1>
             </div>
             
            
@@ -85,13 +85,14 @@ function Events() {
               >
                 Upcoming event | May 14, 2026
               </p>
-              <a href="#" className="ev-card-title t-title-lg">
-                AI Leadership Summit 2025
-              </a>
+              <h2 className="ev-card-title t-title-lg text-h3">
+                AI Leadership Summit
+              </h2>
               <p
                 className="t-body-lg"
                 style={{
                   color: 'var(--color-slate)',
+                  lineHeight: "2"
                 }}
               >
                 A curated gathering of enterprise AI leaders — sharing what's
@@ -111,13 +112,14 @@ function Events() {
               >
                 Upcoming event | May 12, 2026
               </p>
-              <a href="#" className="ev-card-title t-title-lg">
+              <h2 className="ev-card-title t-title-lg text-h3">
                 Enterprise AI Workshop
-              </a>
+              </h2>
               <p
                 className="t-body-lg"
                 style={{
                   color: 'var(--color-slate)',
+                  lineHeight: "2"
                 }}
               >
                 Hands-on half-day workshop covering AI readiness assessment,

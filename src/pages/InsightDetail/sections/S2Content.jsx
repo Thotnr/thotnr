@@ -130,6 +130,8 @@ function TwitterIcon() {
   )
 }
 
+import userAvatar from '../../../assets/images/user-avatar.png'
+
 function S2Content({ data }) {
   return (
     <section
@@ -151,6 +153,25 @@ function S2Content({ data }) {
             className="flex flex-col gap-8 lg:sticky"
             style={{ top: '6rem' }}
           >
+
+            {/* Author */}
+            <div className="flex items-center gap-3">
+              <img
+                src={userAvatar}
+                alt={data.authorName}
+                className="w-10 h-10 rounded-full object-cover flex-shrink-0"
+                style={{ border: '2px solid rgba(168,218,220,0.5)' }}
+              />
+              <span
+                className="text-body-sm"
+                style={{ color: 'var(--color-text-secondary)' }}
+              >
+                by <span className="font-semibold" style={{ color: 'var(--color-text-primary)' }}>{data.authorName}</span>
+              </span>
+            </div>
+
+            {/* Divider */}
+            <div style={{ height: '1px', background: 'rgba(108,117,125,0.15)' }} />
 
             {/* Table of Contents */}
             {(() => {
@@ -218,42 +239,7 @@ function S2Content({ data }) {
                 </p>
               </div>
             </div>
-
-            {/* Divider */}
-            <div style={{ height: '1px', background: 'rgba(108,117,125,0.15)' }} />
-
-            {/* Share */}
-            <div>
-              <p
-                className="text-xs uppercase mb-3"
-                style={{ color: 'var(--color-text-tertiary)', letterSpacing: '0.08em' }}
-              >
-                Share
-              </p>
-              <div className="flex gap-3">
-                {[
-                  { icon: <LinkedInIcon />, label: 'LinkedIn' },
-                  { icon: <TwitterIcon />, label: 'X' },
-                ].map(({ icon, label }) => (
-                  <button
-                    key={label}
-                    aria-label={`Share on ${label}`}
-                    className="flex items-center justify-center w-9 h-9 rounded-full border transition-all duration-200 cursor-pointer bg-transparent"
-                    style={{ border: '1px solid rgba(108,117,125,0.25)', color: 'var(--color-text-tertiary)' }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = 'var(--color-highlight)'
-                      e.currentTarget.style.color = 'var(--color-highlight)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = 'rgba(108,117,125,0.25)'
-                      e.currentTarget.style.color = 'var(--color-text-tertiary)'
-                    }}
-                  >
-                    {icon}
-                  </button>
-                ))}
-              </div>
-            </div>
+          
 
           </aside>
         </div>

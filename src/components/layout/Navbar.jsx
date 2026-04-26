@@ -14,6 +14,8 @@ const whatWeOfferData = {
       { label: 'Enterprise Architecture',    desc: 'Modernise your technology foundation to enable speed, coherence, and AI readiness.' },
       { label: 'Cloud',                       desc: 'Cloud-native design, migration, and engineering that cuts cost and eliminates fragility.' },
     ],
+    viewAll: 'view all services',
+    viewAllTo: '/services',
   },
   right: {
     heading: 'industries',
@@ -88,10 +90,10 @@ function MegaMenu({ data }) {
           boxShadow: '0 12px 40px rgb(var(--color-ink-rgb) / 0.1)',
         }}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-8 flex gap-0">
+        <div className="max-w-7xl mx-auto px-0 md:px-10 lg:px-16 py-8 flex gap-0">
 
           {/* LEFT — services */}
-          <div className="w-[380px] flex-shrink-0 pr-12" style={{ borderRight: '1px solid var(--color-border)' }}>
+          <div className="w-[380px] flex-shrink-0 pr-12 flex flex-col" style={{ borderRight: '1px solid var(--color-border)' }}>
             <h3
               className="text-2xl font-light mb-4 m-0"
               style={{ color: 'var(--color-ink)', letterSpacing: '-0.3px' }}
@@ -103,12 +105,11 @@ function MegaMenu({ data }) {
               {left.items.map((item) => (
                 <a
                   key={item.label}
-                  href="#"
-                  className="mega-left-item flex flex-col gap-0.5 py-3 no-underline"
+                  className="mega-left-item flex flex-col gap-0.5 py-2 no-underline"
                   style={{ borderBottom: '1px solid var(--color-surface-soft)' }}
                 >
                   <span
-                    className="mega-item-label text-sm font-semibold"
+                    className="mega-item-label text-sm font-semibold pb-1"
                     style={{ color: 'var(--color-ink)' }}
                   >
                     {item.label}
@@ -119,15 +120,21 @@ function MegaMenu({ data }) {
                 </a>
               ))}
             </div>
+
+            <Link to={left.viewAllTo} className="mega-view-all" style={{ color: 'var(--color-ink)', marginTop: 'auto', paddingTop: '24px' }}>
+              {left.viewAll}
+              <span className="mega-view-all-arrow">→</span>
+            </Link>
+
           </div>
 
           {/* VERTICAL DIVIDER */}
           <div className="w-[0.1px] bg-gray-300" />
 
           {/* RIGHT — industries (non-clickable) */}
-          <div className="flex-1 pl-12">
+          <div className="flex-1 pl-12 flex flex-col">
             <h3
-              className="text-2xl font-light mb-4"
+              className="text-2xl font-light mb-1"
               style={{ color: 'var(--color-ink)', letterSpacing: '-0.3px' }}
             >
               {right.heading}
@@ -149,7 +156,7 @@ function MegaMenu({ data }) {
               ))}
             </div>
 
-            <Link to={right.rightTo} className="mega-view-all" style={{ color: 'var(--color-ink)' }}>
+            <Link to={right.rightTo} className="mega-view-all" style={{ color: 'var(--color-ink)', marginTop: 'auto', paddingTop: '24px' }}>
               {right.viewAll}
               <span className="mega-view-all-arrow">→</span>
             </Link>
@@ -179,7 +186,7 @@ function DropdownItem({ label, data, scrolled }) {
   return (
     <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
       <button
-        className="flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md transition-colors duration-150 bg-transparent border-none cursor-pointer"
+        className="flex items-center gap-1 px-3 py-2 text-body rounded-md transition-colors duration-150 bg-transparent border-none cursor-pointer"
         style={{
           color: open
             ? 'var(--color-highlight)'
@@ -244,94 +251,72 @@ function Navbar() {
   }, [mobileOpen])
 
   const navBase = cn(
-    'fixed top-0 inset-x-0 z-50 h-16 items-center justify-between',
-    'px-6 md:px-10 lg:px-16 transition-all duration-300',
-    scrolled ? 'border-b border-border shadow-sm' : 'border-b border-transparent'
+    'fixed top-0 inset-x-0 z-50 h-16',
+    'transition-all duration-300',
   )
+
+  const navScrolledStyle = scrolled
+    ? {
+        background: 'rgba(241, 250, 238, 0.88)',
+        backdropFilter: 'blur(18px)',
+        WebkitBackdropFilter: 'blur(18px)',
+        boxShadow: '0 1px 0 rgba(29, 53, 87, 0.08), 0 8px 32px rgba(29, 53, 87, 0.06)',
+      }
+    : {
+        background: 'transparent',
+      }
 
   const linkStyle = (scrolled) => ({ color: scrolled ? 'var(--color-text-primary)' : '#ffffff' })
   const onEnter   = (e) => { e.currentTarget.style.color = 'var(--color-highlight)' }
   const onLeave   = (e, scrolled) => { e.currentTarget.style.color = scrolled ? 'var(--color-text-primary)' : '#ffffff' }
-  const linkCls   = 'px-3 py-2 text-sm font-medium rounded-md no-underline transition-colors duration-150'
+  const linkCls   = 'px-3 py-2 text-body rounded-md no-underline transition-colors duration-150'
 
   return (
     <>
       {/* ── DESKTOP NAV ── */}
       <nav
-        className={cn(navBase, 'hidden md:flex')}
-        style={{ background: scrolled ? 'var(--color-primary)' : 'transparent' }}
+        className={cn(navBase, 'hidden md:flex items-center')}
+        style={navScrolledStyle}
       >
-        <a href="/" className="flex items-center gap-2.5 no-underline flex-shrink-0">
-          <LogoMark scrolled={scrolled} />
-          <span className={cn('relative text-2xl font-black tracking-widest', scrolled ? 'text-ink' : 'text-white')}>
-            THO
-            <span className="text-accent">T</span>
-            NR
-            <span className="absolute -bottom-0.5 left-0 w-full h-[2px] bg-gradient-to-r from-accent to-transparent" />
-          </span>
-        </a>
+        <div className="max-w-7xl mx-auto w-full px-6 md:px-10 lg:px-16 flex items-center h-full">
 
-        <div className="flex justify-around w-full">
-          <div className="flex items-center gap-1">
-            {/* What We Offer — dropdown */}
+          {/* Logo */}
+          <a href="/" className="flex items-center gap-2.5 no-underline flex-shrink-0">
+            <LogoMark scrolled={scrolled} />
+            <span className={cn('relative text-2xl font-black tracking-widest', scrolled ? 'text-ink' : 'text-white')}>
+              THO
+              <span className="text-accent">T</span>
+              NR
+              <span className="absolute -bottom-0.5 left-0 w-full h-[2px] bg-gradient-to-r from-accent to-transparent" />
+            </span>
+          </a>
+
+          {/* Center group */}
+          <div className="flex-1 flex justify-center items-center gap-1">
             <DropdownItem label="what we offer" data={whatWeOfferData} scrolled={scrolled} />
-
-            {/* Our Work — direct link to Case Studies */}
-            <Link
-              to="/case-studies"
-              className={linkCls}
-              style={linkStyle(scrolled)}
-              onMouseEnter={onEnter}
-              onMouseLeave={(e) => onLeave(e, scrolled)}
-            >
-              our work
-            </Link>
-
-            {/* Insights — direct link, no dropdown */}
-            <Link
-              to="/insights"
-              className={linkCls}
-              style={linkStyle(scrolled)}
-              onMouseEnter={onEnter}
-              onMouseLeave={(e) => onLeave(e, scrolled)}
-            >
-              insights
-            </Link>
-
-            <Link
-              to="/ai"
-              className={linkCls}
-              style={linkStyle(scrolled)}
-              onMouseEnter={onEnter}
-              onMouseLeave={(e) => onLeave(e, scrolled)}
-            >
-              AI
-            </Link>
+            <Link to="/case-studies" className={linkCls} style={linkStyle(scrolled)} onMouseEnter={onEnter} onMouseLeave={(e) => onLeave(e, scrolled)}>our work</Link>
+            <Link to="/insights"     className={linkCls} style={linkStyle(scrolled)} onMouseEnter={onEnter} onMouseLeave={(e) => onLeave(e, scrolled)}>insights</Link>
+            <Link to="/ai"           className={linkCls} style={linkStyle(scrolled)} onMouseEnter={onEnter} onMouseLeave={(e) => onLeave(e, scrolled)}>AI</Link>
           </div>
 
-          <div className="flex items-center gap-1">
+          {/* Right group — -mr-3 cancels the last link's px-3 right padding so text aligns with section content edge */}
+          <div className="flex items-center gap-1 flex-shrink-0 -mr-3">
             {[
               { label: 'about',   to: '/about'   },
               { label: 'contact', to: '/contact'  },
               { label: 'join us', to: '/join-us'  },
             ].map(({ label, to }) => (
-              <Link
-                key={label}
-                to={to}
-                className={linkCls}
-                style={linkStyle(scrolled)}
-                onMouseEnter={onEnter}
-                onMouseLeave={(e) => onLeave(e, scrolled)}
-              >
+              <Link key={label} to={to} className={linkCls} style={linkStyle(scrolled)} onMouseEnter={onEnter} onMouseLeave={(e) => onLeave(e, scrolled)}>
                 {label}
               </Link>
             ))}
           </div>
+
         </div>
       </nav>
 
       {/* ── MOBILE NAV ── */}
-      <nav className={cn(navBase, 'flex md:hidden px-5')}>
+      <nav className={cn(navBase, 'flex md:hidden items-center justify-between px-5')} style={navScrolledStyle}>
         <a href="/" className="flex items-center gap-2 no-underline">
           <LogoMark size={24} scrolled={scrolled} />
           <span className={cn('text-lg font-bold', scrolled ? 'text-ink' : 'text-white')}>

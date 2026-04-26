@@ -125,7 +125,7 @@ function ServiceCard({ icon, title, whatWeDo, index }) {
 
       <div className={`svc-card-wrap-${index}`}>
         <div
-          className={`svc-card-${index} relative flex flex-col gap-6 rounded-xl p-7`}
+          className={`svc-card-${index} relative flex flex-col gap-3 rounded-xl p-7`}
           style={{
             background: 'rgba(255,255,255,0.04)',
             border: '1px solid rgba(255,255,255,0.08)',
@@ -141,7 +141,7 @@ function ServiceCard({ icon, title, whatWeDo, index }) {
           <div className={`particle-${index}`} />
 
           {/* Icon */}
-          <div className={`svc-icon-${index} w-32 h-32`}>
+          <div className={`svc-icon-${index} w-44 h-44 mx-auto`}>
             <img src={icon} alt={title} className="w-full h-full object-contain" />
           </div>
 
@@ -164,22 +164,13 @@ function ServicesCards() {
   return (
     <>
       <section className="py-16 px-6 md:px-10 lg:px-16 bg-[var(--color-secondary)]">
-        <div>
+        <div className="max-w-7xl mx-auto">
 
-          <div className="mb-16">
-            <p className="text-h3 text-[var(--color-highlight)]">
-              Core Capabilities
-            </p>
-
-            <h2 className="text-h1 text-white">
-              Our AI Capabilities
-            </h2>
-
-            <p className="text-body text-white/70 mt-2 max-w-2xl">
-              Three interlocking disciplines that take an AI idea from whiteboard
-              to measurable business impact.
-            </p>
-          </div>
+        <div className="mb-8">
+          <p className="text-h4 text-[var(--color-highlight)]"> Core Capabilities</p>
+          <h2 className="text-h1 text-white"> Our AI Capabilities</h2>
+          <p className="text-body text-white/70 mt-2 max-w-2xl">Three interlocking disciplines that take an AI idea from whiteboard to measurable business impact.          </p>
+        </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {services.map((svc, i) => (

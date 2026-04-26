@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { caseStudies } from '../../../data/caseStudies'
 
-const featured = caseStudies.slice(0, 2)
+const featured = caseStudies.slice(0, 3)
 
 function CaseRow({ industry, headline, description, image, slug, index }) {
   const isReversed = index % 2 !== 0
@@ -64,12 +64,12 @@ function CaseStudies() {
 
         {/* Header */}
         <div className="mb-8">
-          <p className="text-h3 text-[var(--color-highlight)]">
+          <p className="text-h4 text-[var(--color-highlight)]">
             Real Impact
           </p>
 
           <h2
-            className="text-4xl sm:text-5xl font-bold leading-tight"
+            className="text-h1"
             style={{ color: 'var(--color-text-primary)' }}
           >
             Our Case Studies

@@ -1,7 +1,7 @@
 function ProblemStatement() {
   return (
     <section className="bg-[var(--color-primary)] py-16 px-6 md:px-10 lg:px-16">
-      <div>
+      <div className="max-w-7xl mx-auto">
 
         {/* Headline */}
         <h2 className="text-h1 text-[var(--color-text-primary)] leading-tight mb-4">

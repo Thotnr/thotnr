@@ -1,14 +1,6 @@
 import { Link } from 'react-router-dom'
 import logoRed from '../../assets/images/thotnr_logo_red.png'
 
-function FacebookIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
-    </svg>
-  )
-}
-
 function XIcon() {
   return (
     <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
@@ -46,19 +38,24 @@ function InstagramIcon() {
   )
 }
 
-const navLinks = [
+const socials = [
+  { label: 'X',         icon: <XIcon /> },
+  { label: 'LinkedIn',  icon: <LinkedInIcon /> },
+  { label: 'YouTube',   icon: <YoutubeIcon /> },
+  { label: 'Instagram', icon: <InstagramIcon /> },
+]
+
+const quickLinks = [
   { label: 'About',        to: '/about' },
-  { label: 'Contact',      to: '/contact' },
   { label: 'Case Studies', to: '/case-studies' },
   { label: 'Insights',     to: '/insights' },
   { label: 'AI',           to: '/ai' },
-  { label: 'Industry',     to: '/industries' },
 ]
 
 const offices = [
   {
     country: 'India',
-    lines: ['Berger Delhi One, C-001/A2', 'Block B, Sector 16', 'Noida, Uttar Pradesh', 'India – 201301'],
+    lines: ['Berger Delhi One, C-001/A2', 'Block B, Sector 16', 'Noida, Uttar Pradesh 201301'],
   },
   {
     country: 'South Africa',
@@ -66,146 +63,116 @@ const offices = [
   },
 ]
 
-const socials = [
-  { label: 'Facebook',  icon: <FacebookIcon /> },
-  { label: 'X',         icon: <XIcon /> },
-  { label: 'LinkedIn',  icon: <LinkedInIcon /> },
-  { label: 'YouTube',   icon: <YoutubeIcon /> },
-  { label: 'Instagram', icon: <InstagramIcon /> },
-]
-
-function SectionLabel({ children }) {
-  return (
-    <p
-      className="text-xs font-semibold uppercase tracking-widest mb-0"
-      style={{ color: 'var(--color-highlight)' }}
-    >
-      {children}
-    </p>
-  )
-}
-
 function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer
-      className="w-full"
-      style={{
-        background: 'var(--color-surface)',
-        borderColor: 'var(--color-border)',
-      }}
-    >
-      {/* Main columns */}
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-8 grid grid-cols-1 md:grid-cols-3 gap-12">
+    <footer style={{ background: 'var(--color-primary)', boxShadow: '0 -8px 32px rgba(0,0,0,0.07)' }}>
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 pt-10 pb-6">
 
-        {/* Col 1 — Brand + social */}
-        <div className="flex flex-col gap-6">
-          <div>
-            <a href="/" className="flex items-center gap-2 no-underline mb-3">
+        {/* 4-column grid */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-4">
+
+          {/* Col 1 — Brand + tagline + socials */}
+          <div className="flex flex-col gap-5">
+            <Link to="/" className="flex items-center gap-2 no-underline w-fit">
               <img
                 src={logoRed}
                 alt="Thotnr"
-                width={30}
-                height={30}
+                width={28}
+                height={28}
                 style={{ objectFit: 'contain' }}
               />
               <span
-                className="text-xl font-bold tracking-tight"
-                style={{ color: 'var(--color-ink)' }}
+                className="text-lg font-bold tracking-tight"
+                style={{ color: 'var(--color-text-primary)' }}
               >
                 THOTNR
               </span>
-            </a>
+            </Link>
             <p
-              className="text-sm leading-relaxed max-w-[220px]"
-              style={{ color: 'var(--color-muted)' }}
+              className="text-body leading-relaxed"
+              style={{ color: 'var(--color-text-tertiary)', maxWidth: '200px' }}
             >
               Enterprise AI &amp; Technology Consultancy
             </p>
-          </div>
-
-          {/* Social icons */}
-          <div className="flex items-center gap-1">
-            {socials.map(({ label, icon }) => (
-              <a
-                key={label}
-                href="#"
-                aria-label={label}
-                className="flex items-center justify-center w-8 h-8 rounded-full no-underline transition-all duration-200"
-                style={{ color: 'var(--color-slate)', background: 'transparent' }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = 'var(--color-highlight)'
-                  e.currentTarget.style.background = 'rgba(230,57,70,0.08)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = 'var(--color-slate)'
-                  e.currentTarget.style.background = 'transparent'
-                }}
-              >
-                {icon}
-              </a>
-            ))}
-          </div>
-        </div>
-
-        {/* Col 2 — Offices */}
-        <div className="flex flex-col gap-4">
-          {offices.map(({ country, lines }) => (
-            <div key={country}>
-              <SectionLabel>{country}</SectionLabel>
-              <div
-                className="mb-1 h-px w-full"
-                style={{ background: 'var(--color-border)' }}
-              />
-              {lines.map((line) => (
-                <p
-                  key={line}
-                  className="text-sm leading-relaxed"
-                  style={{ color: 'var(--color-muted-dk)' }}
+            <div className="flex items-center gap-0.5">
+              {socials.map(({ label, icon }) => (
+                <a
+                  key={label}
+                  href="#"
+                  aria-label={label}
+                  className="flex items-center justify-center w-8 h-8 rounded-full no-underline transition-all duration-200"
+                  style={{ color: 'var(--color-text-tertiary)' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = 'var(--color-highlight)'
+                    e.currentTarget.style.background = 'rgba(230,57,70,0.07)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = 'var(--color-text-tertiary)'
+                    e.currentTarget.style.background = 'transparent'
+                  }}
                 >
-                  {line}
-                </p>
+                  {icon}
+                </a>
               ))}
             </div>
-          ))}
-        </div>
+          </div>
 
-        {/* Col 3 — Navigation */}
-        <div>
-          <SectionLabel>Quick Links</SectionLabel>
-          <div
-            className="mb-3 h-px w-full"
-            style={{ background: 'var(--color-border)' }}
-          />
-          <nav className="flex flex-col gap-3">
-            {navLinks.map(({ label, to }) => (
-              <Link
-                key={label}
-                to={to}
-                className="text-sm no-underline transition-colors duration-150 w-fit"
-                style={{ color: 'var(--color-muted-dk)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-highlight)' }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-muted-dk)' }}
+          {/* Col 2 — Office India */}
+          <div>
+            <p className="text-h4 text-[var(--color-highlight)] mb-3">India</p>
+            {offices[0].lines.map((line) => (
+              <p
+                key={line}
+                className="text-body leading-relaxed pb-0.5"
+                style={{ color: 'var(--color-text-tertiary)' }}
               >
-                {label}
-              </Link>
+                {line}
+              </p>
             ))}
-          </nav>
+          </div>
+
+          {/* Col 3 — Office South Africa */}
+          <div>
+            <p className="text-h4 text-[var(--color-highlight)] mb-3">South Africa</p>
+            {offices[1].lines.map((line) => (
+              <p
+                key={line}
+                className="text-body leading-relaxed pb-0.5"
+                style={{ color: 'var(--color-text-tertiary)' }}
+              >
+                {line}
+              </p>
+            ))}
+          </div>
+
+          {/* Col 4 — Quick Links */}
+          <div>
+            <p className="text-h4 text-[var(--color-highlight)] mb-3">Quick Links</p>
+            <nav className="flex flex-col gap-2.5">
+              {quickLinks.map(({ label, to }) => (
+                <Link
+                  key={label}
+                  to={to}
+                  className="text-body no-underline transition-colors duration-150 w-fit"
+                  style={{ color: 'var(--color-text-secondary)' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-highlight)' }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)' }}
+                >
+                  {label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
         </div>
 
-      </div>
+        {/* Copyright — no divider */}
+        <p className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
+          © {year} THOTNR. All rights reserved.
+        </p>
 
-      {/* Bottom copyright strip */}
-      <div
-        className="border-t"
-        style={{ borderColor: 'var(--color-border)' }}
-      >
-        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-4">
-          <p className="text-xs" style={{ color: 'var(--color-muted)' }}>
-            © {year} THOTNR. All rights reserved.
-          </p>
-        </div>
       </div>
     </footer>
   )
