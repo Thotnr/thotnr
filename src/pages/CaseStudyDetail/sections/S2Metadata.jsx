@@ -1,42 +1,41 @@
-function MetaRow({ label, value }) {
-  return (
-    <div className="py-5" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-      <p className="text-h4 mb-1" style={{ color: 'rgba(255,255,255,0.45)' }}>
-        {label}
-      </p>
-      <p className="text-h2" style={{ color: '#ffffff' }}>
-        {value}
-      </p>
-    </div>
-  )
-}
-
 function S2Metadata({ meta }) {
+  const fields = [
+    { label: 'Sector',   value: meta.sector   },
+    { label: 'Company',  value: meta.company  },
+    { label: 'Service',  value: meta.service  },
+    { label: 'Offering', value: meta.offering },
+  ]
+
   return (
     <section
-      className="py-16 px-6 md:px-10 lg:px-16"
+      className="px-6 md:px-10 lg:px-16 py-12"
       style={{ background: 'var(--color-secondary)' }}
     >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[200px_1fr] gap-12 md:gap-20">
-
-        {/* Left — sticky label */}
-        <div className="md:pt-5">
-          <p
-            className="text-h3 tracking-widest uppercase md:sticky md:top-8"
-            style={{ color: 'var(--color-accent)' }}
-          >
-            Overview
-          </p>
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4">
+          {fields.map((f, i) => (
+            <div
+              key={f.label}
+              className="px-6 py-2"
+              style={{
+                borderLeft: i > 0 ? '1px solid rgba(255,255,255,0.10)' : 'none',
+              }}
+            >
+              <p
+                className="text-sm uppercase mb-2"
+                style={{ color: 'rgba(255,255,255,0.40)', letterSpacing: '0.1em' }}
+              >
+                {f.label}
+              </p>
+              <p
+                className="text-h4 font-semibold leading-snug"
+                style={{ color: '#ffffff' }}
+              >
+                {f.value}
+              </p>
+            </div>
+          ))}
         </div>
-
-        {/* Right — meta rows */}
-        <div>
-          <MetaRow label="Sector"   value={meta.sector}   />
-          <MetaRow label="Company"  value={meta.company}  />
-          <MetaRow label="Service"  value={meta.service}  />
-          <MetaRow label="Offering" value={meta.offering} />
-        </div>
-
       </div>
     </section>
   )

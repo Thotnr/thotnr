@@ -1,7 +1,7 @@
 import imgLarge   from '../../../assets/images/case1.jpg'
 import imgSmall1  from '../../../assets/images/life-at-thotnr-2.jpg'
 import imgSmall2  from '../../../assets/images/about-us.jpg'
-import imgBanner  from '../../../assets/images/thotnr_bg_cover.png'
+import imgBanner  from '../../../assets/images/work-life.jpg'
 
 function S4LifeAtThotnr() {
   return (

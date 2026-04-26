@@ -1,3 +1,5 @@
+import userAvatar from '../../../assets/images/user-avatar.png';
+
 function Paragraph({ text }) {
   return (
     <p className="text-body-lg" style={{ color: 'var(--color-text-secondary)', lineHeight: '1.88' }}>
@@ -49,11 +51,6 @@ function QuoteBlock({ text, attribution }) {
       >
         &ldquo;{text}&rdquo;
       </p>
-      {attribution && (
-        <p className="text-body-sm mt-4" style={{ color: 'var(--color-text-tertiary)' }}>
-          — {attribution}
-        </p>
-      )}
     </blockquote>
   )
 }
@@ -125,27 +122,23 @@ function S2Content({ data }) {
           {/* Author Card */}
           <div className="flex flex-col items-center gap-2">
             <img
-              src={data.authorImage}
-              alt={data.authorName}
+              src={userAvatar}
+              alt="avatar"
               className="w-20 h-20 rounded-full object-cover object-top"
             />
             <p
               className="text-body-sm font-semibold text-center"
-              style={{ color: 'var(--color-highlight)' }}
-            >
-              {data.authorName}
-            </p>
-            <p
-              className="text-caption text-center"
               style={{ color: 'var(--color-text-tertiary)' }}
+              
             >
-              {data.authorRole}
-            </p>
+              by <span style={{ color: 'var(--color-text-secondary)' }}>Thotnr</span>            
+              </p>
+            
           </div>
 
           {/* Intro Paragraph */}
           <div className="flex flex-col justify-center gap-2">
-            <p className="text-caption" style={{ color: 'var(--color-text-tertiary)' }}>
+            <p className="text-label" style={{ color: 'var(--color-text-tertiary)' }}>
               {data.publishDate}
             </p>
             <p
@@ -156,47 +149,6 @@ function S2Content({ data }) {
             </p>
           </div>
 
-          {/* Social Icons */}
-          <div className="flex md:flex-col items-start md:items-end gap-4 md:pt-2">
-            <a
-              href="#"
-              className="transition-opacity duration-150 hover:opacity-60"
-              style={{
-                color: 'var(--color-text-tertiary)',
-                background: 'transparent',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = 'var(--color-highlight)'
-                e.currentTarget.style.background = 'rgb(var(--color-highlight-rgb) / 0.06)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = 'var(--color-slate)'
-                e.currentTarget.style.background = 'transparent'
-              }}
-              aria-label="LinkedIn"
-            >
-              <LinkedInIcon />
-            </a>
-            <a
-              href="#"
-              className="transition-opacity duration-150 hover:opacity-60"
-              style={{
-                color: 'var(--color-text-tertiary)',
-                background: 'transparent',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = 'var(--color-highlight)'
-                e.currentTarget.style.background = 'rgb(var(--color-highlight-rgb) / 0.06)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = 'var(--color-slate)'
-                e.currentTarget.style.background = 'transparent'
-              }}
-              aria-label="Twitter / X"
-            >
-              <TwitterIcon />
-            </a>
-          </div>
         </div>
 
         {/* Article Body */}

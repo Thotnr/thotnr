@@ -1,60 +1,51 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { insights } from '../../../data/insights'
 
-const featured  = insights[0]
-const articles  = insights.slice(1)
+const INITIAL_COUNT = 7
 
-function FeaturedInsight({ coverImg, tagline, subheadline, slug }) {
-  return (
-    <div className="mb-10">
-      <Link to={`/insights/${slug}`} className="block overflow-hidden rounded-2xl no-underline">
-        <img
-          src={coverImg}
-          alt={subheadline}
-          className="w-full object-cover transition-transform duration-500 hover:scale-[1.02]"
-          style={{ height: '480px' }}
-        />
-      </Link>
-    </div>
-  )
-}
-
-function ArticleRow({ tagline, subheadline, desc, coverImg, slug, index }) {
+function InsightBlock({ tagline, subheadline, contentBlocks, coverImg, slug, index }) {
   const isImageLeft = index % 2 === 0
+  const desc = contentBlocks?.find((b) => b.type === 'intro')?.text ?? ''
 
   return (
     <div
-      className={`flex flex-col ${isImageLeft ? 'md:flex-row' : 'md:flex-row-reverse'} gap-10 md:gap-16 py-6`}
+      className={`flex flex-col ${isImageLeft ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 md:gap-16 py-10`}
+      style={{ borderBottom: '1px solid rgba(108,117,125,0.12)' }}
     >
       {/* Image */}
-      <div className="w-full md:w-[45%] flex-shrink-0 overflow-hidden rounded-xl">
+      <div className="w-full md:w-[55%] flex-shrink-0">
         <img
           src={coverImg}
           alt={subheadline}
-          className="w-full h-56 object-cover transition-transform duration-500 hover:scale-[1.03]"
+          className="w-full rounded-xl object-cover"
+          style={{ aspectRatio: '16/10' }}
         />
       </div>
 
       {/* Content */}
-      <div className="w-full md:w-[55%] flex flex-col justify-center">
-        <p className="text-h3 text-[var(--color-highlight)] mb-3">{tagline}</p>
-
-        <h3
-          className="text-h2 leading-snug mb-4"
-          style={{ color: 'var(--color-text-primary)' }}
-        >
-          {subheadline}
-        </h3>
-
-        <p className="text-body mb-1 line-clamp-3" style={{ color: 'var(--color-text-secondary)' }}>
-          {insights.find(i => i.slug === slug)?.contentBlocks?.find(b => b.type === 'intro')?.text}
+      <div className="w-full md:w-[45%] flex flex-col justify-center gap-4">
+        <p className="text-h3" style={{ color: 'var(--color-highlight)' }}>
+          {tagline}
         </p>
+
+        <h2 className="text-h2 leading-snug" style={{ color: 'var(--color-text-primary)' }}>
+          {subheadline}
+        </h2>
+
+        <p
+          className="text-body-lg line-clamp-4"
+          style={{ color: 'var(--color-text-secondary)' }}
+        >
+          {desc}
+        </p>
+
         <Link
           to={`/insights/${slug}`}
-          className="mb-4 text-sm font-semibold inline-flex items-center gap-1 no-underline transition-all duration-150 hover:gap-2"
+          className="inline-flex items-center gap-2 text-base font-semibold no-underline transition-all duration-200 hover:gap-3"
           style={{ color: 'var(--color-secondary)' }}
         >
-          Read more..
+          Read More..
         </Link>
       </div>
     </div>
@@ -62,27 +53,43 @@ function ArticleRow({ tagline, subheadline, desc, coverImg, slug, index }) {
 }
 
 function S2EditorialFeed() {
-  return (
-    <section
-      className="pt-16 px-6 md:px-10 lg:px-16"
-      style={{ background: 'var(--color-primary)' }}
-    >
-      <div className="max-w-6xl mx-auto">
+  const [showAll, setShowAll] = useState(false)
 
-        {/* Header */}
-        <div className="mb-8">
+  const visible = showAll ? insights : insights.slice(0, INITIAL_COUNT)
+
+  return (
+    <section className="px-6 md:px-10 lg:px-16 bg-[var(--color-primary)]">
+      <div className="max-w-7xl mx-auto">
+
+        <div className="pt-16">
           <h2 className="text-h1" style={{ color: 'var(--color-text-primary)' }}>
             Latest Thinking
           </h2>
+          <p className="text-body max-w-2xl" style={{ color: 'var(--color-text-secondary)' }}>
+            Perspectives on technology, strategy, and the future of intelligent enterprise.
+          </p>
         </div>
 
-        {/* Featured */}
-        <FeaturedInsight {...featured} />
-
-        {/* Alternating article list */}
-        {articles.map((article, i) => (
-          <ArticleRow key={article.slug} {...article} index={i} />
+        {visible.map((article, i) => (
+          <InsightBlock key={article.slug} {...article} index={i} />
         ))}
+
+        {/* Load More */}
+        {!showAll && insights.length > INITIAL_COUNT && (
+          <div className="flex justify-center py-12">
+            <button
+              onClick={() => setShowAll(true)}
+              className="px-8 py-3 rounded-full text-sm font-semibold border transition-all duration-300 cursor-pointer bg-transparent"
+              style={{ border: '1px solid var(--color-text-primary)', color: 'var(--color-text-primary)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--color-text-primary)'; e.currentTarget.style.color = '#fff' }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--color-text-primary)' }}
+            >
+              Load More
+            </button>
+          </div>
+        )}
+
+        <div className="pb-16" />
 
       </div>
     </section>

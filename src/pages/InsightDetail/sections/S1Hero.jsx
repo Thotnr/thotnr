@@ -29,21 +29,6 @@ function S1Hero({ data }) {
           {data.subheadline}
         </h1>
 
-        <div className="flex items-center gap-4 mt-1">
-          <img
-            src={data.authorImage}
-            alt={data.authorName}
-            className="w-11 h-11 rounded-full object-cover object-top flex-shrink-0"
-          />
-          <div>
-            <p className="text-body font-semibold" style={{ color: 'rgba(255,255,255,0.92)' }}>
-              {data.authorName}
-            </p>
-            <p className="text-caption" style={{ color: 'rgba(255,255,255,0.58)' }}>
-              {data.authorRole} &middot; {data.publishDate}
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   )
