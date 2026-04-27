@@ -1,70 +1,58 @@
-const principles = [
-  {
-    index: '01',
-    title: 'Outcome Before Output',
-    desc: 'Every engagement starts with the business result, not the feature list. We measure success by what changes in your organisation — not by what we ship.',
-  },
-  {
-    index: '02',
-    title: 'Enterprise-Grade from Day One',
-    desc: 'Scalability, auditability, and regulatory alignment are designed in from the start — never retrofitted after the fact. We build for the environment you operate in.',
-  },
-  {
-    index: '03',
-    title: 'Embedded Until It Sticks',
-    desc: 'We do not hand over a solution and walk away. Our teams stay embedded until the capability is operating, adopted, and owned by yours.',
-  },
-]
+function splitQuote(quote) {
+  const sentences = quote.match(/[^.!?]+[.!?]+\s*/g) || [quote]
+  if (sentences.length <= 1) return { body: quote, highlight: null }
+  const last = sentences[sentences.length - 1].trim()
+  const body = sentences.slice(0, -1).join('').trim()
+  return { body, highlight: last }
+}
 
-function S4ClientSpeak() {
+function S4ClientSpeak({ clientSpeak }) {
+  if (!clientSpeak?.quote) return null
+
+  const { quote, name, role, company } = clientSpeak
+  const hasAttribution = name && name !== 'To Be Provided'
+  const { body, highlight } = splitQuote(quote)
+
   return (
     <section
-      className="py-20 px-6 md:px-10 lg:px-16"
-      style={{ background: 'var(--color-secondary)' }}
+      className="px-6 py-16 md:px-10 lg:px-16"
+      style={{
+        background: 'var(--color-secondary)',
+        
+      }}
     >
-      <div className="max-w-7xl mx-auto">
+      <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
 
-        {/* Header */}
-        <div className="mb-16">
-          <p className="text-h4 text-[var(--color-highlight)]">
-            How We Work
-          </p>
-          <h2 className="text-h1 text-white max-w-xl leading-snug">
-            The Principles Behind Every Engagement
-          </h2>
-        </div>
+        {/* Heading */}
+        <h2
+          className="text-h1"
+          style={{ fontWeight: 700, marginBottom: '20px' }}
+        >
+          <span style={{ color: 'var(--color-highlight)' }}>Client</span>
+          <span style={{ color: '#ffffff' }}> Speaks</span>
+        </h2>
 
-        {/* Principles grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
-          {principles.map((p, i) => (
-            <div
-              key={p.index}
-              className="flex flex-col gap-5 px-8 py-2"
-              style={{
-                borderLeft: i > 0 ? '1px solid rgba(255,255,255,0.10)' : 'none',
-              }}
-            >
-              <span
-                className="text-5xl font-bold leading-none"
-                style={{ color: 'rgba(255,255,255,0.08)', fontFamily: 'var(--font-heading)' }}
-              >
-                {p.index}
-              </span>
-
-              <h3
-                className="text-h3 font-semibold leading-snug text-white"
-              >
-                {p.title}
-              </h3>
-
-              <p
-                className="text-body leading-relaxed"
-                style={{ color: 'rgba(255,255,255,0.60)' }}
-              >
-                {p.desc}
-              </p>
-            </div>
-          ))}
+        {/* Quote block */}
+        <div style={{ position: 'relative' }}>
+          <blockquote
+            style={{
+              fontSize: '18px',
+              lineHeight: 1.85,
+              fontFamily: 'var(--font-body)',
+              fontStyle: 'italic',
+              margin: 0,
+              padding: 0,
+            }}
+          >
+            {highlight ? (
+              <>
+                <span style={{ color: 'rgba(255,255,255,0.82)' }}>{body} </span>
+                <span style={{ color: 'var(--color-highlight)' }}>{highlight}</span>
+              </>
+            ) : (
+              <span style={{ color: 'rgba(255,255,255,0.82)' }}>{quote}</span>
+            )}
+          </blockquote>
         </div>
 
       </div>

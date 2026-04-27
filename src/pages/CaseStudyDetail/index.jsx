@@ -20,6 +20,7 @@ function CaseStudyDetail() {
       <S1Hero        data={data}                                                         />
       <S2Metadata    meta={data.meta}                                                    />
       <S3Timeline    challenge={data.challenge} solution={data.solution} outcome={data.outcome} />
+      <S4ClientSpeak clientSpeak={data.clientSpeak} />
       <S5CTA         cta={data.cta}                                                      />
       <Footer />
     </>

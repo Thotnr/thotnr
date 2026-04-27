@@ -8,11 +8,17 @@ import imgWeb from '../assets/images/studies/zs.jpg'
 import imgTata from '../assets/images/studies/tata.jpg'
 import imgGlytec from '../assets/images/studies/glytec.jpg'
 import imgAmerican from '../assets/images/studies/anglo-american.jpg'
-import imgAIPowered from '../assets/images/studies/ai-powered.jpg'
-import imgAgenticAI from '../assets/images/studies/agentic-ai.jpg'
-import imgEnterpriseAI from '../assets/images/studies/ai-architecture.jpg'
-import imgInsuranceIntelligence from '../assets/images/studies/ai-insurance.jpg'
-import imgRexallFieldSales from '../assets/images/studies/ai-health.jpg'
+import imgAIPowered from '../assets/images/studies/case-study-5.png'
+import imgAgenticAI from '../assets/images/studies/case-study-4.png'
+import imgEnterpriseAI from '../assets/images/studies/case-study-3.png'
+import imgInsuranceIntelligence from '../assets/images/studies/case-study-2.png'
+import imgRexallFieldSales from '../assets/images/studies/case-study-1.png'
+
+import csVideo1 from '../assets/videos/case-study-1.mp4'
+import csVideo2 from '../assets/videos/case-study-2.mp4'
+import csVideo3 from '../assets/videos/case-study-3.mp4'
+import csVideo4 from '../assets/videos/case-study-4.mp4'
+import csVideo5 from '../assets/videos/case-study-5.mp4'
 
 import portrait1 from '../assets/images/about-us_Gaurav-Kumar.jpg'
 import portrait2 from '../assets/images/about-us_Sankalp.jpg'
@@ -30,6 +36,7 @@ export const caseStudies = [
   {
     slug: 'autonomous-field-intelligence-rexall',
     coverImg: imgRexallFieldSales,
+    coverVideo: csVideo1,
     coverTagline: 'AUTONOMOUS FIELD INTELLIGENCE',
     coverSubheadline: 'Redefining Field Sales For Rexall',
     meta: {
@@ -66,6 +73,7 @@ export const caseStudies = [
   {
     slug: 'ai-powered-insurance-intelligence',
     coverImg: imgInsuranceIntelligence,
+    coverVideo: csVideo2,
     coverTagline: 'AI-POWERED INSURANCE INTELLIGENCE',
     coverSubheadline: 'Reimagining Claims With Agentic AI',
     meta: {
@@ -102,8 +110,9 @@ export const caseStudies = [
   {
     slug: 'enterprise-ai-architecture-governance',
     coverImg: imgEnterpriseAI,
-    coverTagline: 'ENTERPRISE AI ARCHITECTURE & GOVERNANCE',
-    coverSubheadline: 'Architecting AI For Hollard',
+    coverVideo: csVideo3,
+    coverTagline: 'AI ARCHITECTURE AND GOVERNANCE',
+    coverSubheadline: 'Enterprise Architecting AI For Hollard',
     meta: {
       sector: 'INSURANCE & FINANCIAL SERVICES',
       company: 'HOLLARD',
@@ -138,6 +147,7 @@ export const caseStudies = [
   {
     slug: 'agentic-ai-for-digital-lending',
     coverImg: imgAgenticAI,
+    coverVideo: csVideo4,
     coverTagline: 'AGENTIC AI FOR DIGITAL LENDING',
     coverSubheadline: 'Reimagining Engagement For Creditas',
     meta: {
@@ -174,6 +184,7 @@ export const caseStudies = [
   {
     slug: 'ai-powered-hospitality-automation',
     coverImg: imgAIPowered,
+    coverVideo: csVideo5,
     coverTagline: 'AI-POWERED HOSPITALITY AUTOMATION',
     coverSubheadline: 'Reimagining Support For Djubo',
     meta: {
