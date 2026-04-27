@@ -43,7 +43,7 @@ function BulletList({ items }) {
       {items.map((item, i) => (
         <li key={i} className="flex gap-4 items-start">
           <span
-            className="flex-shrink-0 mt-[6px] w-1.5 h-1.5 rounded-full"
+            className="flex-shrink-0 mt-3 w-1.5 h-1.5 rounded-full"
             style={{ background: 'var(--color-highlight)' }}
           />
           <span
@@ -139,7 +139,7 @@ function S2Content({ data }) {
       style={{ background: 'var(--color-primary)' }}
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-16 xl:gap-24 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 xl:gap-12 items-start">
 
           {/* ── MAIN CONTENT ── */}
           <article className="flex flex-col gap-8 min-w-0">

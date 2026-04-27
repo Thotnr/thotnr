@@ -46,10 +46,11 @@ const socials = [
 ]
 
 const quickLinks = [
-  { label: 'About',        to: '/about' },
+  // { label: 'Industry',        to: '/industries' },
+  { label: 'AI',           to: '/ai' },
   { label: 'Case Studies', to: '/case-studies' },
   { label: 'Insights',     to: '/insights' },
-  { label: 'AI',           to: '/ai' },
+  
 ]
 
 const offices = [
@@ -150,7 +151,7 @@ function Footer() {
           {/* Col 4 — Quick Links */}
           <div>
             <p className="text-h4 text-[var(--color-highlight)] mb-3">Quick Links</p>
-            <nav className="flex flex-col gap-2.5">
+            <nav className="flex flex-col gap-1">
               {quickLinks.map(({ label, to }) => (
                 <Link
                   key={label}
