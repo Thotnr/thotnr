@@ -1,5 +1,75 @@
 # CLAUDE.md — Thotnr Codebase Guide
 
+## Non-negotiable Rules
+
+These four rules apply to every file touched, every section written, every component created. No exceptions.
+
+### 1. Tailwind for layout, CSS variables for everything else
+
+Use Tailwind classes for structural concerns: `flex`, `grid`, `gap-*`, `p-*`, `m-*`, `rounded-*`, `w-*`, `h-*`, `items-*`, `justify-*`, `overflow-*`, `z-*`, `fixed`, `absolute`, `relative`, `hidden`, `block`, etc.
+
+Never use Tailwind for colors or font sizes. These must come from CSS variables.
+
+### 2. All colors from `index.css` CSS variables only
+
+Never write a hardcoded color value (`#E63946`, `rgba(...)`, `rgb(...)`, named colors like `blue-900`) anywhere in component files. Every color must reference a CSS variable defined in `src/index.css`.
+
+For Tailwind utilities that support `[var(...)]` syntax:
+```jsx
+className="bg-[var(--color-primary)] text-[var(--color-text-primary)]"
+```
+
+For inline styles (hover, backgrounds that Tailwind can't reference cleanly):
+```jsx
+style={{ background: 'var(--color-secondary)', color: 'var(--color-text-white)' }}
+```
+
+If a color you need doesn't have a variable, **define it in `index.css` first**, then use the variable.
+
+### 3. All font sizes and font families from `index.css` typography classes only
+
+Never use Tailwind's font-size utilities: `text-sm`, `text-base`, `text-lg`, `text-xl`, `text-2xl`, `text-3xl`, etc. These are forbidden.
+
+Always use the typography classes defined in `index.css`:
+
+| Class | Size | Font |
+|---|---|---|
+| `.text-display` | 72px | Playfair Display |
+| `.text-h1` | 40px | Sora |
+| `.text-h2` | 32px | Sora |
+| `.text-h3` | 24px | Sora |
+| `.text-h4` | 18px | Sora |
+| `.text-body-lg` | 18px | Source Serif 4 |
+| `.text-body` | 16px | Source Serif 4 |
+| `.text-body-sm` | 14px | Source Serif 4 |
+| `.text-label` | 12px | IBM Plex Mono, uppercase |
+| `.text-caption` | 12px | IBM Plex Mono |
+
+Font families are applied automatically: `h1–h4` elements inherit `--font-heading` (Sora) via `index.css` base styles. `body` inherits `--font-body`. Only set `font-family` explicitly in inline styles when overriding (e.g. hero display text with `--font-accent`).
+
+### 4. Every section must be responsive for all desktop sizes
+
+Write responsive code for small desktop (md), medium desktop (lg), and large desktop (xl/2xl). Every section must look correct at 1024px, 1280px, 1440px, and 1920px. Always test grid columns and font sizing at each breakpoint.
+
+---
+
+## Section Padding and Navbar Alignment
+
+**Every section uses exactly this padding:**
+```jsx
+<section className="py-16 px-6 md:px-10 lg:px-16 ...">
+  <div className="max-w-7xl mx-auto">
+    ...
+  </div>
+</section>
+```
+
+The Navbar inner container uses `max-w-7xl mx-auto px-6 md:px-10 lg:px-16`. Matching this in every section ensures section content left- and right-edges are always pixel-aligned with the navbar links at every desktop breakpoint.
+
+**Never change these values.** Do not add extra wrapper padding. Do not use `container` or `max-w-screen-xl` — always `max-w-7xl mx-auto`.
+
+---
+
 ## Tech Stack
 
 - **React 19** — functional components only, hooks allowed
@@ -94,9 +164,9 @@ Detail pages (`CaseStudyDetail`, `InsightDetail`) use `useParams()` to grab the 
 
 ---
 
-## Design Tokens
+## Design Tokens (`src/index.css`)
 
-All tokens live in `src/index.css` under `:root`. Always reference them via CSS variables.
+All tokens live in `src/index.css` under `:root`. Every color and font reference in component files must go through these variables.
 
 ### Colors
 
@@ -104,10 +174,10 @@ All tokens live in `src/index.css` under `:root`. Always reference them via CSS 
 /* Backgrounds */
 --color-primary:   #F1FAEE   /* off-white — light section bg */
 --color-secondary: #1D3557   /* dark navy — dark section bg  */
---color-tertiary:  #457B9D   /* medium steel blue (SubscribeSection) */
+--color-tertiary:  #457B9D   /* medium steel blue (SubscribeSection only) */
 
 /* Accents */
---color-accent:    #A8DADC   /* teal — italic hero text, hover states, checkboxes */
+--color-accent:    #A8DADC   /* teal — italic hero text, hover states */
 --color-highlight: #E63946   /* red — eyebrow labels ONLY */
 
 /* Text */
@@ -117,17 +187,19 @@ All tokens live in `src/index.css` under `:root`. Always reference them via CSS 
 --color-text-white:     #ffffff
 ```
 
-### Undefined variables (legacy — do not use in new sections)
+**Adding a new color:** define it in `index.css` under `:root`, then use `var(--color-name)` in the component. Never skip this step.
 
-Navbar.jsx, Footer.jsx, and Events.jsx reference CSS variables that are **not defined** in `index.css`:
+### Undefined legacy variables (do not use in new sections)
+
+Navbar.jsx, Footer.jsx, and Events.jsx reference variables that are not defined in `index.css`:
 `--color-border`, `--color-surface`, `--color-ink`, `--color-ink-rgb`, `--color-muted`, `--color-muted-dk`, `--color-slate`, `--color-slate-dark`, `--color-accent-dark`, `--color-accent-soft`, `--color-surface-soft`, `--color-highlight-rgb`
 
-New sections must never use these. Stick to the defined tokens above.
+New sections must never use these. They exist only in legacy files.
 
 ### Fonts
 
 ```css
---font-heading: 'Sora', sans-serif          /* h1–h4 automatically use this */
+--font-heading: 'Sora', sans-serif          /* h1–h4 via base styles */
 --font-body:    'Source Serif 4', serif     /* body default */
 --font-mono:    'IBM Plex Mono', monospace  /* labels, captions */
 --font-accent:  'Playfair Display', serif   /* .text-display only */
@@ -135,69 +207,32 @@ New sections must never use these. Stick to the defined tokens above.
 
 ---
 
-## Typography Classes
-
-Defined in `src/index.css`. Use these class names directly — never recreate them inline.
-
-| Class | Size | Font | Notes |
-|---|---|---|---|
-| `.text-display` | 72px | Playfair Display | Hero display, italic accent common |
-| `.text-h1` | 40px | Sora | Section headline |
-| `.text-h2` | 32px | Sora | Sub-headline |
-| `.text-h3` | 24px | Sora | Card title / eyebrow (some sections use h3 for eyebrows) |
-| `.text-h4` | 18px | Sora | Small heading |
-| `.text-body-lg` | 18px | Source Serif 4 | Lead paragraph, lh 1.7 |
-| `.text-body` | 16px | Source Serif 4 | Standard body, lh 1.75 |
-| `.text-body-sm` | 14px | Source Serif 4 | Small body |
-| `.text-label` | 12px | IBM Plex Mono | Eyebrow labels, uppercase, 0.08em tracking |
-| `.text-caption` | 12px | IBM Plex Mono | Captions |
-
-**Legacy warning:** Events.jsx and Navbar.jsx still use `.t-*` class names (`t-label`, `t-body-lg`, `t-title-lg`, `t-headline-sm`) from the commented-out `typography.css`. These are broken. **New sections must never use `.t-*` classes** — always use `.text-*`.
-
----
-
 ## Section Background Pattern
 
 Sections alternate light → dark → light. Never break this rhythm within a page.
 
-| Background | When to use |
+| Background | Tailwind / inline |
 |---|---|
-| `bg-[var(--color-primary)]` | Light sections (default for most content) |
-| `style={{ background: 'var(--color-secondary)' }}` | Dark navy sections |
-| `bg-white` | Occasional pure white sections (e.g. Stats Strip in About, Events in Home) |
-| `style={{ background: 'var(--color-tertiary)' }}` | Steel blue — SubscribeSection only |
+| Light (default) | `bg-[var(--color-primary)]` |
+| Dark navy | `style={{ background: 'var(--color-secondary)' }}` |
+| Pure white (rare) | `bg-white` |
+| Steel blue (SubscribeSection only) | `style={{ background: 'var(--color-tertiary)' }}` |
 
 ---
 
 ## Color Application Rules
 
-1. `--color-highlight` (red) → **eyebrow/category labels only.** Never use as a button bg, card bg, or section bg.
-2. `--color-accent` (teal) → sparingly: italic hero text, hover states, checkbox accent, divider accents.
-3. On **dark sections** (secondary bg): headings `text-white`, body `text-white/70`
-4. On **light sections** (primary bg): headings `text-[var(--color-text-primary)]`, body `text-[var(--color-text-secondary)]`
-5. Use `style={{ color: 'var(--color-X)' }}` inline for CSS var colors — Tailwind utilities like `text-blue-900` cannot reference them.
-
-### Standard Eyebrow + Headline pattern (used in every section)
-
-```jsx
-/* Light section */
-<p className="text-label text-[var(--color-highlight)]">Category Label</p>
-<h2 className="text-h1 text-[var(--color-text-primary)]">Section Heading</h2>
-<p className="text-body text-[var(--color-text-secondary)] mt-2 max-w-2xl">Description.</p>
-
-/* Dark section */
-<p className="text-label text-[var(--color-highlight)]">Category Label</p>
-<h2 className="text-h1 text-white">Section Heading</h2>
-<p className="text-body text-white/70 mt-2 max-w-2xl">Description.</p>
-```
-
-Some existing sections use `text-h3` for eyebrow labels instead of `text-label` — both patterns exist in the codebase. Prefer `text-label` for new sections.
+1. `--color-highlight` (red) → **eyebrow/category labels only.** Never use as button bg, card bg, or section bg.
+2. `--color-accent` (teal) → sparingly: italic hero text, hover states, divider accents.
+3. On **dark sections**: headings `text-white`, body `text-white/70`
+4. On **light sections**: headings `text-[var(--color-text-primary)]`, body `text-[var(--color-text-secondary)]`
+5. Tailwind `/opacity` suffix (`text-white/70`) is fine for opacity-modified white — no CSS var needed.
 
 ---
 
 ## Section Shell Template
 
-Every section uses this structure:
+Every section must follow this exact structure:
 
 ```jsx
 function SectionName() {
@@ -206,10 +241,12 @@ function SectionName() {
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="mb-12">
-          <p className="text-label text-[var(--color-highlight)]">Eyebrow</p>
-          <h2 className="text-h1 text-[var(--color-text-primary)]">Heading</h2>
-          <p className="text-body text-[var(--color-text-secondary)] mt-2 max-w-2xl">Description.</p>
+        <div className="mb-8">
+          <p className="text-h4 text-[var(--color-highlight)]">Eyebrow Label</p>
+          <h2 className="text-h1 text-[var(--color-text-primary)]">Section Heading</h2>
+          <p className="text-body text-[var(--color-text-secondary)] mt-2 max-w-2xl">
+            Supporting description.
+          </p>
         </div>
 
         {/* Content */}
@@ -222,18 +259,34 @@ function SectionName() {
 export default SectionName
 ```
 
-Standard spacing:
-- Section padding: `py-16 px-6 md:px-10 lg:px-16`
-- Header margin bottom: `mb-12` (or `mb-8` for tighter sections)
-- Max width: `max-w-7xl mx-auto` (use `max-w-6xl` for narrower content)
+For dark sections, swap `bg-[var(--color-primary)]` → `style={{ background: 'var(--color-secondary)' }}` and update text colors accordingly.
 
-For dark sections, swap `bg-[var(--color-primary)]` for `style={{ background: 'var(--color-secondary)' }}`.
+**Standard spacing reference:**
+- Section padding: `py-16 px-6 md:px-10 lg:px-16` — fixed, never change
+- Header margin bottom: `mb-8` (use `mb-6` for tighter sections)
+- Max width: `max-w-7xl mx-auto` always (use `max-w-6xl` for narrower centered text blocks)
+
+### Eyebrow + Headline pattern
+
+```jsx
+{/* Light section */}
+<p className="text-h4 text-[var(--color-highlight)]">Category Label</p>
+<h2 className="text-h1 text-[var(--color-text-primary)]">Section Heading</h2>
+<p className="text-body text-[var(--color-text-secondary)] mt-2 max-w-2xl">Description.</p>
+
+{/* Dark section */}
+<p className="text-h4 text-[var(--color-highlight)]">Category Label</p>
+<h2 className="text-h1 text-white">Section Heading</h2>
+<p className="text-body text-white/70 mt-2 max-w-2xl">Description.</p>
+```
+
+Always use `text-h4` for eyebrows in new sections. Do not use `text-label` or `text-h3` for eyebrow labels.
 
 ---
 
 ## Hover Effects
 
-Use `onMouseEnter` / `onMouseLeave` when CSS variables are involved — Tailwind's `hover:` cannot reference them.
+Use `onMouseEnter` / `onMouseLeave` when CSS variables are involved — Tailwind's `hover:` prefix cannot reference CSS vars.
 
 ```jsx
 <a
@@ -245,7 +298,54 @@ Use `onMouseEnter` / `onMouseLeave` when CSS variables are involved — Tailwind
 </a>
 ```
 
-For class-only hover (no CSS vars involved), Tailwind `hover:` is fine.
+For hover that only toggles Tailwind classes (no CSS vars), Tailwind `hover:` is fine.
+
+---
+
+## Button Patterns
+
+**Button component** (`src/components/ui/Button.jsx`) — has `primary`, `secondary`, `ghost` variants. Use for all new sections.
+
+```jsx
+import Button from '../../components/ui/Button'
+<Button variant="primary">Get Started</Button>
+```
+
+**Inline button pattern** (when fine-grained style control is needed):
+```jsx
+<button
+  className="px-6 py-3 rounded-lg font-semibold"
+  style={{ background: 'var(--color-secondary)', color: 'var(--color-text-white)' }}
+  onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--color-highlight)' }}
+  onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--color-secondary)' }}
+>
+  Label
+</button>
+```
+
+Note: button text uses `font-semibold` (Tailwind weight utility) — this is correct. Only font-size utilities (`text-sm`, `text-lg`, etc.) are forbidden.
+
+---
+
+## Grid Layouts
+
+Common grids — always write mobile-first, scaling up through desktop breakpoints:
+
+```jsx
+{/* 2-column — stacks on tablet, side-by-side on desktop */}
+<div className="grid md:grid-cols-2 gap-12 items-center">
+
+{/* 3-column cards */}
+<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+{/* 4-column team grid */}
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
+
+{/* 2-column left-content / right-grid */}
+<div className="grid lg:grid-cols-2 gap-12 items-center">
+```
+
+For large desktop screens (1440px+), always verify that the grid does not stretch awkwardly. Add `xl:grid-cols-*` variants when the default grid needs adjusting at larger viewports.
 
 ---
 
@@ -279,7 +379,7 @@ export default SectionName
 
 ## Animations
 
-For keyframe animations, embed `<style>` tags inside the component. Use index-based class names for per-card animations to avoid collisions.
+Embed `<style>` tags inside the component for keyframe animations. Use index-based class names to avoid collisions across instances.
 
 ```jsx
 function Card({ index }) {
@@ -296,49 +396,6 @@ function Card({ index }) {
     </>
   )
 }
-```
-
----
-
-## Button Patterns
-
-**Button component** (`src/components/ui/Button.jsx`) — has `primary`, `secondary`, `ghost` variants. Use for new pages.
-
-```jsx
-import Button from '../../components/ui/Button'
-<Button variant="primary">Get Started</Button>
-```
-
-**Inline buttons** (existing pattern in many sections):
-```jsx
-<button
-  className="px-6 py-3 rounded-lg text-sm font-semibold"
-  style={{ background: 'var(--color-secondary)', color: '#fff' }}
-  onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--color-highlight)' }}
-  onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--color-secondary)' }}
->
-  Label
-</button>
-```
-
----
-
-## Grid Layouts
-
-Common grids used across sections:
-
-```jsx
-{/* 2-column */}
-<div className="grid md:grid-cols-2 gap-12 items-center">
-
-{/* 3-column cards */}
-<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-{/* 4-column team grid */}
-<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
-
-{/* 2-column left-content / right-grid */}
-<div className="grid lg:grid-cols-2 gap-12 items-center">
 ```
 
 ---
@@ -378,6 +435,8 @@ Content blocks have types: `'intro'`, `'paragraph'`, `'heading'`, `'bullets'`, `
 | `Button` | `components/ui/Button.jsx` | Primary / secondary / ghost variants |
 | `FeatureBlock` | `pages/AI/sections/FeatureBlock.jsx` | Reusable 2-col image+text block with dark/light prop |
 
+Never recreate these. Always import and reuse.
+
 ---
 
 ## Utility Helpers
@@ -406,14 +465,24 @@ Used in About S2 to decorate headings:
 
 ---
 
+## Legacy Warnings
+
+- **`.t-*` classes** (`t-label`, `t-body-lg`, `t-title-lg`, `t-headline-sm`) exist in Events.jsx and Navbar.jsx from the removed `typography.css`. These are broken. Never use them.
+- **`typography.css`** is fully commented out and must never be imported.
+- Navbar.jsx and Footer.jsx use undefined CSS vars (`--color-border`, `--color-surface`, etc.) — do not copy these patterns into new files.
+
+---
+
 ## PRD Workflow
 
 When a PRD file is provided:
-1. Read this CLAUDE.md first for all patterns
+1. Read this CLAUDE.md first — all four non-negotiable rules apply
 2. Read the PRD for page/section requirements
 3. Build using the section shell template above
 4. Match the alternating bg pattern unless the PRD specifies otherwise
 5. All eyebrow labels use `text-label text-[var(--color-highlight)]`
-6. Use S{N}Name.jsx naming for all section files
+6. Use `S{N}Name.jsx` naming for all section files
 7. Reuse existing components (Navbar, Footer, SubscribeSection, Button) — never recreate them
-8. Store any complex data arrays in `src/data/` if they'll be used by multiple sections or detail pages
+8. Store complex data arrays in `src/data/` if used by multiple sections or detail pages
+9. Before writing any color value, check it exists in `index.css`; if not, add it there first
+10. Before writing any font size, confirm the `index.css` typography class exists; use it, not Tailwind
