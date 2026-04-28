@@ -103,7 +103,7 @@ function Clients() {
           </div>
 
           {/* Right — stats */}
-          <div className="flex items-center gap-0 flex-shrink-0">
+          {/* <div className="flex items-center gap-0 flex-shrink-0">
             {stats.map((s, i) => (
               <div
                 key={s.label}
@@ -118,7 +118,7 @@ function Clients() {
                 </span>
               </div>
             ))}
-          </div>
+          </div> */}
 
         </div>
 

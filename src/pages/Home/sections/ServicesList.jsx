@@ -120,7 +120,7 @@ function ServicesList() {
         </div>
 
         {/* Expanding Cards */}
-        <div className="flex gap-4" style={{ minHeight: '420px' }}>
+        <div className="flex flex-col md:flex-row gap-4" style={{ minHeight: '420px' }}>
           {featuredServices.map((svc) => (
             <ExpandingCard key={svc.title} {...svc} />
           ))}

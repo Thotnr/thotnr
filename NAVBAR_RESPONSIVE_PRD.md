@@ -1,21 +1,211 @@
+# NAVBAR — Responsive PRD (Mobile + Tablet)
+## File: `src/components/layout/Navbar.jsx`
+## Breakpoints: Mobile < 768px | Tablet 768px–1023px | Desktop 1024px+
+
+---
+
+## RULES (from CLAUDE.md)
+- Tailwind for layout only
+- NO Tailwind color utilities — CSS vars only (`text-[var(--color-*)]` or inline style)
+- NO Tailwind font-size utilities — use typography classes only
+- Hover states use onMouseEnter/onMouseLeave — NOT Tailwind hover: with CSS vars
+- Desktop styles (lg: and above) must stay pixel-identical
+
+---
+
+## STRATEGY
+
+Both mobile (< 768px) and tablet (768px–1023px) use the SAME hamburger layout.
+Desktop full nav only appears at lg (1024px+).
+
+This means:
+- `hidden lg:flex` on desktop nav
+- `flex lg:hidden` on mobile/tablet nav bar
+- `lg:hidden` on the drawer
+
+---
+
+## CHANGE 1 — navBase: fix transition
+
+```js
+// BEFORE:
+const navBase = cn('fixed top-0 inset-x-0 z-50 h-16', 'transition-all duration-300')
+
+// AFTER: only animate background + shadow, not all properties
+// (transition-all causes logo text to visually jump on scroll)
+const navBase = cn('fixed top-0 inset-x-0 z-50 h-16', 'transition-[background,box-shadow] duration-300')
+```
+
+---
+
+## CHANGE 2 — Desktop nav: show only at lg+
+
+```jsx
+// BEFORE:
+<nav className={cn(navBase, 'px-6 md:px-8 lg:px-16')}>
+
+// AFTER:
+<nav className={cn(navBase, 'hidden lg:flex items-center px-6 lg:px-16')} style={navScrolledStyle}>
+```
+
+---
+
+## CHANGE 3 — Mobile/Tablet nav bar: show below lg
+
+```jsx
+// BEFORE:
+<nav className={cn(navBase, 'flex md:hidden items-center justify-between px-5')} style={navScrolledStyle}>
+
+// AFTER: lg:hidden instead of md:hidden so tablet also gets hamburger
+<nav className={cn(navBase, 'flex lg:hidden items-center justify-between px-5')} style={navScrolledStyle}>
+```
+
+### Logo in mobile/tablet bar:
+
+```jsx
+// Logo text — fix undefined text-ink class
+// BEFORE:
+<span className={cn('text-lg font-bold', scrolled ? 'text-ink' : 'text-white')}>
+  THO<span className="text-accent">T</span>NR
+</span>
+
+// AFTER:
+<span
+  className="text-lg font-bold tracking-widest"
+  style={{ color: scrolled ? 'var(--color-text-primary)' : '#ffffff' }}
+>
+  THO<span style={{ color: 'var(--color-highlight)' }}>T</span>NR
+</span>
+```
+
+### Hamburger button — no changes needed, already correct.
+
+---
+
+## CHANGE 4 — Drawer: full fix
+
+```jsx
+// BEFORE:
+<div
+  className={cn(
+    'md:hidden fixed inset-x-0 z-40 overflow-y-auto transition-transform duration-300',
+    mobileOpen ? 'translate-y-0 pointer-events-auto' : '-translate-y-[110%] pointer-events-none'
+  )}
+  style={{
+    top: 64, bottom: 0,
+    background: 'var(--color-surface)',   // ← undefined var
+    borderTop: '2px solid var(--color-accent)',
+    ...
+  }}
+>
+
+// AFTER:
+<div
+  className={cn(
+    'lg:hidden fixed inset-x-0 z-40 overflow-y-auto',
+    'transition-transform duration-300',
+    mobileOpen ? 'translate-y-0 pointer-events-auto' : '-translate-y-[110%] pointer-events-none'
+  )}
+  style={{
+    top: 64,
+    bottom: 0,                                    // required — without this, drawer height = content only
+    background: 'var(--color-primary)',           // was var(--color-surface) — undefined
+    borderTop: '2px solid var(--color-highlight)',// was --color-accent — use highlight for brand consistency
+    boxShadow: '0 12px 40px rgba(0,0,0,0.12)',
+    transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1)',
+  }}
+>
+```
+
+---
+
+## CHANGE 5 — Drawer content: fix all undefined CSS vars + improve layout
+
+### Remove the "What We Offer" accordion (optional simplification)
+The accordion used `bg-accent-soft`, `text-ink`, `text-slate` — all undefined.
+Replace the entire drawer content with a clean flat link list (simpler, faster, no broken vars):
+
+```jsx
+<div className="flex flex-col px-5 py-3">
+  {[
+    { label: 'what we offer', to: '/services'     },
+    { label: 'our work',      to: '/case-studies' },
+    { label: 'insights',      to: '/insights'     },
+    { label: 'AI',            to: '/ai'           },
+    { label: 'industries',    to: '/industries'   },
+    { label: 'about',         to: '/about'        },
+    { label: 'contact',       to: '/contact'      },
+    { label: 'join us',       to: '/join-us'      },
+  ].map(({ label, to }, i, arr) => (
+    <div key={label}>
+      <Link
+        to={to}
+        onClick={() => setMobileOpen(false)}
+        className="block px-2 py-3 text-body-lg font-medium no-underline transition-colors duration-150"
+        style={{ color: 'var(--color-text-primary)' }}
+        onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-highlight)' }}
+        onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-primary)' }}
+      >
+        {label}
+      </Link>
+      {i < arr.length - 1 && (
+        <div style={{ height: '1px', background: 'var(--color-secondary)', opacity: 0.12 }} />
+      )}
+    </div>
+  ))}
+</div>
+```
+
+---
+
+## CHANGE 6 — Close drawer on resize to desktop
+
+Add this useEffect (prevents drawer staying open if user rotates device to landscape/desktop):
+
+```jsx
+useEffect(() => {
+  const onResize = () => { if (window.innerWidth >= 1024) setMobileOpen(false) }
+  window.addEventListener('resize', onResize)
+  return () => window.removeEventListener('resize', onResize)
+}, [])
+```
+
+---
+
+## CHANGE 7 — Desktop nav logo: fix undefined text-ink class
+
+```jsx
+// BEFORE:
+<span className={cn('relative text-2xl font-black tracking-widest', scrolled ? 'text-ink' : 'text-white')}>
+  THO<span className="text-accent">T</span>NR
+
+// AFTER:
+<span
+  className="relative text-2xl font-black tracking-widest"
+  style={{ color: scrolled ? 'var(--color-text-primary)' : '#ffffff' }}
+>
+  THO<span style={{ color: 'var(--color-highlight)' }}>T</span>NR
+```
+
+---
+
+## COMPLETE FINAL Navbar.jsx
+
+```jsx
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { cn } from '../../utils'
-import logoRed from '../../assets/images/thotnr_logo_red.png'
-import logoWhite from '../../assets/images/thotnr_logo_white.png'
-
 
 function LogoMark({ size = 28, scrolled }) {
   return (
-    <img 
-      src={scrolled ? logoRed :logoWhite} 
-      alt="Logo" 
-      style={{ 
-        width: size, 
-        height: size, 
-        objectFit: 'contain' 
-      }} 
-    />
+    <svg width={size} height={size} viewBox="0 0 28 28" fill="none">
+      <polygon
+        points="4,4 24,14 4,24"
+        fill="none"
+        stroke="var(--color-highlight)"
+        strokeWidth="2"
+      />
+    </svg>
   )
 }
 
@@ -178,6 +368,8 @@ function Navbar() {
     return () => window.removeEventListener('resize', onResize)
   }, [])
 
+  // FIX: transition-[background,box-shadow] not transition-all
+  // transition-all was animating every property causing logo to jump on scroll
   const navBase = cn(
     'fixed top-0 inset-x-0 z-50 h-16',
     'transition-[background,box-shadow] duration-300',
@@ -211,8 +403,11 @@ function Navbar() {
               className="relative text-2xl font-black tracking-widest"
               style={{ color: scrolled ? 'var(--color-text-primary)' : '#ffffff' }}
             >
-              THOTNR
-              
+              THO<span style={{ color: 'var(--color-highlight)' }}>T</span>NR
+              <span
+                className="absolute -bottom-0.5 left-0 w-full h-[2px]"
+                style={{ background: 'linear-gradient(to right, var(--color-accent), transparent)' }}
+              />
             </span>
           </a>
 
@@ -248,7 +443,7 @@ function Navbar() {
             className="text-lg font-bold tracking-widest"
             style={{ color: scrolled ? 'var(--color-text-primary)' : '#ffffff' }}
           >
-            THOTNR
+            THO<span style={{ color: 'var(--color-highlight)' }}>T</span>NR
           </span>
         </a>
         <button
@@ -261,15 +456,17 @@ function Navbar() {
       </nav>
 
       {/* ── DRAWER (below lg) ── */}
+      {/* FIX: bottom:0 ensures full-height drawer so -translate-y-[110%] fully hides it */}
+      {/* FIX: background var(--color-primary) replaces undefined var(--color-surface)   */}
       <div
         className={cn(
           'lg:hidden fixed inset-x-0 z-40 overflow-y-auto',
           'transition-transform duration-300',
-          mobileOpen ? 'translate-y-0 pointer-events-auto' : '-translate-y-[115%] pointer-events-none'
+          mobileOpen ? 'translate-y-0 pointer-events-auto' : '-translate-y-[110%] pointer-events-none'
         )}
         style={{
           top: 64,
-          
+          bottom: 0,
           background: 'var(--color-primary)',
           borderTop: '2px solid var(--color-highlight)',
           boxShadow: '0 12px 40px rgba(0,0,0,0.12)',
@@ -278,10 +475,10 @@ function Navbar() {
       >
         <div className="flex flex-col px-5 py-3">
           {[
-            { label: 'AI',            to: '/ai'           },
+            { label: 'what we offer', to: '/services'     },
             { label: 'our work',      to: '/case-studies' },
             { label: 'insights',      to: '/insights'     },
-            { label: 'services',      to: '/services'},
+            { label: 'AI',            to: '/ai'           },
             { label: 'industries',    to: '/industries'   },
             { label: 'about',         to: '/about'        },
             { label: 'contact',       to: '/contact'      },
@@ -299,7 +496,7 @@ function Navbar() {
                 {label}
               </Link>
               {i < arr.length - 1 && (
-                <div style={{ height: '1px', background: 'var(--color-secondary)', opacity: 0.3 }} />
+                <div style={{ height: '1px', background: 'var(--color-secondary)', opacity: 0.12 }} />
               )}
             </div>
           ))}
@@ -310,3 +507,9 @@ function Navbar() {
 }
 
 export default Navbar
+```
+
+---
+
+# Note
+- Not make any changes in Desktop version

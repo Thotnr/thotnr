@@ -19,8 +19,14 @@ function Events() {
           overflow: hidden;
           border-radius: 8px;
           flex-shrink: 0;
-          width: 380px;
-          height: 280px;
+          width: 100%;
+          height: 240px;
+        }
+        @media (min-width: 768px) {
+          .ev-img-wrap {
+            width: 380px;
+            height: 280px;
+          }
         }
         .ev-img-wrap img {
           width: 100%;

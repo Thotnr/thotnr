@@ -57,7 +57,7 @@ function S2CaseStudies() {
   const visible = showAll ? caseStudies : caseStudies.slice(0, INITIAL_COUNT)
 
   return (
-    <section className="px-6 md:px-6 lg:px-8 bg-[var(--color-primary)]">
+    <section className="px-6 md:px-10 lg:px-16 bg-[var(--color-primary)]">
       <div className="max-w-7xl mx-auto">
 
         <div className="pt-16">

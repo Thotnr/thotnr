@@ -75,11 +75,11 @@ function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="px-6 md:px-6 lg:px-8" style={{ background: 'var(--color-primary)', boxShadow: '0 -8px 32px rgba(0,0,0,0.07)' }}>
-      <div className="max-w-7xl mx-auto px-6 md:px-6 lg:px-8 pt-10 pb-6">
+    <footer style={{ background: 'var(--color-primary)', boxShadow: '0 -8px 32px rgba(0,0,0,0.07)' }}>
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 pt-10 pb-6">
 
         {/* 4-column grid */}
-        <div className="flex  md:grid-cols-4 gap-10 pb-4 justify-between">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-x-12 gap-y-8 pb-4">
 
           {/* Col 1 — Brand + tagline + socials */}
           <div className="flex flex-col gap-3">
@@ -104,9 +104,9 @@ function Footer() {
             >
               Enterprise AI &amp; Technology Consultancy
             </p>
-            <p className="flex items-center gap-2">
-  <MailIcon /> sayhello@thotnr.com
-</p>
+            <p className="flex items-center gap-2 text-body" style={{ color: 'var(--color-text-tertiary)' }}>
+              <MailIcon /> sayhello@thotnr.com
+            </p>
             <div className="flex items-center gap-0.5">
               {socials.map(({ label, icon }) => (
                 <a
@@ -130,38 +130,43 @@ function Footer() {
             </div>
           </div>
 
-          {/* Col 2 — Office India */}
-          <div className=''>
-            <p className="text-h4 text-[var(--color-highlight)] mb-3">India</p>
-            {offices[0].lines.map((line) => (
-              <p
-                key={line}
-                className="text-body leading-relaxed pb-0.5"
-                style={{ color: 'var(--color-text-tertiary)' }}
-              >
-                {line}
-              </p>
-            ))}
-          </div>
+          {/* Col 2 + 3 — Offices (side-by-side on mobile, dissolve into 4-col grid on md+) */}
+          <div className="grid grid-cols-2 gap-6 md:contents">
 
-          {/* Col 3 — Office South Africa */}
-          <div className=''>
-            <p className="text-h4 text-[var(--color-highlight)] mb-3">South Africa</p>
-            {offices[1].lines.map((line) => (
-              <p
-                key={line}
-                className="text-body leading-relaxed pb-0.5"
-                style={{ color: 'var(--color-text-tertiary)' }}
-              >
-                {line}
-              </p>
-            ))}
+            {/* Col 2 — Office India */}
+            <div>
+              <p className="text-h4 text-[var(--color-highlight)] mb-3">India</p>
+              {offices[0].lines.map((line) => (
+                <p
+                  key={line}
+                  className="text-body leading-relaxed pb-0.5"
+                  style={{ color: 'var(--color-text-tertiary)' }}
+                >
+                  {line}
+                </p>
+              ))}
+            </div>
+
+            {/* Col 3 — Office South Africa */}
+            <div>
+              <p className="text-h4 text-[var(--color-highlight)] mb-3">South Africa</p>
+              {offices[1].lines.map((line) => (
+                <p
+                  key={line}
+                  className="text-body leading-relaxed pb-0.5"
+                  style={{ color: 'var(--color-text-tertiary)' }}
+                >
+                  {line}
+                </p>
+              ))}
+            </div>
+
           </div>
 
           {/* Col 4 — Quick Links */}
           <div className=' flex flex-col items-start'>
             <p className="text-h4 text-[var(--color-highlight)] mb-3">Quick Links</p>
-            <nav className="flex flex-col gap-1">
+            <nav className="flex flex-row flex-wrap gap-x-6 gap-y-2 md:flex-col md:gap-1">
               {quickLinks.map(({ label, to }) => (
                 <Link
                   key={label}
@@ -182,7 +187,7 @@ function Footer() {
         </div>
 
         {/* Copyright — no divider */}
-        <p className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
+        <p className="text-caption text-center md:text-left mt-4" style={{ color: 'var(--color-text-tertiary)' }}>
           © {year} THOTNR. All rights reserved.
         </p>
 
