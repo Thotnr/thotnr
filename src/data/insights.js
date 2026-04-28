@@ -45,7 +45,7 @@ export const insights = [
     coverImg: imgAiSummit,
     tagline: 'Artificial Intelligence',
     subheadline: 'Why Most Enterprise AI Projects Fail Before They Start',
-    authorName: 'Gaurav Kumar',
+    authorName: 'Thotnr',
     authorRole: 'CEO, Thotnr',
     authorImage: authorGauravK,
     publishDate: 'March 2025',

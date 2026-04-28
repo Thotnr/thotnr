@@ -70,8 +70,8 @@ function ExpandingCard({ title, tagline, stat, desc, image }) {
 
         {/* Tagline */}
         <p
-          className="text-xs font-medium uppercase tracking-widest"
-          style={{ color: 'rgba(255,255,255,0.85)', letterSpacing: '0.1em' }}
+          className="text-label font-medium"
+          style={{ color: 'rgba(255,255,255,0.85)' }}
         >
           {tagline}
         </p>
@@ -136,7 +136,7 @@ function ServicesList() {
 
           <button
             onClick={() => setShowAll((v) => !v)}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-200 cursor-pointer bg-transparent"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full text-body-sm font-semibold border transition-all duration-200 cursor-pointer bg-transparent"
             style={{
               border: '1px solid rgba(255,255,255,0.25)',
               color: '#ffffff',
@@ -195,7 +195,7 @@ function ServicesList() {
             {allServices.map((col, ci) => (
               <div key={ci} className="flex flex-col gap-0.5">
                 {col.map((svc) => (
-                  <span key={svc} className="svc-list-item py-2 text-sm font-medium">
+                  <span key={svc} className="svc-list-item py-2 text-body-sm font-medium">
                     {svc}
                   </span>
                 ))}
@@ -207,7 +207,7 @@ function ServicesList() {
           <div className="mt-10 flex justify-center">
             <button
               onClick={() => navigate('/services')}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer bg-transparent"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-body-sm font-semibold transition-all duration-200 cursor-pointer bg-transparent"
               style={{ border: '1px solid rgba(255,255,255,0.25)', color: '#ffffff' }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = 'var(--color-highlight)'

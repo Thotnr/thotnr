@@ -28,10 +28,10 @@ function S6CTA() {
 
           <a
             href="/contact"
-            className="inline-block px-8 py-3 rounded-full text-sm font-semibold no-underline transition-all duration-200"
-            style={{ background: '#ffffff', color: 'var(--color-secondary)' }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.88)' }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = '#ffffff' }}
+            className="inline-block px-8 py-3 rounded-full text-body-sm font-semibold no-underline transition-all duration-200"
+            style={{ background: 'var(--color-text-white)', color: 'var(--color-secondary)' }}
+            onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.88' }}
+            onMouseLeave={(e) => { e.currentTarget.style.opacity = '1' }}
           >
             Start a Conversation
           </a>

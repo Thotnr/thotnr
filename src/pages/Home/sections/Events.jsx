@@ -32,16 +32,15 @@ function Events() {
         .ev-img-wrap:hover img { transform: scale(1.07); }
 
         .ev-card-title {
-          color: var(--color-ink);
+          color: var(--color-text-primary);
           text-decoration: none;
           display: block;
           transition: color 0.2s ease;
         }
-        
 
         .ev-divider {
           width: 1px;
-          background: var(--color-border);
+          background: rgba(11,15,25,0.1);
           flex-shrink: 0;
           align-self: stretch;
         }
@@ -59,8 +58,8 @@ function Events() {
                 Upcoming
               </p>
               <h1
-                className="ev-headline t-headline-sm text-h1"
-                style={{ color: 'var(--color-ink)' }}
+                className="ev-headline text-h1"
+                style={{ color: 'var(--color-text-primary)' }}
               >
                 Featured Events
               </h1>
@@ -80,19 +79,19 @@ function Events() {
             {/* Card 1 */}
             <div className="flex flex-col justify-start gap-4 flex-1 px-10 py-2">
               <p
-                className="t-label"
+                className="text-label"
                 style={{ color: 'var(--color-highlight)' }}
               >
                 Upcoming event | May 14, 2026
               </p>
-              <h2 className="ev-card-title t-title-lg text-h3">
+              <h2 className="ev-card-title text-h3">
                 AI Leadership Summit
               </h2>
               <p
-                className="t-body-lg"
+                className="text-body-lg"
                 style={{
-                  color: 'var(--color-slate)',
-                  lineHeight: "2"
+                  color: 'var(--color-text-secondary)',
+                  
                 }}
               >
                 A curated gathering of enterprise AI leaders — sharing what's
@@ -107,18 +106,18 @@ function Events() {
             {/* Card 2 */}
             <div className="flex flex-col justify-start gap-4 flex-1 px-10 py-2">
               <p
-                className="t-label"
+                className="text-label"
                 style={{ color: 'var(--color-highlight)' }}
               >
                 Upcoming event | May 12, 2026
               </p>
-              <h2 className="ev-card-title t-title-lg text-h3">
+              <h2 className="ev-card-title text-h3">
                 Enterprise AI Workshop
               </h2>
               <p
-                className="t-body-lg"
+                className="text-body-lg"
                 style={{
-                  color: 'var(--color-slate)',
+                  color: 'var(--color-text-secondary)',
                   lineHeight: "2"
                 }}
               >

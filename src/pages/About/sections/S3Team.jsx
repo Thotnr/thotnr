@@ -46,7 +46,7 @@ function TeamCard({ img, name, role, desc }) {
 
         {/* Role */}
         <p
-          className="text-sm mt-1 tracking-wide"
+          className="text-body-sm mt-1 tracking-wide"
           style={{ color: 'var(--color-text-secondary)' }}
         >
           {role}
@@ -61,7 +61,7 @@ function TeamCard({ img, name, role, desc }) {
         {/* Optional desc (if needed later) */}
         {desc && (
           <p
-            className="text-xs leading-relaxed"
+            className="text-caption leading-relaxed"
             style={{ color: 'var(--color-text-secondary)', opacity: 0.8 }}
           >
             {desc}

@@ -275,10 +275,10 @@ function Navbar() {
     <>
       {/* ── DESKTOP NAV ── */}
       <nav
-        className={cn(navBase, 'hidden md:flex items-center')}
+        className={cn(navBase, 'px-6 md:px-8 lg:px-16')}
         style={navScrolledStyle}
       >
-        <div className="max-w-7xl mx-auto w-full px-6 md:px-10 lg:px-16 flex items-center h-full">
+        <div className="max-w-7xl mx-auto w-full flex items-center h-full">
 
           {/* Logo */}
           <a href="/" className="flex items-center gap-2.5 no-underline flex-shrink-0">

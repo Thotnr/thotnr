@@ -180,8 +180,8 @@ function S2Content({ data }) {
               return (
                 <div>
                   <p
-                    className="text-xs uppercase mb-4"
-                    style={{ color: 'var(--color-text-tertiary)', letterSpacing: '0.08em' }}
+                    className="text-caption uppercase mb-4"
+                    style={{ color: 'var(--color-text-tertiary)' }}
                   >
                     In this article
                   </p>
@@ -211,8 +211,8 @@ function S2Content({ data }) {
             <div className="flex flex-col gap-5">
               <div>
                 <p
-                  className="text-xs uppercase mb-1"
-                  style={{ color: 'var(--color-text-tertiary)', letterSpacing: '0.08em' }}
+                  className="text-caption uppercase mb-1"
+                  style={{ color: 'var(--color-text-tertiary)' }}
                 >
                   Category
                 </p>
@@ -226,8 +226,8 @@ function S2Content({ data }) {
 
               <div>
                 <p
-                  className="text-xs uppercase mb-1"
-                  style={{ color: 'var(--color-text-tertiary)', letterSpacing: '0.08em' }}
+                  className="text-caption uppercase mb-1"
+                  style={{ color: 'var(--color-text-tertiary)' }}
                 >
                   Published
                 </p>

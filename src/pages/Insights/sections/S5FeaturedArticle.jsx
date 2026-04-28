@@ -1,7 +1,7 @@
 function S5FeaturedArticle() {
   return (
     <section
-      className="py-20 px-6 md:px-10 lg:px-16"
+      className="py-16 px-6 md:px-10 lg:px-16"
       style={{ background: 'var(--color-secondary)' }}
     >
       <div className="max-w-3xl mx-auto text-center">
@@ -23,7 +23,7 @@ function S5FeaturedArticle() {
 
         <a
           href="#"
-          className="inline-block px-8 py-3 rounded-full text-sm font-semibold no-underline transition-all duration-200"
+          className="inline-block px-8 py-3 rounded-full text-body-sm font-semibold no-underline transition-all duration-200"
           style={{ background: 'var(--color-highlight)', color: '#fff' }}
           onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.88' }}
           onMouseLeave={(e) => { e.currentTarget.style.opacity = '1' }}

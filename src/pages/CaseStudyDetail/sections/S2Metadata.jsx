@@ -22,8 +22,8 @@ function S2Metadata({ meta }) {
               }}
             >
               <p
-                className="text-sm uppercase mb-2"
-                style={{ color: 'rgba(255,255,255,0.40)', letterSpacing: '0.1em' }}
+                className="text-label mb-2"
+                style={{ color: 'rgba(255,255,255,0.40)' }}
               >
                 {f.label}
               </p>

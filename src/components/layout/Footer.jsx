@@ -9,6 +9,15 @@ function XIcon() {
   )
 }
 
+function MailIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="4" width="20" height="16" rx="2"/>
+      <path d="M2 7l10 7 10-7"/>
+    </svg>
+  )
+}
+
 function LinkedInIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -46,11 +55,9 @@ const socials = [
 ]
 
 const quickLinks = [
-  // { label: 'Industry',        to: '/industries' },
   { label: 'AI',           to: '/ai' },
-  { label: 'Case Studies', to: '/case-studies' },
-  { label: 'Insights',     to: '/insights' },
-  
+  { label: 'Industries', to: '/industries' },
+  { label: 'Services',     to: '/services' }
 ]
 
 const offices = [
@@ -68,14 +75,14 @@ function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer style={{ background: 'var(--color-primary)', boxShadow: '0 -8px 32px rgba(0,0,0,0.07)' }}>
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 pt-10 pb-6">
+    <footer className="px-6 md:px-6 lg:px-8" style={{ background: 'var(--color-primary)', boxShadow: '0 -8px 32px rgba(0,0,0,0.07)' }}>
+      <div className="max-w-7xl mx-auto px-6 md:px-6 lg:px-8 pt-10 pb-6">
 
         {/* 4-column grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-4">
+        <div className="flex  md:grid-cols-4 gap-10 pb-4 justify-between">
 
           {/* Col 1 — Brand + tagline + socials */}
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-3">
             <Link to="/" className="flex items-center gap-2 no-underline w-fit">
               <img
                 src={logoRed}
@@ -97,6 +104,9 @@ function Footer() {
             >
               Enterprise AI &amp; Technology Consultancy
             </p>
+            <p className="flex items-center gap-2">
+  <MailIcon /> sayhello@thotnr.com
+</p>
             <div className="flex items-center gap-0.5">
               {socials.map(({ label, icon }) => (
                 <a
@@ -121,7 +131,7 @@ function Footer() {
           </div>
 
           {/* Col 2 — Office India */}
-          <div>
+          <div className=''>
             <p className="text-h4 text-[var(--color-highlight)] mb-3">India</p>
             {offices[0].lines.map((line) => (
               <p
@@ -135,7 +145,7 @@ function Footer() {
           </div>
 
           {/* Col 3 — Office South Africa */}
-          <div>
+          <div className=''>
             <p className="text-h4 text-[var(--color-highlight)] mb-3">South Africa</p>
             {offices[1].lines.map((line) => (
               <p
@@ -149,7 +159,7 @@ function Footer() {
           </div>
 
           {/* Col 4 — Quick Links */}
-          <div>
+          <div className=' flex flex-col items-start'>
             <p className="text-h4 text-[var(--color-highlight)] mb-3">Quick Links</p>
             <nav className="flex flex-col gap-1">
               {quickLinks.map(({ label, to }) => (
@@ -165,7 +175,9 @@ function Footer() {
                 </Link>
               ))}
             </nav>
+            
           </div>
+          
 
         </div>
 

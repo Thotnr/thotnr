@@ -6,7 +6,7 @@ import imgBanner  from '../../../assets/images/work-life.jpg'
 function S4LifeAtThotnr() {
   return (
     <section
-      className="py-20 px-6 md:px-10 lg:px-16"
+      className="py-16 px-6 md:px-10 lg:px-16"
       style={{ background: 'var(--color-primary)' }}
     >
       <div className="max-w-7xl mx-auto flex flex-col gap-6">

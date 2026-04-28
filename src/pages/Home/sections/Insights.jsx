@@ -8,10 +8,9 @@ function InsightCard({ coverImg, tagline, subheadline, slug, contentBlocks }) {
 
   return (
     <article
-      className="group flex flex-col rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+      className="group flex flex-col rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 bg-white"
       style={{
-        background: '#ffffff',
-        border: '1px solid var(--color-border-subtle)',
+        border: '1px solid rgba(29,53,87,0.1)',
       }}
     >
       {/* Image */}
@@ -27,7 +26,7 @@ function InsightCard({ coverImg, tagline, subheadline, slug, contentBlocks }) {
 
         {/* Category */}
         <span
-          className="text-[11px] font-semibold uppercase tracking-wide"
+          className="text-label font-semibold"
           style={{ color: 'var(--color-secondary)' }}
         >
           {tagline}
@@ -35,7 +34,7 @@ function InsightCard({ coverImg, tagline, subheadline, slug, contentBlocks }) {
 
         {/* Title */}
         <h3
-          className="text-lg font-semibold leading-snug"
+          className="text-h3 font-semibold leading-snug"
           style={{ color: 'var(--color-text-primary)' }}
         >
           {subheadline}
@@ -43,7 +42,7 @@ function InsightCard({ coverImg, tagline, subheadline, slug, contentBlocks }) {
 
         {/* Excerpt */}
         <p
-          className="text-sm leading-relaxed line-clamp-4"
+          className="text-body-sm leading-relaxed line-clamp-4"
           style={{ color: 'var(--color-text-secondary)' }}
         >
           {excerpt}
@@ -52,7 +51,7 @@ function InsightCard({ coverImg, tagline, subheadline, slug, contentBlocks }) {
         {/* CTA — links to the specific detail page */}
         <Link
           to={`/insights/${slug}`}
-          className="text-sm font-medium mt-auto inline-flex items-center gap-1 no-underline transition-all duration-200 hover:gap-2"
+          className="text-body-sm font-medium mt-auto inline-flex items-center gap-1 no-underline transition-all duration-200 hover:gap-2"
           style={{ color: 'var(--color-text-primary)' }}
         >
           Read more..
@@ -95,7 +94,7 @@ function Insights() {
         <div className="text-center">
           <Link
             to="/insights"
-            className="inline-block px-6 py-3 rounded-full text-sm font-medium border no-underline transition-all duration-300"
+            className="inline-block px-6 py-3 rounded-full text-body-sm font-medium border no-underline transition-all duration-300"
             style={{ border: '1px solid var(--color-text-primary)', color: 'var(--color-text-primary)' }}
             onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--color-text-primary)'; e.currentTarget.style.color = '#fff' }}
             onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--color-text-primary)' }}

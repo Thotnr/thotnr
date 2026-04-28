@@ -41,7 +41,7 @@ function CaseBlock({ industry, headline, desc, image, slug, index }) {
 
         <Link
           to={`/case-studies/${slug}`}
-          className="inline-flex items-center gap-2 text-base font-semibold no-underline transition-all duration-200 hover:gap-3"
+          className="inline-flex items-center gap-2 text-body font-semibold no-underline transition-all duration-200 hover:gap-3"
           style={{ color: 'var(--color-secondary)' }}
         >
           Read More..
@@ -57,7 +57,7 @@ function S2CaseStudies() {
   const visible = showAll ? caseStudies : caseStudies.slice(0, INITIAL_COUNT)
 
   return (
-    <section className="px-6 md:px-10 lg:px-16 bg-[var(--color-primary)]">
+    <section className="px-6 md:px-6 lg:px-8 bg-[var(--color-primary)]">
       <div className="max-w-7xl mx-auto">
 
         <div className="pt-16">
@@ -86,7 +86,7 @@ function S2CaseStudies() {
           <div className="flex justify-center py-12">
             <button
               onClick={() => setShowAll(true)}
-              className="px-8 py-3 rounded-full text-sm font-semibold border transition-all duration-300 cursor-pointer bg-transparent"
+              className="px-8 py-3 rounded-full text-body-sm font-semibold border transition-all duration-300 cursor-pointer bg-transparent"
               style={{ border: '1px solid var(--color-text-primary)', color: 'var(--color-text-primary)' }}
               onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--color-text-primary)'; e.currentTarget.style.color = '#fff' }}
               onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--color-text-primary)' }}

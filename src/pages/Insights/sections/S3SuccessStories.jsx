@@ -52,7 +52,7 @@ function StoryCard({ metric, label, context, href }) {
 function S3SuccessStories() {
   return (
     <section
-      className="py-12 px-6 md:px-10 lg:px-16"
+      className="py-16 px-6 md:px-10 lg:px-16"
       style={{ background: 'var(--color-secondary)' }}
     >
       <div className="max-w-7xl mx-auto">

@@ -60,8 +60,8 @@ function S4Impact() {
 
           <Link
             to="/case-studies"
-            className="inline-block px-7 py-3 rounded-full text-sm font-semibold no-underline transition-all duration-200"
-            style={{ background: 'var(--color-secondary)', color: '#fff' }}
+            className="inline-block px-7 py-3 rounded-full text-body-sm font-semibold no-underline transition-all duration-200"
+            style={{ background: 'var(--color-secondary)', color: 'var(--color-text-white)' }}
             onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.85' }}
             onMouseLeave={(e) => { e.currentTarget.style.opacity = '1' }}
           >

@@ -85,12 +85,12 @@ function ProcessTimeline() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="t-title text-[var(--color-text-primary)] mb-4">
+                  <h3 className="text-h3 text-[var(--color-text-primary)] mb-4">
                     {step.title}
                   </h3>
 
                   {/* Detail */}
-                  <p className="t-body text-[var(--color-text-secondary)]">
+                  <p className="text-body text-[var(--color-text-secondary)]">
                     {step.detail}
                   </p>
 

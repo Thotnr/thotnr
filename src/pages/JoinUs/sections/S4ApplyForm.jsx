@@ -10,7 +10,7 @@ const roleOptions = [
   'Other / Open Application',
 ]
 
-const inputBase = 'w-full px-5 py-3 text-sm outline-none transition-all duration-150'
+const inputBase = 'w-full px-5 py-3 text-body-sm outline-none transition-all duration-150'
 const inputStyle = {
   background: 'rgba(0,0,0,0.05)',
   border: '1px solid rgba(0,0,0,0.08)',
@@ -230,7 +230,7 @@ function S4ApplyForm() {
             {/* Submit */}
             <button
               type="submit"
-              className="w-full py-3 rounded-full text-sm font-semibold transition-all duration-200 mt-2"
+              className="w-full py-3 rounded-full text-body-sm font-semibold transition-all duration-200 mt-2"
               style={{ background: 'var(--color-highlight)', color: '#fff' }}
               onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.88' }}
               onMouseLeave={(e) => { e.currentTarget.style.opacity = '1' }}

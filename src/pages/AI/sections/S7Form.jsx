@@ -17,7 +17,7 @@ function Field({ label, type = 'text', placeholder, value, onChange, required })
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className="w-full px-4 py-3 text-sm rounded-lg outline-none transition-all duration-150"
+        className="w-full px-4 py-3 text-body-sm rounded-lg outline-none transition-all duration-150"
         style={{
           background: '#ffffff',
           border: borderDefault,
@@ -44,7 +44,7 @@ function TextareaField({ label, placeholder, value, onChange, required }) {
         value={value}
         onChange={onChange}
         rows={4}
-        className="w-full px-4 py-3 text-sm rounded-lg outline-none transition-all duration-150 resize-none"
+        className="w-full px-4 py-3 text-body-sm rounded-lg outline-none transition-all duration-150 resize-none"
         style={{
           background: '#ffffff',
           border: borderDefault,
@@ -99,13 +99,13 @@ function S7Form() {
             ].map((item) => (
               <div key={item.label} className="flex flex-col gap-0.5">
                 <span
-                  className="text-sm uppercase"
-                  style={{ color: 'var(--color-text-tertiary)', letterSpacing: '0.08em' }}
+                  className="text-label"
+                  style={{ color: 'var(--color-text-tertiary)' }}
                 >
                   {item.label}
                 </span>
                 <span
-                  className="text-lg font-medium"
+                  className="text-h4 font-medium"
                   style={{ color: 'var(--color-text-secondary)' }}
                 >
                   {item.value}
@@ -165,7 +165,7 @@ function S7Form() {
           <div className="pt-2">
             <button
               type="submit"
-              className="px-8 py-3 rounded-full text-sm font-semibold border transition-all duration-200 cursor-pointer"
+              className="px-8 py-3 rounded-full text-body-sm font-semibold border transition-all duration-200 cursor-pointer"
               style={{
                 background: 'var(--color-secondary)',
                 color: '#ffffff',

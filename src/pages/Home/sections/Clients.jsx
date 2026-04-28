@@ -110,10 +110,10 @@ function Clients() {
                 className="flex flex-col gap-1 px-8"
                 style={{ borderLeft: i > 0 ? '1px solid rgba(255,255,255,0.10)' : 'none' }}
               >
-                <span className="text-4xl font-bold leading-none" style={{ color: 'var(--color-highlight)' }}>
+                <span className="text-h1 font-bold leading-none" style={{ color: 'var(--color-highlight)' }}>
                   {s.value}
                 </span>
-                <span className="text-xs font-medium uppercase tracking-widest mt-1" style={{ color: 'rgba(255,255,255,0.40)' }}>
+                <span className="text-caption font-medium uppercase tracking-widest mt-1" style={{ color: 'rgba(255,255,255,0.40)' }}>
                   {s.label}
                 </span>
               </div>
@@ -134,7 +134,7 @@ function Clients() {
           <div className="flex justify-center mt-10">
             <button
               onClick={() => setShowAll(true)}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer bg-transparent"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-body-sm font-semibold transition-all duration-200 cursor-pointer bg-transparent"
               style={{ border: '1px solid rgba(255,255,255,0.25)', color: '#ffffff' }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = 'var(--color-highlight)'

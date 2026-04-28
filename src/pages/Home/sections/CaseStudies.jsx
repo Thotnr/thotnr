@@ -28,14 +28,14 @@ function CaseRow({ industry, headline, description, image, slug, index }) {
         </p>
 
         <h3
-          className="text-2xl font-semibold mb-4"
+          className="text-h2 font-semibold mb-4"
           style={{ color: 'var(--color-text-primary)' }}
         >
           {headline}
         </h3>
 
         <p
-          className="text-base mb-2 line-clamp-4"
+          className="text-body mb-2 line-clamp-4"
           style={{ color: 'var(--color-text-secondary)' }}
         >
           {description}
@@ -43,7 +43,7 @@ function CaseRow({ industry, headline, description, image, slug, index }) {
 
         <Link
           to={`/case-studies/${slug}`}
-          className="text-sm font-medium no-underline"
+          className="text-body-sm font-medium no-underline"
           style={{ color: 'var(--color-text-primary)' }}
         >
           Read more..
@@ -60,7 +60,7 @@ function CaseStudies() {
       className="py-16 px-6 md:px-10 lg:px-16"
       style={{ background: 'var(--color-primary)' }}
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
 
         {/* Header */}
         <div className="mb-8">
@@ -92,7 +92,7 @@ function CaseStudies() {
         <div className="text-center mt-4">
           <Link
             to="/case-studies"
-            className="inline-block px-6 py-3 rounded-full text-sm font-medium border no-underline transition-all duration-300"
+            className="inline-block px-6 py-3 rounded-full text-body-sm font-medium border no-underline transition-all duration-300"
             style={{ border: '1px solid var(--color-text-primary)', color: 'var(--color-text-primary)' }}
             onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--color-text-primary)'; e.currentTarget.style.color = '#fff' }}
             onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--color-text-primary)' }}
