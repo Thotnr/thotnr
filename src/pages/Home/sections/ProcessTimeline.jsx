@@ -44,7 +44,17 @@ function ProcessTimeline() {
         </div>
 
         {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-8 perspective-[1200px]">
+        <style>{`
+          @media (min-width: 768px) and (max-width: 1023px) {
+            .proc-cards-grid > *:nth-child(3) {
+              grid-column: 1 / -1;
+              max-width: calc(50% - 16px);
+              margin: 0 auto;
+              width: 100%;
+            }
+          }
+        `}</style>
+        <div className="proc-cards-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8 perspective-[1200px]">
           {steps.map((step, i) => {
             const Icon = icons[i]
 

@@ -51,10 +51,40 @@ function Hero() {
             max-width: 520px;
           }
         }
+
+        /* Mobile + Tablet video fix only */
+.hero-bg-video {
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .hero-bg-video {
+    object-fit: cover;
+    object-position: 58% center;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-bg-video {
+    object-fit: cover;
+    object-position: 55% center;
+  }
+}
+
+/* Desktop untouched */
+@media (min-width: 1024px) {
+  .hero-bg-video {
+    object-fit: cover;
+    object-position: center center;
+  }
+}
       `}</style>
 
       {/* Background video */}
-      <video
+      {/* <video
         className="absolute inset-0 w-full h-full object-cover z-0"
         style={{ objectPosition: 'center center', filter: 'brightness(0.72) contrast(1.05)' }}
         src={heroCoverVideo}
@@ -62,7 +92,17 @@ function Hero() {
         muted
         loop
         playsInline
-      />
+      /> */}
+
+      <video
+  className="hero-bg-video absolute inset-0 w-full h-full z-0"
+  style={{ filter: 'brightness(0.72) contrast(1.05)' }}
+  src={heroCoverVideo}
+  autoPlay
+  muted
+  loop
+  playsInline
+/>
 
       {/* Layer 1: Desktop left-to-right gradient */}
       <div style={{

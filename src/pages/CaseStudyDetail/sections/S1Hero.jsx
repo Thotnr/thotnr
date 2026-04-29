@@ -1,6 +1,5 @@
 function S1Hero({ data }) {
   const hasVideo = Boolean(data.coverVideo)
-
   return (
     <section className="relative w-full" style={{ height: '100vh' }}>
 
@@ -59,8 +58,16 @@ function S1Hero({ data }) {
         style={{ top: '60%', left: '10%', right: '10%', transform: 'translateY(-50%)' }}
       >
         <h1
-          className="text-display leading-tight"
-          style={{ color: '#ffffff', maxWidth: '700px' }}
+         style={{
+          fontFamily: 'var(--font-accent)',
+          fontSize: 'clamp(36px, 8.5vw, 72px)',
+          fontWeight: 600,
+          lineHeight: 1.06,
+          letterSpacing: '-0.032em',
+          color: 'var(--color-text-white)',
+          marginBottom: '28px',
+         
+        }}
         >
           {data.coverTagline}
         </h1>

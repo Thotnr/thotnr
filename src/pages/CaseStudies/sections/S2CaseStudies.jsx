@@ -13,7 +13,7 @@ function CaseBlock({ industry, headline, desc, image, slug, index }) {
       style={{ borderBottom: '1px solid rgba(108,117,125,0.12)' }}
     >
       {/* Image */}
-      <div className="w-full md:w-[55%] flex-shrink-0">
+      <div className="w-full h-full md:w-[55%] flex-shrink-0">
         <img
           src={image}
           alt={headline}
@@ -50,6 +50,7 @@ function CaseBlock({ industry, headline, desc, image, slug, index }) {
     </div>
   )
 }
+
 
 function S2CaseStudies() {
   const [showAll, setShowAll] = useState(false)

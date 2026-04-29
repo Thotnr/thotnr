@@ -98,7 +98,16 @@ function S3ContactAction() {
       className="py-16 px-6 md:px-10 lg:px-16"
       style={{ background: 'var(--color-secondary)' }}
     >
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <style>{`
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .contact-action-grid {
+            grid-template-columns: 2fr 3fr !important;
+            gap: 2rem !important;
+            align-items: start !important;
+          }
+        }
+      `}</style>
+      <div className="contact-action-grid max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 
         {/* Left — Direct Contact */}
         <div>

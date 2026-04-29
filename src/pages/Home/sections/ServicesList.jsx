@@ -120,7 +120,22 @@ function ServicesList() {
         </div>
 
         {/* Expanding Cards */}
-        <div className="flex flex-col md:flex-row gap-4" style={{ minHeight: '420px' }}>
+        <style>{`
+          @media (min-width: 768px) and (max-width: 1023px) {
+            .svc-expanding-container {
+              display: grid !important;
+              grid-template-columns: repeat(2, 1fr);
+              min-height: auto !important;
+            }
+            .svc-expanding-container > *:nth-child(3) {
+              grid-column: 1 / -1;
+              max-width: calc(50% - 8px);
+              margin: 0 auto;
+              width: 100%;
+            }
+          }
+        `}</style>
+        <div className="svc-expanding-container flex flex-col lg:flex-row gap-4" style={{ minHeight: '420px' }}>
           {featuredServices.map((svc) => (
             <ExpandingCard key={svc.title} {...svc} />
           ))}
@@ -170,6 +185,7 @@ function ServicesList() {
         >
           <style>{`
             .svc-list-item {
+              display: block;
               color: rgba(255,255,255,0.55);
               padding-left: 0;
               transition: color 0.18s ease, padding-left 0.18s ease;
@@ -177,7 +193,8 @@ function ServicesList() {
             }
             .svc-list-item:hover {
               color: #ffffff;
-              padding-left: 10px;
+              padding-left: 28px;
+              text-indent: -18px;
             }
             .svc-list-item::before {
               content: '—';

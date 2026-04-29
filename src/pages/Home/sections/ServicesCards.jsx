@@ -172,7 +172,17 @@ function ServicesCards() {
           <p className="text-body text-white/70 mt-2 max-w-2xl">Three interlocking disciplines that take an AI idea from whiteboard to measurable business impact.          </p>
         </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <style>{`
+            @media (min-width: 768px) and (max-width: 1023px) {
+              .svc-cards-grid .svc-card-wrap-2 {
+                grid-column: 1 / -1;
+                max-width: calc(50% - 12px);
+                margin: 0 auto;
+                width: 100%;
+              }
+            }
+          `}</style>
+          <div className="svc-cards-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((svc, i) => (
               <ServiceCard key={svc.title} {...svc} index={i} />
             ))}

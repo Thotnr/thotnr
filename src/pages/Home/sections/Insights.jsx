@@ -84,7 +84,17 @@ function Insights() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <style>{`
+          @media (min-width: 768px) and (max-width: 1023px) {
+            .insights-cards-grid > *:nth-child(3) {
+              grid-column: 1 / -1;
+              max-width: calc(50% - 12px);
+              margin: 0 auto;
+              width: 100%;
+            }
+          }
+        `}</style>
+        <div className="insights-cards-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {featured.map((a) => (
             <InsightCard key={a.slug} {...a} />
           ))}

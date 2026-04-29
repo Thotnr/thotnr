@@ -66,7 +66,14 @@ function S3HowWeWork() {
         </div>
 
         {/* Process strip */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-0">
+        <style>{`
+          @media (min-width: 768px) and (max-width: 1023px) {
+            .howwework-grid > *:nth-child(2) {
+              border-right: none !important;
+            }
+          }
+        `}</style>
+        <div className="howwework-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0">
           {steps.map((step, i) => (
             <StepCard key={step.number} {...step} last={i === steps.length - 1} />
           ))}

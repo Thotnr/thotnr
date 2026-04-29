@@ -23,10 +23,18 @@ function S1Hero({ data }) {
       >
 
         <h1
-          className="text-display leading-tight"
-          style={{ color: '#ffffff', maxWidth: '760px' }}
+          style={{
+          fontFamily: 'var(--font-accent)',
+          fontSize: 'clamp(36px, 8.5vw, 72px)',
+          fontWeight: 600,
+          lineHeight: 1.2,
+          letterSpacing: '-0.032em',
+          color: 'var(--color-text-white)',
+          marginBottom: '28px',
+          textTransform: 'uppercase !important',
+        }}
         >
-          {data.subheadline}
+          {data.subheadline.toUpperCase()}
         </h1>
 
       </div>
