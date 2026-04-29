@@ -106,17 +106,17 @@ function S1Hero() {
           color: 'var(--color-text-white)',
           marginBottom: '28px',
         }}>
-          Real<br />
+          Real {''}
           <em style={{ fontStyle: 'italic', color: 'var(--color-accent)', opacity: 0.62 }}>Impact,</em><br />
-          Real Enterprises
+          Real Results
         </h1>
 
         {/* Thin divider */}
         <div style={{
-          width: '32px',
+          width: '48px',
           height: '1px',
           background: 'var(--color-text-white)',
-          opacity: 0.15,
+          opacity: 0.75,
           marginBottom: '20px',
         }} />
 

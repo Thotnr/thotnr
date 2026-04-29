@@ -125,7 +125,7 @@ function Hero() {
           marginBottom: '28px',
         }}>
           Your<br />
-          <em style={{ fontStyle: 'italic', color: 'var(--color-accent)', opacity: 0.62 }}>
+          <em style={{ fontStyle: 'italic', color: 'var(--color-accent)', opacity: 0.82 }}>
             Thought
           </em><br />
           Partner
@@ -133,10 +133,10 @@ function Hero() {
 
         {/* Divider */}
         <div style={{
-          width: '32px',
+          width: '48px',
           height: '1px',
           background: 'var(--color-text-white)',
-          opacity: 0.15,
+          opacity: 0.75,
           marginBottom: '20px',
         }} />
 

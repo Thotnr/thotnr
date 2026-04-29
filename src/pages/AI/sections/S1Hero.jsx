@@ -106,17 +106,16 @@ function S1Hero() {
           color: 'var(--color-text-white)',
           marginBottom: '28px',
         }}>
-          Intelligence,<br />
-          <em style={{ fontStyle: 'italic', color: 'var(--color-accent)', opacity: 0.62 }}>Engineered</em><br />
-          for the Enterprise
+          <em style={{ fontStyle: 'italic', color: 'var(--color-accent)', opacity: 0.62 }}>Enterprise AI</em><br />
+          Engineered
         </h1>
 
         {/* Thin divider */}
         <div style={{
-          width: '32px',
+          width: '48px',
           height: '1px',
           background: 'var(--color-text-white)',
-          opacity: 0.15,
+          opacity: 0.75,
           marginBottom: '20px',
         }} />
 

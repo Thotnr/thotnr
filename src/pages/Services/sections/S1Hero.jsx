@@ -113,10 +113,10 @@ function S1Hero() {
 
         {/* Thin divider */}
         <div style={{
-          width: '32px',
+          width: '48px',
           height: '1px',
           background: 'var(--color-text-white)',
-          opacity: 0.15,
+          opacity: 0.75,
           marginBottom: '20px',
         }} />
 
