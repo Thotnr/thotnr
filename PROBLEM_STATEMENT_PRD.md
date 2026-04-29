@@ -1,67 +1,99 @@
+# PROBLEM STATEMENT SECTION — PRD + Full Component
+## File: `src/pages/Home/sections/ProblemStatement.jsx`
+## Breakpoints: Mobile < 768px | Tablet 768px–1023px | Desktop 1024px+
+
+---
+
+## LAYOUT STRUCTURE PER BREAKPOINT
+
+### Desktop (1024px+)
+- Stats: 4-column inline grid
+- Headline: full width, large editorial type
+- Evidence card: 2-column (donut left, 2× stat right)
+- Pillars: 3-column grid
+
+### Tablet (768px–1023px)
+- Stats: 2×2 grid (grid-cols-2)
+- Headline: full width
+- Evidence card: 2-column, reduced padding
+- Pillars: 3-column grid (still fits)
+
+### Mobile (< 768px)
+- Stats: 2×2 grid (grid-cols-2), compact
+- Headline: full width stacked
+- Evidence card: single column — donut on top, 2× below
+- Pillars: single column stacked
+
+---
+
+## COMPLETE COMPONENT
+
+```jsx
 function ProblemStatement() {
   return (
     <section className="py-16 px-5 md:px-10 lg:px-16 bg-[var(--color-primary)]">
       <div className="max-w-7xl mx-auto">
 
         {/* ── BLOCK 1: Stats bar ── */}
-        <div className="mb-8">
-          <p className="text-h4 text-[var(--color-highlight)] mb-2 tracking-widest">
+        <div className="mb-10">
+          <p className="text-label text-[var(--color-highlight)] mb-4 tracking-widest">
             THE REALITY OF ENTERPRISE AI TODAY
           </p>
           <p className="text-body text-[var(--color-text-secondary)] mb-6">
             Most enterprises are drowning in AI pilots that never reach production.
           </p>
 
-        
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6">
-  {[
-    { pct: '95%', label: 'of GenAI pilots fail',                source: 'MIT NANDA, 2025'   },
-    { pct: '80%', label: 'of AI projects fail overall',         source: 'RAND CORP., 2025'  },
-    { pct: '42%', label: 'abandoned in 2025 (vs 17% in 2024)', source: 'S&P GLOBAL, 2025'  },
-    { pct: '74%', label: 'see no tangible value from AI',       source: 'BCG, 2025'         },
-  ].map((s, i) => (
-    <div key={i} className="flex flex-col gap-1">
-
-      {/* Number + label on same line */}
-      <div className="flex items-center gap-2">
-        <span style={{
-          fontFamily: 'var(--font-heading)',
-          fontSize: 'clamp(20px, 2.8vw, 32px)',
-          fontWeight: 700,
-          lineHeight: 1,
-          color: 'var(--color-text-primary)',
-          flexShrink: 0,
-        }}>
-          {s.pct}
-        </span>
-        <span className="text-body-sm" style={{
-          color: 'var(--color-text-secondary)',
-          lineHeight: 1.35,
-          maxWidth: '160px',
-        }}>
-          {s.label}
-        </span>
-      </div>
-
-      {/* Source below */}
-      <span className="text-body" style={{
-        color: 'var(--color-secondary)',
-        letterSpacing: '0.06em',
-      }}>
-        {s.source}
-      </span>
-
-    </div>
-  ))}
-</div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0">
+            {[
+              { pct: '95%', label: 'of GenAI pilots fail',           source: 'MIT NANDA, 2025' },
+              { pct: '80%', label: 'of AI projects fail overall',    source: 'RAND CORP., 2025' },
+              { pct: '42%', label: 'abandoned in 2025 (vs 17% in 2024)', source: 'S&P GLOBAL, 2025' },
+              { pct: '74%', label: 'see no tangible value from AI',  source: 'BCG, 2025' },
+            ].map((s, i) => (
+              <div
+                key={s.pct + i}
+                className="flex flex-col gap-1 lg:pr-8"
+                style={{
+                  borderRight: i < 3 ? '1px solid rgba(11,15,25,0.08)' : 'none',
+                }}
+              >
+                <div className="flex items-baseline gap-2 flex-wrap">
+                  <span
+                    className="text-display"
+                    style={{
+                      fontFamily: 'var(--font-heading)',
+                      fontSize: 'clamp(28px, 5vw, 48px)',
+                      fontWeight: 700,
+                      lineHeight: 1,
+                      color: 'var(--color-text-primary)',
+                    }}
+                  >
+                    {s.pct}
+                  </span>
+                  <span
+                    className="text-body-sm"
+                    style={{ color: 'var(--color-text-secondary)', maxWidth: '140px', lineHeight: 1.4 }}
+                  >
+                    {s.label}
+                  </span>
+                </div>
+                <span
+                  className="text-caption"
+                  style={{ color: 'var(--color-text-tertiary)', letterSpacing: '0.06em' }}
+                >
+                  {s.source}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Thin divider */}
         <div className="mb-10" style={{ height: '1px', background: 'rgba(11,15,25,0.08)' }} />
 
         {/* ── BLOCK 2: Problem / Solution headline ── */}
-        <div className="mb-8">
-          <p className="text-h4 text-[var(--color-highlight)] mb-4 tracking-widest">
+        <div className="mb-10">
+          <p className="text-label text-[var(--color-highlight)] mb-4 tracking-widest">
             WHY THOTNR IS DIFFERENT
           </p>
 
@@ -95,7 +127,7 @@ function ProblemStatement() {
             className="text-body"
             style={{
               color: 'var(--color-text-secondary)',
-              maxWidth: '760px',
+              maxWidth: '640px',
               lineHeight: 1.8,
             }}
           >
@@ -119,7 +151,7 @@ function ProblemStatement() {
 
             {/* Left — donut chart + legend */}
             <div>
-              <p className="text-body text-[var(--color-text-tertiary)] mb-5 tracking-widest">
+              <p className="text-label text-[var(--color-text-tertiary)] mb-5 tracking-widest">
                 WHERE AI PILOTS END UP
               </p>
               <div className="flex items-center gap-6 flex-wrap">
@@ -184,7 +216,7 @@ function ProblemStatement() {
                     <text
                       x="55" y="64"
                       textAnchor="middle"
-                      style={{ fontFamily: 'var(--font-heading)', fontSize: '8px', fill: 'var(--color-text-tertiary)', letterSpacing: '0.06em' }}
+                      style={{ fontFamily: 'var(--font-mono)', fontSize: '8px', fill: 'var(--color-text-tertiary)', letterSpacing: '0.06em' }}
                     >
                       FAIL
                     </text>
@@ -204,7 +236,7 @@ function ProblemStatement() {
                         className="flex-shrink-0 mt-1 rounded-sm"
                         style={{ width: '10px', height: '10px', background: item.color }}
                       />
-                      <span className="text-body" style={{ color: 'var(--color-text-secondary)', lineHeight: 1.5 }}>
+                      <span className="text-caption" style={{ color: 'var(--color-text-secondary)', lineHeight: 1.5 }}>
                         {item.label} — <strong>{item.pct}</strong>
                       </span>
                     </div>
@@ -215,7 +247,7 @@ function ProblemStatement() {
 
             {/* Right — 2× stat */}
             <div className="flex flex-col justify-center">
-              <p className="text-body text-[var(--color-text-tertiary)] mb-5 tracking-widest">
+              <p className="text-label text-[var(--color-text-tertiary)] mb-5 tracking-widest">
                 THE MIT FINDING THAT DEFINES OUR APPROACH
               </p>
 
@@ -305,3 +337,28 @@ function ProblemStatement() {
 }
 
 export default ProblemStatement
+```
+
+---
+
+## Responsive Behaviour Summary
+
+### Stats grid
+- Mobile/Tablet: `grid-cols-2` — 2×2 layout
+- Desktop: `grid-cols-4` — 4 in a row
+- Border dividers between stats: hidden on mobile (would look odd in 2-col), shown on desktop via `borderRight`
+
+### Headline block
+- Font sizes use `clamp()` so they scale naturally across all viewports
+- No breakpoint classes needed — pure fluid typography
+
+### Evidence card
+- Mobile: single column — donut + legend stacked above `2×` stat
+- Tablet+: `grid-cols-2` — donut left, stat right
+- Padding: `p-6` on mobile, `p-8` on tablet+
+
+### Pillars
+- Mobile: `grid-cols-1` — fully stacked
+- Tablet+: `grid-cols-3` — 3 in a row
+
+---

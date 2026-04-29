@@ -358,7 +358,7 @@ function Navbar() {
     <>
       {/* ── DESKTOP NAV (lg+) ── */}
       <nav
-        className={cn(navBase, 'hidden lg:flex items-center px-6 lg:px-16')}
+        className={cn(navBase, 'hidden lg:flex items-center px-6 md:px-10 lg:px-16')}
         style={navScrolledStyle}
       >
         <div className="max-w-7xl mx-auto w-full flex items-center h-full">

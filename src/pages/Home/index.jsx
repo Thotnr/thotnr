@@ -1,5 +1,6 @@
 import Hero             from './sections/Hero'
 import ProblemStatement from './sections/ProblemStatement'
+import Vision          from './sections/Vision'
 import ServicesCards    from './sections/ServicesCards'
 import ProcessTimeline  from './sections/ProcessTimeline'
 import Insights         from './sections/Insights'
@@ -23,11 +24,12 @@ function Home() {
       {/* 1. CLARITY */}
       <Hero />
       <ProblemStatement />
+      <Vision />
 
       {/* 2. SOLUTION */}
-      <ServicesCards />
       <ProcessTimeline />
-      <ServicesList />
+      <ServicesCards />
+      
 
       {/* 3. TRUST */}
       <CaseStudies />
@@ -35,6 +37,7 @@ function Home() {
 
       {/* 4. EXPANSION */}
       <Products />
+      <ServicesList />
       <Events />
       <Insights />
       
