@@ -4,18 +4,46 @@ import { cn } from '../../utils'
 import logoRed from '../../assets/images/thotnr_logo_red.png'
 import logoWhite from '../../assets/images/thotnr_logo_white.png'
 
-
 function LogoMark({ size = 28, scrolled }) {
   return (
-    <img 
-      src={scrolled ? logoRed :logoWhite} 
-      alt="Logo" 
-      style={{ 
-        width: size, 
-        height: size, 
-        objectFit: 'contain' 
-      }} 
+    <img
+      src={scrolled ? logoRed : logoWhite}
+      alt="Logo"
+      style={{ width: size, height: size, objectFit: 'contain', transition: 'opacity 0.3s ease' }}
     />
+  )
+}
+
+function BrandMark({ scrolled, size = 'md' }) {
+  const isLg = size === 'lg'
+  return (
+    <div className="flex flex-col" style={{ lineHeight: 1 }}>
+      <span style={{
+        fontFamily: 'var(--font-heading)',
+        fontSize: isLg ? '20px' : '15px',
+        fontWeight: 900,
+        letterSpacing: isLg ? '0.32em' : '0.40em',
+        color: scrolled ? 'var(--color-text-primary)' : '#ffffff',
+        display: 'block',
+        transition: 'color 0.3s ease',
+      }}>
+        THOTNR
+      </span>
+      <span style={{
+        fontFamily: 'var(--font-mono)',
+        fontSize: isLg ? '8px' : '6.5px',
+        fontWeight: 500,
+        letterSpacing: isLg ? '0.175em' : '0.16em',
+        textTransform: 'uppercase',
+        color: scrolled ? 'var(--color-text-tertiary)' : 'rgba(255,255,255,0.52)',
+        marginTop: isLg ? '5px' : '4px',
+        display: 'block',
+        whiteSpace: 'nowrap',
+        transition: 'color 0.3s ease',
+      }}>
+        Your Thought Partner
+      </span>
+    </div>
   )
 }
 
@@ -71,92 +99,6 @@ const whatWeOfferData = {
   },
 }
 
-// function DropdownItem({ label, data, scrolled }) {
-//   const [open, setOpen] = useState(false)
-//   const linkStyle = { color: scrolled ? 'var(--color-text-primary)' : '#ffffff' }
-//   const onEnter   = (e) => { e.currentTarget.style.color = 'var(--color-highlight)' }
-//   const onLeave   = (e) => { e.currentTarget.style.color = scrolled ? 'var(--color-text-primary)' : '#ffffff' }
-
-//   return (
-//     <div className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-//       <button
-//         className="flex items-center gap-1 px-3 py-2 text-body rounded-md bg-transparent border-none cursor-pointer transition-colors duration-150"
-//         style={linkStyle}
-//         onMouseEnter={onEnter}
-//         onMouseLeave={onLeave}
-//       >
-//         {label}
-//         <ChevronDown open={open} />
-//       </button>
-
-//       {open && (
-//         <div
-//           className="absolute top-full left-1/2 -translate-x-1/2 mt-2 rounded-2xl overflow-hidden z-50"
-//           style={{
-//             width: '780px',
-//             background: 'var(--color-primary)',
-//             boxShadow: '0 20px 60px rgba(0,0,0,0.14)',
-//             border: '1px solid rgba(0,0,0,0.06)',
-//           }}
-//         >
-//           <div className="grid grid-cols-2">
-//             <div className="p-8 border-r border-black/5">
-//               <p className="text-label mb-5" style={{ color: 'var(--color-text-tertiary)' }}>
-//                 {data.left.heading}
-//               </p>
-//               <div className="flex flex-col gap-5">
-//                 {data.left.items.map((item) => (
-//                   <div key={item.label}>
-//                     <p className="text-body font-semibold mb-1" style={{ color: 'var(--color-text-primary)' }}>
-//                       {item.label}
-//                     </p>
-//                     <p className="text-body-sm" style={{ color: 'var(--color-text-tertiary)' }}>
-//                       {item.desc}
-//                     </p>
-//                   </div>
-//                 ))}
-//               </div>
-//               <Link
-//                 to={data.left.cta.to}
-//                 className="inline-block mt-6 text-body-sm font-medium no-underline"
-//                 style={{ color: 'var(--color-highlight)' }}
-//               >
-//                 {data.left.cta.label}
-//               </Link>
-//             </div>
-//             <div className="p-8">
-//               <p className="text-label mb-5" style={{ color: 'var(--color-text-tertiary)' }}>
-//                 {data.right.heading}
-//               </p>
-//               <div className="grid grid-cols-3 gap-x-4 gap-y-2">
-//                 {data.right.cols.flat().map((item) => (
-//                   <a
-//                     key={item}
-//                     href="#"
-//                     className="text-body-sm no-underline transition-colors duration-150"
-//                     style={{ color: 'var(--color-text-secondary)' }}
-//                     onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-highlight)' }}
-//                     onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)' }}
-//                   >
-//                     {item}
-//                   </a>
-//                 ))}
-//               </div>
-//               <Link
-//                 to={data.right.cta.to}
-//                 className="inline-block mt-6 text-body-sm font-medium no-underline"
-//                 style={{ color: 'var(--color-highlight)' }}
-//               >
-//                 {data.right.cta.label}
-//               </Link>
-//             </div>
-//           </div>
-//         </div>
-//       )}
-//     </div>
-//   )
-// }
-
 function MegaMenu({ data }) {
   const { left, right } = data
   return (
@@ -184,7 +126,7 @@ function MegaMenu({ data }) {
       <div
         className="mega-menu-wrap fixed left-0 right-0 z-50 bg-[var(--color-primary)]"
         style={{
-          top: '64px',
+          top: '80px',
           borderBottom: '1px solid var(--color-border)',
           boxShadow: '0 12px 40px rgb(var(--color-ink-rgb) / 0.1)',
         }}
@@ -224,13 +166,12 @@ function MegaMenu({ data }) {
               {left.cta.label}
               <span className="mega-view-all-arrow">→</span>
             </Link>
-
           </div>
 
           {/* VERTICAL DIVIDER */}
           <div className="w-[0.1px] bg-gray-300" />
 
-          {/* RIGHT — industries (non-clickable) */}
+          {/* RIGHT — industries */}
           <div className="flex-1 pl-12 flex flex-col">
             <h3
               className="text-2xl font-light mb-1"
@@ -266,7 +207,6 @@ function MegaMenu({ data }) {
     </>
   )
 }
-
 
 function DropdownItem({ label, data, scrolled }) {
   const [open, setOpen] = useState(false)
@@ -336,77 +276,69 @@ function Navbar() {
   }, [])
 
   const navBase = cn(
-    'fixed top-0 inset-x-0 z-50 h-16',
-    'transition-[background,box-shadow] duration-300',
+    'fixed top-0 inset-x-0 z-50',
+    'transition-[background,box-shadow,border-color] duration-300 ease-in-out',
   )
 
   const navScrolledStyle = scrolled
     ? {
-        background: 'rgba(241, 250, 238, 0.92)',
-        backdropFilter: 'blur(18px)',
-        WebkitBackdropFilter: 'blur(18px)',
-        boxShadow: '0 1px 0 rgba(29, 53, 87, 0.08), 0 8px 32px rgba(29, 53, 87, 0.06)',
+        background: 'rgba(241, 250, 238, 0.97)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        boxShadow: '0 1px 0 rgba(29,53,87,0.09), 0 6px 28px rgba(29,53,87,0.07)',
+        borderBottom: '1px solid rgba(29,53,87,0.07)',
       }
     : { background: 'transparent' }
 
-  const linkStyle = { color: scrolled ? 'var(--color-text-primary)' : '#ffffff' }
+  const linkStyle = { color: scrolled ? 'var(--color-text-primary)' : '#ffffff', transition: 'color 0.2s ease' }
   const onEnter   = (e) => { e.currentTarget.style.color = 'var(--color-highlight)' }
   const onLeave   = (e) => { e.currentTarget.style.color = scrolled ? 'var(--color-text-primary)' : '#ffffff' }
-  const linkCls   = 'px-3 py-2 text-body rounded-md no-underline transition-colors duration-150'
+  const linkCls   = 'px-3 py-2 text-body rounded-md no-underline'
 
   return (
     <>
       {/* ── DESKTOP NAV (lg+) ── */}
       <nav
-        className={cn(navBase, 'hidden lg:flex items-center px-6 md:px-10 lg:px-16')}
+        className={cn(navBase, 'hidden lg:flex items-center h-16 px-6 md:px-10 lg:px-16')}
         style={navScrolledStyle}
       >
         <div className="max-w-7xl mx-auto w-full flex items-center h-full">
-          <a href="/" className="flex items-center gap-2.5 no-underline flex-shrink-0">
-            <LogoMark scrolled={scrolled} />
-            <span
-              className="relative text-2xl font-black tracking-widest"
-              style={{ color: scrolled ? 'var(--color-text-primary)' : '#ffffff' }}
-            >
-              THOTNR
-              
-            </span>
+
+          <a href="/" className="flex items-center gap-3 no-underline flex-shrink-0">
+            <LogoMark size={34} scrolled={scrolled} />
+            <BrandMark scrolled={scrolled} size="lg" />
           </a>
 
           <div className="flex-1 flex justify-center items-center gap-1">
-            <DropdownItem label="what we offer" data={whatWeOfferData} scrolled={scrolled} />
-            <Link to="/case-studies" className={linkCls} style={linkStyle} onMouseEnter={onEnter} onMouseLeave={onLeave}>our work</Link>
-            <Link to="/insights"     className={linkCls} style={linkStyle} onMouseEnter={onEnter} onMouseLeave={onLeave}>insights</Link>
-            <Link to="/ai"           className={linkCls} style={linkStyle} onMouseEnter={onEnter} onMouseLeave={onLeave}>AI</Link>
+            <DropdownItem label="capibilities" data={whatWeOfferData} scrolled={scrolled} />
+            <Link to="/case-studies" className={linkCls} style={linkStyle} onMouseEnter={onEnter} onMouseLeave={onLeave}>augmented impact</Link>
+            <Link to="/insights"     className={linkCls} style={linkStyle} onMouseEnter={onEnter} onMouseLeave={onLeave}>strategic insights</Link>
+            <Link to="/ai"           className={linkCls} style={linkStyle} onMouseEnter={onEnter} onMouseLeave={onLeave}>enterprise AI</Link>
           </div>
 
           <div className="flex items-center gap-1 flex-shrink-0 -mr-3">
             {[
-              { label: 'about',   to: '/about'  },
-              { label: 'contact', to: '/contact' },
-              { label: 'join us', to: '/join-us' },
+              { label: 'about',   to: '/about'   },
+              { label: 'contact', to: '/contact'  },
+              { label: 'join us', to: '/join-us'  },
             ].map(({ label, to }) => (
               <Link key={label} to={to} className={linkCls} style={linkStyle} onMouseEnter={onEnter} onMouseLeave={onLeave}>
                 {label}
               </Link>
             ))}
           </div>
+
         </div>
       </nav>
 
       {/* ── MOBILE/TABLET NAV BAR (below lg) ── */}
       <nav
-        className={cn(navBase, 'flex lg:hidden items-center justify-between px-5')}
+        className={cn(navBase, 'flex lg:hidden items-center justify-between h-[70px] px-5')}
         style={navScrolledStyle}
       >
-        <a href="/" className="flex items-center gap-2 no-underline">
-          <LogoMark size={24} scrolled={scrolled} />
-          <span
-            className="text-lg font-bold tracking-widest"
-            style={{ color: scrolled ? 'var(--color-text-primary)' : '#ffffff' }}
-          >
-            THOTNR
-          </span>
+        <a href="/" className="flex items-center gap-2.5 no-underline">
+          <LogoMark size={26} scrolled={scrolled} />
+          <BrandMark scrolled={scrolled} size="sm" />
         </a>
         <button
           onClick={() => setMobileOpen((o) => !o)}
@@ -425,8 +357,7 @@ function Navbar() {
           mobileOpen ? 'translate-y-0 pointer-events-auto' : '-translate-y-[115%] pointer-events-none'
         )}
         style={{
-          top: 64,
-          
+          top: 70,
           background: 'var(--color-primary)',
           borderTop: '2px solid var(--color-highlight)',
           boxShadow: '0 12px 40px rgba(0,0,0,0.12)',
@@ -435,14 +366,14 @@ function Navbar() {
       >
         <div className="flex flex-col px-5 py-3">
           {[
-            { label: 'AI',            to: '/ai'           },
-            { label: 'our work',      to: '/case-studies' },
-            { label: 'insights',      to: '/insights'     },
-            { label: 'services',      to: '/services'},
-            { label: 'industries',    to: '/industries'   },
-            { label: 'about',         to: '/about'        },
-            { label: 'contact',       to: '/contact'      },
-            { label: 'join us',       to: '/join-us'      },
+            { label: 'enterprise AI',         to: '/ai'           },
+            { label: 'augmented impact',   to: '/case-studies' },
+            { label: 'strategic insights',   to: '/insights'     },
+            { label: 'services',   to: '/services'     },
+            { label: 'industries', to: '/industries'   },
+            { label: 'about',      to: '/about'        },
+            { label: 'contact',    to: '/contact'      },
+            { label: 'join us',    to: '/join-us'      },
           ].map(({ label, to }, i, arr) => (
             <div key={label}>
               <Link

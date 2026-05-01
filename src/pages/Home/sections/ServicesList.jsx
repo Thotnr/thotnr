@@ -3,8 +3,11 @@ import { useNavigate } from 'react-router-dom'
 import aiServiceImg          from '../../../assets/images/ai-service.jpg'
 import enterpriseArchitectImg from '../../../assets/images/enterprise-architect.jpg'
 import cloudImg              from '../../../assets/images/cloud.jpg'
+import strategyImg           from '../../../assets/images/offer-service.jpg'
+import experienceImg         from '../../../assets/images/user-experience.jpg'
+import dataImg               from '../../../assets/images/ai.jpg'
 
-const featuredServices = [
+const services = [
   {
     title:   'Artificial Intelligence',
     tagline: 'From strategy to production-ready AI',
@@ -26,15 +29,27 @@ const featuredServices = [
     desc:    'From lift-and-shift to cloud-native transformation — we engineer cloud strategies that reduce cost.',
     image:   cloudImg,
   },
-]
-
-const allServices = [
-  // column 1 — AI & Data (first)
-  ['Artificial Intelligence', 'Generative AI', 'Machine Learning', 'Intelligent Automation', 'AI Strategy & Roadmap', 'MLOps', 'Data Engineering', 'Data Platform & Analytics'],
-  // column 2 — Strategy, Experience & Innovation
-  ['Strategy & Consulting', 'Customer Experience & Design', 'Technology & Engineering', 'Web 3.0', 'Enterprise Platform', 'Digital Transformation', 'Experience Design', 'UX Research'],
-  // column 3 — Architecture & Cloud
-  ['Enterprise Architecture', 'API & Integration Architecture', 'Enterprise Modernisation', 'Product Engineering', 'Quality Engineering', 'Cloud Engineering', 'Cloud Migration', 'Infrastructure Engineering'],
+  {
+    title:   'Strategy & Consulting',
+    tagline: 'Direction, clarity, execution',
+    stat:    '2× faster strategic alignment',
+    desc:    'We partner with leadership to define direction, prioritise transformation, and build execution-ready roadmaps for the decade ahead.',
+    image:   strategyImg,
+  },
+  {
+    title:   'Experience Design',
+    tagline: 'Human-centred, outcome-driven',
+    stat:    '45% higher engagement',
+    desc:    'Human-centred design for digital products — from research to interaction design — that drives adoption and delivers business outcomes.',
+    image:   experienceImg,
+  },
+  {
+    title:   'Data Engineering',
+    tagline: 'Pipelines that power intelligence',
+    stat:    '5× data pipeline efficiency',
+    desc:    'We build the data foundations that power intelligent systems — streaming pipelines, lakehouses, and analytics platforms at scale.',
+    image:   dataImg,
+  },
 ]
 
 function ExpandingCard({ title, tagline, stat, desc, image }) {
@@ -44,17 +59,25 @@ function ExpandingCard({ title, tagline, stat, desc, image }) {
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative flex flex-col justify-end overflow-hidden rounded-2xl transition-all duration-500 cursor-default"
-      style={{ flex: hovered ? '2.5' : '1', minHeight: '420px' }}
+      className="relative flex flex-col justify-end overflow-hidden rounded-2xl cursor-default"
+      style={{
+        flex: hovered ? '2.5' : '1',
+        minHeight: '420px',
+        transition: 'flex 0.5s cubic-bezier(0.4,0,0.2,1)',
+      }}
     >
       {/* Background image */}
       <img
         src={image}
         alt={title}
-        className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 ${hovered ? 'scale-105' : 'scale-100'}`}
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{
+          transform: hovered ? 'scale(1.05)' : 'scale(1)',
+          transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)',
+        }}
       />
 
-      {/* Gradient overlay — cinematic, heavier at bottom */}
+      {/* Gradient overlay */}
       <div
         className="absolute inset-0"
         style={{
@@ -67,8 +90,6 @@ function ExpandingCard({ title, tagline, stat, desc, image }) {
 
       {/* Content */}
       <div className="relative z-10 p-7 flex flex-col gap-2">
-
-        {/* Tagline */}
         <p
           className="text-label font-medium"
           style={{ color: 'rgba(255,255,255,0.85)' }}
@@ -76,32 +97,38 @@ function ExpandingCard({ title, tagline, stat, desc, image }) {
           {tagline}
         </p>
 
-        {/* Title */}
         <h3
           className="font-semibold text-white leading-tight"
-          style={{ fontSize: hovered ? '1.35rem' : '1.2rem', transition: 'font-size 0.3s ease' }}
+          style={{
+            fontSize: hovered ? '1.35rem' : '1.2rem',
+            transition: 'font-size 0.3s ease',
+          }}
         >
           {title}
         </h3>
 
-        {/* Desc — expands on hover */}
         <div
-          className="overflow-hidden transition-all duration-400"
-          style={{ maxHeight: hovered ? '80px' : '0px', opacity: hovered ? 1 : 0 }}
+          className="overflow-hidden"
+          style={{
+            maxHeight: hovered ? '80px' : '0px',
+            opacity: hovered ? 1 : 0,
+            transition: 'max-height 0.4s ease, opacity 0.4s ease',
+          }}
         >
           <p className="text-body leading-relaxed pt-1" style={{ color: 'rgba(255,255,255,0.72)' }}>
             {desc}
           </p>
         </div>
-
       </div>
     </div>
   )
 }
 
 function ServicesList() {
-  const [showAll, setShowAll] = useState(false)
   const navigate = useNavigate()
+
+  const row1 = services.slice(0, 3)
+  const row2 = services.slice(3, 6)
 
   return (
     <section
@@ -119,125 +146,62 @@ function ServicesList() {
           </p>
         </div>
 
-        {/* Expanding Cards */}
+        {/* ── Cards ── */}
+        {/*
+          Desktop (lg+)  : two flex rows, each with 3 expanding cards
+          Tablet (md–lg) : all 6 in a 2-col grid — done via display:contents on svc-row
+          Mobile         : stacked vertically
+        */}
         <style>{`
           @media (min-width: 768px) and (max-width: 1023px) {
-            .svc-expanding-container {
+            .svc-all-cards {
               display: grid !important;
               grid-template-columns: repeat(2, 1fr);
-              min-height: auto !important;
+              gap: 16px !important;
             }
-            .svc-expanding-container > *:nth-child(3) {
-              grid-column: 1 / -1;
-              max-width: calc(50% - 8px);
-              margin: 0 auto;
-              width: 100%;
+            .svc-row {
+              display: contents;
             }
           }
         `}</style>
-        <div className="svc-expanding-container flex flex-col lg:flex-row gap-4" style={{ minHeight: '420px' }}>
-          {featuredServices.map((svc) => (
-            <ExpandingCard key={svc.title} {...svc} />
-          ))}
+
+        <div className="svc-all-cards flex flex-col gap-4">
+          <div className="svc-row flex flex-col lg:flex-row gap-4">
+            {row1.map((svc) => (
+              <ExpandingCard key={svc.title} {...svc} />
+            ))}
+          </div>
+          <div className="svc-row flex flex-col lg:flex-row gap-4">
+            {row2.map((svc) => (
+              <ExpandingCard key={svc.title} {...svc} />
+            ))}
+          </div>
         </div>
 
-        {/* All Services Bar */}
-        <div className="flex items-center justify-between mt-14 pt-4">
-          <h3
-            className="text-h3 text-white"
-          >
-            All Services
-          </h3>
-
+        {/* Show more */}
+        <div className="flex justify-center mt-10">
           <button
-            onClick={() => setShowAll((v) => !v)}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full text-body-sm font-semibold border transition-all duration-200 cursor-pointer bg-transparent"
+            onClick={() => navigate('/services')}
+            className="flex items-center gap-2 px-7 py-3 rounded-full font-semibold cursor-pointer bg-transparent"
             style={{
-              border: '1px solid rgba(255,255,255,0.25)',
+              border: '1px solid rgba(255,255,255,0.28)',
               color: '#ffffff',
+              fontFamily: 'var(--font-heading)',
+              fontSize: '14px',
+              transition: 'border-color 0.2s ease, color 0.2s ease',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.borderColor = 'var(--color-highlight)'
               e.currentTarget.style.color = 'var(--color-highlight)'
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.28)'
               e.currentTarget.style.color = '#ffffff'
             }}
           >
-            {showAll ? 'Hide' : 'Show'}
-            <svg
-              width="12" height="12" viewBox="0 0 12 12" fill="none"
-              style={{
-                transform: showAll ? 'rotate(180deg)' : 'rotate(0deg)',
-                transition: 'transform 0.25s ease',
-              }}
-            >
-              <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            Show more
+            
           </button>
-        </div>
-
-        {/* Expandable services list */}
-        <div
-          className="overflow-hidden transition-all duration-500"
-          style={{ maxHeight: showAll ? '800px' : '0px', opacity: showAll ? 1 : 0 }}
-        >
-          <style>{`
-            .svc-list-item {
-              display: block;
-              color: rgba(255,255,255,0.55);
-              padding-left: 0;
-              transition: color 0.18s ease, padding-left 0.18s ease;
-              cursor: default;
-            }
-            .svc-list-item:hover {
-              color: #ffffff;
-              padding-left: 28px;
-              text-indent: -18px;
-            }
-            .svc-list-item::before {
-              content: '—';
-              margin-right: 8px;
-              font-size: 10px;
-              color: var(--color-highlight);
-              opacity: 0;
-              transition: opacity 0.18s ease;
-            }
-            .svc-list-item:hover::before {
-              opacity: 1;
-            }
-          `}</style>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 pt-8">
-            {allServices.map((col, ci) => (
-              <div key={ci} className="flex flex-col gap-0.5">
-                {col.map((svc) => (
-                  <span key={svc} className="svc-list-item py-2 text-body-sm font-medium">
-                    {svc}
-                  </span>
-                ))}
-              </div>
-            ))}
-          </div>
-
-          {/* Know more CTA */}
-          <div className="mt-10 flex justify-center">
-            <button
-              onClick={() => navigate('/services')}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-body-sm font-semibold transition-all duration-200 cursor-pointer bg-transparent"
-              style={{ border: '1px solid rgba(255,255,255,0.25)', color: '#ffffff' }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'var(--color-highlight)'
-                e.currentTarget.style.color = 'var(--color-highlight)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'
-                e.currentTarget.style.color = '#ffffff'
-              }}
-            >
-              Know more
-            </button>
-          </div>
         </div>
 
       </div>

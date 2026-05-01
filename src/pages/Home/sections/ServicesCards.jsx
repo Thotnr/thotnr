@@ -1,25 +1,25 @@
-import icon1 from '../../../assets/icons/icon1-dark-human-ai.svg'
-import icon2 from '../../../assets/icons/icon2-dark-enterprise.svg'
-import icon3 from '../../../assets/icons/icon3-dark-flow.svg'
+import icon1 from '../../../assets/images/human-ai-powered.png'
+import icon2 from '../../../assets/images/human-meets-machine.png'
+import icon3 from '../../../assets/images/layer.png'
 
 const services = [
   {
     icon: icon1,
-    title: 'Human and AI collaboration',
+    title: 'Human Judgment and AI Powered',
     tagline: 'Where human judgment meets machine capability',
-    whatWeDo: 'Engineering is evolving. AI no longer just helps us write code; it shapes how we design, test, and improve systems. Engineers are becoming system thinkers, creating spaces where human judgment and AI work together effectively.',
+    whatWeDo: 'Human judgment sets the direction. AI extends the reach. We build systems where both work in concert — so your teams decide faster without losing the insight only humans carry.',
   },
   {
     icon: icon2,
-    title: 'AI grounded in real enterprise knowledge',
+    title: 'Where Human Meets Machine',
     tagline: 'AI that understands your business, not just your data',
-    whatWeDo: 'Enterprises carry years of hard-won knowledge, but it often sits in silos. Fluidic Intelligence brings it together through strong technology foundations and practical AI. The result is AI that understands how the enterprise really works.',
+    whatWeDo: 'Your people bring context. AI brings scale. Together they form a thinking system sharper than either could be alone.',
   },
   {
     icon: icon3,
-    title: 'Intelligence in flow across the enterprise',
+    title: 'Collaboration at Every Layer',
     tagline: 'Seamless movement of insight across systems and teams',
-    whatWeDo: 'At the enterprise level, intelligence flows to the right models, systems, and people. Decisions and actions move smoothly across teams and processes, removing the friction that once slowed everything down.',
+    whatWeDo: "We don't replace human thinking — we amplify it. AI works alongside your teams, learning how you operate and making every interaction more intelligent over time.",
   },
 ]
 
@@ -125,7 +125,7 @@ function ServiceCard({ icon, title, whatWeDo, index }) {
 
       <div className={`svc-card-wrap-${index}`}>
         <div
-          className={`svc-card-${index} relative flex flex-col gap-3 rounded-xl p-7`}
+          className={`svc-card-${index} relative flex flex-col gap-1 rounded-xl p-7`}
           style={{
             background: 'rgba(255,255,255,0.04)',
             border: '1px solid rgba(255,255,255,0.08)',
@@ -141,12 +141,12 @@ function ServiceCard({ icon, title, whatWeDo, index }) {
           <div className={`particle-${index}`} />
 
           {/* Icon */}
-          <div className={`svc-icon-${index} w-44 h-44 mx-auto`}>
+          <div className={`svc-icon-${index} w-60 h-60 mx-auto`}>
             <img src={icon} alt={title} className="w-full h-full object-contain" />
           </div>
 
           {/* Title */}
-          <h3 className="text-h3 text-white">
+          <h3 className="text-h3 text-white -mt-1">
             {title}
           </h3>
 

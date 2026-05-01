@@ -49,6 +49,7 @@ export const insights = [
     authorRole: 'CEO, Thotnr',
     authorImage: authorGauravK,
     publishDate: 'March 2025',
+    category: "Cognitive Augmented",
     contentBlocks: [
       {
         type: 'intro',
@@ -111,6 +112,7 @@ export const insights = [
   authorRole: 'Head of Experience Design',
   authorImage: authorNeha,
   publishDate: 'January 09, 2023',
+  category: "Architecture Augmented",
   contentBlocks: [
     {
       type: 'intro',
@@ -194,6 +196,7 @@ export const insights = [
   authorRole: 'Head of Experience Design',
   authorImage: authorNeha,
   publishDate: 'January 09, 2023',
+  category: "Architecture Augmented",
   contentBlocks: [
     {
       type: 'intro',
@@ -277,6 +280,7 @@ export const insights = [
   authorRole: 'Head of Experience Design',
   authorImage: authorNeha,
   publishDate: 'January 05, 2023',
+  category: "Architecture Augmented",
   contentBlocks: [
     {
       type: 'intro',
@@ -382,6 +386,7 @@ export const insights = [
   authorRole: 'Enterprise Architecture Lead',
   authorImage: authorGauravV,
   publishDate: 'September 19, 2022',
+  category: "Vision Augmented",
   contentBlocks: [
     {
       type: 'intro',
@@ -456,6 +461,7 @@ export const insights = [
   authorRole: 'Cloud Engineering Lead',
   authorImage: authorBharat,
   publishDate: 'September 19, 2022',
+  category: "Vision Augmented",
   contentBlocks: [
     {
       type: 'intro',
@@ -508,6 +514,7 @@ export const insights = [
   authorRole: 'CEO, Thotnr',
   authorImage: authorGauravK,
   publishDate: 'September 19, 2022',
+  category: "Vision Augmented",
   contentBlocks: [
     {
       type: 'intro',
@@ -582,6 +589,7 @@ export const insights = [
   authorRole: 'ML Engineering Lead',
   authorImage: authorDeepak,
   publishDate: 'September 19, 2022',
+  category: "Vision Augmented",
   contentBlocks: [
     {
       type: 'intro',
@@ -667,6 +675,7 @@ export const insights = [
   authorRole: 'Head of Experience Design',
   authorImage: authorNeha,
   publishDate: 'August 23, 2022',
+  category: "Vision Augmented",
   contentBlocks: [
     {
       type: 'intro',
@@ -733,6 +742,7 @@ export const insights = [
   authorRole: 'Security Architecture Lead',
   authorImage: authorHariraj,
   publishDate: 'August 23, 2022',
+  category: "Vision Augmented",
   contentBlocks: [
     {
       type: 'intro',
@@ -800,6 +810,7 @@ export const insights = [
   authorRole: 'ML Engineering Lead',
   authorImage: authorDeepak,
   publishDate: 'August 23, 2022',
+  category: "Vision Augmented",
   contentBlocks: [
     {
       type: 'intro',
@@ -908,6 +919,7 @@ export const insights = [
   authorRole: 'Enterprise Architecture Lead',
   authorImage: authorGauravV,
   publishDate: 'August 23, 2022',
+  category: "Vision Augmented",
   contentBlocks: [
     {
       type: 'intro',
@@ -976,6 +988,7 @@ export const insights = [
   authorRole: 'ML Engineering Lead',
   authorImage: authorDeepak,
   publishDate: 'August 23, 2022',
+  category: "Vision Augmented",
   contentBlocks: [
     {
       type: 'intro',

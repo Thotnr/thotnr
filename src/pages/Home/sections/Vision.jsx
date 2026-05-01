@@ -36,7 +36,7 @@ function Vision() {
           {/* Left — eyebrow + headline */}
           <div>
             <p className="text-h4 mb-4 tracking-widest" style={{ color: 'var(--color-highlight)' }}>
-              OUR VISION
+              Our Vision
             </p>
             <h2
               style={{

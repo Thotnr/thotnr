@@ -1,6 +1,15 @@
-import { AlertCircle, Lightbulb, TrendingUp } from 'lucide-react'
+import { AlertCircle, BookOpen, Lightbulb, TrendingUp } from 'lucide-react'
 
 const BLOCKS = [
+  {
+    key: 'backdrop',
+    label: 'Backdrop',
+    Icon: BookOpen,
+    color: 'var(--color-highlight)',
+    bgColor: 'rgba(230, 57, 70, 0.07)',
+    borderColor: 'rgba(29, 53, 87, 0.15)',
+    spineColor: 'rgba(29, 53, 87, 0.10)',
+  },
   {
     key: 'challenge',
     label: 'Challenge',
@@ -98,12 +107,14 @@ function TimelineBlock({ label, Icon, color, bgColor, borderColor, spineColor, t
         <p className="text-h4 mb-3" style={{ color }}>
           {label}
         </p>
-        <h2
-          className="text-h2 leading-snug mb-5"
-          style={{ color: 'var(--color-text-primary)' }}
-        >
-          {title}
-        </h2>
+        {title && (
+          <h2
+            className="text-h2 leading-snug mb-5"
+            style={{ color: 'var(--color-text-primary)' }}
+          >
+            {title}
+          </h2>
+        )}
         <DescriptionBody text={description} />
       </div>
 
@@ -111,8 +122,9 @@ function TimelineBlock({ label, Icon, color, bgColor, borderColor, spineColor, t
   )
 }
 
-function S3Timeline({ challenge, solution, outcome }) {
-  const data = { challenge, solution, outcome }
+function S3Timeline({ backdrop, challenge, solution, outcome }) {
+  const data = { backdrop, challenge, solution, outcome }
+  const activeBlocks = BLOCKS.filter(b => data[b.key])
 
   return (
     <section
@@ -127,7 +139,7 @@ function S3Timeline({ challenge, solution, outcome }) {
         </div>
 
         <div>
-          {BLOCKS.map((b, i) => (
+          {activeBlocks.map((b, i) => (
             <TimelineBlock
               key={b.key}
               label={b.label}
@@ -138,7 +150,7 @@ function S3Timeline({ challenge, solution, outcome }) {
               spineColor={b.spineColor}
               title={data[b.key]?.title}
               description={data[b.key]?.description}
-              isLast={i === BLOCKS.length - 1}
+              isLast={i === activeBlocks.length - 1}
             />
           ))}
         </div>

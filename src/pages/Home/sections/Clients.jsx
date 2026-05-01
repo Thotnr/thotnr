@@ -1,157 +1,146 @@
-import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
-import bazinga        from '../../../assets/images/clients/bazinga-removebg-preview.png'
-import bookclip       from '../../../assets/images/clients/bookclip-removebg-preview.png'
-import creditas       from '../../../assets/images/clients/creditas-removebg-preview.png'
-import digispice      from '../../../assets/images/clients/digispice-removebg-preview.png'
-import djubo          from '../../../assets/images/clients/djubo.png'
-import eool           from '../../../assets/images/clients/eool-removebg-preview.png'
-import healthscroll   from '../../../assets/images/clients/healthscroll-removebg-preview.png'
-import lexinnova      from '../../../assets/images/clients/lexinnova-removebg-preview.png'
-import lexus          from '../../../assets/images/clients/lexus-removebg-preview.png'
-import nykaa          from '../../../assets/images/clients/nykaa.png'
-import openSky        from '../../../assets/images/clients/open_sky-removebg-preview.png'
-import ovations       from '../../../assets/images/clients/ovations-removebg-preview.png'
-import rio2016        from '../../../assets/images/clients/Rio_2016.png'
-import servitium      from '../../../assets/images/clients/servitium-removebg-preview.png'
-import standardBank   from '../../../assets/images/clients/standard_bank-removebg-preview.png'
-import swayam         from '../../../assets/images/clients/swayam.png'
-import tata           from '../../../assets/images/clients/tata.png'
-import vtm            from '../../../assets/images/clients/vtm-removebg-preview.png'
-import zs             from '../../../assets/images/clients/zs-removebg-preview.png'
-import kingdom        from '../../../assets/images/clients/kingdom.png'
-import heroFincorp    from '../../../assets/images/clients/hero-fincorp.png'
-import csav           from '../../../assets/images/clients/csav.png'
+import creditas      from '../../../assets/images/clients/creditas-removebg-preview.png'
+import standardBank  from '../../../assets/images/clients/standard_bank-removebg-preview.png'
+import vodacom       from '../../../assets/images/clients/vodacom.png'
+import zs            from '../../../assets/images/clients/zs-removebg-preview.png'
+import angloAmerican from '../../../assets/images/clients/anglo-american.png'
+import hollard       from '../../../assets/images/clients/hollard.png'
+// import hollard from '../../../assets/images/clients/hollard.png'  ← add file then uncomment
 
-const clients = [
-  { id:  1, name: 'Tata',           logo: tata          },
-  { id:  2, name: 'Nykaa',          logo: nykaa         },
-  { id:  3, name: 'Standard Bank',  logo: standardBank  },
-  { id:  4, name: 'Lexus',          logo: lexus         },
-  { id:  5, name: 'Hero Fincorp',   logo: heroFincorp   },
-  { id:  6, name: 'ZS',             logo: zs            },
-  { id:  7, name: 'Creditas',       logo: creditas      },
-  { id:  8, name: 'Kingdom',        logo: kingdom       },
-  { id:  9, name: 'Servitium',      logo: servitium     },
-  { id: 10, name: 'Digispice',      logo: digispice     },
-  { id: 11, name: 'Rio 2016',       logo: rio2016       },
-  { id: 12, name: 'Swayam',         logo: swayam        },
-  { id: 13, name: 'Djubo',          logo: djubo         },
-  { id: 14, name: 'Lexinnova',      logo: lexinnova     },
-  { id: 15, name: 'Bazinga',        logo: bazinga       },
-  { id: 16, name: 'CSAV',           logo: csav          },
-  { id: 17, name: 'Open Sky',       logo: openSky       },
-  { id: 18, name: 'Ovations',       logo: ovations      },
-  { id: 19, name: 'Bookclip',       logo: bookclip      },
-  { id: 20, name: 'Eool',           logo: eool          },
-  { id: 21, name: 'Healthscroll',   logo: healthscroll  },
-  { id: 22, name: 'VTM',            logo: vtm           },
+const featured = [
+  { id: 1, name: 'Standard Bank',  logo: standardBank,  logoH: 120, logoW: 250 },
+  { id: 2, name: 'Vodacom',        logo: vodacom,        logoH: 80, logoW: 130 },
+  { id: 3, name: 'ZS',             logo: zs,             logoH: 100, logoW: 170  },
+  { id: 4, name: 'Hollard',        logo: hollard,        logoH: 70, logoW: 150 },
+  { id: 5, name: 'Anglo American', logo: angloAmerican,  logoH: 130, logoW: 200 },
+  { id: 6, name: 'Creditas',       logo: creditas,       logoH: 80, logoW: 150 },
 ]
 
 const stats = [
-  { value: '22+',  label: 'Enterprise Clients'  },
-  { value: '12+',  label: 'Years of Delivery'   },
-  { value: '100%', label: 'Retention Rate'       },
+  { value: '22+',  label: 'Enterprise Clients' },
+  { value: '12+',  label: 'Years of Delivery'  },
+  { value: '100%', label: 'Retention Rate'      },
 ]
 
-function LogoCard({ logo, name }) {
+function LogoCard({ logo, name, logoH, logoW }) {
   return (
     <div
-      className="flex items-center justify-center rounded-2xl transition-all duration-300 hover:scale-[1.03]"
+      className="flex items-center justify-center rounded-2xl h-full min-h-24 transition-all duration-300 hover:scale-[1.03]"
       style={{
         background: 'var(--color-primary)',
         border: '1px solid rgba(255,255,255,0.10)',
-        minHeight: '100px',
-        backdropFilter: 'blur(6px)',
       }}
     >
-      <img
-        src={logo}
-        alt={name}
-        className="object-contain"
-        style={{ maxHeight: '52px', maxWidth: '80%' }}
-      />
+      {logo ? (
+        <img
+          src={logo}
+          alt={name}
+          className="object-contain"
+          style={{ height: `${logoH}px`, width: `${logoW}px` }}
+        />
+      ) : (
+        <span
+          className="text-h4 font-semibold text-center px-4 leading-tight"
+          style={{ color: 'var(--color-text-primary)' }}
+        >
+          {name}
+        </span>
+      )}
     </div>
   )
 }
 
-const INITIAL_COUNT = 12
-
 function Clients() {
-  const [showAll, setShowAll] = useState(false)
-
-  const visible = showAll ? clients : clients.slice(0, INITIAL_COUNT)
-
   return (
     <section
       className="py-16 px-6 md:px-10 lg:px-16"
       style={{ background: 'var(--color-secondary)' }}
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto flex flex-col gap-10">
 
-        {/* ── TOP: header + stats ── */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-14">
+        {/* ── TOP ROW: left content + right cards — equal height ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
 
-          {/* Left — eyebrow + headline + description */}
-          <div className="max-w-xl">
-            <p className="text-h4 text-[var(--color-highlight)]">Trusted By Brands</p>
-            <h2 className="text-h1 text-white">Our Clients</h2>
-            <p className="text-body text-white/60 mt-2 leading-relaxed">
-              We partner with forward-thinking enterprises to turn operational complexity
-              into competitive clarity — built on long-term trust and measurable outcomes.
-            </p>
+          {/* LEFT: content */}
+          <div className="flex flex-col justify-between gap-8">
+
+            {/* Eyebrow + headline + description */}
+            <div>
+              <p className="text-h4 text-[var(--color-highlight)]">Trusted By Brands</p>
+              <h2 className="text-h1 text-white mt-1">Our Clients</h2>
+              <p className="text-body text-white/60 mt-3 leading-relaxed max-w-lg">
+                We partner with forward-thinking enterprises to turn operational complexity
+                into competitive clarity — built on long-term trust and measurable outcomes.
+                From fintech startups to global mining groups, every engagement is shaped
+                around the client's reality, not a template.
+              </p>
+            </div>
+
+            {/* Stats — vertical list */}
+            <div className="flex flex-col gap-5">
+              {stats.map((s, i) => (
+                <div
+                  key={s.label}
+                  className="flex items-baseline gap-4"
+                  style={{
+                    paddingBottom: i < stats.length - 1 ? '20px' : '0',
+                    borderBottom: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none',
+                  }}
+                >
+                  <span
+                    className="text-h1 font-bold leading-none flex-shrink-0"
+                    style={{ color: 'var(--color-highlight)' }}
+                  >
+                    {s.value}
+                  </span>
+                  <span
+                    className="text-body-lg"
+                    style={{ color: 'rgba(255,255,255,0.50)' }}
+                  >
+                    {s.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+
           </div>
 
-          {/* Right — stats */}
-          {/* <div className="flex items-center gap-0 flex-shrink-0">
-            {stats.map((s, i) => (
-              <div
-                key={s.label}
-                className="flex flex-col gap-1 px-8"
-                style={{ borderLeft: i > 0 ? '1px solid rgba(255,255,255,0.10)' : 'none' }}
-              >
-                <span className="text-h1 font-bold leading-none" style={{ color: 'var(--color-highlight)' }}>
-                  {s.value}
-                </span>
-                <span className="text-caption font-medium uppercase tracking-widest mt-1" style={{ color: 'rgba(255,255,255,0.40)' }}>
-                  {s.label}
-                </span>
-              </div>
+          {/* RIGHT: 2×3 logo grid — stretches to match left height */}
+          <div className="grid grid-cols-2 grid-rows-3 gap-3 md:gap-4 h-full">
+            {featured.map((client) => (
+              <LogoCard key={client.id} logo={client.logo} name={client.name} logoH={client.logoH} logoW={client.logoW} />
             ))}
-          </div> */}
-
-        </div>
-
-        {/* ── CLIENT GRID — 4 per row ── */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {visible.map((client) => (
-            <LogoCard key={client.id} logo={client.logo} name={client.name} />
-          ))}
-        </div>
-
-        {/* ── SHOW MORE / LESS ── */}
-        {!showAll && clients.length > INITIAL_COUNT && (
-          <div className="flex justify-center mt-10">
-            <button
-              onClick={() => setShowAll(true)}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-body-sm font-semibold transition-all duration-200 cursor-pointer bg-transparent"
-              style={{ border: '1px solid rgba(255,255,255,0.25)', color: '#ffffff' }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'var(--color-highlight)'
-                e.currentTarget.style.color = 'var(--color-highlight)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'
-                e.currentTarget.style.color = '#ffffff'
-              }}
-            >
-              Show more
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
           </div>
-        )}
+
+        </div>
+
+        {/* ── BOTTOM ROW: full-width centered button ── */}
+        <div className="flex justify-center">
+          <Link
+            to="/clients"
+            className="flex items-center gap-2 px-7 py-3 rounded-full font-semibold cursor-pointer bg-transparent"
+            style={{
+              border: '1px solid rgba(255,255,255,0.28)',
+              color: '#ffffff',
+              fontFamily: 'var(--font-heading)',
+              fontSize: '14px',
+              transition: 'border-color 0.2s ease, color 0.2s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = 'var(--color-highlight)'
+              e.currentTarget.style.color = 'var(--color-highlight)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.28)'
+              e.currentTarget.style.color = '#ffffff'
+            }}
+          >
+            View all clients
+            
+          </Link>
+        </div>
+
 
       </div>
     </section>

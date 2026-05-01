@@ -45,6 +45,10 @@ export const caseStudies = [
       service: 'PHARMA',
       offering: 'AGENTIC AI & DATA INTELLIGENCE',
     },
+    backdrop: {
+      title: 'Field Sales in Canadian Pharma',
+      description: "Rexall operates one of Canada's largest pharmacy chains, with a dedicated field force responsible for building and maintaining relationships with Health Care Professionals across thousands of territories. Sales representatives visited doctors, specialists, and pharmacists to present products, gather feedback, and drive prescribing behaviour. Performance management was conducted through manual data collection — visit logs and sales figures were compiled into spreadsheets and reviewed at the end of each quarter. Strategic decisions, territory assignments, and coaching conversations were all based on data that was already three months old by the time it reached leadership.",
+    },
     challenge: {
       title: 'The 3-Month Information Gap In Field Sales',
       description: 'Rexall relied on a large field force of sales representatives to build relationships with Health Care Professionals, but the organization was hampered by a traditional, reactive approach to performance management. Sales and visit data were collected and analyzed manually on a quarterly basis, meaning insights reached managers only after the quarter had ended. This 3-month lag led to missed opportunities, an inability to make mid-quarter course corrections, and an over-reliance on habit-based targeting rather than data-driven strategies.',
@@ -81,6 +85,10 @@ export const caseStudies = [
       company: '[CLIENT NAME]',
       service: 'AI & DATA ENGINEERING',
       offering: 'AGENTIC AI & AUTOMATION',
+    },
+    backdrop: {
+      title: 'Insurance Operations at Scale',
+      description: "The client is a leading South African insurer serving both Life and short-term insurance lines, including motor, property, and liability products. Claims operations were managed through a patchwork of legacy systems — document intake required manual review teams, fraud detection relied on rigid rule-based flags applied after payment, and motor vehicle assessments demanded physical inspections before any settlement decision was made. The business operated under strict POPIA and GDPR compliance obligations, and any AI-driven change to the claims workflow required rigorous regulatory validation before deployment.",
     },
     challenge: {
       title: 'Manual Claims Processing & Reactive Fraud Detection',
@@ -119,6 +127,10 @@ export const caseStudies = [
       service: 'ENTERPRISE AI ARCHITECTURE',
       offering: 'AI FOUNDATION & GOVERNANCE',
     },
+    backdrop: {
+      title: 'Enterprise AI Without a Foundation',
+      description: "Hollard Insurance Group is South Africa's largest privately-owned insurer, operating across multiple distinct business divisions — each with its own technology stack, vendor relationships, and regulatory obligations. As AI interest accelerated across the industry, individual divisions began experimenting independently: piloting tools, deploying models, and sourcing cloud services without coordination. The absence of a unified architectural framework meant no shared security guardrails, no governance process for AI risk, and no clear policy on where sensitive data could flow — exposing the group to hallucination risks, data leakage, and compliance failures across its enterprise.",
+    },
     challenge: {
       title: 'Building A Secure, Compliant & Scalable AI Foundation Across The Enterprise',
       description: 'As one of South Africa’s largest privately-owned insurance groups, Hollard faced the challenge of scaling AI adoption across diverse business divisions with unique regulatory and technical needs. Without a unified architectural backbone, AI initiatives risked fragmentation, inconsistent security guardrails, and exposure to risks like hallucinations, data leakage, and compliance failures. Hollard required an enterprise-grade AI foundation that could balance cloud agility with on-premise security while providing a strategy for safely extending AI capabilities to brokers and partners.',
@@ -155,6 +167,10 @@ export const caseStudies = [
       company: 'CREDITAS',
       service: 'AGENTIC AI & CONVERSATIONAL AUTOMATION',
       offering: 'AI-POWERED CUSTOMER ENGAGEMENT',
+    },
+    backdrop: {
+      title: 'Digital Lending in Brazil',
+      description: "Creditas is one of Brazil's leading digital lending platforms, offering secured credit products including home equity loans, auto loans, and payroll-deductible credit. Their customer journey spans acquisition — where potential borrowers explore options and submit applications — through to active account management and collections. The platform had invested heavily in building polished web applications for each phase of this lifecycle, but every meaningful customer interaction still required a live agent to guide, confirm, or execute it. Support queues were flooded with repetitive inquiries, and high drop-off rates at key decision points signalled that customers were not receiving the right information at the right moment.",
     },
     challenge: {
       title: 'Fragmented Customer Journeys & Heavy Agent Dependency Across Acquisition And Collections',
@@ -193,6 +209,10 @@ export const caseStudies = [
       service: 'AI/ML & CONVERSATIONAL AUTOMATION',
       offering: 'CHATBOT DESIGN & DEVELOPMENT',
     },
+    backdrop: {
+      title: 'Hospitality SaaS Across 19 Countries',
+      description: "Djubo is a cloud-based hospitality management suite trusted by over 2,500 hotels across 19 countries, offering modules spanning Property Management, Channel Management, Revenue Management, and guest engagement. With such breadth of functionality across diverse markets, hotelier support requests varied enormously — from basic navigation questions to complex multi-module workflow queries. The support team was fielding thousands of tickets each week, a large share of which were repetitive questions about standard product features. As Djubo continued to scale, the cost and complexity of maintaining human-driven support for every module and market was becoming unsustainable.",
+    },
     challenge: {
       title: 'Scaling Hotelier Support Across A Fast-Growing, Multi-Product Hospitality Platform',
       description: 'Djubo, a leading cloud-based hospitality suite trusted by 2,500+ hotels across 19 countries, faced significant support challenges due to its platform breadth. Hoteliers needed accurate, contextual guidance across diverse modules like Property Management, Channel Management, and Revenue Management. Traditional FAQ pages were insufficient, leading to support team bottlenecks, rising costs, and slow resolution for repetitive queries. Djubo engaged THOTNR to build an AI/ML-powered chatbot to understand intent, automate routine workflows, and free human agents to focus on complex, high-value cases.',
@@ -228,6 +248,10 @@ export const caseStudies = [
       company: 'Creditas Solutions',
       service: 'Delinquent Account Processing',
       offering: 'Development Services',
+    },
+    backdrop: {
+      title: 'A Startup at the Speed of Growth',
+      description: "Creditas Solutions was founded out of an IIT incubation cell with a clear mission: help lenders in India's financial services sector optimize their collections and recovery performance. The founding team brought deep domain expertise in credit risk and lending operations but had no in-house technical leadership. Their initial prototype was built by a succession of contract developers, resulting in a fragmented codebase that struggled to keep pace with rapid business growth. As client volume increased and the platform attracted institutional attention, the technical debt was no longer a background concern — it was actively slowing down the business.",
     },
     challenge: {
       title: 'Developing Financial Technology',
@@ -265,6 +289,10 @@ export const caseStudies = [
       service: 'E-COMMERCE',
       offering: 'Quality Assurance',
     },
+    backdrop: {
+      title: "India's Beauty Retail Expansion",
+      description: "Nykaa began as India's first digital-first beauty and personal care platform and rapidly grew into one of the country's most recognized consumer brands. As the business scaled from online-only to a full omnichannel model — adding physical stores, fashion, and a seller marketplace — the operational complexity of their technology ecosystem grew in parallel. The seller portal, which managed hundreds of vendor onboarding flows, product catalogue operations, and logistics integrations, became a critical but fragile link in the supply chain. Quality slippage at this layer meant delayed launches, vendor frustration, and lost GMV at scale.",
+    },
     challenge: {
       title: 'Skilled Manpower & Quality Engineering Processes',
       description: 'With exponential growth as one of the leading online first platform, efficient skilled resource and high-quality delivery was the key challenge. When the leading cosmetic e-retail brand grew, blooming into the offline space they required a solid landing. Process optimization that took care of critical auxiliary functions such as vendors, and logistics that need equal dedication for the best results. THOTNR identifies a tweak to the QE systems that required experienced support that could debug issues, developer support, analysis, engagement, and inputs from internal stakeholders that would eventually cease the slippage of releases. The crux was to ensure timely launches within the system to stay abreast with competition in type as well as technology.',
@@ -300,6 +328,10 @@ export const caseStudies = [
     company: 'Creditas',
     service: 'Cloud',
     offering: 'Serverless Computing',
+  },
+  backdrop: {
+    title: 'Cloud Cost Constraints in a High-Growth Startup',
+    description: "Creditas had built its core lending platform on a traditional Java application running on AWS EC2 instances, backed by a relational database with read replicas. As a cost-conscious startup, every infrastructure decision was weighed against burn rate. The platform handled growing volumes of loan applications and financial transactions, but its monolithic architecture meant infrastructure costs scaled linearly with load. The engineering team recognized an opportunity to reduce per-request costs through serverless computing, but faced a hard constraint: any new architectural pattern had to remain deployable on standard EC2 machines in case it failed — vendor lock-in was not an option.",
   },
   challenge: {
     title: 'Scaling a Cost-Conscious Java Application Beyond Traditional Infrastructure',
@@ -337,6 +369,10 @@ export const caseStudies = [
       service: 'Precious Gems',
       offering: 'Cloud Migration',
     },
+    backdrop: {
+      title: 'Legacy Infrastructure in a Global Mining Operation',
+      description: "Anglo American is one of the world's largest diversified mining companies, with operations spanning platinum, diamonds, copper, and iron ore across multiple continents. Their IT estate had grown over decades into a complex web of privately managed data centers supporting everything from operational systems at remote mine sites to corporate finance platforms at headquarters. Limited and unreliable network connectivity at many mine locations had historically made cloud-based services impractical to adopt. Meanwhile, the organisation's internal IT teams had deep expertise in on-premise infrastructure but limited exposure to cloud-native technologies — a skills gap that slowed any modernisation effort.",
+    },
     challenge: {
       title: 'Overcoming Connectivity and Infrastructure Limitations',
       description: 'Anglo American, a major mining group, faced significant challenges in transitioning from traditional data centers to the cloud. Historically, limited network connectivity at mine sites and remote offices made cloud-based solutions impractical. Additionally, the company relied on numerous home-grown applications with extensive historical modifications, and their internal IT staff lacked specialized training in cloud technologies. The core challenge was to design a migration strategy that addressed these constraints while achieving business goals like cost efficiency and centralized management.',
@@ -372,6 +408,10 @@ export const caseStudies = [
       company: 'Standard Bank',
       service: 'BSFI',
       offering: 'Architecture Consulting',
+    },
+    backdrop: {
+      title: "A Bank's Integration Backbone Under Strain",
+      description: "Standard Bank is one of Africa's largest banking groups, with operations across more than 20 countries and millions of retail and corporate customers. At the core of their technology stack was a homegrown enterprise service bus — a custom integration platform built internally and expanded organically through years of acquisitions, mergers, and product launches. This bus connected ATMs, online banking portals, branches, and third-party payment providers, making it the single most critical piece of infrastructure in the group. Decades of ad-hoc modifications had left it with undocumented connection points, unpredictable performance spikes under load, and a dependence on expensive Hot-Hot Disaster Recovery configurations that the architecture team could no longer justify.",
     },
     challenge: {
       title: 'Unblocking Bottlenecks To Speed Growth',
@@ -409,6 +449,10 @@ export const caseStudies = [
       service: 'Pharma Sales Force Consulting',
       offering: 'Architecture Consulting',
     },
+    backdrop: {
+      title: 'Pharma Consulting at the Intersection of Data and Strategy',
+      description: "ZS Associates is a global professional services firm specializing in sales force effectiveness and commercial strategy for pharmaceutical and biotech companies. Their work required analysing vast datasets — prescriber behaviour, territory performance, promotional response — to generate recommendations that directly influenced how pharma companies deployed their field forces and allocated marketing spend. While ZS had strong domain expertise and growing AI/ML capabilities, their backend infrastructure had evolved without a deliberate architectural vision. Scaling to meet larger and more data-intensive client engagements was exposing gaps in their data platform, mobile delivery channels, and long-term systems strategy.",
+    },
     challenge: {
       title: 'Amping Up Tech At ZS',
       description: 'ZS, a prominent pharma consulting team, possessed deep domain expertise but required support to align their technology systems with a long-term strategic vision. While they were experienced in large-scale initiatives and delivering value through AI and ML, they needed to build a robust foundation. Specifically, they required a scalable backend infrastructure and effective mobile-based delivery channels to support their business growth, both currently and in the future.',
@@ -444,6 +488,10 @@ export const caseStudies = [
       company: 'Tata Motor International',
       service: 'E-COMMERCE',
       offering: 'L1, L2 & L3 Support',
+    },
+    backdrop: {
+      title: 'Spare Parts Commerce in Southern Africa',
+      description: "Tata Motors International's South Africa operation managed the sale and distribution of automotive spare parts across a network of dealers and workshops. The business ran on two interconnected systems: Encadia, a custom ERP handling costing and order processing, and a Magento 1x e-commerce platform intended to allow direct online purchases. Both systems had accumulated years of customisation and technical debt. The L1 support team was overwhelmed by manual workflows that should have been automated, and the e-commerce platform had been in perpetual development for so long that it had never reached a stable, customer-facing state.",
     },
     challenge: {
       title: 'Leveling Up Legacy Applications',
@@ -481,6 +529,10 @@ export const caseStudies = [
       service: 'Digitizing Dosage Of Insulin',
       offering: 'L1, L2 & L3 Support',
     },
+    backdrop: {
+      title: 'IoT-Driven Diabetes Care in Clinical Settings',
+      description: "Glytec is a US-based healthcare technology company focused on improving glycemic management in hospital environments through software-driven insulin dosing protocols. Their flagship product required a specialised IoT device capable of interfacing with hospital monitoring systems, communicating dosing recommendations in real time, and operating within the strict HIPAA compliance requirements governing patient data. The device's low-footprint hardware demanded programming expertise at the intersection of embedded systems, Android development, and cloud-connected backend services — a rare combination that Glytec's existing team did not have the capacity to fill.",
+    },
     challenge: {
       title: 'Digitizing Diabetes Care',
       description: 'GLYTECH faced critical challenges while developing a customized IoT device for managing diabetes. The project encountered significant technical hurdles related to low-footprint device programming and complex hardware-software interfacing. They required specialized support to scale their IoT programming capabilities, as well as assistance in overcoming broader challenges related to application development and system integration.',
@@ -516,6 +568,10 @@ export const caseStudies = [
       company: 'AngloAmerican',
       service: 'Mining',
       offering: 'Cloud Architecture Consulting',
+    },
+    backdrop: {
+      title: 'Mission-Critical Applications in Private Data Centers',
+      description: "AngloAmerican maintained a significant portfolio of mission-critical applications within privately managed data centers — systems that supported everything from drilling operations and logistics to financial reporting and enterprise communications. The cost of running and maintaining this on-premise estate was high, and the infrastructure lacked the elasticity needed to support fluctuating operational demands. While cloud adoption had become the industry standard for modernising enterprise infrastructure, AngloAmerican's internal teams had built deep expertise in traditional environments and lacked the cloud architecture knowledge required to design and execute a migration at scale.",
     },
     challenge: {
       title: 'Inserting Cloud Architecture Into The DNA System',

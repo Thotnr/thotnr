@@ -68,28 +68,30 @@ function ProblemStatement() {
           <h2
             style={{
               fontFamily: 'var(--font-heading)',
-              fontSize: 'clamp(24px, 4vw, 48px)',
-              fontWeight: 700,
-              lineHeight: 1.15,
+              fontSize: 'clamp(22px, 3.8vw, 40px)',
+              fontWeight: 600,
+              lineHeight: 1.3,
               color: 'var(--color-text-primary)',
               marginBottom: '4px',
             }}
           >
             We don't just build AI solutions.
+            <br />
+            We make them work inside your real organization.
           </h2>
-          <h2
+          {/* <h2
             style={{
               fontFamily: 'var(--font-accent)',
               fontSize: 'clamp(22px, 3.8vw, 46px)',
               fontWeight: 600,
               fontStyle: 'italic',
               lineHeight: 1.15,
-              color: 'var(--color-highlight)',
+              color: 'var(--color-text-primary)',
               marginBottom: '24px',
             }}
           >
             We make them work inside your real organization.
-          </h2>
+          </h2> */}
 
           <p
             className="text-body"
@@ -107,7 +109,8 @@ function ProblemStatement() {
         </div>
 
         {/* ── BLOCK 3: Evidence card ── */}
-        <div
+        
+        {/* <div
           className="mb-12 p-6 md:p-8 rounded-2xl"
           style={{
             background: 'rgba(255,255,255,0.72)',
@@ -117,19 +120,19 @@ function ProblemStatement() {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
 
-            {/* Left — donut chart + legend */}
+            
             <div>
               <p className="text-body text-[var(--color-text-tertiary)] mb-5 tracking-widest">
                 WHERE AI PILOTS END UP
               </p>
               <div className="flex items-center gap-6 flex-wrap">
 
-                {/* Donut SVG */}
+                
                 <div className="relative flex-shrink-0" style={{ width: '110px', height: '110px' }}>
                   <svg viewBox="0 0 110 110" width="110" height="110">
-                    {/* Background circle */}
+                    
                     <circle cx="55" cy="55" r="42" fill="none" stroke="rgba(11,15,25,0.07)" strokeWidth="14" />
-                    {/* Abandoned 34% — highlight red */}
+                    
                     <circle
                       cx="55" cy="55" r="42"
                       fill="none"
@@ -140,7 +143,7 @@ function ProblemStatement() {
                       strokeLinecap="butt"
                       transform="rotate(-90 55 55)"
                     />
-                    {/* Completed no value 29% — muted red */}
+                    
                     <circle
                       cx="55" cy="55" r="42"
                       fill="none"
@@ -151,7 +154,7 @@ function ProblemStatement() {
                       strokeLinecap="butt"
                       transform="rotate(-90 55 55)"
                     />
-                    {/* Value too low 17% — lighter */}
+                   
                     <circle
                       cx="55" cy="55" r="42"
                       fill="none"
@@ -162,7 +165,7 @@ function ProblemStatement() {
                       strokeLinecap="butt"
                       transform="rotate(-90 55 55)"
                     />
-                    {/* Reach production 20% — dark navy */}
+                  
                     <circle
                       cx="55" cy="55" r="42"
                       fill="none"
@@ -173,7 +176,7 @@ function ProblemStatement() {
                       strokeLinecap="butt"
                       transform="rotate(-90 55 55)"
                     />
-                    {/* Center label */}
+                   
                     <text
                       x="55" y="51"
                       textAnchor="middle"
@@ -191,7 +194,7 @@ function ProblemStatement() {
                   </svg>
                 </div>
 
-                {/* Legend */}
+                
                 <div className="flex flex-col gap-2">
                   {[
                     { color: 'var(--color-highlight)',       label: 'Abandoned before production', pct: '34%' },
@@ -213,7 +216,7 @@ function ProblemStatement() {
               </div>
             </div>
 
-            {/* Right — 2× stat */}
+           
             <div className="flex flex-col justify-center">
               <p className="text-body text-[var(--color-text-tertiary)] mb-5 tracking-widest">
                 THE MIT FINDING THAT DEFINES OUR APPROACH
@@ -255,7 +258,9 @@ function ProblemStatement() {
             </div>
 
           </div>
-        </div>
+        </div> */}
+
+
 
         {/* ── BLOCK 4: Three pillars ── */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

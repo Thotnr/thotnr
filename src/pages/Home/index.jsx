@@ -2,6 +2,7 @@ import Hero             from './sections/Hero'
 import ProblemStatement from './sections/ProblemStatement'
 import Vision          from './sections/Vision'
 import ServicesCards    from './sections/ServicesCards'
+import Escalates        from './sections/Escalates'
 import ProcessTimeline  from './sections/ProcessTimeline'
 import Insights         from './sections/Insights'
 import ServicesList     from './sections/ServicesList'
@@ -20,29 +21,18 @@ function Home() {
     <>
 
       <Navbar />
-
-      {/* 1. CLARITY */}
       <Hero />
       <ProblemStatement />
       <Vision />
-
-      {/* 2. SOLUTION */}
       <ProcessTimeline />
       <ServicesCards />
-      
-
-      {/* 3. TRUST */}
+      <Escalates />
       <CaseStudies />
       <Clients />
-
-      {/* 4. EXPANSION */}
       <Products />
       <ServicesList />
-      <Events />
       <Insights />
-      
       <SubscribeSection/>
-      {/* 5. CLOSE */}
       <Footer />
     </>
   )

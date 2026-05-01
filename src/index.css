@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=Source+Serif+4:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Sora:wght@400;500;600&family=Source+Serif+4:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 /* 1. Tailwind import */
 @import "tailwindcss";
@@ -25,6 +25,12 @@
   --font-body: 'Source Serif 4', serif;
   --font-mono: 'IBM Plex Mono', monospace;
   --font-accent: 'Playfair Display', serif;
+
+  /* Overlay surfaces — Escalates section on --color-tertiary background */
+  --color-overlay-card:   rgba(255, 255, 255, 0.08);
+  --color-overlay-border: rgba(255, 255, 255, 0.15);
+  --color-overlay-metric: rgba(0, 0, 0, 0.15);
+  --color-icon-bg:        rgba(168, 218, 220, 0.18);
 }
 
 /* 4. Base Styles */

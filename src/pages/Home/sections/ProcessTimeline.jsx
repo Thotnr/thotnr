@@ -5,7 +5,7 @@ const icons = [Brain, Search, Rocket]
 const steps = [
   {
     number:  '01',
-    title:   'Map the Reality',
+    title:   'Map the Data Landscape',
     summary: 'We immerse in your organisation — not your decks.',
     detail:  'Deep-dive workshops, system audits, and stakeholder interviews surface the real data landscape, process bottlenecks, and cultural constraints that will determine whether any AI project lives or dies.',
   },
@@ -17,7 +17,7 @@ const steps = [
   },
   {
     number:  '03',
-    title:   'Build, Ship & Evolve',
+    title:   'Make It Real',
     summary: 'Engineering for long-term production capability, not just a clean demo.',
     detail:  'We handle end-to-end deployment, infrastructure integration, and ongoing governance. From day one, we monitor performance and train your team to ensure your AI scales reliably and compounds in value.',
   },
