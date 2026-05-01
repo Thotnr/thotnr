@@ -1,7 +1,17 @@
 import { Link } from 'react-router-dom'
 import { insights } from '../../../data/insights'
 
-const featured = insights.slice(0, 3)
+// Display order + max cards shown per category on Home page
+const CATEGORY_CONFIG = [
+  { key: 'Cognitive Augmented',     label: 'Cognitive Augmented',     limit: 3 },
+  { key: 'Architecture Augmented',  label: 'Architecture Augmented',  limit: 3 },
+  { key: 'Vision Augmented',        label: 'Vision Augmented',        limit: 2 },
+]
+
+const byCategory = CATEGORY_CONFIG.map(({ key, label, limit }) => ({
+  label,
+  items: insights.filter((a) => a.category === key).slice(0, limit),
+}))
 
 function InsightCard({ coverImg, tagline, subheadline, slug, contentBlocks }) {
   const excerpt = contentBlocks?.find((b) => b.type === 'intro')?.text ?? ''
@@ -9,12 +19,10 @@ function InsightCard({ coverImg, tagline, subheadline, slug, contentBlocks }) {
   return (
     <article
       className="group flex flex-col rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 bg-white"
-      style={{
-        border: '1px solid rgba(29,53,87,0.1)',
-      }}
+      style={{ border: '1px solid rgba(29,53,87,0.10)' }}
     >
       {/* Image */}
-      <div className="overflow-hidden h-48 w-full">
+      <div className="overflow-hidden h-48 w-full flex-shrink-0">
         <img
           src={coverImg}
           alt={subheadline}
@@ -22,13 +30,9 @@ function InsightCard({ coverImg, tagline, subheadline, slug, contentBlocks }) {
         />
       </div>
 
-      <div className="flex flex-col flex-1 gap-4 p-5">
-
-        {/* Category */}
-        <span
-          className="text-label font-semibold"
-          style={{ color: 'var(--color-secondary)' }}
-        >
+      <div className="flex flex-col flex-1 gap-3 p-5">
+        {/* Tagline */}
+        <span className="text-label font-semibold" style={{ color: 'var(--color-secondary)' }}>
           {tagline}
         </span>
 
@@ -42,22 +46,48 @@ function InsightCard({ coverImg, tagline, subheadline, slug, contentBlocks }) {
 
         {/* Excerpt */}
         <p
-          className="text-body-sm leading-relaxed line-clamp-4"
+          className="text-body-sm leading-relaxed line-clamp-3 flex-1"
           style={{ color: 'var(--color-text-secondary)' }}
         >
           {excerpt}
         </p>
 
-        {/* CTA — links to the specific detail page */}
+        {/* CTA */}
         <Link
           to={`/insights/${slug}`}
-          className="text-body-sm font-medium mt-auto inline-flex items-center gap-1 no-underline transition-all duration-200 hover:gap-2"
+          className="text-body-sm font-medium mt-1 inline-flex items-center gap-1 no-underline transition-all duration-200 hover:gap-2"
           style={{ color: 'var(--color-text-primary)' }}
         >
           Read more..
         </Link>
       </div>
     </article>
+  )
+}
+
+function CategoryRow({ label, items }) {
+  if (!items.length) return null
+
+  return (
+    <div className="mb-14">
+      {/* Category label + extending divider line */}
+      <div className="flex items-center gap-5 mb-7">
+        <span
+          className="text-h4 whitespace-nowrap flex-shrink-0"
+          style={{ color: 'var(--color-highlight)' }}
+        >
+          {label}
+        </span>
+        <div className="flex-1 h-px" style={{ background: 'rgba(29,53,87,0.12)' }} />
+      </div>
+
+      {/* Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {items.map((a) => (
+          <InsightCard key={a.slug} {...a} />
+        ))}
+      </div>
+    </div>
   )
 }
 
@@ -69,39 +99,27 @@ function Insights() {
     >
       <div className="max-w-7xl mx-auto">
 
-        {/* Header */}
-        <div className="mb-8 max-w-xl">
+        {/* Section header */}
+        <div className="mb-12 max-w-xl">
           <p className="text-h4 text-[var(--color-highlight)]">Thinking Out Loud</p>
-          <h2
-            className="text-h1"
-            style={{ color: 'var(--color-text-primary)' }}
-          >
+          <h2 className="text-h1" style={{ color: 'var(--color-text-primary)' }}>
             Our Insights
           </h2>
-          <p className="text-body leading-relaxed mt-2 max-w-2xl" style={{ color: 'var(--color-text-secondary)' }}>
+          <p
+            className="text-body leading-relaxed mt-2 max-w-2xl"
+            style={{ color: 'var(--color-text-secondary)' }}
+          >
             Perspectives on technology, strategy, and the future of intelligent enterprise.
           </p>
         </div>
 
-        {/* Cards */}
-        <style>{`
-          @media (min-width: 768px) and (max-width: 1023px) {
-            .insights-cards-grid > *:nth-child(3) {
-              grid-column: 1 / -1;
-              max-width: calc(50% - 12px);
-              margin: 0 auto;
-              width: 100%;
-            }
-          }
-        `}</style>
-        <div className="insights-cards-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {featured.map((a) => (
-            <InsightCard key={a.slug} {...a} />
-          ))}
-        </div>
+        {/* Category rows — Cognitive → Architecture → Vision */}
+        {byCategory.map(({ label, items }) => (
+          <CategoryRow key={label} label={label} items={items} />
+        ))}
 
-        {/* CTA */}
-        <div className="text-center">
+        {/* View all CTA */}
+        <div className="text-center mt-2">
           <Link
             to="/insights"
             className="inline-block px-6 py-3 rounded-full text-body-sm font-medium border no-underline transition-all duration-300"

@@ -4,11 +4,13 @@ import imgSecurity    from '../assets/images/insites/cloud-usecase.jpg'
 import imgTechPartner    from '../assets/images/insites/tech-partner.jpeg'
 import imgExperience    from '../assets/images/insites/user-experience.jpg'
 import imgPostulates    from '../assets/images/insites/ai.jpg'
+import imgResAi    from '../assets/images/insites/responsible-ai.jpg'
+
 import imgContainers    from '../assets/images/insites/containers.jpg'
 import imgOwasp    from '../assets/images/insites/security.jpg'
 import imgRpa    from '../assets/images/insites/rpa.jpeg'
 import imgDna    from '../assets/images/insites/dna.jpg'
-import imgAI          from '../assets/images/ai.jpg'
+import imgAI          from '../assets/images/insites/ai-governance-insights.jpg'
 import imgAIService   from '../assets/images/insites/cloud.jpg'
 import imgEnterprise  from '../assets/images/insites/rest-api.jpeg'
 import imgCloud       from '../assets/images/insites/cloud-migration.jpeg'
@@ -40,6 +42,117 @@ import case13     from '../assets/images/insites/case13.jpg'
 
 
 export const insights = [
+  // ── COGNITIVE AUGMENTED ──────────────────────────────────────────
+  {
+    slug: 'ai-governance',
+    coverImg: imgAI,
+    tagline: 'AI Strategy',
+    subheadline: 'AI Governance: The Rules That Make AI Trustworthy at Scale',
+    authorName: 'Gaurav Kumar',
+    authorRole: 'CEO, Thotnr',
+    authorImage: authorGauravK,
+    publishDate: 'April 2025',
+    category: 'Cognitive Augmented',
+    contentBlocks: [
+      {
+        type: 'intro',
+        text: 'AI without governance is infrastructure without safety rails. As enterprises move from pilots to production, the absence of a clear AI governance framework becomes the single largest operational risk — not for innovation, but for the organisation\'s licence to operate. Governance is how AI earns institutional trust.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Most organisations treat governance as a compliance function: a policy document, a risk checklist, a legal sign-off. What they miss is that effective AI governance is an engineering discipline. It shapes how models are designed, what data they are allowed to consume, how their outputs are monitored, and when they must be retrained or retired.',
+      },
+      {
+        type: 'heading',
+        text: 'What AI Governance Actually Covers',
+      },
+      {
+        type: 'bullets',
+        items: [
+          'Model accountability — who owns a deployed model, who monitors its performance, and who decides when retraining or retirement is required.',
+          'Data lineage and consent — ensuring every dataset that trains or serves a model is documented, permissioned, and auditable end-to-end.',
+          'Bias and fairness auditing — structured processes to detect, measure, and remediate discriminatory outputs before they reach production decisions.',
+          'Explainability standards — defining the level of transparency required for different decision types, especially in regulated domains like credit, insurance, and clinical support.',
+          'Incident response — clear runbooks for when AI systems produce harmful, unexpected, or legally non-compliant outputs at scale.',
+        ],
+      },
+      {
+        type: 'quote',
+        text: 'The question is not whether your AI is accurate. The question is whether your organisation can explain, audit, and stand behind every decision it makes.',
+        attribution: 'Gaurav Kumar, CEO — Thotnr',
+      },
+      {
+        type: 'heading',
+        text: 'Building a Governance Operating Model',
+      },
+      {
+        type: 'image_text',
+        image: case1,
+        imageAlt: 'AI governance operating model',
+        imageLeft: false,
+        text: 'The enterprises that get governance right treat it as an operating model, not a policy document. That means cross-functional ownership — legal, risk, engineering, and business — with clear escalation paths and a review cadence that matches the pace at which models change. Governance must be embedded in the development lifecycle, not bolted on after deployment.',
+      },
+      {
+        type: 'paragraph',
+        text: 'A governance framework that exists only on paper is worse than no framework at all — it creates false confidence while the real risk accumulates in production. The standard to aim for is operationalised governance: automated model monitoring, version-controlled model cards, bias dashboards visible to non-technical stakeholders, and a model registry that tracks provenance from data origin to deployment decision.',
+      },
+    ],
+  },
+  {
+    slug: 'responsible-ai',
+    coverImg: imgResAi,
+    tagline: 'AI Ethics',
+    subheadline: 'Responsible AI: From Principle to Production Reality',
+    authorName: 'Gaurav Kumar',
+    authorRole: 'CEO, Thotnr',
+    authorImage: authorGauravK,
+    publishDate: 'March 2025',
+    category: 'Cognitive Augmented',
+    contentBlocks: [
+      {
+        type: 'intro',
+        text: 'Every major AI ethics framework shares the same principles: fairness, transparency, accountability, privacy, and safety. Most organisations have them framed on a wall. Far fewer have translated those principles into engineering requirements that shape how models are actually built, deployed, and monitored in production environments.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Responsible AI is not a values statement — it is a set of design constraints. The difference between an organisation that practices responsible AI and one that merely endorses it is measurable: in the tests it runs before deployment, the checkpoints it builds into inference pipelines, the dashboards it uses to monitor outcomes, and the thresholds that trigger human review.',
+      },
+      {
+        type: 'heading',
+        text: 'The Gap Between Principle and Practice',
+      },
+      {
+        type: 'image_text',
+        image: case2,
+        imageAlt: 'Responsible AI design constraints and production requirements',
+        imageLeft: true,
+        text: 'The gap between principle and practice is where organisations face real exposure. A model trained on historical data will encode historical bias — not through malice, but through mathematics. Without deliberate fairness constraints in the training objective and deliberate auditing of outputs across demographic segments, the bias is invisible until it surfaces in a regulatory review or a news story.',
+      },
+      {
+        type: 'bullets',
+        items: [
+          'Fairness — Define fairness metrics before training begins. Evaluate model outputs across sensitive attributes — age, gender, geography — as a standard part of validation.',
+          'Transparency — Build explainability into model selection criteria. If a model cannot be explained to the decision-maker it informs, it should not be deployed.',
+          'Privacy by design — Treat data minimisation and differential privacy as engineering requirements at the architecture stage, not as add-ons after data pipelines are built.',
+          'Human oversight — Design explicit human-in-the-loop checkpoints for high-stakes decisions. Automation should handle volume; humans should handle consequence.',
+          'Safety testing — Run adversarial probes and red-team exercises before any model touches production data or real users.',
+        ],
+      },
+      {
+        type: 'quote',
+        text: 'Responsible AI is not about slowing down — it is about building the trust infrastructure that allows you to move faster for longer.',
+        attribution: 'Gaurav Kumar, CEO — Thotnr',
+      },
+      {
+        type: 'heading',
+        text: 'Where to Start',
+      },
+      {
+        type: 'paragraph',
+        text: 'Start with the decisions that matter most — lending, hiring, clinical support, fraud detection. Map each decision to a model, each model to a risk level, and each risk level to a governance requirement. The output is not a document — it is a set of engineering gates that every model must pass before it reaches production. That is responsible AI in practice.',
+      },
+    ],
+  },
   {
     slug: 'why-enterprise-ai-fails',
     coverImg: imgAiSummit,
@@ -107,7 +220,7 @@ export const insights = [
   slug: 'terraform-iaac',
   coverImg: imgUX,
   tagline: 'DevOps',
-  subheadline: 'Terraform – IaaC',
+  subheadline: 'Terraform – Infrastructure as Code',
   authorName: 'Thotnr',
   authorRole: 'Head of Experience Design',
   authorImage: authorNeha,
@@ -386,7 +499,7 @@ export const insights = [
   authorRole: 'Enterprise Architecture Lead',
   authorImage: authorGauravV,
   publishDate: 'September 19, 2022',
-  category: "Vision Augmented",
+  category: "Architecture Augmented",
   contentBlocks: [
     {
       type: 'intro',
@@ -461,7 +574,7 @@ export const insights = [
   authorRole: 'Cloud Engineering Lead',
   authorImage: authorBharat,
   publishDate: 'September 19, 2022',
-  category: "Vision Augmented",
+  category: "Architecture Augmented",
   contentBlocks: [
     {
       type: 'intro',
@@ -514,7 +627,7 @@ export const insights = [
   authorRole: 'CEO, Thotnr',
   authorImage: authorGauravK,
   publishDate: 'September 19, 2022',
-  category: "Vision Augmented",
+  category: "Architecture Augmented",
   contentBlocks: [
     {
       type: 'intro',
@@ -589,7 +702,7 @@ export const insights = [
   authorRole: 'ML Engineering Lead',
   authorImage: authorDeepak,
   publishDate: 'September 19, 2022',
-  category: "Vision Augmented",
+  category: "Architecture Augmented",
   contentBlocks: [
     {
       type: 'intro',
@@ -742,7 +855,7 @@ export const insights = [
   authorRole: 'Security Architecture Lead',
   authorImage: authorHariraj,
   publishDate: 'August 23, 2022',
-  category: "Vision Augmented",
+  category: "Architecture Augmented",
   contentBlocks: [
     {
       type: 'intro',
@@ -919,7 +1032,7 @@ export const insights = [
   authorRole: 'Enterprise Architecture Lead',
   authorImage: authorGauravV,
   publishDate: 'August 23, 2022',
-  category: "Vision Augmented",
+  category: "Architecture Augmented",
   contentBlocks: [
     {
       type: 'intro',
@@ -988,7 +1101,7 @@ export const insights = [
   authorRole: 'ML Engineering Lead',
   authorImage: authorDeepak,
   publishDate: 'August 23, 2022',
-  category: "Vision Augmented",
+  category: "Architecture Augmented",
   contentBlocks: [
     {
       type: 'intro',
