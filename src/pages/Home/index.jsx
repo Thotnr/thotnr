@@ -12,6 +12,7 @@ import Clients         from './sections/Clients'
 import Navbar from '../../components/layout/Navbar'
 import Footer from '../../components/layout/Footer'
 import Products from './sections/Products'
+import Accelerators from './sections/Accelerators'
 import SubscribeSection from '../../components/layout/SubscribeSection'
 
 
@@ -26,8 +27,8 @@ function Home() {
       <Vision />
       <ProcessTimeline />
       <ServicesCards />
-      <Escalates />
       <CaseStudies />
+      <Accelerators />
       <Clients />
       <Products />
       <ServicesList />

@@ -14,7 +14,7 @@ const featured = [
   { id: 3, name: 'ZS',             logo: zs,             logoH: 100, logoW: 170  },
   { id: 4, name: 'Hollard',        logo: hollard,        logoH: 70, logoW: 150 },
   { id: 5, name: 'Anglo American', logo: angloAmerican,  logoH: 130, logoW: 200 },
-  { id: 6, name: 'Creditas',       logo: creditas,       logoH: 80, logoW: 150 },
+  { id: 6, name: 'Creditas',       logo: creditas,       logoH: 150, logoW: 200 },
 ]
 
 const stats = [

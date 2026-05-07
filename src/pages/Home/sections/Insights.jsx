@@ -3,9 +3,9 @@ import { insights } from '../../../data/insights'
 
 // Display order + max cards shown per category on Home page
 const CATEGORY_CONFIG = [
+  { key: 'Vision Augmented',        label: 'Vision Augmented',        limit: 2 },
   { key: 'Cognitive Augmented',     label: 'Cognitive Augmented',     limit: 3 },
   { key: 'Architecture Augmented',  label: 'Architecture Augmented',  limit: 3 },
-  { key: 'Vision Augmented',        label: 'Vision Augmented',        limit: 2 },
 ]
 
 const byCategory = CATEGORY_CONFIG.map(({ key, label, limit }) => ({
@@ -101,7 +101,7 @@ function Insights() {
 
         {/* Section header */}
         <div className="mb-12 max-w-xl">
-          <p className="text-h4 text-[var(--color-highlight)]">Thinking Out Loud</p>
+          <p className="text-h4 text-[var(--color-highlight)]">Augmented Insights</p>
           <h2 className="text-h1" style={{ color: 'var(--color-text-primary)' }}>
             Our Insights
           </h2>

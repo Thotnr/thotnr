@@ -12,7 +12,9 @@ import InsightDetail    from './pages/InsightDetail'
 import Industry         from './pages/Industry'
 import Services        from './pages/Services'
 import Products        from './pages/Products'
-import Clients         from './pages/Clients'
+import Clients            from './pages/Clients'
+import Accelerators       from './pages/Accelerators'
+import AcceleratorDetail  from './pages/AcceleratorDetail'
 
 const PAGE_TRANSITION_STYLE = `
   @keyframes pageFadeIn {
@@ -48,7 +50,9 @@ function AnimatedRoutes() {
           <Route path="/industries"            element={<Industry />}        />
           <Route path="/services"              element={<Services />}        />
           <Route path="/products"              element={<Products />}        />
-          <Route path="/clients"              element={<Clients />}         />
+          <Route path="/clients"               element={<Clients />}            />
+          <Route path="/accelerators"          element={<Accelerators />}       />
+          <Route path="/accelerators/:slug"    element={<AcceleratorDetail />}  />
         </Routes>
       </div>
     </>
