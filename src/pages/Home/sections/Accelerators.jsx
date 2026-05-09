@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { accelerators } from '../../../data/accelerators'
 
+
 const CARD_STYLES = `
   @keyframes accCardSlideUp {
     from { opacity: 0; transform: translateY(28px); }
@@ -44,13 +45,6 @@ const CARD_STYLES = `
   .acc-card:hover .acc-cta-line {
     color: var(--color-highlight);
   }
-  .acc-view-all-btn {
-    transition: background 0.22s ease, transform 0.22s ease;
-  }
-  .acc-view-all-btn:hover {
-    background: var(--color-highlight) !important;
-    transform: translateY(-2px);
-  }
 `
 
 function AcceleratorCard({ slug, image, category, title, tagline, tags, index }) {
@@ -65,35 +59,47 @@ function AcceleratorCard({ slug, image, category, title, tagline, tags, index })
     >
       {/* Image */}
       <div className="relative overflow-hidden flex-shrink-0" style={{ height: '210px' }}>
-        <img
-          src={image}
-          alt={title}
-          className="acc-img w-full h-full object-cover"
-        />
-        {/* Scrim for text legibility */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'linear-gradient(to top, rgba(11,15,25,0.55) 0%, rgba(11,15,25,0.1) 55%, transparent 100%)',
-        }} />
-        {/* Category pill */}
-        <span
-          className="absolute top-4 left-4 text-label rounded-full px-3 py-1.5"
-          style={{
-            background: 'var(--color-highlight)',
-            color: '#ffffff',
-            letterSpacing: '0.06em',
-          }}
-        >
-          {category}
-        </span>
-      </div>
+          <img
+            src={image}
+            alt={title}
+            className="acc-img w-full h-full object-cover"
+          />
+          
+          {/* Scrim for text legibility */}
+          <div style={{
+            position: 'absolute', inset: 0,
+            background: 'linear-gradient(to top, rgba(11,15,25,0.55) 0%, rgba(11,15,25,0.1) 55%, transparent 100%)',
+          }} />
+
+          {/* Category pill with Blackish Gradient Overlay */}
+          <span
+            className="absolute top-4 left-4 text-xs rounded-full px-2 py-1"
+            style={{
+              // The first gradient is the "overlay", the second is your base color
+              background: `
+                linear-gradient(to right, 
+                  rgba(29, 53, 87, 1.0) 0%, 
+                  rgba(29, 53, 87, 0.8) 50%, 
+                  rgba(29, 53, 87, 0.2) 100%
+                ), 
+                rgba(230, 57, 70, 0.9)`,
+              color: '#ffffff',
+              fontWeight: '500',
+              letterSpacing: '0.06em',
+              // Optional: Add a subtle border to keep it crisp against the image
+              border: '1px solid rgba(255,255,255,0.1)'
+            }}
+          >
+            {category}
+          </span>
+        </div>
 
       {/* Body */}
       <div className="flex flex-col flex-1 p-7">
 
         {/* Title */}
         <h3
-          className="text-h3 mb-3"
+          className="text-h3 mb-2"
           style={{ color: 'var(--color-text-primary)', lineHeight: 1.22 }}
         >
           {title}
@@ -101,41 +107,35 @@ function AcceleratorCard({ slug, image, category, title, tagline, tags, index })
 
         {/* Tagline — grows to push CTA to bottom */}
         <p
-          className="text-body-sm flex-1 mb-5"
+          className="text-body-sm flex-1 mb-3"
           style={{ color: 'var(--color-text-secondary)', lineHeight: 1.78 }}
         >
           {tagline}
         </p>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {tags.map((tag) => (
+        {/* <div className="flex flex-wrap gap-2 mb-6">
+          {tags.slice(0, 2).map((tag) => (
             <span
               key={tag}
-              className="text-caption rounded-full px-3 py-1"
+              className="text-xs rounded-full px-3 py-1"
               style={{
-                background: 'rgba(29,53,87,0.06)',
+                background: 'rgba(29, 53, 87, 0.06)', 
                 color: 'var(--color-text-secondary)',
-                border: '1px solid rgba(29,53,87,0.09)',
+                border: '1px solid rgba(230, 57, 70, 0.2)', 
               }}
             >
               {tag}
             </span>
           ))}
-        </div>
-
-        {/* Divider */}
-        <div style={{ height: '1px', background: 'rgba(29,53,87,0.09)', marginBottom: '20px' }} />
+        </div> */}
 
         {/* CTA row */}
         <div
           className="acc-cta-line flex items-center justify-between"
           style={{ color: 'var(--color-secondary)' }}
         >
-          <span className="text-body-sm font-semibold">Explore Accelerator</span>
-          <span className="acc-arrow">
-            <ArrowRight size={16} strokeWidth={2} />
-          </span>
+          <span className="text-body-sm font-semibold">Read more...</span>
         </div>
 
       </div>
@@ -148,7 +148,7 @@ function Accelerators() {
 
   return (
     <section
-      className="py-20 px-6 md:px-10 lg:px-16"
+      className="py-16 px-6 md:px-10 lg:px-16"
       style={{
         background: 'radial-gradient(ellipse at 80% 10%, rgba(255,255,255,0.4) 0%, var(--color-accent) 60%)',
       }}
@@ -156,42 +156,27 @@ function Accelerators() {
       <style>{CARD_STYLES}</style>
       <div className="max-w-7xl mx-auto">
 
-        {/* Header — split layout: heading left, description + CTA right */}
-        <div className="acc-section-header flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14">
-
-          <div className="max-w-lg">
-            <p
-              className="text-h4 mb-3"
-              style={{ color: 'var(--color-highlight)' }}
-            >
-              AI Accelerators
-            </p>
-            <h2
-              className="text-h1"
-              style={{ color: 'var(--color-text-primary)', lineHeight: 1.12 }}
-            >
-              Pre-built AI for faster enterprise transformation
-            </h2>
-          </div>
-
-          <div className="flex flex-col items-start lg:items-end gap-5 max-w-sm">
-            <p
-              className="text-body lg:text-right"
-              style={{ color: 'var(--color-text-secondary)', lineHeight: 1.78 }}
-            >
-              Deployable solution frameworks that reduce delivery time, lower risk,
-              and move teams from idea to production faster.
-            </p>
-            <Link
-              to="/accelerators"
-              className="acc-view-all-btn inline-flex items-center gap-2 px-7 py-3 rounded-lg font-semibold text-body-sm no-underline flex-shrink-0"
-              style={{ background: 'var(--color-secondary)', color: '#ffffff' }}
-            >
-              View All Accelerators
-              <ArrowRight size={15} strokeWidth={2} />
-            </Link>
-          </div>
-
+        {/* Header */}
+        <div className="acc-section-header mb-8">
+          <p
+            className="text-h4 mb-3"
+            style={{ color: 'var(--color-highlight)' }}
+          >
+            AI Accelerators
+          </p>
+          <h2
+            className="text-h1"
+            style={{ color: 'var(--color-text-primary)', lineHeight: 1.12 }}
+          >
+            Pre-built AI for faster enterprise transformation
+          </h2>
+          <p
+            className="text-body mt-3 max-w-2xl"
+            style={{ color: 'var(--color-text-secondary)', lineHeight: 1.78 }}
+          >
+            Deployable solution frameworks that reduce delivery time, lower risk,
+            and move teams from idea to production faster.
+          </p>
         </div>
 
         {/* Equal-height 3-col grid */}
@@ -199,6 +184,25 @@ function Accelerators() {
           {items.map((acc, i) => (
             <AcceleratorCard key={acc.slug} {...acc} index={i} />
           ))}
+        </div>
+
+        {/* CTA — centered below cards */}
+        <div className="text-center mt-10">
+          <Link
+            to="/accelerators"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-body-sm font-medium border no-underline transition-all duration-300"
+            style={{ border: '1px solid var(--color-secondary)', color: 'var(--color-secondary)' }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'var(--color-text-primary)'
+              e.currentTarget.style.color = '#ffffff'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'transparent'
+              e.currentTarget.style.color = 'var(--color-secondary)'
+            }}
+          >
+            View all accelerators
+          </Link>
         </div>
 
       </div>

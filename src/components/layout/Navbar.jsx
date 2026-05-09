@@ -126,9 +126,10 @@ function MegaMenu({ data }) {
       <div
         className="mega-menu-wrap fixed left-0 right-0 z-50 bg-[var(--color-primary)]"
         style={{
-          top: '80px',
-          borderBottom: '1px solid var(--color-border)',
-          boxShadow: '0 12px 40px rgb(var(--color-ink-rgb) / 0.1)',
+          top: '64px',
+          borderTop: '1px solid rgba(29,53,87,0.08)',
+          borderBottom: '1px solid rgba(29,53,87,0.08)',
+          boxShadow: '0 12px 40px rgba(29,53,87,0.10)',
         }}
       >
         <div className="max-w-7xl mx-auto px-0 md:px-10 lg:px-16 py-8 flex gap-0">
@@ -211,6 +212,21 @@ function MegaMenu({ data }) {
 function DropdownItem({ label, data, scrolled }) {
   const [open, setOpen] = useState(false)
   let timeout
+
+  useEffect(() => {
+    if (open) {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+      document.body.style.overflow = 'hidden'
+      document.body.style.paddingRight = `${scrollbarWidth}px`
+    } else {
+      document.body.style.overflow = ''
+      document.body.style.paddingRight = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+      document.body.style.paddingRight = ''
+    }
+  }, [open])
 
   const handleEnter = () => {
     clearTimeout(timeout)
@@ -367,10 +383,11 @@ function Navbar() {
       >
         <div className="flex flex-col px-5 py-3">
           {[
+            
+            { label: 'impact',   to: '/case-studies' },
+            { label: 'augmented insights',   to: '/insights'},
             { label: 'products',   to: '/products'     },
             { label: 'AI',         to: '/ai'           },
-            { label: 'impact',   to: '/case-studies' },
-            { label: 'augmented insights',   to: '/insights'     },
             { label: 'services',   to: '/services'     },
             { label: 'industries', to: '/industries'   },
             { label: 'about',      to: '/about'        },

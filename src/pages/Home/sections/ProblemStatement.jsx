@@ -6,7 +6,7 @@ function ProblemStatement() {
         {/* ── BLOCK 1: Stats bar ── */}
         <div className="mb-8">
           <p className="text-h4 text-[var(--color-highlight)] mb-2 tracking-widest">
-            THE REALITY OF ENTERPRISE AI TODAY
+            The Reality of Enterprise AI Today
           </p>
           <p className="text-body text-[var(--color-text-secondary)] mb-6">
             Most enterprises are drowning in AI pilots that never reach production.
@@ -26,7 +26,7 @@ function ProblemStatement() {
       <div className="flex items-center gap-2">
         <span style={{
           fontFamily: 'var(--font-heading)',
-          fontSize: 'clamp(20px, 2.8vw, 32px)',
+          fontSize: 'clamp(20px, 2.8vw, 24px)',
           fontWeight: 700,
           lineHeight: 1,
           color: 'var(--color-text-primary)',
@@ -44,7 +44,7 @@ function ProblemStatement() {
       </div>
 
       {/* Source below */}
-      <span className="text-body" style={{
+      <span className="text-body-sm" style={{
         color: 'var(--color-secondary)',
         letterSpacing: '0.06em',
       }}>
@@ -62,7 +62,7 @@ function ProblemStatement() {
         {/* ── BLOCK 2: Problem / Solution headline ── */}
         <div className="mb-8">
           <p className="text-h4 text-[var(--color-highlight)] mb-4 tracking-widest">
-            WHY THOTNR IS DIFFERENT
+            Why Thotnr is Different
           </p>
 
           <h2

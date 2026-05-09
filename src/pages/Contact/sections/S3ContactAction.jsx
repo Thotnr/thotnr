@@ -18,17 +18,17 @@ const contactItems = [
   },
 ]
 
-const inputBase = 'w-full px-5 py-3 text-body-sm outline-none transition-all duration-150'
+const inputBase = 'w-full px-4 py-2.5 text-body-sm outline-none transition-all duration-150'
 const inputStyle = {
-  background: 'rgba(0,0,0,0.05)',
-  border: '1px solid rgba(0,0,0,0.08)',
+  background: 'rgba(0,0,0,0.04)',
+  border: '1px solid rgba(0,0,0,0.09)',
   color: 'var(--color-text-primary)',
 }
 
 function Field({ label, type = 'text', placeholder, value, onChange }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-label" style={{ color: 'var(--color-text-secondary)' }}>
+      <label className="text-body-sm" style={{ color: 'var(--color-secondary)' }}>
         {label}
       </label>
       <input
@@ -54,11 +54,11 @@ function Field({ label, type = 'text', placeholder, value, onChange }) {
 function TextareaField({ label, placeholder, value, onChange }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-label" style={{ color: 'var(--color-text-secondary)' }}>
+      <label className="text-body-sm" style={{ color: 'var(--color-secondary)' }}>
         {label}
       </label>
       <textarea
-        rows={4}
+        rows={3}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
@@ -143,41 +143,23 @@ function S3ContactAction() {
         <div
           style={{
             background: 'var(--color-primary)',
-            borderRadius: '20px',
-            padding: '40px',
-            boxShadow: '0 40px 80px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.2)',
+            borderRadius: '16px',
+            padding: '32px',
+            boxShadow: '0 32px 64px rgba(0,0,0,0.35), 0 6px 20px rgba(0,0,0,0.18)',
             transition: 'transform 0.3s ease, box-shadow 0.3s ease',
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = 'translateY(-6px)'
-            e.currentTarget.style.boxShadow = '0 56px 100px rgba(0,0,0,0.5), 0 12px 32px rgba(0,0,0,0.25)'
+            e.currentTarget.style.boxShadow = '0 44px 80px rgba(0,0,0,0.45), 0 10px 28px rgba(0,0,0,0.22)'
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'translateY(0)'
-            e.currentTarget.style.boxShadow = '0 40px 80px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.2)'
+            e.currentTarget.style.boxShadow = '0 32px 64px rgba(0,0,0,0.35), 0 6px 20px rgba(0,0,0,0.18)'
           }}
         >
-          <h3 className="text-h3 mb-6" style={{ color: 'var(--color-text-primary)' }}>
-            Send a Message
-          </h3>
+        
 
-          <form className="flex flex-col gap-5" onSubmit={(e) => e.preventDefault()}>
-
-            {/* Name row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <Field
-                label="First Name"
-                placeholder="Jane"
-                value={form.firstName}
-                onChange={set('firstName')}
-              />
-              <Field
-                label="Last Name"
-                placeholder="Smith"
-                value={form.lastName}
-                onChange={set('lastName')}
-              />
-            </div>
+          <form className="flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
 
             <Field
               label="Work Email"
@@ -201,34 +183,15 @@ function S3ContactAction() {
               onChange={set('message')}
             />
 
-            {/* Consent */}
-            <label className="flex items-start gap-3 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={form.consent}
-                onChange={set('consent')}
-                className="mt-1 w-4 h-4 flex-shrink-0 accent-[var(--color-accent)]"
-              />
-              <span className="text-body-sm" style={{ color: 'var(--color-text-secondary)' }}>
-                I agree to Thotnr contacting me and accept the{' '}
-                <a
-                  href="#"
-                  className="underline"
-                  style={{ color: 'var(--color-tertiary)' }}
-                >
-                  Privacy Notice
-                </a>
-                .
-              </span>
-            </label>
+      
 
             {/* Submit */}
             <button
               type="submit"
-              className="w-full py-3 rounded-full text-body-sm font-semibold transition-all duration-200"
-              style={{ background: 'var(--color-highlight)', color: '#fff' }}
-              onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.88' }}
-              onMouseLeave={(e) => { e.currentTarget.style.opacity = '1' }}
+              className="w-full py-2.5 rounded-full text-body-sm font-semibold tracking-wide transition-all duration-200"
+              style={{ background: 'var(--color-secondary)', color: 'var(--color-text-white)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--color-highlight)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--color-secondary)' }}
             >
               Send Message
             </button>

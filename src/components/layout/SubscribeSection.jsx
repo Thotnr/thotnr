@@ -52,8 +52,8 @@ function SubscribeSection() {
               <button
                 className="px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 flex-shrink-0"
                 style={{ background: 'var(--color-secondary)', color: '#fff' }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--color-highlight)' }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--color-secondary)' }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--color-text-white)' ; e.currentTarget.style.color = 'var(--color-text-primary)'}}
+                onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--color-secondary)'; e.currentTarget.style.color = 'var(--color-text-white)' }}
               >
                 Subscribe
               </button>

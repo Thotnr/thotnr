@@ -1,6 +1,6 @@
-import icon1 from '../../../assets/images/human-ai-powered.png'
-import icon2 from '../../../assets/images/human-meets-machine.png'
-import icon3 from '../../../assets/images/layer.png'
+import icon1 from '../../../assets/images/human-ai.png'
+import icon2 from '../../../assets/images/human-meets-ai.png'
+import icon3 from '../../../assets/images/collabration-layers.png'
 
 const services = [
   {
@@ -31,35 +31,14 @@ function ServiceCard({ icon, title, whatWeDo, index }) {
           from { opacity: 0; transform: translateY(50px); }
           to   { opacity: 1; transform: translateY(0); }
         }
-        @keyframes iconFloat {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-        }
-        @keyframes scanline {
-          0% { top: 0%; opacity: 0.6; }
-          100% { top: 100%; opacity: 0; }
-        }
-        @keyframes cornerPulse {
-          0%, 100% { opacity: 0.4; }
-          50% { opacity: 1; }
-        }
-        @keyframes particleRise {
-          0% { transform: translateY(0) scale(1); opacity: 0.8; }
-          100% { transform: translateY(-80px) scale(0); opacity: 0; }
-        }
 
         .svc-card-wrap-${index} {
           animation: cardIn 0.7s ease ${0.1 + index * 0.15}s both;
           height: 100%;
         }
 
-        .svc-icon-${index} {
-          animation: iconFloat ${4 + index * 0.4}s ease-in-out infinite;
-        }
-
         .svc-card-${index} {
           transition: transform 0.4s ease, box-shadow 0.4s ease;
-          transform-style: preserve-3d;
           cursor: pointer;
           height: 100%;
         }
@@ -70,88 +49,25 @@ function ServiceCard({ icon, title, whatWeDo, index }) {
             0 25px 50px rgba(0,0,0,0.5),
             0 0 40px rgba(230,57,70,0.15);
         }
-
-        .scan-line {
-          position: absolute;
-          left: 0;
-          right: 0;
-          height: 2px;
-          background: linear-gradient(to right, transparent, rgba(168,218,220,0.5), transparent);
-          pointer-events: none;
-          top: -100%;
-          opacity: 0;
-        }
-
-        .svc-card-${index}:hover .scan-line {
-          animation: scanline 1.2s linear infinite;
-        }
-
-        .corner-tl-${index}, .corner-tr-${index},
-        .corner-bl-${index}, .corner-br-${index} {
-          position: absolute;
-          width: 12px;
-          height: 12px;
-          opacity: 0;
-          transition: opacity 0.3s ease;
-          border-color: rgba(230,57,70,0.6);
-        }
-
-        .corner-tl-${index} { top: 10px; left: 10px; border-top: 2px solid; border-left: 2px solid; }
-        .corner-tr-${index} { top: 10px; right: 10px; border-top: 2px solid; border-right: 2px solid; }
-        .corner-bl-${index} { bottom: 10px; left: 10px; border-bottom: 2px solid; border-left: 2px solid; }
-        .corner-br-${index} { bottom: 10px; right: 10px; border-bottom: 2px solid; border-right: 2px solid; }
-
-        .svc-card-${index}:hover .corner-tl-${index},
-        .svc-card-${index}:hover .corner-tr-${index},
-        .svc-card-${index}:hover .corner-bl-${index},
-        .svc-card-${index}:hover .corner-br-${index} {
-          opacity: 1;
-          animation: cornerPulse 1.5s infinite;
-        }
-
-        .particle-${index} {
-          position: absolute;
-          width: 3px;
-          height: 3px;
-          border-radius: 50%;
-          background: rgba(230,57,70,0.7);
-          opacity: 0;
-        }
-
-        .svc-card-${index}:hover .particle-${index} {
-          animation: particleRise 1.5s infinite;
-        }
       `}</style>
 
       <div className={`svc-card-wrap-${index}`}>
         <div
-          className={`svc-card-${index} relative flex flex-col gap-1 rounded-xl p-7`}
+          className={`svc-card-${index} relative flex flex-col gap-3 rounded-xl p-7`}
           style={{
             background: 'rgba(255,255,255,0.04)',
             border: '1px solid rgba(255,255,255,0.08)',
           }}
         >
-          <div className="scan-line" />
-
-          <div className={`corner-tl-${index}`} />
-          <div className={`corner-tr-${index}`} />
-          <div className={`corner-bl-${index}`} />
-          <div className={`corner-br-${index}`} />
-
-          <div className={`particle-${index}`} />
-
-          {/* Icon */}
-          <div className={`svc-icon-${index} w-60 h-60 mx-auto`}>
+          <div className="w-24 h-24">
             <img src={icon} alt={title} className="w-full h-full object-contain" />
           </div>
 
-          {/* Title */}
-          <h3 className="text-h3 text-white -mt-1">
+          <h3 className="text-h3 text-white mt-6" style={{ lineHeight: 1.3 }}>
             {title}
           </h3>
 
-          {/* Body */}
-          <p className="text-body text-white/70 line-clamp-5">
+          <p className="text-body text-white/70">
             {whatWeDo}
           </p>
         </div>

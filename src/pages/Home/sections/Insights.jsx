@@ -3,7 +3,7 @@ import { insights } from '../../../data/insights'
 
 // Display order + max cards shown per category on Home page
 const CATEGORY_CONFIG = [
-  { key: 'Vision Augmented',        label: 'Vision Augmented',        limit: 2 },
+  { key: 'Vision Augmented',        label: 'Vision Augmented (CEO Corner)',        limit: 2 },
   { key: 'Cognitive Augmented',     label: 'Cognitive Augmented',     limit: 3 },
   { key: 'Architecture Augmented',  label: 'Architecture Augmented',  limit: 3 },
 ]
@@ -30,37 +30,39 @@ function InsightCard({ coverImg, tagline, subheadline, slug, contentBlocks }) {
         />
       </div>
 
-      <div className="flex flex-col flex-1 gap-3 p-5">
-        {/* Tagline */}
-        <span className="text-label font-semibold" style={{ color: 'var(--color-secondary)' }}>
-          {tagline}
-        </span>
+     <div className="flex flex-col flex-1 gap-3 p-5">
+  <span className="text-label font-semibold" style={{ color: 'var(--color-secondary)' }}>
+    {tagline}
+  </span>
 
-        {/* Title */}
-        <h3
-          className="text-h3 font-semibold leading-snug"
-          style={{ color: 'var(--color-text-primary)' }}
-        >
-          {subheadline}
-        </h3>
+  <h3
+    className="text-h3 font-semibold leading-snug"
+    style={{ color: 'var(--color-text-primary)' }}
+  >
+    {subheadline}
+  </h3>
 
-        {/* Excerpt */}
-        <p
-          className="text-body-sm leading-relaxed line-clamp-3 flex-1"
-          style={{ color: 'var(--color-text-secondary)' }}
-        >
-          {excerpt}
-        </p>
+  <p
+    className="text-body-sm leading-relaxed"
+    style={{
+      color: 'var(--color-text-secondary)',
+      display: '-webkit-box',
+      WebkitLineClamp: 3,
+      WebkitBoxOrient: 'vertical',
+      overflow: 'hidden',
+    }}
+  >
+    {excerpt}
+  </p>
 
-        {/* CTA */}
-        <Link
-          to={`/insights/${slug}`}
-          className="text-body-sm font-medium mt-1 inline-flex items-center gap-1 no-underline transition-all duration-200 hover:gap-2"
-          style={{ color: 'var(--color-text-primary)' }}
-        >
-          Read more..
-        </Link>
-      </div>
+  <Link
+    to={`/insights/${slug}`}
+    className="text-body-sm font-medium mt-auto inline-flex items-center gap-1 no-underline transition-all duration-200 hover:gap-2"
+    style={{ color: 'var(--color-text-primary)' }}
+  >
+    Read more..
+  </Link>
+</div>
     </article>
   )
 }
@@ -81,8 +83,16 @@ function CategoryRow({ label, items }) {
         <div className="flex-1 h-px" style={{ background: 'rgba(29,53,87,0.12)' }} />
       </div>
 
-      {/* Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Cards — columns match item count so cards always fill full width */}
+      <div
+        className={`grid grid-cols-1 gap-6 ${
+          items.length === 1
+            ? ''
+            : items.length === 2
+            ? 'md:grid-cols-2'
+            : 'md:grid-cols-2 lg:grid-cols-3'
+        }`}
+      >
         {items.map((a) => (
           <InsightCard key={a.slug} {...a} />
         ))}

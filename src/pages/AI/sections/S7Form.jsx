@@ -7,8 +7,7 @@ function Field({ label, type = 'text', placeholder, value, onChange, required })
   return (
     <div className="flex flex-col gap-2">
       <label
-        className="text-label"
-        style={{ color: 'var(--color-text-secondary)', letterSpacing: '0.06em' }}
+        className="text-body-sm" style={{ color: 'var(--color-secondary)' }}
       >
         {label}{required && <span style={{ color: 'var(--color-highlight)' }}> *</span>}
       </label>
@@ -34,8 +33,7 @@ function TextareaField({ label, placeholder, value, onChange, required }) {
   return (
     <div className="flex flex-col gap-2">
       <label
-        className="text-label"
-        style={{ color: 'var(--color-text-secondary)', letterSpacing: '0.06em' }}
+        className="text-body-sm" style={{ color: 'var(--color-secondary)' }}
       >
         {label}{required && <span style={{ color: 'var(--color-highlight)' }}> *</span>}
       </label>
@@ -116,74 +114,64 @@ function S7Form() {
         </div>
 
         {/* Right — form */}
-        <form
-          className="flex flex-col gap-5"
-          onSubmit={(e) => e.preventDefault()}
+        <div
+          style={{
+            background: 'var(--color-primary)',
+            borderRadius: '16px',
+            padding: '32px',
+            boxShadow: '0 32px 64px rgba(0,0,0,0.35), 0 6px 20px rgba(0,0,0,0.18)',
+            transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'translateY(-6px)'
+            e.currentTarget.style.boxShadow = '0 44px 80px rgba(0,0,0,0.45), 0 10px 28px rgba(0,0,0,0.22)'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateY(0)'
+            e.currentTarget.style.boxShadow = '0 32px 64px rgba(0,0,0,0.35), 0 6px 20px rgba(0,0,0,0.18)'
+          }}
         >
-          {/* Name row */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <Field label="First Name" placeholder="Jane"  value={form.firstName} onChange={set('firstName')} required />
-            <Field label="Last Name"  placeholder="Smith" value={form.lastName}  onChange={set('lastName')}  required />
-          </div>
+        
 
-          <Field
-            label="Work Email" type="email"
-            placeholder="jane@company.com"
-            value={form.email} onChange={set('email')} required
-          />
+          <form className="flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
 
-          <Field
-            label="Company"
-            placeholder="Acme Corp"
-            value={form.company} onChange={set('company')}
-          />
-
-          <TextareaField
-            label="How can we help?"
-            placeholder="Describe your AI challenge or project — the more detail, the better."
-            value={form.message} onChange={set('message')} required
-          />
-
-          {/* Consent */}
-          <label className="flex items-start gap-3 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={form.consent}
-              onChange={set('consent')}
-              className="mt-1 w-4 h-4 flex-shrink-0 accent-[var(--color-secondary)]"
+            <Field
+              label="Work Email"
+              type="email"
+              placeholder="jane@company.com"
+              value={form.email}
+              onChange={set('email')}
             />
-            <span className="text-body-sm" style={{ color: 'var(--color-text-tertiary)' }}>
-              I agree to Thotnr contacting me about AI services and accept the{' '}
-              <a href="#" className="underline" style={{ color: 'var(--color-text-secondary)' }}>
-                Privacy Notice
-              </a>
-              .
-            </span>
-          </label>
 
-          {/* Submit */}
-          <div className="pt-2">
+            <Field
+              label="Company"
+              placeholder="Acme Corp"
+              value={form.company}
+              onChange={set('company')}
+            />
+
+            <TextareaField
+              label="Message"
+              placeholder="Tell us about your challenge or project…"
+              value={form.message}
+              onChange={set('message')}
+            />
+
+      
+
+            {/* Submit */}
             <button
               type="submit"
-              className="px-8 py-3 rounded-full text-body-sm font-semibold border transition-all duration-200 cursor-pointer"
-              style={{
-                background: 'var(--color-secondary)',
-                color: '#ffffff',
-                border: '1px solid var(--color-secondary)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'transparent'
-                e.currentTarget.style.color = 'var(--color-secondary)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'var(--color-secondary)'
-                e.currentTarget.style.color = '#ffffff'
-              }}
+              className="w-full py-2.5 rounded-full text-body-sm font-semibold tracking-wide transition-all duration-200"
+              style={{ background: 'var(--color-secondary)', color: 'var(--color-text-white)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--color-highlight)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--color-secondary)' }}
             >
               Send Message
             </button>
-          </div>
-        </form>
+
+          </form>
+        </div>
 
       </div>
     </section>

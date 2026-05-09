@@ -66,16 +66,19 @@ function ExpandingCard({ title, tagline, stat, desc, image }) {
         transition: 'flex 0.5s cubic-bezier(0.4,0,0.2,1)',
       }}
     >
-      {/* Background image */}
-      <img
-        src={image}
-        alt={title}
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{
-          transform: hovered ? 'scale(1.05)' : 'scale(1)',
-          transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)',
-        }}
-      />
+      {/* Background image — inner wrapper guarantees overflow clip on all flex items */}
+      <div className="absolute inset-0 overflow-hidden rounded-2xl">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover"
+          style={{
+            transform: hovered ? 'scale(1.05)' : 'scale(1)',
+            transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)',
+            willChange: 'transform',
+          }}
+        />
+      </div>
 
       {/* Gradient overlay */}
       <div
@@ -165,7 +168,7 @@ function ServicesList() {
           }
         `}</style>
 
-        <div className="svc-all-cards flex flex-col gap-4">
+        <div className="svc-all-cards flex flex-col gap-12">
           <div className="svc-row flex flex-col lg:flex-row gap-4">
             {row1.map((svc) => (
               <ExpandingCard key={svc.title} {...svc} />
@@ -188,13 +191,15 @@ function ServicesList() {
               color: '#ffffff',
               fontFamily: 'var(--font-heading)',
               fontSize: '14px',
-              transition: 'border-color 0.2s ease, color 0.2s ease',
+              transition: 'background 0.22s ease, border-color 0.22s ease, color 0.22s ease',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = 'var(--color-highlight)'
-              e.currentTarget.style.color = 'var(--color-highlight)'
+              e.currentTarget.style.background = '#ffffff'
+              e.currentTarget.style.borderColor = '#ffffff'
+              e.currentTarget.style.color = 'var(--color-secondary)'
             }}
             onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'transparent'
               e.currentTarget.style.borderColor = 'rgba(255,255,255,0.28)'
               e.currentTarget.style.color = '#ffffff'
             }}

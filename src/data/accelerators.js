@@ -1,6 +1,6 @@
-import emailImg      from '../assets/images/user-experience.jpg'
-import securityImg   from '../assets/images/security-risk.jpg'
-import analyticsImg  from '../assets/images/enterprise-architect.jpg'
+import emailImg      from '../assets/images/robot-emailing.webp'
+import securityImg   from '../assets/images/ai-safety-shield.jpg'
+import analyticsImg  from '../assets/images/ai-analytics-co-pilot.jpg'
 
 export const accelerators = [
   {

@@ -1,4 +1,4 @@
-import mapImg from '../../../assets/images/footprints-map.png'
+import mapImg from '../../../assets/images/location-map.png'
 
 const offices = [
   {

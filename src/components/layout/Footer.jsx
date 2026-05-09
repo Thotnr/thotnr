@@ -69,6 +69,10 @@ const offices = [
     country: 'South Africa',
     lines: ['424 Honeydew Road West', 'Sundowner, Johannesburg', 'Gauteng – 2188'],
   },
+  {
+    country: 'United States',
+    lines: ['Thotnr Consulting Inc', '254 Chapman Rd, Ste 208', 'Newark, DE 19702'],
+  },
 ]
 
 function Footer() {
@@ -78,11 +82,11 @@ function Footer() {
     <footer style={{ background: 'var(--color-primary)', boxShadow: '0 -8px 32px rgba(0,0,0,0.07)' }}>
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 pt-10 pb-6">
 
-        {/* 4-column grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-x-12 gap-y-8 pb-4">
+        {/* 5-column grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-x-10 gap-y-8 pb-4 items-start">
 
           {/* Col 1 — Brand + tagline + socials */}
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 sm:col-span-2 lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 no-underline w-fit">
               <img
                 src={logoRed}
@@ -92,22 +96,22 @@ function Footer() {
                 style={{ objectFit: 'contain' }}
               />
               <span
-                className="text-lg font-bold tracking-tight"
-                style={{ color: 'var(--color-text-primary)' }}
+                className="font-bold tracking-tight"
+                style={{ color: 'var(--color-text-primary)', fontSize: '16px' }}
               >
                 THOTNR
               </span>
             </Link>
             <p
-              className="text-body leading-relaxed"
+              className="text-body-sm leading-relaxed"
               style={{ color: 'var(--color-text-tertiary)', maxWidth: '200px' }}
             >
               Enterprise AI &amp; Technology Consultancy
             </p>
-            <p className="flex items-center gap-2 text-body" style={{ color: 'var(--color-text-tertiary)' }}>
+            <p className="flex items-center gap-2 text-body-sm" style={{ color: 'var(--color-text-tertiary)' }}>
               <MailIcon /> sayhello@thotnr.com
             </p>
-            <div className="flex items-center gap-0.5">
+            <div className="flex items-center gap-0.5 mt-1">
               {socials.map(({ label, icon }) => (
                 <a
                   key={label}
@@ -130,48 +134,45 @@ function Footer() {
             </div>
           </div>
 
-          {/* Col 2 + 3 — Offices (side-by-side on mobile, dissolve into 4-col grid on md+) */}
-          <div className="grid grid-cols-2 gap-6 md:contents">
-
-            {/* Col 2 — Office India */}
-            <div>
-              <p className="text-h4 text-[var(--color-highlight)] mb-3">India</p>
-              {offices[0].lines.map((line) => (
-                <p
-                  key={line}
-                  className="text-body leading-relaxed pb-0.5"
-                  style={{ color: 'var(--color-text-tertiary)' }}
-                >
-                  {line}
-                </p>
-              ))}
-            </div>
-
-            {/* Col 3 — Office South Africa */}
-            <div>
-              <p className="text-h4 text-[var(--color-highlight)] mb-3">South Africa</p>
-              {offices[1].lines.map((line) => (
-                <p
-                  key={line}
-                  className="text-body leading-relaxed pb-0.5"
-                  style={{ color: 'var(--color-text-tertiary)' }}
-                >
-                  {line}
-                </p>
-              ))}
-            </div>
-
+          {/* Col 2 — India */}
+          <div>
+            <p className="text-h4 text-[var(--color-highlight)] mb-3">India</p>
+            {offices[0].lines.map((line) => (
+              <p key={line} className="text-body-sm leading-relaxed pb-0.5" style={{ color: 'var(--color-text-tertiary)' }}>
+                {line}
+              </p>
+            ))}
           </div>
 
-          {/* Col 4 — Quick Links */}
-          <div className=' flex flex-col items-start'>
+          {/* Col 3 — South Africa */}
+          <div>
+            <p className="text-h4 text-[var(--color-highlight)] mb-3">South Africa</p>
+            {offices[1].lines.map((line) => (
+              <p key={line} className="text-body-sm leading-relaxed pb-0.5" style={{ color: 'var(--color-text-tertiary)' }}>
+                {line}
+              </p>
+            ))}
+          </div>
+
+          {/* Col 4 — United States */}
+          <div>
+            <p className="text-h4 text-[var(--color-highlight)] mb-3">United States</p>
+            {offices[2].lines.map((line) => (
+              <p key={line} className="text-body-sm leading-relaxed pb-0.5" style={{ color: 'var(--color-text-tertiary)' }}>
+                {line}
+              </p>
+            ))}
+          </div>
+
+          {/* Col 5 — Quick Links */}
+          <div className="flex flex-col items-start">
             <p className="text-h4 text-[var(--color-highlight)] mb-3">Quick Links</p>
-            <nav className="flex flex-row flex-wrap gap-x-6 gap-y-2 md:flex-col md:gap-1">
+            <nav className="flex flex-col gap-1.5">
               {quickLinks.map(({ label, to }) => (
                 <Link
                   key={label}
                   to={to}
-                  className="text-body no-underline transition-colors duration-150 w-fit"
+                  className="text-body-sm no-underline transition-colors duration-150 w-fit"
                   style={{ color: 'var(--color-text-secondary)' }}
                   onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-highlight)' }}
                   onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)' }}
@@ -180,9 +181,7 @@ function Footer() {
                 </Link>
               ))}
             </nav>
-            
           </div>
-          
 
         </div>
 

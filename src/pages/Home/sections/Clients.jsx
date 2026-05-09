@@ -125,13 +125,15 @@ function Clients() {
               color: '#ffffff',
               fontFamily: 'var(--font-heading)',
               fontSize: '14px',
-              transition: 'border-color 0.2s ease, color 0.2s ease',
+              transition: 'background 0.22s ease, border-color 0.22s ease, color 0.22s ease',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = 'var(--color-highlight)'
-              e.currentTarget.style.color = 'var(--color-highlight)'
+              e.currentTarget.style.background = '#ffffff'
+              e.currentTarget.style.borderColor = '#ffffff'
+              e.currentTarget.style.color = 'var(--color-secondary)'
             }}
             onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'transparent'
               e.currentTarget.style.borderColor = 'rgba(255,255,255,0.28)'
               e.currentTarget.style.color = '#ffffff'
             }}

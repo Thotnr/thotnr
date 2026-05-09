@@ -2,21 +2,21 @@ function Vision() {
   const steps = [
     {
       number: '01',
-      label: 'LISTEN',
+      label: 'Listen',
       statement: ['We ', 'understand the data', ' before we touch the model.'],
       accentIndex: 1,
       body: 'We map where it lives, how clean it is, what it can and can\'t tell you. Most AI fails here, quietly. We make it the loudest part of the conversation.',
     },
     {
       number: '02',
-      label: 'BUILD',
+      label: 'Build',
       statement: ['We ', 'build AI that fits', ' your stack and your workflow.'],
       accentIndex: 1,
       body: 'Off-the-shelf demos collapse the moment they meet enterprise complexity. We engineer for your infrastructure, governance, and how your teams actually operate.',
     },
     {
       number: '03',
-      label: 'PROVE',
+      label: 'Prove',
       statement: ['We ', 'prove it in the P&L', ' — not the lab.'],
       accentIndex: 1,
       body: 'Every deployment ships with metrics that matter to your business — revenue lift, hours saved, decisions accelerated. AI that earns its line item.',
@@ -55,9 +55,9 @@ function Vision() {
                 fontFamily: 'var(--font-accent)',
                 fontSize: 'clamp(22px, 3.2vw, 44px)',
                 fontWeight: 600,
-                fontStyle: 'italic',
+               
                 lineHeight: 1.15,
-                color: 'var(--color-highlight)',
+                color: 'var(--color-text-white)',
               }}
             >
               It starts with your data.
@@ -68,7 +68,7 @@ function Vision() {
           <div className="flex items-center">
             <p
               className="text-body"
-              style={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.8 }}
+              style={{ color: 'rgba(255,255,255,0.95)', lineHeight: 1.8 }}
             >
               We see AI as a discipline, not a demo. Three things separate the
               deployments that scale from the ones that stall — and we build for
@@ -86,7 +86,7 @@ function Vision() {
           {steps.map((step, i) => (
             <div
               key={step.number}
-              className="flex flex-col gap-4 py-6 md:py-0"
+              className="flex flex-col gap-4 py-6 md:py-2"
               style={{
                 paddingRight: i < 2 ? 'clamp(0px, 3vw, 40px)' : '0',
                 paddingLeft: i > 0 ? 'clamp(0px, 3vw, 40px)' : '0',
@@ -138,7 +138,7 @@ function Vision() {
               {/* Body */}
               <p
                 className="text-body-sm"
-                style={{ color: 'rgba(255,255,255,0.55)', lineHeight: 1.75 }}
+                style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}
               >
                 {step.body}
               </p>
@@ -155,7 +155,7 @@ function Vision() {
           {/* Label */}
           <p
             className="text-body-sm tracking-widest flex-shrink-0"
-            style={{ color: 'var(--color-highlight)' }}
+            style={{ color: 'var(--color-highlight)' , fontWeight: 500}}
           >
             WHAT WE BELIEVE
           </p>
@@ -181,13 +181,8 @@ function Vision() {
             <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: '18px' }}>·</span>
 
             <span
-              style={{
-                fontFamily: 'var(--font-accent)',
-                fontSize: 'clamp(16px, 1.8vw, 22px)',
-                fontStyle: 'italic',
-                fontWeight: 400,
-                color: 'var(--color-highlight)',
-              }}
+              className="text-h4"
+              style={{ color: '#ffffff', fontWeight: 400 }}
             >
               Measured by your results.
             </span>

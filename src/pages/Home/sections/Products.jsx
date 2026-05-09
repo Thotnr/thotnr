@@ -163,13 +163,15 @@ export default function Products() {
               color: 'var(--color-text-primary)',
               fontFamily: 'var(--font-heading)',
               fontSize: '14px',
-              transition: 'border-color 0.2s ease, color 0.2s ease',
+              transition: 'background 0.22s ease, border-color 0.22s ease, color 0.22s ease',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = 'var(--color-highlight)'
-              e.currentTarget.style.color = 'var(--color-highlight)'
+              e.currentTarget.style.background = 'var(--color-text-primary)'
+              e.currentTarget.style.borderColor = 'var(--color-secondary)'
+              e.currentTarget.style.color = '#ffffff'
             }}
             onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'transparent'
               e.currentTarget.style.borderColor = 'rgba(11,15,25,0.2)'
               e.currentTarget.style.color = 'var(--color-text-primary)'
             }}
