@@ -15,7 +15,7 @@ function ProblemStatement() {
         
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6">
   {[
-    { pct: '95%', label: 'of GenAI pilots fail',                source: 'MIT NANDA, 2025'   },
+    { pct: '95%', label: 'of GenAI pilots fail to reach production',                source: 'MIT NANDA, 2025'   },
     { pct: '80%', label: 'of AI projects fail overall',         source: 'RAND CORP., 2025'  },
     { pct: '42%', label: 'abandoned in 2025 (vs 17% in 2024)', source: 'S&P GLOBAL, 2025'  },
     { pct: '74%', label: 'see no tangible value from AI',       source: 'BCG, 2025'         },

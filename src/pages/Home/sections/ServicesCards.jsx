@@ -53,17 +53,17 @@ function ServiceCard({ icon, title, whatWeDo, index }) {
 
       <div className={`svc-card-wrap-${index}`}>
         <div
-          className={`svc-card-${index} relative flex flex-col gap-3 rounded-xl p-7`}
+          className={`svc-card-${index} relative flex flex-col gap-3 rounded-xl px-7 pt-4 pb-7`}
           style={{
             background: 'rgba(255,255,255,0.04)',
             border: '1px solid rgba(255,255,255,0.08)',
           }}
         >
-          <div className="w-24 h-24">
+          <div className="w-48 h-48 mx-auto">
             <img src={icon} alt={title} className="w-full h-full object-contain" />
           </div>
 
-          <h3 className="text-h3 text-white mt-6" style={{ lineHeight: 1.3 }}>
+          <h3 className="text-h3 text-white" style={{ lineHeight: 1.3 }}>
             {title}
           </h3>
 
