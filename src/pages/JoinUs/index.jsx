@@ -1,5 +1,6 @@
 import Navbar       from '../../components/layout/Navbar'
 import Footer       from '../../components/layout/Footer'
+import SubscribeSection from '../../components/layout/SubscribeSection'
 import S1Hero       from './sections/S1Hero'
 import S2WhyJoinUs  from './sections/S2WhyJoinUs'
 import S3OpenRoles  from './sections/S3OpenRoles'
@@ -13,6 +14,7 @@ function JoinUs() {
       <S2WhyJoinUs />
       <S3OpenRoles />
       <S4ApplyForm />
+      <SubscribeSection />
       <Footer />
     </>
   )

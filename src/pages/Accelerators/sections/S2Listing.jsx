@@ -70,8 +70,22 @@ function ListingCard({ slug, image, category, title, tagline, tags, animDelay })
           background: 'linear-gradient(to top, rgba(11,15,25,0.52) 0%, rgba(11,15,25,0.08) 55%, transparent 100%)',
         }} />
         <span
-          className="absolute top-4 left-4 text-label rounded-full px-3 py-1.5"
-          style={{ background: 'var(--color-highlight)', color: '#ffffff', letterSpacing: '0.06em' }}
+         className="absolute top-4 left-4 text-xs rounded-full px-2 py-1"
+            style={{
+              // The first gradient is the "overlay", the second is your base color
+              background: `
+                linear-gradient(to right, 
+                  rgba(29, 53, 87, 1.0) 0%, 
+                  rgba(29, 53, 87, 0.8) 50%, 
+                  rgba(29, 53, 87, 0.2) 100%
+                ), 
+                rgba(230, 57, 70, 0.9)`,
+              color: '#ffffff',
+              fontWeight: '500',
+              letterSpacing: '0.06em',
+              // Optional: Add a subtle border to keep it crisp against the image
+              border: '1px solid rgba(255,255,255,0.1)'
+            }}
         >
           {category}
         </span>
@@ -88,13 +102,13 @@ function ListingCard({ slug, image, category, title, tagline, tags, animDelay })
         </h3>
 
         <p
-          className="text-body-sm flex-1 mb-5"
+          className="text-body-sm flex-1 mb-3"
           style={{ color: 'var(--color-text-secondary)', lineHeight: 1.78 }}
         >
           {tagline}
         </p>
 
-        <div className="flex flex-wrap gap-2 mb-6">
+        {/* <div className="flex flex-wrap gap-2 mb-6">
           {tags.map((tag) => (
             <span
               key={tag}
@@ -108,15 +122,11 @@ function ListingCard({ slug, image, category, title, tagline, tags, animDelay })
               {tag}
             </span>
           ))}
-        </div>
+        </div> */}
 
-        <div style={{ height: '1px', background: 'rgba(29,53,87,0.09)', marginBottom: '20px' }} />
-
-        <div className="lst-cta flex items-center justify-between" style={{ color: 'var(--color-secondary)' }}>
-          <span className="text-body-sm font-semibold">Explore Accelerator</span>
-          <span className="lst-arrow">
-            <ArrowRight size={16} strokeWidth={2} />
-          </span>
+        <div className="acc-cta-line flex items-center justify-between"
+          style={{ color: 'var(--color-secondary)' }}>
+          <span className="text-body-sm font-semibold">Read more..</span>
         </div>
 
       </div>
@@ -163,7 +173,7 @@ function S2Listing() {
         </div>
 
         {/* Filter tabs */}
-        <div className="flex flex-wrap gap-2 mb-10">
+        {/* <div className="flex flex-wrap gap-2 mb-10">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -179,7 +189,7 @@ function S2Listing() {
               {cat}
             </button>
           ))}
-        </div>
+        </div> */}
 
         {/* Equal-height grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">

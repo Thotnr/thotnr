@@ -1,5 +1,6 @@
 import Navbar      from '../../components/layout/Navbar'
 import Footer      from '../../components/layout/Footer'
+import SubscribeSection from '../../components/layout/SubscribeSection'
 import S1Hero      from './sections/S1Hero'
 import S2Industries from './sections/S2Industries'
 import S3HowWeWork from './sections/S3HowWeWork'
@@ -13,6 +14,7 @@ function Industry() {
       <S2Industries />
       <S3HowWeWork />
       <S4Impact />
+      <SubscribeSection/>
       <Footer />
     </>
   )

@@ -106,9 +106,9 @@ function S1Hero() {
           color: 'var(--color-text-white)',
           marginBottom: '28px',
         }}>
-          Every<br />
-          <em style={{ fontStyle: 'italic', color: 'var(--color-accent)', opacity: 0.62 }}>Industry,</em><br />
-          One Standard
+          
+          <em style={{ fontStyle: 'italic', color: 'var(--color-accent)', opacity: 0.62 }}>Industry</em><br />
+          Standard
         </h1>
 
         {/* Thin divider */}

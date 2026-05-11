@@ -68,10 +68,11 @@ function ChallengeAndSolution({ challenge, solution }) {
               border: '1px solid rgba(255,255,255,0.12)',
             }}
           >
-            <p className="text-label mb-4" style={{ color: 'var(--color-highlight)' }}>
-              The Challenge
+            <p className="text-body-sm mb-4" style={{ color: 'var(--color-highlight)', fontWeight: 800 }}>
+              CHALLENGE
             </p>
-            <p className="text-body text-white/70" style={{ lineHeight: 1.8 }}>
+            <p className="text-body-sm"
+                style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}>
               {challenge}
             </p>
           </div>
@@ -84,10 +85,11 @@ function ChallengeAndSolution({ challenge, solution }) {
               border: '1px solid rgba(168,218,220,0.2)',
             }}
           >
-            <p className="text-label mb-4" style={{ color: 'var(--color-accent)' }}>
-              Our Solution
+            <p className="text-body-sm mb-4" style={{ color: 'var(--color-highlight)' , fontWeight: 800}}>
+              SOLUTION
             </p>
-            <p className="text-body text-white/70" style={{ lineHeight: 1.8 }}>
+            <p className="text-body-sm"
+                style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}>
               {solution}
             </p>
           </div>
@@ -190,14 +192,11 @@ function HowItWorks({ howItWorks }) {
                 style={{ minWidth: 0 }}
               >
                 {/* Step number */}
-                <span style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '11px',
-                  letterSpacing: '0.20em',
+                <span 
+                className='text-body-sm'
+                style={{
                   color: 'var(--color-accent)',
-                  opacity: 0.7,
                   marginBottom: '12px',
-                  display: 'block',
                 }}>
                   {step.step}
                 </span>
@@ -215,8 +214,8 @@ function HowItWorks({ howItWorks }) {
                   {step.title}
                 </h3>
                 <p
-                  className="text-body-sm text-white/60"
-                  style={{ lineHeight: 1.75, paddingRight: '24px' }}
+                  className="text-body-sm"
+                style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 , paddingRight: '16px'}}
                 >
                   {step.description}
                 </p>
@@ -322,21 +321,21 @@ function CTABlock() {
           Want to explore this accelerator for your business?
         </h2>
         <p
-          className="text-body text-white/65 max-w-2xl mx-auto mb-8"
-          style={{ lineHeight: 1.8 }}
+          className="text-body max-w-2xl mx-auto mb-8"
+          style={{  color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}
+
         >
           Let's discuss how this accelerator can be adapted to your workflows,
           systems, and enterprise goals.
         </p>
         <Link
           to="/contact"
-          className="inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold text-body-sm no-underline"
+          className="inline-flex items-center gap-2 px-6 py-2 rounded-lg font-semibold text-body-sm no-underline"
           style={{ background: 'var(--color-highlight)', color: 'var(--color-text-white)' }}
           onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--color-accent)'; e.currentTarget.style.color = 'var(--color-text-primary)' }}
           onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--color-highlight)'; e.currentTarget.style.color = 'var(--color-text-white)' }}
         >
           Talk to Us
-          <ArrowRight size={16} strokeWidth={2} />
         </Link>
 
       </div>
@@ -353,7 +352,7 @@ function S2Description({ accelerator }) {
       <KeyCapabilities capabilities={accelerator.capabilities} />
       <HowItWorks howItWorks={accelerator.howItWorks} />
       <BusinessValue businessValue={accelerator.businessValue} />
-      <Deployment deployment={accelerator.deployment} />
+      {/* <Deployment deployment={accelerator.deployment} /> */}
       <CTABlock />
     </>
   )

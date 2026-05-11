@@ -1,6 +1,23 @@
-import heroCoverVideo from '../../../assets/videos/home-cover.mp4'
+import { useState } from 'react'
+import home1 from '../../../assets/videos/home-1.mp4'
+import home2 from '../../../assets/videos/home-2.mp4'
+import home3 from '../../../assets/videos/home-3.mp4'
+
+const HERO_VIDEOS = [home1, home2, home3]
+const STORAGE_KEY = 'thotnr_hero_vid_idx'
+
+function pickVideo() {
+  try {
+    const idx = parseInt(localStorage.getItem(STORAGE_KEY) ?? '0', 10)
+    localStorage.setItem(STORAGE_KEY, String((idx + 1) % HERO_VIDEOS.length))
+    return HERO_VIDEOS[idx]
+  } catch {
+    return HERO_VIDEOS[0]
+  }
+}
 
 function Hero() {
+  const [videoSrc] = useState(pickVideo)
   return (
     <section
       className="relative w-full overflow-hidden"
@@ -91,9 +108,10 @@ function Hero() {
 
       {/* Background video */}
       <video
+        key={videoSrc}
         className="hero-bg-video absolute inset-0 w-full h-full z-0"
         style={{ filter: 'brightness(0.68) contrast(1.08) saturate(1.05)' }}
-        src={heroCoverVideo}
+        src={videoSrc}
         autoPlay
         muted
         loop

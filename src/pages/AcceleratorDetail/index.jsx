@@ -1,6 +1,7 @@
 import { useParams, Navigate } from 'react-router-dom'
 import Navbar from '../../components/layout/Navbar'
 import Footer from '../../components/layout/Footer'
+import SubscribeSection from '../../components/layout/SubscribeSection'
 import S1Hero from './sections/S1Hero'
 import S2Description from './sections/S2Description'
 import { accelerators } from '../../data/accelerators'
@@ -21,6 +22,7 @@ function AcceleratorDetail() {
         tags={accelerator.tags}
       />
       <S2Description accelerator={accelerator} />
+      <SubscribeSection/>
       <Footer />
     </>
   )

@@ -1,5 +1,7 @@
 import Navbar       from '../../components/layout/Navbar'
 import Footer       from '../../components/layout/Footer'
+import SubscribeSection from '../../components/layout/SubscribeSection'
+
 import S1Hero       from './sections/S1Hero'
 import FeatureBlock from './sections/FeatureBlock'
 import S6CTA        from './sections/S6CTA'
@@ -101,6 +103,7 @@ function AI() {
       <S6CTA />
       <S7Form />
 
+      <SubscribeSection/>
       <Footer />
     </>
   )

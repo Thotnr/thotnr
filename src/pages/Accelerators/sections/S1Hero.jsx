@@ -1,4 +1,4 @@
-import coverVideo from '../../../assets/videos/ai-cover.mp4'
+import coverVideo from '../../../assets/videos/accelerator-cover.mp4'
 
 function S1Hero() {
   return (
@@ -86,7 +86,7 @@ function S1Hero() {
             color: 'var(--color-accent)',
             opacity: 0.82,
           }}>
-            AI Accelerators
+            Accelerators
           </span>
         </div>
 
@@ -100,10 +100,9 @@ function S1Hero() {
           color: 'var(--color-text-white)',
           marginBottom: '24px',
         }}>
-          Enterprise{' '}
-          <em style={{ fontStyle: 'italic', color: 'var(--color-accent)', opacity: 0.65 }}>AI</em>
-          <br />
-          Accelerators
+          Enterprise <br/>
+          <em style={{ fontStyle: 'italic', color: 'var(--color-accent)', opacity: 0.65 }}>Accelerators</em>
+        
         </h1>
 
         <div style={{

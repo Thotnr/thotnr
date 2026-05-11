@@ -5,12 +5,12 @@ function Statement() {
 
         {/* Headline */}
         <h2 className="text-h1 text-[var(--color-text-primary)] leading-tight mb-4">
-          Our field-tested AI accelerators to build your fluidic enterprise faster
+          Enterprise AI built for the full journey — strategy to scale.
         </h2>
 
         {/* Closing statement */}
         <p className="text-body-lg text-[var(--color-text-secondary)]">
-          We don’t start from scratch, we start from experience. Our proprietary accelerators and platforms enable you to design, customize, and deploy AI solutions quickly and reliably. They extract decision patterns from historical data, build knowledge graphs from operational logs, create optimization engines for core processes, and design continuous feedback loops for improvement. These aren’t generic tools; they are Nagarro’s intellectual property, built and battle-tested through real-world enterprise deployments.
+          Most AI engagements fail somewhere between the pilot and production. We engineer the complete stack — clear-eyed readiness assessment and strategic roadmapping, production-grade generative AI connected to your real enterprise data, intelligent automation that removes manual bottlenecks, and the MLOps infrastructure that keeps every model accurate and auditable as your business evolves. No disconnected pilots. No systems that need rebuilding in eighteen months. AI built on your data, fitted to your workflows, and measured in the results that matter.
         </p>
 
       </div>

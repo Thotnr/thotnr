@@ -12,7 +12,7 @@ function Vision() {
       label: 'Build',
       statement: ['We ', 'build AI that fits', ' your stack and your workflow.'],
       accentIndex: 1,
-      body: 'Off-the-shelf demos collapse the moment they meet enterprise complexity. We engineer for your infrastructure, governance, and how your teams actually operate.',
+      body: 'Demos fail where enterprise complexity begins. We engineer for your infrastructure, governance, and the way your teams work.',
     },
     {
       number: '03',

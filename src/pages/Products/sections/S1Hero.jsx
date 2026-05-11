@@ -1,4 +1,4 @@
-import heroBg from '../../../assets/images/products/our-product-cover.jpg'
+import coverVideo from '../../../assets/videos/products-cover.mp4'
 
 function S1Hero() {
   return (
@@ -13,45 +13,90 @@ function S1Hero() {
         }
       `}</style>
 
-      {/* Background image */}
+      {/* Background video */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        style={{ objectPosition: 'center center', filter: 'brightness(0.78) contrast(1.05)' }}
+        src={coverVideo}
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
+
+      {/* Layer 1: Left-to-right gradient — dark on left where content lives */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 z-[1]"
         style={{
-          backgroundImage: `url(${heroBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center top',
+          pointerEvents: 'none',
+          background: 'linear-gradient(to right, rgba(1,7,22,0.88) 0%, rgba(1,7,22,0.65) 25%, rgba(1,7,22,0.30) 55%, rgba(1,7,22,0.08) 80%, rgba(1,7,22,0) 100%)',
         }}
       />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/62" />
-
-      {/* Accent gradient — bottom edge glow */}
+      {/* Layer 2: Mobile flat overlay — gradient alone is too subtle on small screens */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-40"
+        className="block lg:hidden absolute inset-0 z-[1]"
+        style={{ pointerEvents: 'none', background: 'rgba(1,7,22,0.48)' }}
+      />
+
+      {/* Layer 3: Bottom vignette */}
+      <div
+        className="absolute inset-0 z-[1]"
         style={{
-          background: 'linear-gradient(to top, rgba(29,53,87,0.5) 0%, transparent 100%)',
+          pointerEvents: 'none',
+          background: 'linear-gradient(to top, rgba(1,7,22,0.60) 0%, transparent 38%)',
+        }}
+      />
+
+      {/* Layer 4: Top vignette */}
+      <div
+        className="absolute inset-0 z-[1]"
+        style={{
+          pointerEvents: 'none',
+          background: 'linear-gradient(to bottom, rgba(1,7,22,0.40) 0%, transparent 22%)',
         }}
       />
 
       {/* Content */}
       <div className="prod-hero-content absolute z-10 left-[6%] md:left-[10%] top-[58%] -translate-y-1/2">
-        <p
-          className="text-label mb-4"
-          style={{ color: 'var(--color-accent)', letterSpacing: '0.2em' }}
-        >
-          Our Products
-        </p>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '36px' }}>
+          <div className="hero-accent-line" style={{
+            width: 'clamp(28px, 4vw, 40px)',
+            height: '1px',
+            background: 'linear-gradient(90deg, transparent 0%, #7dd3c0 100%)',
+          }} />
+          <span style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: '11.5px',
+            fontWeight: 500,
+            letterSpacing: '0.34em',
+            textTransform: 'uppercase',
+            color: '#7dd3c0',
+          }}>
+            Our Products
+          </span>
+        </div>
 
         <h1 className="text-display text-white leading-tight mb-6" style={{ maxWidth: '600px' }}>
-          Intelligence,
+          Intelligence
           <br />
           <em style={{ color: 'var(--color-accent)', fontStyle: 'italic' }}>
-            Productised.
+            Productised
           </em>
         </h1>
 
-        <p className="text-h4 max-w-lg" style={{ color: 'rgba(255,255,255,0.72)' }}>
+        <p style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: '17px',
+          lineHeight: 1.6,
+          fontWeight: 400,
+          color: '#e8eaed',
+          opacity: 0.85,
+          maxWidth: 'min(540px, 100%)',
+          marginBottom: '40px',
+          letterSpacing: '-0.005em',
+          textShadow: '0 2px 16px rgba(0, 0, 0, 0.5)',
+        }}>
           Enterprise products built on deep domain intelligence —
           from hospitality to smart infrastructure.
         </p>
