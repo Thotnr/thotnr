@@ -5,21 +5,21 @@ import icon3 from '../../../assets/images/collabration-layers.png'
 const services = [
   {
     icon: icon1,
-    title: 'Human Judgment and AI Powered',
-    tagline: 'Where human judgment meets machine capability',
-    whatWeDo: 'Human judgment sets the direction. AI extends the reach. We build systems where both work in concert — so your teams decide faster without losing the insight only humans carry.',
+    title: 'AI built to extend human capability',
+    tagline: 'Augmentation',
+    whatWeDo: 'We design AI systems that strengthen human judgment with speed, scale, and precision. By combining machine intelligence with business context, we enable teams to make faster, more informed decisions while retaining oversight, accountability, and strategic control.',
   },
   {
     icon: icon2,
-    title: 'Where Human Meets Machine',
-    tagline: 'AI that understands your business, not just your data',
-    whatWeDo: 'Your people bring context. AI brings scale. Together they form a thinking system sharper than either could be alone.',
+    title: 'Where people and AI work as one',
+    tagline: 'Collabration',
+    whatWeDo: 'Our solutions are built for practical human–AI collaboration. Teams bring domain expertise and intent, while AI contributes responsiveness, analytical depth, and scale — creating a more effective way to work across critical business functions.',
   },
   {
     icon: icon3,
-    title: 'Collaboration at Every Layer',
-    tagline: 'Seamless movement of insight across systems and teams',
-    whatWeDo: "We don't replace human thinking — we amplify it. AI works alongside your teams, learning how you operate and making every interaction more intelligent over time.",
+    title: 'Intelligence embedded across operations',
+    tagline: 'Integration',
+    whatWeDo: "We integrate AI directly into enterprise workflows, systems, and decision points. This makes intelligence operational across the organisation, improving efficiency, consistency, and adaptability over time.",
   },
 ]
 
@@ -85,7 +85,7 @@ function ServicesCards() {
         <div className="mb-8">
           <p className="text-h4 text-[var(--color-highlight)]"> Core Capabilities</p>
           <h2 className="text-h1 text-white"> Our AI Capabilities</h2>
-          <p className="text-body mt-2 max-w-2xl" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}>Three interlocking disciplines that take an AI idea from whiteboard to measurable business impact.</p>
+          <p className="text-body mt-2 max-w-2xl" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}>Intelligence Augmented across decisions, workflows, and operations.</p>
         </div>
 
           <style>{`

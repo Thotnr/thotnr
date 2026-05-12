@@ -61,8 +61,8 @@ function TeamCard({ img, name, role, desc }) {
         {/* Optional desc (if needed later) */}
         {desc && (
           <p
-            className="text-caption leading-relaxed"
-            style={{ color: 'var(--color-text-secondary)', opacity: 0.8 }}
+            className="text-xs leading-relaxed"
+            style={{ color: 'var(--color-secondary)', opacity: 1 }}
           >
             {desc}
           </p>

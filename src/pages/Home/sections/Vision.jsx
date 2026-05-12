@@ -95,22 +95,39 @@ function Vision() {
               }}
             >
               {/* Step label row */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <span
-                  className="text-body tracking-widest"
-                  style={{ color: 'var(--color-highlight)' }}
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    letterSpacing: '0.08em',
+                    color: 'var(--color-accent)',
+                    lineHeight: 1,
+                  }}
                 >
-                  {step.number} — {step.label}
+                  {step.number}
+                </span>
+                <span
+                  style={{
+                    width: '1px',
+                    height: '14px',
+                    background: 'rgba(255,255,255,0.18)',
+                    display: 'inline-block',
+                    flexShrink: 0,
+                  }}
+                />
+                <span
+                  className="text-label"
+                  style={{color: 'var(--color-accent)', letterSpacing: '0.18em', fontWeight: 600 }}
+                >
+                  {step.label}
                 </span>
                 {/* Chevron — visible on desktop only */}
                 {i < 2 && (
                   <span
                     className="hidden lg:block ml-auto"
-                    style={{
-                      color: 'rgba(255,255,255,0.2)',
-                      fontSize: '18px',
-                      lineHeight: 1,
-                    }}
+                    style={{ color: 'rgba(255,255,255,0.2)', fontSize: '18px', lineHeight: 1 }}
                   >
                     ›
                   </span>

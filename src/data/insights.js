@@ -784,7 +784,7 @@ export const insights = [
   coverImg: imgExperience,
   tagline: 'Experience Design',
   subheadline: 'The Next Generation User Experience Today',
-  authorName: 'Sankalp',
+  authorName: 'Gaurav Kumar',
   authorRole: 'Head of Experience Design',
   authorImage: authorNeha,
   publishDate: 'August 23, 2022',

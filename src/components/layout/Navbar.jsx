@@ -326,7 +326,7 @@ function Navbar() {
           </a>
 
           <div className="flex-1 flex justify-center items-center gap-1">
-            <DropdownItem label="capibilities" data={whatWeOfferData} scrolled={scrolled} />
+            <DropdownItem label="capabilities" data={whatWeOfferData} scrolled={scrolled} />
             <Link to="/case-studies" className={linkCls} style={linkStyle} onMouseEnter={onEnter} onMouseLeave={onLeave}>applied intelligence</Link>
             <Link to="/insights"     className={linkCls} style={linkStyle} onMouseEnter={onEnter} onMouseLeave={onLeave}>augmented insights</Link>
             <Link to="/products"     className={linkCls} style={linkStyle} onMouseEnter={onEnter} onMouseLeave={onLeave}>products</Link>
