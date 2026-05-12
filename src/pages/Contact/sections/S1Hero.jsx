@@ -27,7 +27,18 @@ function S1Hero() {
           </span>
         </h1>
 
-        <p className="text-h4" style={{ color: 'rgba(255,255,255,0.8)' }}>
+        <p style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: '17px',
+          lineHeight: 1.6,
+          fontWeight: 400,
+          color: '#e8eaed',
+          opacity: 0.85,
+          maxWidth: 'min(540px, 100%)',
+          marginBottom: '40px',
+          letterSpacing: '-0.005em',
+          textShadow: '0 2px 16px rgba(0, 0, 0, 0.5)',
+        }}>
           We'd love to hear from you — whether it's a complex enterprise challenge
           or just an early-stage idea.
         </p>

@@ -40,7 +40,7 @@ function StepCard({ number, title, desc, last }) {
         {number}
       </span>
       <h4 className="text-h4 text-white mb-3">{title}</h4>
-      <p className="text-body-sm text-white/60">{desc}</p>
+      <p className="text-body-sm" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}>{desc}</p>
     </div>
   )
 }
@@ -59,7 +59,7 @@ function S3HowWeWork() {
           <h2 className="text-h1 text-white leading-tight">
             How We Work Across Industries
           </h2>
-          <p className="text-body text-white/70 mt-2 max-w-2xl mx-auto">
+          <p className="text-body mt-2 max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}>
             A repeatable execution model built for the complexity of enterprise environments —
             regardless of sector.
           </p>

@@ -65,7 +65,7 @@ function CaseStudies() {
         {/* Header */}
         <div className="mb-8">
           <p className="text-h4 text-[var(--color-highlight)]">
-            Impact
+            Applied Intelligence
           </p>
 
           <h2

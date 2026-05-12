@@ -67,7 +67,7 @@ function ServiceCard({ icon, title, whatWeDo, index }) {
             {title}
           </h3>
 
-          <p className="text-body text-white/70">
+          <p className="text-body" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}>
             {whatWeDo}
           </p>
         </div>
@@ -85,7 +85,7 @@ function ServicesCards() {
         <div className="mb-8">
           <p className="text-h4 text-[var(--color-highlight)]"> Core Capabilities</p>
           <h2 className="text-h1 text-white"> Our AI Capabilities</h2>
-          <p className="text-body text-white/70 mt-2 max-w-2xl">Three interlocking disciplines that take an AI idea from whiteboard to measurable business impact.          </p>
+          <p className="text-body mt-2 max-w-2xl" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}>Three interlocking disciplines that take an AI idea from whiteboard to measurable business impact.</p>
         </div>
 
           <style>{`

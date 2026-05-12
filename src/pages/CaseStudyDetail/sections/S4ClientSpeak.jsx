@@ -46,11 +46,11 @@ function S4ClientSpeak({ clientSpeak }) {
           >
             {highlight ? (
               <>
-                <span style={{ color: 'rgba(255,255,255,0.82)' }}>{body} </span>
+                <span style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}>{body} </span>
                 <span style={{ color: 'var(--color-highlight)' }}>{highlight}</span>
               </>
             ) : (
-              <span style={{ color: 'rgba(255,255,255,0.82)' }}>{quote}</span>
+              <span style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}>{quote}</span>
             )}
           </blockquote>
         </div>

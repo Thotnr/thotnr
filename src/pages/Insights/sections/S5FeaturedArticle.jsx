@@ -14,7 +14,7 @@ function S5FeaturedArticle() {
           The ROI of Intelligent Automation: Measuring Second and Third-Order Returns
         </h2>
 
-        <p className="text-body-lg text-white/70 mb-10">
+        <p className="text-body-lg mb-10" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}>
           Most organisations measure automation ROI by the hours saved in the first workflow they touch.
           The real value — the compounding, second and third-order returns — lives deeper in the system.
           This article maps what that actually looks like in enterprise environments, and why the

@@ -68,7 +68,7 @@ function Vision() {
           <div className="flex items-center">
             <p
               className="text-body"
-              style={{ color: 'rgba(255,255,255,0.95)', lineHeight: 1.8 }}
+              style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}
             >
               We see AI as a discipline, not a demo. Three things separate the
               deployments that scale from the ones that stall — and we build for

@@ -1,6 +1,10 @@
-import emailImg      from '../assets/images/robot-emailing.webp'
-import securityImg   from '../assets/images/ai-safety-shield.jpg'
-import analyticsImg  from '../assets/images/ai-analytics-co-pilot.jpg'
+import emailImg      from '../assets/images/ai-smart-emailing.png'
+import securityImg   from '../assets/images/ai-trust-safety-shield.png'
+import analyticsImg  from '../assets/images/ai-analytics-co-pilot.png'
+
+import emailVideo     from '../assets/videos/ai-smart-emailing.mp4'
+import securityVideo  from '../assets/videos/ai-trust-safety-shield.mp4'
+import analyticsVideo from '../assets/videos/ai-analytics-co-pilot.mp4'
 
 export const accelerators = [
   {
@@ -10,6 +14,7 @@ export const accelerators = [
     category: 'Communication Automation',
     icon: 'mail',
     image: emailImg,
+    video: emailVideo,
     tagline:
       'Intelligent email automation that drafts contextual replies directly inside your mailbox — in seconds.',
     shortDescription:
@@ -110,6 +115,7 @@ export const accelerators = [
     category: 'AI Governance & Security',
     icon: 'shield-check',
     image: securityImg,
+    video: securityVideo,
     tagline:
       'Continuous protection for your production AI — guardrails, red-teaming, and real-time defense against adversarial threats.',
     shortDescription:
@@ -210,6 +216,7 @@ export const accelerators = [
     category: 'Business Intelligence',
     icon: 'trending-up',
     image: analyticsImg,
+    video: analyticsVideo,
     tagline:
       'Real-time AI insights from your enterprise data — surfaced through natural language, automated dashboards, and proactive anomaly detection.',
     shortDescription:

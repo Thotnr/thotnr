@@ -114,11 +114,15 @@ function S1Hero() {
 
         <p style={{
           fontFamily: 'var(--font-body)',
-          fontSize: '15px',
-          lineHeight: 1.85,
-          color: 'var(--color-text-white)',
-          opacity: 0.62,
-          maxWidth: 'min(380px, 100%)',
+          fontSize: '17px',
+          lineHeight: 1.6,
+          fontWeight: 400,
+          color: '#e8eaed',
+          opacity: 0.85,
+          maxWidth: 'min(540px, 100%)',
+          marginBottom: '40px',
+          letterSpacing: '-0.005em',
+          textShadow: '0 2px 16px rgba(0, 0, 0, 0.5)',
         }}>
           Reusable AI solution frameworks built to solve enterprise challenges faster,
           safer, and with less implementation risk.

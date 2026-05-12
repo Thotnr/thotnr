@@ -327,7 +327,7 @@ function Navbar() {
 
           <div className="flex-1 flex justify-center items-center gap-1">
             <DropdownItem label="capibilities" data={whatWeOfferData} scrolled={scrolled} />
-            <Link to="/case-studies" className={linkCls} style={linkStyle} onMouseEnter={onEnter} onMouseLeave={onLeave}>impact</Link>
+            <Link to="/case-studies" className={linkCls} style={linkStyle} onMouseEnter={onEnter} onMouseLeave={onLeave}>applied intelligence</Link>
             <Link to="/insights"     className={linkCls} style={linkStyle} onMouseEnter={onEnter} onMouseLeave={onLeave}>augmented insights</Link>
             <Link to="/products"     className={linkCls} style={linkStyle} onMouseEnter={onEnter} onMouseLeave={onLeave}>products</Link>
             <Link to="/ai"           className={linkCls} style={linkStyle} onMouseEnter={onEnter} onMouseLeave={onLeave}>AI</Link>
@@ -384,7 +384,7 @@ function Navbar() {
         <div className="flex flex-col px-5 py-3">
           {[
             
-            { label: 'impact',   to: '/case-studies' },
+            { label: 'applied intelligence',   to: '/case-studies' },
             { label: 'augmented insights',   to: '/insights'},
             { label: 'products',   to: '/products'     },
             { label: 'AI',         to: '/ai'           },

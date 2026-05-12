@@ -1,275 +1,231 @@
-import {
-  Building2, BarChart2, Users,
-  BookOpen, CreditCard, Calendar,
-  Scan, Sparkles, TrendingUp,
-  Wifi, Zap, Wrench,
-} from 'lucide-react'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { ArrowRight } from 'lucide-react'
 import { products } from '../../../data/products'
 
-const ICON_MAP = {
-  Building2, BarChart2, Users,
-  BookOpen, CreditCard, Calendar,
-  Scan, Sparkles, TrendingUp,
-  Wifi, Zap, Wrench,
-}
-
-function ProductLogoCard({ index, logo, name, builtYear }) {
-  const numStr = String(index + 1).padStart(2, '0')
+function SizeBtn({ label, onClick }) {
   return (
-    <div
-      className="w-full md:w-[200px] flex-shrink-0 rounded-2xl flex flex-col items-center justify-between p-6"
+    <button
+      onClick={onClick}
+      className="flex items-center justify-center rounded-full cursor-pointer"
       style={{
-        background: 'rgba(168,218,220,0.12)',
-        minHeight: '200px',
-        border: '1px solid rgba(168,218,220,0.25)',
+        width: '26px',
+        height: '26px',
+        background: 'rgba(11,15,25,0.06)',
+        border: '1px solid rgba(11,15,25,0.10)',
+        color: 'var(--color-text-secondary)',
+        fontFamily: 'var(--font-heading)',
+        fontSize: '16px',
+        fontWeight: 600,
+        lineHeight: 1,
+        transition: 'background 0.18s ease',
       }}
+      onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(11,15,25,0.12)' }}
+      onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(11,15,25,0.06)' }}
     >
-      <span
-        style={{
-          fontFamily: 'var(--font-mono)',
-          fontSize: '24px',
-          fontWeight: 600,
-          letterSpacing: '0.18em',
-          color: 'var(--color-text-tertiary)',
-          alignSelf: 'flex-start',
-        }}
-      >
-        {numStr}
-      </span>
-
-      <img
-        src={logo}
-        alt={name}
-        style={{
-          maxHeight: '72px',
-          maxWidth: '160px',
-          objectFit: 'contain',
-        }}
-      />
-
-      <span
-        style={{
-          fontFamily: 'var(--font-mono)',
-          fontSize: '14px',
-          fontWeight: 500,
-          letterSpacing: '0.14em',
-          textTransform: 'uppercase',
-          color: 'var(--color-text-tertiary)',
-          alignSelf: 'flex-end',
-        }}
-      >
-        Est. {builtYear}
-      </span>
-    </div>
+      {label}
+    </button>
   )
 }
 
-function ProductBasicInfo({ domain, name, tagline, description, stat }) {
+function ProductCard({ product, index, logoSize }) {
+  const numStr = String(index + 1).padStart(2, '0')
+  const shortDesc = product.description.length > 120
+    ? product.description.slice(0, 120).trimEnd() + '…'
+    : product.description
+
   return (
-    <div className="flex-1 flex flex-col justify-center py-2">
-      <span
-        className="inline-block self-start mb-4 px-3 py-1 rounded-full"
-        style={{
-          fontFamily: 'var(--font-mono)',
-          fontSize: '10px',
-          fontWeight: 600,
-          letterSpacing: '0.15em',
-          textTransform: 'uppercase',
-          border: '1px solid var(--color-highlight)',
-          color: 'var(--color-highlight)',
-        }}
+    <Link
+      to={`/products/${product.slug}`}
+      className="pd-product-card group flex flex-col rounded-2xl overflow-hidden no-underline h-full"
+    >
+      {/* Logo banner — light bg so logos show in real colors */}
+      <div
+        className="relative flex items-center justify-center flex-shrink-0"
+        style={{ background: 'var(--color-primary)', height: '188px' }}
       >
-        {domain}
-      </span>
-
-      <h2
-        className="text-h1"
-        style={{ color: 'var(--color-text-primary)', marginBottom: '8px', lineHeight: 1.15 }}
-      >
-        {name}
-      </h2>
-
-      <p
-        className="text-body-lg"
-        style={{ color: 'var(--color-secondary)', fontStyle: 'italic', marginBottom: '14px' }}
-      >
-        {tagline}
-      </p>
-
-      <p
-        className="text-body"
-        style={{ color: 'var(--color-text-secondary)', lineHeight: 1.75, marginBottom: '20px' }}
-      >
-        {description}
-      </p>
-
-      <div className="flex items-baseline gap-3">
         <span
+          className="absolute top-5 left-5 text-body-sm"
+          style={{ color: 'var(--color-secondary)', letterSpacing: '0.18em' }}
+        >
+          {numStr}
+        </span>
+        <span
+          className="absolute top-5 right-5 text-body-sm"
+          style={{ color: 'var(--color-secondary)', letterSpacing: '0.12em' }}
+        >
+          Est. {product.builtYear}
+        </span>
+
+        <img
+          src={product.logo}
+          alt={product.name}
           style={{
-            fontFamily: 'var(--font-heading)',
-            fontSize: '36px',
-            fontWeight: 800,
-            lineHeight: 1,
-            color: 'var(--color-text-primary)',
+            maxHeight: `${logoSize}px`,
+            maxWidth: `${Math.round(logoSize * 2.47)}px`,
+            objectFit: 'contain',
+            transition: 'max-height 0.25s ease, max-width 0.25s ease',
+          }}
+        />
+
+        {/* Bottom fade into card body */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-8"
+          style={{ background: 'linear-gradient(to bottom, transparent, rgba(241,250,238,0.7))' }}
+        />
+      </div>
+
+      {/* Card body */}
+      <div className="flex flex-col flex-1 p-7 lg:p-8">
+
+        {/* Domain badge */}
+        <span
+          className="inline-block self-start mb-4 px-2 py-1 rounded-full text-body-sm"
+          style={{
+            color: 'var(--color-highlight)',
+            border: '1px solid rgba(230,57,70,0.22)',
+            background: 'rgba(230,57,70,0.05)',
           }}
         >
-          {stat.number}
+          {product.domain}
         </span>
-        <span className="text-body-sm" style={{ color: 'var(--color-text-tertiary)' }}>
-          {stat.label}
-        </span>
-      </div>
-    </div>
-  )
-}
 
-function FeatureCard({ icon, label, desc }) {
-  const Icon = ICON_MAP[icon]
-  return (
-    <div
-      className="rounded-xl p-4"
-      style={{ background: 'rgba(168,218,220,0.07)', border: '1px solid rgba(168,218,220,0.18)' }}
-    >
-      <div className="flex items-center gap-2 mb-2">
-        <div
-          className="flex items-center justify-center rounded-lg flex-shrink-0"
-          style={{ width: '32px', height: '32px', background: 'rgba(230,57,70,0.08)' }}
-        >
-          {Icon && <Icon size={15} color="var(--color-highlight)" strokeWidth={1.8} />}
-        </div>
-        <p
-          className="text-body-sm font-semibold"
+        {/* Name */}
+        <h3
+          className="text-h2 leading-tight mb-1"
           style={{ color: 'var(--color-text-primary)' }}
         >
-          {label}
-        </p>
-      </div>
-      <p className="text-body-sm" style={{ color: 'var(--color-text-tertiary)', lineHeight: 1.6 }}>
-        {desc}
-      </p>
-    </div>
-  )
-}
+          {product.name}
+        </h3>
 
-function ProductItem({ product, index }) {
-  return (
-    <div className="product-item">
-      {/* ROW 1: Logo Card + Basic Details */}
-      <div className="flex flex-col md:flex-row gap-6 lg:gap-10 items-stretch">
-        <ProductLogoCard
-          index={index}
-          logo={product.logo}
-          name={product.name}
-          builtYear={product.builtYear}
-        />
-        <ProductBasicInfo
-          domain={product.domain}
-          name={product.name}
-          tagline={product.tagline}
-          description={product.description}
-          stat={product.stat}
-        />
-      </div>
-
-      {/* ROW 2: Details + Features */}
-      <div className="mt-8 lg:mt-10">
-        {/* Why built + Problem solved */}
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 py-6 mb-6"
+        {/* Tagline */}
+        <p
+          className="text-body-lg mb-4"
           style={{
-            borderTop: '1px solid rgba(11,15,25,0.09)',
-            borderBottom: '1px solid rgba(11,15,25,0.09)',
+            color: 'var(--color-text-secondary)',
+            fontStyle: 'italic',
+            lineHeight: 1.5,
           }}
         >
-          <div>
-            <p
-              className="mb-2"
+          {product.tagline}
+        </p>
+
+        {/* Short description */}
+        <p
+          className="text-body-sm flex-1 mb-6"
+          style={{ color: 'var(--color-text-tertiary)', lineHeight: 1.78 }}
+        >
+          {shortDesc}
+        </p>
+
+        {/* Divider */}
+        <div className="mb-5" style={{ height: '1px', background: 'rgba(11,15,25,0.08)' }} />
+
+        {/* Stat + CTA row */}
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex flex-col leading-none">
+            <span
               style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '10px',
-                fontWeight: 600,
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                color: 'var(--color-highlight)',
+                fontFamily: 'var(--font-heading)',
+                fontSize: 'clamp(22px, 2.4vw, 28px)',
+                fontWeight: 700,
+                color: 'var(--color-text-primary)',
+                lineHeight: 1,
               }}
             >
-              Why We Built It
-            </p>
-            <p className="text-body-sm" style={{ color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>
-              {product.motive}
-            </p>
+              {product.stat.number}
+            </span>
+            <span
+              className="text-caption mt-1.5"
+              style={{ color: 'var(--color-text-tertiary)' }}
+            >
+              {product.stat.label}
+            </span>
           </div>
-          <div>
-            <p
-              className="mb-2"
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '10px',
-                fontWeight: 600,
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                color: 'var(--color-highlight)',
-              }}
-            >
-              Problem Solved
-            </p>
-            <p className="text-body-sm" style={{ color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>
-              {product.problemSolved}
-            </p>
+
+          <div className="pd-cta flex items-center gap-2 px-4 py-2 rounded-full text-body-sm font-semibold flex-shrink-0">
+            Know More
+           
           </div>
         </div>
 
-        {/* Features */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {product.features.map((f) => (
-            <FeatureCard key={f.label} {...f} />
-          ))}
-        </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
 function S2ProductList() {
+  const [logoSize, setLogoSize] = useState(100)
+
   return (
-    <section
-      className="py-16 px-6 md:px-10 lg:px-16 bg-[var(--color-primary)]"
-    >
+    <section className="py-16 px-6 md:px-10 lg:px-16 bg-[var(--color-primary)]">
       <style>{`
-        @keyframes productIn {
-          from { opacity: 0; transform: translateY(24px); }
+        @keyframes pdCardIn {
+          from { opacity: 0; transform: translateY(28px); }
           to   { opacity: 1; transform: translateY(0); }
         }
-        .product-item { animation: productIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
-        .product-item:nth-child(1) { animation-delay: 0.05s; }
-        .product-item:nth-child(2) { animation-delay: 0.2s;  }
-        .product-item:nth-child(3) { animation-delay: 0.35s; }
-        .product-item:nth-child(4) { animation-delay: 0.5s;  }
+        .pd-card-0 { animation: pdCardIn 0.65s cubic-bezier(0.16,1,0.3,1) 0.08s both; }
+        .pd-card-1 { animation: pdCardIn 0.65s cubic-bezier(0.16,1,0.3,1) 0.20s both; }
+        .pd-card-2 { animation: pdCardIn 0.65s cubic-bezier(0.16,1,0.3,1) 0.32s both; }
+        .pd-card-3 { animation: pdCardIn 0.65s cubic-bezier(0.16,1,0.3,1) 0.44s both; }
+
+        .pd-product-card {
+          background: #ffffff;
+          border: 1px solid rgba(11,15,25,0.08);
+          box-shadow: 0 4px 24px rgba(11,15,25,0.06);
+          transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s ease;
+        }
+        .pd-product-card:hover {
+          transform: translateY(-7px);
+          box-shadow: 0 24px 56px rgba(11,15,25,0.12), 0 0 0 1.5px rgba(230,57,70,0.16);
+        }
+        .pd-cta {
+          background: var(--color-secondary);
+          color: #ffffff;
+          transition: background 0.22s ease;
+        }
+        .pd-product-card:hover .pd-cta {
+          background: var(--color-highlight);
+        }
       `}</style>
 
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="mb-12">
-          <p className="text-h4 text-[var(--color-highlight)]">What We've Built</p>
-          <h2 className="text-h1 text-[var(--color-text-primary)]">Our Product Portfolio</h2>
-          <p className="text-body text-[var(--color-text-secondary)] mt-2 max-w-2xl">
-            Each product was born from a real enterprise problem — domain-specific, deeply researched,
-            and built to compound in value over time.
-          </p>
+        <div className="mb-12 flex flex-col md:flex-row md:items-end gap-4">
+          <div className="flex-1">
+            <p className="text-h4 text-[var(--color-highlight)]">What We've Built</p>
+            <h2 className="text-h1 text-[var(--color-text-primary)]">Our Product Portfolio</h2>
+            <p className="text-body text-[var(--color-text-secondary)] mt-2 max-w-2xl">
+              Each product was born from a real enterprise problem — domain-specific, deeply researched,
+              and built to compound in value over time.
+            </p>
+          </div>
+
+          {/* Logo size control */}
+          {/* <div className="flex items-center gap-2 flex-shrink-0 md:mb-1">
+            <span
+              className="text-caption"
+              style={{ color: 'var(--color-text-tertiary)', letterSpacing: '0.10em' }}
+            >
+              LOGO
+            </span>
+            <SizeBtn label="−" onClick={() => setLogoSize(s => Math.max(32, s - 8))} />
+            <span
+              className="text-caption text-center"
+              style={{ color: 'var(--color-text-secondary)', minWidth: '36px' }}
+            >
+              {logoSize}px
+            </span>
+            <SizeBtn label="+" onClick={() => setLogoSize(s => Math.min(148, s + 8))} />
+          </div> */}
         </div>
 
-        {/* Product list */}
-        <div className="flex flex-col gap-16 md:gap-20 lg:gap-24">
-          {products.map((product, index) => (
-            <div key={product.id}>
-              <ProductItem product={product} index={index} />
-              {index < products.length - 1 && (
-                <div
-                  className="mt-16 md:mt-20 lg:mt-24"
-                  style={{ height: '1px', background: 'rgba(11,15,25,0.07)' }}
-                />
-              )}
+        {/* 2-col card grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+          {products.map((product, i) => (
+            <div key={product.id} className={`pd-card-${i} flex`}>
+              <ProductCard product={product} index={i} logoSize={logoSize} />
             </div>
           ))}
         </div>

@@ -186,7 +186,7 @@ function RoleRow({ role, open, onToggle }) {
 
           {/* Left — description + bullets */}
           <div>
-            <p className="text-body text-white/70 mb-7">{role.description}</p>
+            <p className="text-body mb-7" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}>{role.description}</p>
 
             <div className="mb-6">
               <p className="text-h4 text-[var(--color-highlight)] mb-3">Responsibilities</p>
@@ -248,7 +248,7 @@ function S3OpenRoles() {
         <div className="mb-12">
           <p className="text-h4 text-[var(--color-highlight)]">Open Roles</p>
           <h2 className="text-h1 text-white leading-tight">Current Opportunities</h2>
-          <p className="text-body text-white/70 mt-2 max-w-2xl">
+          <p className="text-body mt-2 max-w-2xl" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}>
             We're growing deliberately — every hire is a long-term bet on the right person,
             not a headcount number.
           </p>

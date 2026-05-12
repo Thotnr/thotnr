@@ -25,7 +25,7 @@ function S4LifeAtThotnr() {
             <h2 className="text-h1 text-white leading-tight mb-5">
               Built by People Who Care About Getting It Right
             </h2>
-            <p className="text-body text-white/70">
+            <p className="text-body" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}>
               We are practitioners, researchers, and builders who have spent careers
               inside the hardest problems in enterprise technology. The culture we
               have built reflects that — rigorous, curious, and deeply human.

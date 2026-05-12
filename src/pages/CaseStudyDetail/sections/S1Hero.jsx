@@ -71,10 +71,18 @@ function S1Hero({ data }) {
         >
           {data.coverTagline}
         </h1>
-        <p
-          className="text-h4"
-          style={{ color: 'rgba(255,255,255,0.78)', maxWidth: '560px' }}
-        >
+        <p style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: '17px',
+          lineHeight: 1.6,
+          fontWeight: 400,
+          color: '#e8eaed',
+          opacity: 0.85,
+          maxWidth: 'min(540px, 100%)',
+          marginBottom: '40px',
+          letterSpacing: '-0.005em',
+          textShadow: '0 2px 16px rgba(0, 0, 0, 0.5)',
+        }}>
           {data.coverSubheadline}
         </p>
       </div>

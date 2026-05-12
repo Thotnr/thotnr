@@ -28,9 +28,32 @@ const products = [
   },
 ]
 
-function ProductCard({ name, tagline, domain, logo }) {
-  const [hovered, setHovered] = useState(false)
+function SizeBtn({ label, onClick }) {
+  return (
+    <button
+      onClick={onClick}
+      className="flex items-center justify-center rounded-full cursor-pointer"
+      style={{
+        width: '26px',
+        height: '26px',
+        background: 'rgba(11,15,25,0.06)',
+        border: '1px solid rgba(11,15,25,0.10)',
+        color: 'var(--color-text-secondary)',
+        fontFamily: 'var(--font-heading)',
+        fontSize: '16px',
+        fontWeight: 600,
+        lineHeight: 1,
+        transition: 'background 0.18s ease',
+      }}
+      onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(11,15,25,0.12)' }}
+      onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(11,15,25,0.06)' }}
+    >
+      {label}
+    </button>
+  )
+}
 
+function ProductCard({ name, tagline, domain, logo, logoSize, hovered, setHovered }) {
   return (
     <div
       onMouseEnter={() => setHovered(true)}
@@ -72,8 +95,8 @@ function ProductCard({ name, tagline, domain, logo }) {
           src={logo}
           alt={name}
           style={{
-            maxHeight: '68px',
-            maxWidth: '200px',
+            maxHeight: `${logoSize}px`,
+            maxWidth: `${Math.round(logoSize * 2.94)}px`,
             width: 'auto',
             height: 'auto',
             objectFit: 'contain',
@@ -113,7 +136,7 @@ function ProductCard({ name, tagline, domain, logo }) {
         {tagline}
       </p>
 
-      {/* Accent underline — slides in from left on hover */}
+      {/* Accent underline */}
       <div
         className="absolute bottom-0 left-0 h-[2px]"
         style={{
@@ -128,6 +151,8 @@ function ProductCard({ name, tagline, domain, logo }) {
 
 export default function Products() {
   const navigate = useNavigate()
+  const [logoSize, setLogoSize] = useState(68)
+  const [hoveredId, setHoveredId] = useState(null)
 
   return (
     <section
@@ -137,19 +162,45 @@ export default function Products() {
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="mb-10">
-          <p className="text-h4 text-[var(--color-highlight)]">Built for Enterprises</p>
-          <h2 className="text-h1 text-[var(--color-text-primary)]">Our Products</h2>
-          <p className="text-body text-[var(--color-text-secondary)] mt-2 max-w-2xl">
-            Architecting the foundational intelligence that powers modern enterprises — from hospitality to education
-            and skin health. Built to integrate seamlessly, scale reliably, and deliver measurable impact across your organisation.
-          </p>
+        <div className="mb-10 flex flex-col md:flex-row md:items-end gap-4">
+          <div className="flex-1">
+            <p className="text-h4 text-[var(--color-highlight)]">Built for Enterprises</p>
+            <h2 className="text-h1 text-[var(--color-text-primary)]">Our Products</h2>
+            <p className="text-body text-[var(--color-text-secondary)] mt-2 max-w-2xl">
+              Architecting the foundational intelligence that powers modern enterprises — from hospitality to education
+              and skin health. Built to integrate seamlessly, scale reliably, and deliver measurable impact.
+            </p>
+          </div>
+
+          {/* Logo size control */}
+          <div className="flex items-center gap-2 flex-shrink-0 md:mb-1">
+            <span
+              className="text-caption"
+              style={{ color: 'var(--color-text-tertiary)', letterSpacing: '0.10em' }}
+            >
+              LOGO
+            </span>
+            <SizeBtn label="−" onClick={() => setLogoSize(s => Math.max(32, s - 8))} />
+            <span
+              className="text-caption text-center"
+              style={{ color: 'var(--color-text-secondary)', minWidth: '36px' }}
+            >
+              {logoSize}px
+            </span>
+            <SizeBtn label="+" onClick={() => setLogoSize(s => Math.min(140, s + 8))} />
+          </div>
         </div>
 
-        {/* Cards — single row on md+, stacked on mobile */}
+        {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {products.map((p) => (
-            <ProductCard key={p.id} {...p} />
+            <ProductCard
+              key={p.id}
+              {...p}
+              logoSize={logoSize}
+              hovered={hoveredId === p.id}
+              setHovered={(v) => setHoveredId(v ? p.id : null)}
+            />
           ))}
         </div>
 
@@ -177,7 +228,6 @@ export default function Products() {
             }}
           >
             View all products
-          
           </button>
         </div>
 

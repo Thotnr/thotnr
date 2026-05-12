@@ -8,8 +8,8 @@ function FeatureBlock({ imageLeft, dark, image, eyebrow, headline, paragraph, bl
   const sectionBg   = dark ? 'var(--color-secondary)' : 'var(--color-primary)'
   const headingCls  = dark ? 'text-white' : ''
   const headingStyle = dark ? {} : { color: 'var(--color-text-primary)' }
-  const bodyCls     = dark ? 'text-white/70' : ''
-  const bodyStyle   = dark ? {} : { color: 'var(--color-text-secondary)' }
+  const bodyCls     = ''
+  const bodyStyle   = dark ? { color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 } : { color: 'var(--color-text-secondary)' }
 
   return (
     <section

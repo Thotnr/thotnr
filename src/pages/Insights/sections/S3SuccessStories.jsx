@@ -43,7 +43,7 @@ function StoryCard({ metric, label, context, href }) {
 
       <h4 className="text-h4 text-white">{label}</h4>
 
-      <p className="text-body-sm text-white/60 flex-1">{context}</p>
+      <p className="text-body-sm flex-1" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}>{context}</p>
 
     </div>
   )

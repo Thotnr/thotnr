@@ -20,7 +20,7 @@ function S6CTA() {
             Works?
           </h2>
 
-          <p className="text-body mb-10 max-w-md" style={{ color: 'rgba(255,255,255,0.68)' }}>
+          <p className="text-body mb-10 max-w-md" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}>
             Most AI projects stall at the prototype stage. We specialise in taking
             them the rest of the way — into production, into your workflows, and
             into measurable business value.

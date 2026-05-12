@@ -28,7 +28,7 @@ function MetricTile({ value, label, desc }) {
         {value}
       </span>
       <p className="text-h4 text-[var(--color-highlight)] mb-2">{label}</p>
-      <p className="text-body-sm text-white/60">{desc}</p>
+      <p className="text-body-sm" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}>{desc}</p>
     </div>
   )
 }

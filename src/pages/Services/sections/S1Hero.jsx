@@ -33,9 +33,9 @@ function S1Hero() {
         }
         @media (min-width: 1024px) {
           .hero-content-pos {
-            left: 13%;
+            left: 10%;
             right: auto;
-            top: 20%;
+            top: 30%;
             transform: translateY(-50%);
             max-width: 520px;
           }
@@ -82,35 +82,32 @@ function S1Hero() {
       <div className="hero-content hero-content-pos">
 
         {/* Eyebrow */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '28px' }}>
-          <div style={{ width: '22px', height: '1px', background: 'var(--color-accent)', opacity: 0.5 }} />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '36px' }}>
+          <div className="hero-accent-line" style={{
+            width: 'clamp(28px, 4vw, 40px)',
+            height: '1px',
+            background: 'linear-gradient(90deg, transparent 0%, #7dd3c0 100%)',
+          }} />
           <span style={{
             fontFamily: 'var(--font-mono)',
-            fontSize: '11px',
-            letterSpacing: '0.30em',
+            fontSize: '11.5px',
+            fontWeight: 500,
+            letterSpacing: '0.34em',
             textTransform: 'uppercase',
-            color: 'var(--color-accent)',
-            opacity: 0.78,
+            color: '#7dd3c0',
           }}>
-            What We Offer
+            What we offer
           </span>
         </div>
 
         {/* Headline */}
-        <h1 style={{
-          fontFamily: 'var(--font-accent)',
-          fontSize: 'clamp(36px, 8.5vw, 92px)',
-          fontWeight: 600,
-          lineHeight: 1.02,
-          letterSpacing: '-0.036em',
-          color: 'var(--color-text-white)',
-          marginBottom: '28px',
-        }}>
-          Built<br />
-          to<br />
-          <em style={{ fontStyle: 'italic', color: 'var(--color-accent)', opacity: 0.62 }}>Deliver</em>
+        <h1 className="text-display text-white leading-tight mb-6" style={{ maxWidth: '600px' }}>
+          Built to <br />
+          <em style={{ color: 'var(--color-accent)', fontStyle: 'italic' }}>
+           Deliver
+          </em>
+          
         </h1>
-
         {/* Thin divider */}
         <div style={{
           width: '48px',
@@ -123,13 +120,17 @@ function S1Hero() {
         {/* Supporting text */}
         <p style={{
           fontFamily: 'var(--font-body)',
-          fontSize: '15px',
-          lineHeight: 1.85,
-          color: 'var(--color-text-white)',
-          opacity: 0.62,
-          maxWidth: 'min(360px, 100%)',
+          fontSize: '17px',
+          lineHeight: 1.6,
+          fontWeight: 400,
+          color: '#e8eaed',
+          opacity: 0.85,
+          maxWidth: 'min(540px, 100%)',
+          marginBottom: '40px',
+          letterSpacing: '-0.005em',
+          textShadow: '0 2px 16px rgba(0, 0, 0, 0.5)',
         }}>
-          End-to-end capabilities across AI, architecture, and cloud.
+          End-to-end capabilities spanning AI development, software architecture, and cloud infrastructure.
         </p>
 
       </div>
