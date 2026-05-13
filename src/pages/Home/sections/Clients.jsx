@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import creditas      from '../../../assets/images/clients/creditas-removebg-preview.png'
@@ -6,15 +7,20 @@ import vodacom       from '../../../assets/images/clients/vodacom.png'
 import zs            from '../../../assets/images/clients/zs-removebg-preview.png'
 import angloAmerican from '../../../assets/images/clients/anglo-american.png'
 import hollard       from '../../../assets/images/clients/hollard.png'
-// import hollard from '../../../assets/images/clients/hollard.png'  ← add file then uncomment
+import csav          from '../../../assets/images/clients/csav.png'
+import tata          from '../../../assets/images/clients/tata.png'
+import nykaa         from '../../../assets/images/clients/nykaa.png'
 
 const featured = [
-  { id: 1, name: 'Standard Bank',  logo: standardBank,  logoH: 120, logoW: 250 },
-  { id: 2, name: 'Vodacom',        logo: vodacom,        logoH: 80, logoW: 130 },
-  { id: 3, name: 'ZS',             logo: zs,             logoH: 100, logoW: 170  },
-  { id: 4, name: 'Hollard',        logo: hollard,        logoH: 70, logoW: 150 },
-  { id: 5, name: 'Anglo American', logo: angloAmerican,  logoH: 130, logoW: 200 },
-  { id: 6, name: 'Creditas',       logo: creditas,       logoH: 150, logoW: 200 },
+  { id: 1, name: 'Standard Bank',    logo: standardBank,  logoH: 150, logoW: 250 },
+  { id: 2, name: 'Vodacom',          logo: vodacom,        logoH: 80,  logoW: 120 },
+  { id: 3, name: 'ZS',               logo: zs,             logoH: 100, logoW: 140 },
+  { id: 4, name: 'Hollard',          logo: hollard,        logoH: 70,  logoW: 130 },
+  { id: 5, name: 'Anglo American',   logo: angloAmerican,  logoH: 110, logoW: 160 },
+  { id: 6, name: 'Creditas',         logo: creditas,       logoH: 120, logoW: 160 },
+  { id: 7, name: 'Rexall',             logo: csav,           logoH: 80,  logoW: 130 },
+  { id: 8, name: 'Tata International', logo: tata,         logoH: 80,  logoW: 130 },
+  { id: 9, name: 'Nykaa',            logo: nykaa,          logoH: 70,  logoW: 120 },
 ]
 
 const stats = [
@@ -24,29 +30,57 @@ const stats = [
 ]
 
 function LogoCard({ logo, name, logoH, logoW }) {
+  const [hovered, setHovered] = useState(false)
   return (
     <div
-      className="flex items-center justify-center rounded-2xl h-full min-h-24 transition-all duration-300 hover:scale-[1.03]"
+      className="relative flex items-center justify-center rounded-2xl h-full min-h-24 transition-all duration-300 hover:scale-[1.03] overflow-hidden"
       style={{
-        background: 'var(--color-primary)',
+        background:
+          'linear-gradient(145deg, rgba(255,255,255,0.85), rgba(255,255,255,0.75))',
         border: '1px solid rgba(255,255,255,0.10)',
       }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
       {logo ? (
         <img
           src={logo}
           alt={name}
-          className="object-contain"
-          style={{ height: `${logoH}px`, width: `${logoW}px` }}
+          className="object-contain max-w-full"
+          style={{
+            height: `${logoH}px`,
+            width: `${logoW}px`,
+            transition: 'opacity 0.25s ease',
+            opacity: hovered ? 0 : 1,
+          }}
         />
       ) : (
         <span
           className="text-h4 font-semibold text-center px-4 leading-tight"
-          style={{ color: 'var(--color-text-primary)' }}
+          style={{
+            color: 'var(--color-text-primary)',
+            transition: 'opacity 0.25s ease',
+            opacity: hovered ? 0 : 1,
+          }}
         >
           {name}
         </span>
       )}
+
+      {/* Name overlay on hover */}
+      <div
+        className="absolute inset-0 flex items-center justify-center px-3"
+        style={{
+          background: 'var(--color-secondary)',
+          opacity: hovered ? 1 : 0,
+          transition: 'opacity 0.25s ease',
+          pointerEvents: 'none',
+        }}
+      >
+        <span className="text-h4 font-semibold text-white text-center leading-tight">
+          {name}
+        </span>
+      </div>
     </div>
   )
 }
@@ -106,8 +140,8 @@ function Clients() {
 
           </div>
 
-          {/* RIGHT: 2×3 logo grid — stretches to match left height */}
-          <div className="grid grid-cols-2 grid-rows-3 gap-3 md:gap-4 h-full">
+          {/* RIGHT: 3×3 logo grid — stretches to match left height */}
+          <div className="grid grid-cols-3 grid-rows-3 gap-3 md:gap-4 h-full">
             {featured.map((client) => (
               <LogoCard key={client.id} logo={client.logo} name={client.name} logoH={client.logoH} logoW={client.logoW} />
             ))}

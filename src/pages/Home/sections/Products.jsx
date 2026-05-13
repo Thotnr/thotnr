@@ -1,83 +1,79 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import djuboLogo   from '../../../assets/images/products/djubo.png'
+import djuboLogo from '../../../assets/images/products/djubo.png'
 import kingdomLogo from '../../../assets/images/products/edumarshal.png'
-import cittaLogo   from '../../../assets/images/products/citta.png'
+import cittaLogo from '../../../assets/images/products/citta.png'
+import qampLogo from '../../../assets/images/products/qamp.png'
 
 const products = [
   {
-    id:      1,
-    name:    'Djubo',
+    id: 1,
+    name: 'Djubo',
     tagline: 'End-to-end hospitality intelligence',
-    domain:  'Hospitality',
-    logo:    djuboLogo,
+    domain: 'Hospitality',
+    logo: djuboLogo,
   },
   {
-    id:      2,
-    name:    'Edumarshal',
+    id: 2,
+    name: 'Edumarshal',
     tagline: 'Learning infrastructure for institutions',
-    domain:  'Education',
-    logo:    kingdomLogo,
+    domain: 'Education',
+    logo: kingdomLogo,
   },
   {
-    id:      3,
-    name:    'Citta',
+    id: 3,
+    name: 'Citta',
     tagline: 'AI-driven personalised skin health',
-    domain:  'Skin Health',
-    logo:    cittaLogo,
+    domain: 'Skin Health',
+    logo: cittaLogo,
+  },
+  {
+    id: 4,
+    name: 'Qamp',
+    tagline: 'Intelligent infrastructure management at scale.',
+    domain: 'Infrastructure',
+    logo: qampLogo,
   },
 ]
-
-function SizeBtn({ label, onClick }) {
-  return (
-    <button
-      onClick={onClick}
-      className="flex items-center justify-center rounded-full cursor-pointer"
-      style={{
-        width: '26px',
-        height: '26px',
-        background: 'rgba(11,15,25,0.06)',
-        border: '1px solid rgba(11,15,25,0.10)',
-        color: 'var(--color-text-secondary)',
-        fontFamily: 'var(--font-heading)',
-        fontSize: '16px',
-        fontWeight: 600,
-        lineHeight: 1,
-        transition: 'background 0.18s ease',
-      }}
-      onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(11,15,25,0.12)' }}
-      onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(11,15,25,0.06)' }}
-    >
-      {label}
-    </button>
-  )
-}
 
 function ProductCard({ name, tagline, domain, logo, logoSize, hovered, setHovered }) {
   return (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative flex flex-col items-center overflow-hidden rounded-2xl cursor-default"
+      className="relative flex min-h-[300px] flex-col items-center justify-center overflow-hidden rounded-[28px] cursor-default"
       style={{
-        padding: '44px 32px 36px',
-        background: '#ffffff',
-        border: `1px solid ${hovered ? 'rgba(11,15,25,0.11)' : 'rgba(11,15,25,0.06)'}`,
+        padding: '42px 28px 34px',
+        background:
+          'linear-gradient(145deg, rgba(255,255,255,0.45), rgba(255,255,255,0.32))',
+        border: `1px solid ${hovered ? 'rgba(225,29,72,0.16)' : 'rgba(11,15,25,0.08)'}`,
         boxShadow: hovered
-          ? '0 20px 52px rgba(11,15,25,0.10), 0 4px 12px rgba(11,15,25,0.06)'
-          : '0 2px 12px rgba(11,15,25,0.04)',
-        transform: hovered ? 'translateY(-7px)' : 'translateY(0)',
-        transition: 'transform 0.36s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease, border-color 0.3s ease',
+          ? '0 26px 70px rgba(11,15,25,0.13), 0 8px 20px rgba(225,29,72,0.08)'
+          : '0 10px 34px rgba(11,15,25,0.06)',
+        transform: hovered ? 'translateY(-6px)' : 'translateY(0)',
+        transition:
+          'transform 0.36s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease, border-color 0.3s ease',
       }}
     >
+      {/* Soft background glow */}
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        style={{
+          background:
+            'radial-gradient(circle at top right, rgba(225,29,72,0.10), transparent 42%)',
+          opacity: hovered ? 1 : 0,
+          transition: 'opacity 0.35s ease',
+        }}
+      />
+
       {/* Domain pill */}
       <span
-        className="text-label mb-6 px-3 py-1 rounded-full"
+        className="relative z-10 mb-7 rounded-full px-3 py-1"
         style={{
-          fontSize: '10px',
+          fontSize: '12px',
           letterSpacing: '0.12em',
-          color: hovered ? 'var(--color-highlight)' : 'var(--color-text-tertiary)',
-          background: hovered ? 'rgba(230,57,70,0.07)' : 'rgba(11,15,25,0.04)',
+          color: hovered ? 'var(--color-highlight)' : 'var(--color-secondary)',
+          background: hovered ? 'rgba(225,29,72,0.07)' : 'rgba(11,15,25,0.04)',
           transition: 'color 0.3s ease, background 0.3s ease',
           fontFamily: 'var(--font-mono)',
           textTransform: 'uppercase',
@@ -88,15 +84,18 @@ function ProductCard({ name, tagline, domain, logo, logoSize, hovered, setHovere
 
       {/* Logo */}
       <div
-        className="flex items-center justify-center"
-        style={{ height: '80px', width: '100%', marginBottom: '28px' }}
+        className="relative z-10 flex items-center justify-center w-full"
+        style={{
+          height: '88px',
+          marginBottom: '30px',
+        }}
       >
         <img
           src={logo}
           alt={name}
           style={{
             maxHeight: `${logoSize}px`,
-            maxWidth: `${Math.round(logoSize * 2.94)}px`,
+            maxWidth: `${Math.round(logoSize * 3)}px`,
             width: 'auto',
             height: 'auto',
             objectFit: 'contain',
@@ -108,13 +107,13 @@ function ProductCard({ name, tagline, domain, logo, logoSize, hovered, setHovere
 
       {/* Name */}
       <h3
-        className="m-0 text-center"
+        className="relative z-10 m-0 text-center"
         style={{
           fontFamily: 'var(--font-heading)',
-          fontSize: '18px',
+          fontSize: '20px',
           fontWeight: 700,
           color: 'var(--color-text-primary)',
-          marginBottom: '8px',
+          marginBottom: '10px',
           lineHeight: 1.2,
         }}
       >
@@ -123,14 +122,14 @@ function ProductCard({ name, tagline, domain, logo, logoSize, hovered, setHovere
 
       {/* Tagline */}
       <p
-        className="text-center m-0"
+        className="relative z-10 text-center m-0"
         style={{
           fontFamily: 'var(--font-heading)',
-          fontSize: '13px',
+          fontSize: '14px',
           fontWeight: 400,
           color: 'var(--color-text-tertiary)',
-          lineHeight: 1.5,
-          maxWidth: '180px',
+          lineHeight: 1.55,
+          maxWidth: '260px',
         }}
       >
         {tagline}
@@ -151,7 +150,7 @@ function ProductCard({ name, tagline, domain, logo, logoSize, hovered, setHovere
 
 export default function Products() {
   const navigate = useNavigate()
-  const [logoSize, setLogoSize] = useState(68)
+  const [logoSize] = useState(100)
   const [hoveredId, setHoveredId] = useState(null)
 
   return (
@@ -162,37 +161,26 @@ export default function Products() {
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="mb-10 flex flex-col md:flex-row md:items-end gap-4">
+        <div className="mb-12 flex flex-col md:flex-row md:items-end gap-4">
           <div className="flex-1">
-            <p className="text-h4 text-[var(--color-highlight)]">Built for Enterprises</p>
-            <h2 className="text-h1 text-[var(--color-text-primary)]">Our Products</h2>
-            <p className="text-body text-[var(--color-text-secondary)] mt-2 max-w-2xl">
-              Architecting the foundational intelligence that powers modern enterprises — from hospitality to education
-              and skin health. Built to integrate seamlessly, scale reliably, and deliver measurable impact.
+            <p className="text-h4 text-[var(--color-highlight)]">
+              Built for Enterprises
             </p>
-          </div>
 
-          {/* Logo size control */}
-          <div className="flex items-center gap-2 flex-shrink-0 md:mb-1">
-            <span
-              className="text-caption"
-              style={{ color: 'var(--color-text-tertiary)', letterSpacing: '0.10em' }}
-            >
-              LOGO
-            </span>
-            <SizeBtn label="−" onClick={() => setLogoSize(s => Math.max(32, s - 8))} />
-            <span
-              className="text-caption text-center"
-              style={{ color: 'var(--color-text-secondary)', minWidth: '36px' }}
-            >
-              {logoSize}px
-            </span>
-            <SizeBtn label="+" onClick={() => setLogoSize(s => Math.min(140, s + 8))} />
+            <h2 className="text-h1 text-[var(--color-text-primary)]">
+              Our Products
+            </h2>
+
+            <p className="text-body text-[var(--color-text-secondary)] mt-2 max-w-2xl">
+              Architecting the foundational intelligence that powers modern enterprises —
+              from hospitality to education and skin health. Built to integrate seamlessly,
+              scale reliably, and deliver measurable impact.
+            </p>
           </div>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Cards - responsive 2x2 grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6 lg:gap-8 max-w-5xl mx-auto">
           {products.map((p) => (
             <ProductCard
               key={p.id}
@@ -205,7 +193,7 @@ export default function Products() {
         </div>
 
         {/* Show more */}
-        <div className="flex justify-center mt-10">
+        <div className="flex justify-center mt-12">
           <button
             onClick={() => navigate('/products')}
             className="flex items-center gap-2 px-7 py-3 rounded-full font-semibold cursor-pointer bg-transparent"
@@ -214,11 +202,12 @@ export default function Products() {
               color: 'var(--color-text-primary)',
               fontFamily: 'var(--font-heading)',
               fontSize: '14px',
-              transition: 'background 0.22s ease, border-color 0.22s ease, color 0.22s ease',
+              transition:
+                'background 0.22s ease, border-color 0.22s ease, color 0.22s ease',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = 'var(--color-text-primary)'
-              e.currentTarget.style.borderColor = 'var(--color-secondary)'
+              e.currentTarget.style.borderColor = 'var(--color-text-primary)'
               e.currentTarget.style.color = '#ffffff'
             }}
             onMouseLeave={(e) => {

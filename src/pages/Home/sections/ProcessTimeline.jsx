@@ -39,7 +39,7 @@ function ProcessTimeline() {
           </h2>
 
           <p className="text-body text-[var(--color-text-secondary)] mt-2 max-w-2xl">
-            A five-phase engagement designed to move at the speed of your organisation while never sacrificing depth.
+            A three-phase engagement designed to move at the speed of your organisation while never sacrificing depth.
           </p>
         </div>
 

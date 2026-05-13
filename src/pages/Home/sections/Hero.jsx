@@ -72,7 +72,7 @@ function Hero() {
           .hero-content-pos {
             left: 10%;
             right: auto;
-            top: 35%;
+            top: 45%;
             transform: translateY(-50%);
             max-width: 620px;
           }
@@ -175,7 +175,7 @@ function Hero() {
         {/* Headline */}
         <h1 style={{
           fontFamily: '"Inter", "Helvetica Neue", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
-          fontSize: 'clamp(38px, 6.8vw, 78px)',
+          fontSize: 'clamp(38px, 6.8vw, 56px)',
           fontWeight: 600,
           lineHeight: 1.02,
           letterSpacing: '-0.04em',
@@ -183,7 +183,7 @@ function Hero() {
           marginBottom: '28px',
           textShadow: '0 4px 40px rgba(0, 0, 0, 0.6)',
         }}>
-          Intelligence Augmented
+          intelligence, augmented
         </h1>
 
         {/* Supporting text */}
@@ -194,7 +194,7 @@ function Hero() {
           fontWeight: 400,
           color: '#e8eaed',
           opacity: 0.85,
-          maxWidth: 'min(540px, 100%)',
+          // maxWidth: 'min(540px, 100%)',
           marginBottom: '40px',
           letterSpacing: '-0.005em',
           textShadow: '0 2px 16px rgba(0, 0, 0, 0.5)',
