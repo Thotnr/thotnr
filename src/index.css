@@ -21,6 +21,9 @@
   --color-text-tertiary: #6C757D;
   --color-text-white: #ffffff;
 
+  /* Dividers — light section separators */
+  --color-divider: rgba(11, 15, 25, 0.1);
+
   --font-heading: 'Sora', sans-serif;
   --font-body: 'Source Serif 4', serif;
   --font-mono: 'IBM Plex Mono', monospace;

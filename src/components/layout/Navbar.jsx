@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { cn } from '../../utils'
 import logoRed from '../../assets/images/thotnr_logo_red.png'
 import logoWhite from '../../assets/images/thotnr_logo_white.png'
+import { services } from '../../data/services'
 
 function LogoMark({ size = 28, scrolled }) {
   return (
@@ -81,11 +82,11 @@ function ChevronDown({ open }) {
 const whatWeOfferData = {
   left: {
     heading: 'services',
-    items: [
-      { label: 'Artificial Intelligence', desc: 'Strategy, engineering, and deployment of AI systems that operate at enterprise scale.' },
-      { label: 'Enterprise Architecture',  desc: 'Modernise your technology foundation to enable speed, coherence, and AI readiness.' },
-      { label: 'Cloud',                    desc: 'Cloud-native design, migration, and engineering that cuts cost and eliminates fragility.' },
-    ],
+    items: services.slice(0, 3).map(s => ({
+      label: s.title,
+      desc:  s.tagline,
+      slug:  s.slug,
+    })),
     cta: { label: 'view all services', to: '/services' },
   },
   right: {
@@ -109,18 +110,44 @@ function MegaMenu({ data }) {
           to   { opacity: 1; transform: translateY(0); }
         }
         .mega-menu-wrap { animation: menuFadeIn 0.2s ease both; }
-        .mega-left-item { transition: color 0.15s ease; }
-        .mega-left-item:hover .mega-item-label { color: var(--color-accent); }
-        .mega-view-all {
-          display: inline-flex; align-items: center; gap: 4px;
-          font-size: 14px; font-weight: 500;
-          color: var(--color-slate-dark); text-decoration: none;
-          transition: color 0.15s ease;
-          margin-top: 24px;
+
+        /* Service item hover */
+        .svc-item {
+          display: flex; flex-direction: column; gap: 3px;
+          padding: 10px 12px; border-radius: 8px;
+          text-decoration: none;
+          transition: background 0.2s ease, box-shadow 0.2s ease;
         }
-        .mega-view-all:hover { color: var(--color-accent); }
-        .mega-view-all-arrow { display: inline-block; transition: transform 0.2s ease; }
-        .mega-view-all:hover .mega-view-all-arrow { transform: translateX(4px); }
+        .svc-item:hover {
+          background: rgba(168,218,220,0.12);
+          box-shadow: inset 3px 0 0 var(--color-accent);
+        }
+        .svc-label-row {
+          display: flex; align-items: center; justify-content: space-between;
+        }
+        .svc-label {
+          font-size: 14px; font-weight: 600;
+          color: var(--color-text-primary);
+          transition: transform 0.22s ease;
+        }
+        .svc-item:hover .svc-label { transform: translateX(5px); }
+        .svc-arrow {
+          opacity: 0; transform: translateX(-6px);
+          transition: opacity 0.22s ease, transform 0.22s ease;
+          color: var(--color-accent); font-size: 15px; flex-shrink: 0;
+        }
+        .svc-item:hover .svc-arrow { opacity: 1; transform: translateX(0); }
+
+        /* CTA links */
+        .mega-cta {
+          display: inline-flex; align-items: center; gap: 6px;
+          font-size: 14px; font-weight: 500;
+          color: var(--color-text-primary); text-decoration: none;
+          transition: color 0.18s ease;
+        }
+        .mega-cta:hover { color: var(--color-highlight); }
+        .mega-cta-arrow { display: inline-block; transition: transform 0.2s ease; }
+        .mega-cta:hover .mega-cta-arrow { transform: translateX(5px); }
       `}</style>
 
       <div
@@ -135,48 +162,41 @@ function MegaMenu({ data }) {
         <div className="max-w-7xl mx-auto px-0 md:px-10 lg:px-16 py-8 flex gap-0">
 
           {/* LEFT — services */}
-          <div className="w-[380px] flex-shrink-0 pr-12 flex flex-col" style={{ borderRight: '1px solid var(--color-border)' }}>
+          <div className="w-[400px] flex-shrink-0 pr-12 flex flex-col" style={{ borderRight: '1px solid var(--color-divider)' }}>
             <h3
-              className="text-2xl font-light mb-4 m-0"
-              style={{ color: 'var(--color-ink)', letterSpacing: '-0.3px' }}
+              className="text-h3 font-light mb-4"
+              style={{ color: 'var(--color-text-primary)', letterSpacing: '-0.3px' }}
             >
               {left.heading}
             </h3>
 
             <div className="flex flex-col gap-1">
               {left.items.map((item) => (
-                <a
-                  key={item.label}
-                  className="mega-left-item flex flex-col gap-0.5 py-2 no-underline"
-                  style={{ borderBottom: '1px solid var(--color-surface-soft)' }}
-                >
-                  <span
-                    className="mega-item-label text-sm font-semibold pb-1"
-                    style={{ color: 'var(--color-ink)' }}
-                  >
-                    {item.label}
-                  </span>
-                  <span className="text-xs leading-relaxed" style={{ color: 'var(--color-slate)' }}>
+                <Link key={item.label} to={`/services/${item.slug}`} className="svc-item">
+                  <div className="svc-label-row">
+                    <span className="svc-label">{item.label}</span>
+                    <span className="svc-arrow">→</span>
+                  </div>
+                  <span style={{ fontSize: '12px', lineHeight: 1.5, color: 'var(--color-text-tertiary)' }}>
                     {item.desc}
                   </span>
-                </a>
+                </Link>
               ))}
             </div>
 
-            <Link to={left.cta.to} className="mega-view-all" style={{ color: 'var(--color-ink)', marginTop: 'auto', paddingTop: '24px' }}>
-              {left.cta.label}
-              <span className="mega-view-all-arrow">→</span>
-            </Link>
+            <div style={{ marginTop: 'auto', paddingTop: '20px' }}>
+              <Link to={left.cta.to} className="mega-cta">
+                {left.cta.label}
+                <span className="mega-cta-arrow">→</span>
+              </Link>
+            </div>
           </div>
-
-          {/* VERTICAL DIVIDER */}
-          <div className="w-[0.1px] bg-gray-300" />
 
           {/* RIGHT — industries */}
           <div className="flex-1 pl-12 flex flex-col">
             <h3
-              className="text-2xl font-light mb-1"
-              style={{ color: 'var(--color-ink)', letterSpacing: '-0.3px' }}
+              className="text-h3 font-light mb-1"
+              style={{ color: 'var(--color-text-primary)', letterSpacing: '-0.3px' }}
             >
               {right.heading}
             </h3>
@@ -187,8 +207,8 @@ function MegaMenu({ data }) {
                   {col.map((item) => (
                     <span
                       key={item}
-                      className="py-1.5 text-sm"
-                      style={{ color: 'var(--color-slate-dark)' }}
+                      className="py-1.5 text-body-sm"
+                      style={{ color: 'var(--color-text-secondary)' }}
                     >
                       {item}
                     </span>
@@ -197,10 +217,12 @@ function MegaMenu({ data }) {
               ))}
             </div>
 
-            <Link to={right.cta.to} className="mega-view-all" style={{ color: 'var(--color-ink)', marginTop: 'auto', paddingTop: '24px' }}>
-              {right.cta.label}
-              <span className="mega-view-all-arrow">→</span>
-            </Link>
+            <div style={{ marginTop: 'auto', paddingTop: '24px' }}>
+              <Link to={right.cta.to} className="mega-cta">
+                {right.cta.label}
+                <span className="mega-cta-arrow">→</span>
+              </Link>
+            </div>
           </div>
 
         </div>

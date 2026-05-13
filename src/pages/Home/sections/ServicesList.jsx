@@ -1,56 +1,20 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import aiServiceImg          from '../../../assets/images/ai-service.jpg'
-import enterpriseArchitectImg from '../../../assets/images/enterprise-architect.jpg'
-import cloudImg              from '../../../assets/images/cloud.jpg'
-import strategyImg           from '../../../assets/images/offer-service.jpg'
-import experienceImg         from '../../../assets/images/user-experience.jpg'
-import dataImg               from '../../../assets/images/ai.jpg'
+import { services as servicesData } from '../../../data/services'
 
-const services = [
-  {
-    title:   'Artificial Intelligence',
-    tagline: 'From strategy to production-ready AI',
-    stat:    '3× faster AI adoption',
-    desc:    'We turn AI ambition into running systems — strategy, engineering, and deployment under one roof.',
-    image:   aiServiceImg,
-  },
-  {
-    title:   'Enterprise Architecture',
-    tagline: 'Systems that scale with your ambition',
-    stat:    '60% faster delivery cycles',
-    desc:    'We map, modernise, and future-proof your technology landscape — built for the next decade.',
-    image:   enterpriseArchitectImg,
-  },
-  {
-    title:   'Cloud',
-    tagline: 'Migrate, modernise, operate at scale',
-    stat:    '40% infrastructure savings',
-    desc:    'From lift-and-shift to cloud-native transformation — we engineer cloud strategies that reduce cost.',
-    image:   cloudImg,
-  },
-  {
-    title:   'Strategy & Consulting',
-    tagline: 'Direction, clarity, execution',
-    stat:    '2× faster strategic alignment',
-    desc:    'We partner with leadership to define direction, prioritise transformation, and build execution-ready roadmaps for the decade ahead.',
-    image:   strategyImg,
-  },
-  {
-    title:   'Experience Design',
-    tagline: 'Human-centred, outcome-driven',
-    stat:    '45% higher engagement',
-    desc:    'Human-centred design for digital products — from research to interaction design — that drives adoption and delivers business outcomes.',
-    image:   experienceImg,
-  },
-  {
-    title:   'Data Engineering',
-    tagline: 'Pipelines that power intelligence',
-    stat:    '5× data pipeline efficiency',
-    desc:    'We build the data foundations that power intelligent systems — streaming pipelines, lakehouses, and analytics platforms at scale.',
-    image:   dataImg,
-  },
-]
+const cards = servicesData.map((s, i) => ({
+  title:   s.title,
+  tagline: s.eyebrow,
+  stat:    ['3× faster AI adoption', '60% faster delivery cycles', '5× data pipeline efficiency', '40% infrastructure savings', '45% higher engagement'][i],
+  desc:    [
+    'We build AI systems that extend human decision-making — from GenAI to MLOps, making teams faster and operations more resilient.',
+    'We design structural foundations that align business strategy with technology — eliminating fragmentation and built for where the enterprise is going.',
+    'We engineer the data pipelines and applications that turn raw information into organisational intelligence, reliable by design.',
+    'Cloud-native architectures, migrations, and platforms — built for resilience, automation, and cost efficiency at enterprise scale.',
+    'Human-centred design, security governance, and innovation strategy — the human layer of every digital system we build.',
+  ][i],
+  image:   s.coverImage,
+}))
 
 function ExpandingCard({ title, tagline, stat, desc, image }) {
   const [hovered, setHovered] = useState(false)
@@ -130,8 +94,8 @@ function ExpandingCard({ title, tagline, stat, desc, image }) {
 function ServicesList() {
   const navigate = useNavigate()
 
-  const row1 = services.slice(0, 3)
-  const row2 = services.slice(3, 6)
+  const row1 = cards.slice(0, 2)
+  const row2 = cards.slice(2, 5)
 
   return (
     <section
@@ -151,8 +115,8 @@ function ServicesList() {
 
         {/* ── Cards ── */}
         {/*
-          Desktop (lg+)  : two flex rows, each with 3 expanding cards
-          Tablet (md–lg) : all 6 in a 2-col grid — done via display:contents on svc-row
+          Desktop (lg+)  : row 1 has 2 expanding cards, row 2 has 3 expanding cards
+          Tablet (md–lg) : all 5 in a 2-col grid — done via display:contents on svc-row
           Mobile         : stacked vertically
         */}
         <style>{`
@@ -168,7 +132,7 @@ function ServicesList() {
           }
         `}</style>
 
-        <div className="svc-all-cards flex flex-col gap-12">
+        <div className="svc-all-cards flex flex-col gap-4">
           <div className="svc-row flex flex-col lg:flex-row gap-4">
             {row1.map((svc) => (
               <ExpandingCard key={svc.title} {...svc} />
@@ -205,7 +169,6 @@ function ServicesList() {
             }}
           >
             Show more
-            
           </button>
         </div>
 

@@ -1,192 +1,111 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { services } from '../../../data/services'
 
-import aiServiceImg          from '../../../assets/images/ai-service.jpg'
-import enterpriseArchitectImg from '../../../assets/images/enterprise-architect.jpg'
-import cloudImg              from '../../../assets/images/cloud.jpg'
-import userExperienceImg     from '../../../assets/images/user-experience.jpg'
-import securityRiskImg       from '../../../assets/images/security-risk.jpg'
-import aiImg                 from '../../../assets/images/services/infrastructure-engineering.jpg'
-import aiPageCoverImg        from '../../../assets/images/services/generative-AI.jpeg'
-import aiHeroBgImg           from '../../../assets/images/services/machine-learning.jpg'
-import aiSummitImg           from '../../../assets/images/services/intelligence-automation.jpg'
-import case2Img              from '../../../assets/images/services/ai-strategy-roadmap.jpg'
-import bankingImg            from '../../../assets/images/services/ml-ops.jpg'
-import caseStudyCoverImg     from '../../../assets/images/services/data-engineering.jpg'
-import product3Img           from '../../../assets/images/services/strategy-consultancy.jpg'
-import insightsCoverImg      from '../../../assets/images/services/tech-engineering.jpg'
-import healthMedicalImg      from '../../../assets/images/services/web-3.jpg'
-import lifeAtThotnrImg       from '../../../assets/images/services/enterprise-plateform.jpg'
-import entertainmentImg      from '../../../assets/images/services/digital-transformation.jpg'
-import fashionRetailImg      from '../../../assets/images/services/experience-design.jpg'
-import telecomImg            from '../../../assets/images/services/ux-research.jpg'
-import realEstateImg         from '../../../assets/images/services/api-integration.jpg'
-import automotiveImg         from '../../../assets/images/services/enterprise-modernisation.jpg'
-import pharmaImg             from '../../../assets/images/services/product-engineering.jpg'
-import cloudPngImg           from '../../../assets/images/services/quality-engineering.jpg'
-import shippingImg           from '../../../assets/images/services/cloud-migration.jpg'
-
-const services = [
-  {
-    title: 'Artificial Intelligence',
-    desc:  'From strategy to production-ready AI systems.',
-    image: aiServiceImg,
-  },
-  {
-    title: 'Enterprise Architecture',
-    desc:  'Systems that scale with your ambition.',
-    image: enterpriseArchitectImg,
-  },
-  {
-    title: 'Cloud Engineering',
-    desc:  'Migrate, modernise, and operate at scale.',
-    image: cloudImg,
-  },
-  {
-    title: 'Customer Experience & Design',
-    desc:  'Human-centred design that drives adoption.',
-    image: userExperienceImg,
-  },
-  {
-    title: 'Security & Risk Management',
-    desc:  'Enterprise-grade resilience from day one.',
-    image: securityRiskImg,
-  },
-  {
-    title: 'Data & Analytics',
-    desc:  'Turning raw data into decisions that matter.',
-    image: aiImg,
-  },
-  {
-    title: 'Generative AI',
-    desc:  'Build intelligent systems that create, reason, and act.',
-    image: aiPageCoverImg,
-  },
-  {
-    title: 'Machine Learning',
-    desc:  'Scalable models that learn and improve over time.',
-    image: aiHeroBgImg,
-  },
-  {
-    title: 'Intelligent Automation',
-    desc:  'Automate complex workflows with precision and control.',
-    image: aiSummitImg,
-  },
-  {
-    title: 'AI Strategy & Roadmap',
-    desc:  'A clear path from AI ambition to business value.',
-    image: case2Img,
-  },
-  {
-    title: 'MLOps',
-    desc:  'Operationalise ML at scale with robust pipelines.',
-    image: bankingImg,
-  },
-  {
-    title: 'Data Engineering',
-    desc:  'Reliable data infrastructure that powers every insight.',
-    image: caseStudyCoverImg,
-  },
-  {
-    title: 'Strategy & Consulting',
-    desc:  'Enterprise strategy grounded in technology reality.',
-    image: product3Img,
-  },
-  {
-    title: 'Technology & Engineering',
-    desc:  'Full-stack engineering built for enterprise demands.',
-    image: insightsCoverImg,
-  },
-  {
-    title: 'Web 3.0',
-    desc:  'Decentralised solutions for the next generation of business.',
-    image: healthMedicalImg,
-  },
-  {
-    title: 'Enterprise Platform',
-    desc:  'Unified platforms that connect people, data, and processes.',
-    image: lifeAtThotnrImg,
-  },
-  {
-    title: 'Digital Transformation',
-    desc:  'End-to-end transformation from legacy to cloud-native.',
-    image: entertainmentImg,
-  },
-  {
-    title: 'Experience Design',
-    desc:  'Craft experiences that users trust and return to.',
-    image: fashionRetailImg,
-  },
-  {
-    title: 'UX Research',
-    desc:  'Deep user insight that shapes every design decision.',
-    image: telecomImg,
-  },
-  {
-    title: 'API & Integration Architecture',
-    desc:  'Seamless connectivity across systems and ecosystems.',
-    image: realEstateImg,
-  },
-  {
-    title: 'Enterprise Modernisation',
-    desc:  'Retire technical debt and unlock future-ready architecture.',
-    image: automotiveImg,
-  },
-  {
-    title: 'Product Engineering',
-    desc:  'Build products that ship fast and scale confidently.',
-    image: pharmaImg,
-  },
-  {
-    title: 'Quality Engineering',
-    desc:  'Automated testing and QA embedded across the lifecycle.',
-    image: cloudPngImg,
-  },
-  {
-    title: 'Cloud Migration',
-    desc:  'Lift, shift, and modernise with zero downtime.',
-    image: shippingImg,
-  },
-  {
-    title: 'Infrastructure Engineering',
-    desc:  'Resilient infrastructure designed for enterprise workloads.',
-    image: aiImg,
-  },
-]
-
-function ServiceCard({ title, desc, image }) {
+function ServiceRow({ slug, number, title, eyebrow, tagline, description, coverImage, index }) {
   const [hovered, setHovered] = useState(false)
+  const isImageLeft = index % 2 === 0
+  const nudge = isImageLeft ? 'translateX(6px)' : 'translateX(-6px)'
 
   return (
     <div
+      className={`flex flex-col ${isImageLeft ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-10 md:gap-14 py-12 md:py-16`}
+      style={{ borderBottom: '1px solid var(--color-divider)' }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="rounded-xl overflow-hidden cursor-default"
-      style={{
-        border: '1px solid rgba(0,0,0,0.08)',
-        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
-        boxShadow: hovered
-          ? '0 12px 32px rgba(0,0,0,0.12)'
-          : '0 2px 8px rgba(0,0,0,0.04)',
-        transition: 'all 0.25s ease',
-      }}
     >
-      {/* Image */}
-      <div className="h-[340px] overflow-hidden">
+
+      {/* IMAGE */}
+      <div
+        className="w-full md:w-[50%] flex-shrink-0 overflow-hidden rounded-2xl"
+        style={{
+          boxShadow: hovered
+            ? '0 24px 64px rgba(11,15,25,0.18)'
+            : '0 8px 32px rgba(11,15,25,0.08)',
+          transition: 'box-shadow 0.6s ease',
+        }}
+      >
         <img
-          src={image}
+          src={coverImage}
           alt={title}
-          className="w-full h-full object-cover"
+          className="w-full object-cover block rounded-2xl"
           style={{
-            transform: hovered ? 'scale(1.03)' : 'scale(1)',
-            transition: 'transform 0.4s ease',
+            aspectRatio: '16/10',
+            transform: hovered ? 'scale(1.04)' : 'scale(1)',
+            transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
           }}
         />
       </div>
 
-      {/* Text */}
-      <div className="p-5 bg-white">
-        <h3 className="text-h3" style={{ color: 'var(--color-text-primary)' }}>{title}</h3>
-        <p className="text-body-sm mt-1" style={{ color: 'var(--color-text-secondary)' }}>{desc}</p>
+      {/* CONTENT */}
+      <div className="w-full md:w-[50%] flex flex-col gap-5">
+
+        
+        
+
+        {/* Eyebrow */}
+        <p
+          className="text-body"
+          style={{ color: 'var(--color-highlight)', letterSpacing: '0.14em' }}
+        >
+          {eyebrow}
+        </p>
+
+        {/* Title */}
+        <h3
+          className="text-h2 text-[var(--color-text-primary)]"
+          style={{
+            lineHeight: 1.2,
+          }}
+        >
+          {title}
+        </h3>
+
+        {/* Tagline */}
+        <p
+          className="text-body-sm"
+          style={{
+            color: 'var(--color-text-tertiary)',
+            fontStyle: 'italic',
+            lineHeight: 1.7,
+          }}
+        >
+          {tagline}
+        </p>
+
+        {/* Description */}
+        <p
+          className="text-body text-[var(--color-text-secondary)] line-clamp-4"
+          style={{ lineHeight: 1.8 }}
+        >
+          {description}
+        </p>
+
+        {/* CTA */}
+        <Link
+          to={`/services/${slug}`}
+          className='text-body'
+          style={{
+            
+            
+            
+            color: 'var(--color-text-primary)',
+           
+            // transition: 'color 0.25s ease, border-color 0.25s ease',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = 'var(--color-highlight)'
+            e.currentTarget.style.borderColor = 'var(--color-highlight)'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = 'var(--color-text-primary)'
+            e.currentTarget.style.borderColor = 'var(--color-divider)'
+          }}
+        >
+          Read more...
+          
+        </Link>
+
       </div>
     </div>
   )
@@ -198,20 +117,31 @@ function S2Services() {
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="mb-12">
+        <div className="mb-4">
           <p className="text-h4 text-[var(--color-highlight)]">What We Offer</p>
           <h2 className="text-h1 text-[var(--color-text-primary)]">Our Services</h2>
           <p className="text-body text-[var(--color-text-secondary)] mt-2 max-w-2xl">
-            End-to-end capabilities built for enterprise scale — from strategy to execution.
+            Five integrated practice areas designed for the complexity of modern enterprise transformation.
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((svc) => (
-            <ServiceCard key={svc.title} {...svc} />
-          ))}
-        </div>
+        {/* Top border */}
+        <div className="mt-10" style={{ borderTop: '1px solid var(--color-divider)' }} />
+
+        {/* Rows */}
+        {services.map((svc, i) => (
+          <ServiceRow
+            key={svc.slug}
+            slug={svc.slug}
+            number={svc.number}
+            title={svc.title}
+            eyebrow={svc.eyebrow}
+            tagline={svc.tagline}
+            description={svc.description}
+            coverImage={svc.coverImage}
+            index={i}
+          />
+        ))}
 
       </div>
     </section>
