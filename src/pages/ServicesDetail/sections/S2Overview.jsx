@@ -10,7 +10,7 @@ function S2Overview({ service }) {
 
             {/* Category number + eyebrow */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
-              <span
+              {/* <span
                 style={{
                   fontFamily: 'var(--font-mono)',
                   fontSize: '11px',
@@ -20,11 +20,11 @@ function S2Overview({ service }) {
                 }}
               >
                 {service.number}
-              </span>
-              <div style={{ width: '28px', height: '1px', background: 'var(--color-text-tertiary)', opacity: 0.4 }} />
+              </span> */}
+              <div style={{ width: '28px', height: '1px', background: 'var(--color-highlight)', opacity: 0.4 }} />
               <p
                 className="text-label"
-                style={{ color: 'var(--color-text-tertiary)' }}
+                style={{ color: 'var(--color-highlight)' }}
               >
                 {service.eyebrow}
               </p>
@@ -99,12 +99,12 @@ function S2Overview({ service }) {
               <p
                 className="text-label"
                 style={{
-                  color: 'rgba(255,255,255,0.4)',
+                  color: 'rgba(255,255,255,0.6)',
                   marginBottom: '24px',
                   letterSpacing: '0.14em',
                 }}
               >
-                {service.subServices.length} Capabilities
+                Capabilities
               </p>
 
               <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -119,17 +119,7 @@ function S2Overview({ service }) {
                       borderBottom: i < service.subServices.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none',
                     }}
                   >
-                    <span
-                      style={{
-                        fontFamily: 'var(--font-mono)',
-                        fontSize: '10px',
-                        color: 'rgba(255,255,255,0.25)',
-                        minWidth: '22px',
-                        flexShrink: 0,
-                      }}
-                    >
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
+                    
                     <span
                       className="text-body-sm"
                       style={{ color: 'rgba(255,255,255,0.75)', lineHeight: 1.4 }}

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import bazinga        from '../../../assets/images/clients/tribe-logo.svg'
 import bookclip       from '../../../assets/images/clients/bookclip-removebg-preview.png'
 import creditas       from '../../../assets/images/clients/creditas-removebg-preview.png'
@@ -57,62 +58,131 @@ const clients = [
 ]
 
 function LogoCard({ logo, name, logoH, logoW }) {
+  const [hovered, setHovered] = useState(false)
+
   return (
     <div
-      className="group relative flex items-center justify-center rounded-3xl overflow-hidden cursor-default transition-all duration-500 hover:-translate-y-1"
+      className="relative flex flex-col overflow-hidden cursor-default rounded-3xl"
       style={{
-        background:
-          'linear-gradient(145deg, rgba(255,255,255,0.45), rgba(255,255,255,0.32))',
-        border: '1px solid rgba(29,53,87,0.08)',
-        boxShadow: '0 10px 30px rgba(6,4,31,0.06)',
-        minHeight: '168px',
-        padding: '34px 20px',
+        background: 'linear-gradient(145deg, rgba(255,255,255,0.52), rgba(255,255,255,0.36))',
+        border: `1px solid ${hovered ? 'rgba(29,53,87,0.18)' : 'rgba(29,53,87,0.08)'}`,
+        boxShadow: hovered
+          ? '0 16px 48px rgba(6,4,31,0.12)'
+          : '0 10px 30px rgba(6,4,31,0.06)',
+        minHeight: '188px',
+        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+        transition: 'transform 0.45s cubic-bezier(0.16,1,0.3,1), box-shadow 0.45s ease, border-color 0.35s ease',
       }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
-      {/* Soft classy glow */}
+      {/* Soft hover glow */}
       <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{
-          background:
-            'radial-gradient(circle at top right, rgba(225,29,72,0.10), transparent 42%)',
+          position: 'absolute',
+          inset: 0,
+          background: 'radial-gradient(circle at top right, rgba(225,29,72,0.10), transparent 42%)',
+          opacity: hovered ? 1 : 0,
+          transition: 'opacity 0.5s ease',
+          pointerEvents: 'none',
         }}
       />
 
-      {/* Top accent */}
+      {/* Top accent bar */}
       <div
-        className="absolute top-0 left-6 right-6 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center"
-        style={{ background: 'var(--color-highlight)' }}
-      />
-
-      {/* Logo */}
-      <img
-        src={logo}
-        alt={name}
-        className="relative z-10 object-contain transition-all duration-500 group-hover:scale-[0.92] group-hover:opacity-30"
         style={{
-          height: `${logoH}px`,
-          width: `${logoW}px`,
-          maxWidth: '100%',
+          position: 'absolute',
+          top: 0,
+          left: '24px',
+          right: '24px',
+          height: '2px',
+          background: 'var(--color-highlight)',
+          transformOrigin: 'center',
+          transform: hovered ? 'scaleX(1)' : 'scaleX(0)',
+          transition: 'transform 0.5s cubic-bezier(0.16,1,0.3,1)',
         }}
       />
 
-      {/* Hover client name */}
-      <div className="absolute inset-0 z-20 flex items-center justify-center px-4 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+      {/* Logo area */}
+      <div
+        className="flex items-center justify-center flex-1"
+        style={{ padding: '28px 20px 16px' }}
+      >
+        <img
+          src={logo}
+          alt={name}
+          className="object-contain"
+          style={{
+            height: `${logoH}px`,
+            width: `${logoW}px`,
+            maxWidth: '100%',
+            transform: hovered ? 'scale(0.92)' : 'scale(1)',
+            opacity: hovered ? 0.28 : 1,
+            transition: 'transform 0.5s cubic-bezier(0.16,1,0.3,1), opacity 0.5s ease',
+          }}
+        />
+      </div>
+
+      {/* Divider */}
+      <div
+        style={{
+          height: '1px',
+          marginLeft: '20px',
+          marginRight: '20px',
+          background: hovered
+            ? 'rgba(29,53,87,0.12)'
+            : 'rgba(29,53,87,0.07)',
+          transition: 'background 0.35s ease',
+        }}
+      />
+
+      {/* Permanent name label */}
+      <div
+        className="flex items-center justify-center"
+        style={{
+          padding: '10px 16px',
+          opacity: hovered ? 0 : 1,
+          transition: 'opacity 0.35s ease',
+        }}
+      >
+        <span
+          className="text-body"
+          style={{
+            color: 'var(--color-secondary)',
+            
+            textAlign: 'center',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            maxWidth: '100%',
+            display: 'block',
+          }}
+        >
+          {name}
+        </span>
+      </div>
+
+      {/* Hover name pill — centered overlay */}
+      <div
+        className="absolute inset-0 z-20 flex items-center justify-center px-4"
+        style={{
+          opacity: hovered ? 1 : 0,
+          transform: hovered ? 'translateY(0)' : 'translateY(10px)',
+          transition: 'opacity 0.45s ease, transform 0.45s cubic-bezier(0.16,1,0.3,1)',
+          pointerEvents: 'none',
+        }}
+      >
         <div
           className="rounded-full px-5 py-2 backdrop-blur-md"
           style={{
-            background: 'rgba(255,255,255,0.78)',
-            border: '1px solid rgba(29,53,87,0.10)',
-            boxShadow: '0 8px 24px rgba(6,4,31,0.08)',
+            background: 'rgba(255,255,255,0.82)',
+            border: '1px solid rgba(29,53,87,0.12)',
+            boxShadow: '0 8px 24px rgba(6,4,31,0.1)',
           }}
         >
           <p
-            className="text-center text-body-sm"
-            style={{
-              color: 'var(--color-text-primary)',
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-            }}
+            className="text-label text-center"
+            style={{ color: 'var(--color-text-primary)' }}
           >
             {name}
           </p>

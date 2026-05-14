@@ -31,7 +31,7 @@ function ProcessTimeline() {
         {/* Header */}
         <div className="mb-8">
           <p className="text-h4 text-[var(--color-highlight)]">
-            Our Methodology
+            The Intelligence Lifecycle
           </p>
 
           <h2 className="text-h1 text-[var(--color-text-primary)]">

@@ -33,15 +33,16 @@ function LogoCard({ logo, name, logoH, logoW }) {
   const [hovered, setHovered] = useState(false)
   return (
     <div
-      className="relative flex items-center justify-center rounded-2xl h-full min-h-24 transition-all duration-300 hover:scale-[1.03] overflow-hidden"
+      className="relative flex flex-col items-center justify-center rounded-2xl h-full min-h-24 transition-all duration-300 hover:scale-[1.03] overflow-hidden"
       style={{
-        background:
-          'linear-gradient(145deg, rgba(255,255,255,0.85), rgba(255,255,255,0.75))',
+        background: 'linear-gradient(145deg, rgba(255,255,255,0.85), rgba(255,255,255,0.75))',
         border: '1px solid rgba(255,255,255,0.10)',
+        paddingBottom: '22px',
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
+      {/* Logo */}
       {logo ? (
         <img
           src={logo}
@@ -67,7 +68,35 @@ function LogoCard({ logo, name, logoH, logoW }) {
         </span>
       )}
 
-      {/* Name overlay on hover */}
+      {/* Permanent name label at bottom */}
+      <div
+        className="absolute bottom-0 left-0 right-0 flex justify-center px-2 pb-2"
+        style={{
+          opacity: hovered ? 0 : 1,
+          transition: 'opacity 0.25s ease',
+        }}
+      >
+        <span
+        className='text-body'
+          style={{
+            // fontFamily: 'var(--font-mono)',
+            // fontSize: '12px',
+            // letterSpacing: '0.07em',
+            // textTransform: 'uppercase',
+            color: 'var(--color-secondary)',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            maxWidth: '100%',
+            textAlign: 'center',
+            display: 'block',
+          }}
+        >
+          {name}
+        </span>
+      </div>
+
+      {/* Hover overlay — name prominent on navy */}
       <div
         className="absolute inset-0 flex items-center justify-center px-3"
         style={{
