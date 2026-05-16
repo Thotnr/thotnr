@@ -23,7 +23,7 @@ function S2Metadata({ meta }) {
             >
               <p
                 className="text-label mb-2"
-                style={{ color: 'rgba(255,255,255,0.40)' }}
+                style={{ color: 'rgba(255,255,255,0.55)' }}
               >
                 {f.label}
               </p>

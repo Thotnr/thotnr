@@ -85,7 +85,7 @@ function CapabilityCard({ text, isDark, cardIndex, inView }) {
       <p
         className="text-body"
         style={{
-          color: isDark ? 'rgba(255,255,255,0.78)' : 'var(--color-text-secondary)',
+          color: isDark ? 'rgba(255,255,255,0.85)' : 'var(--color-text-secondary)',
           lineHeight: 1.55,
           margin: 0,
         }}
@@ -317,7 +317,7 @@ function SubServiceSection({ sub, index }) {
             <p
               style={{
                 fontFamily: 'var(--font-accent)',
-                fontStyle: 'italic',
+                // fontStyle: 'italic',
                 fontSize: '20px',
                 lineHeight: 1.52,
                 color: isDark ? 'var(--color-accent)' : 'var(--color-secondary)',
@@ -334,7 +334,7 @@ function SubServiceSection({ sub, index }) {
             <p
               className="text-body-lg"
               style={{
-                color: isDark ? 'rgba(255,255,255,0.66)' : 'var(--color-text-secondary)',
+                color: isDark ? 'rgba(255,255,255,0.85)' : 'var(--color-text-secondary)',
                 lineHeight: 1.75,
                 margin: 0,
                 opacity: inView ? 1 : 0,
@@ -363,12 +363,14 @@ function SubServiceSection({ sub, index }) {
           />
 
           <p
-            className="text-label"
+            className="text-body"
             style={{
-              color: isDark ? 'rgba(255,255,255,0.4)' : 'var(--color-text-tertiary)',
+              // color: isDark ? 'rgba(255,255,255,0.9)' : 'var(--color-secondary)',
+              color: 'var(--color-highlight)',
               marginBottom: '20px',
               opacity: inView ? 1 : 0,
               transition: 'opacity 0.5s ease 0.6s',
+              textTransform: 'uppercase'
             }}
           >
             Capabilities

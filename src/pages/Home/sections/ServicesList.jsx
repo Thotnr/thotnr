@@ -108,7 +108,9 @@ function ServicesList() {
         <div className="mb-8">
           <p className="text-h4 text-[var(--color-highlight)]">What We Deliver</p>
           <h2 className="text-h1 text-white">Services We Offer</h2>
-          <p className="text-body text-white/70 mt-2 max-w-2xl">
+          <p className="text-body text-white/70 mt-2 max-w-2xl"
+          style={{color: 'rgba(255,255,255,0.85)', lineHeight: 1.75}}
+          >
             End-to-end capabilities across AI, architecture, and cloud — engineered to move your enterprise from ambition to execution.
           </p>
         </div>

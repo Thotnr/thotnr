@@ -67,7 +67,7 @@ function StepItem({ number, title, desc, index }) {
 
         <p
           className="text-body-sm"
-          style={{ color: 'rgba(255,255,255,0.52)', lineHeight: 1.75 }}
+          style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}
         >
           {desc}
         </p>
@@ -97,13 +97,13 @@ function S3Approach() {
           <div>
             <p
               className="text-body-lg"
-              style={{ color: 'rgba(255,255,255,0.6)', lineHeight: 1.75, marginBottom: '16px' }}
+              style={{ color: 'rgba(255,255,255,0.95)', lineHeight: 1.75, marginBottom: '16px' }}
             >
               We don't apply frameworks — we design solutions that fit the specific complexity of your business.
             </p>
             <p
               className="text-body"
-              style={{ color: 'rgba(255,255,255,0.4)', lineHeight: 1.75 }}
+              style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}
             >
               Every engagement starts with understanding, not assumptions. Our strategists, architects, and engineers work as a single delivery motion — from the first stakeholder conversation to production launch.
             </p>

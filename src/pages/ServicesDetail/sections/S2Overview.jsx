@@ -10,20 +10,9 @@ function S2Overview({ service }) {
 
             {/* Category number + eyebrow */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
-              {/* <span
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '11px',
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-text-tertiary)',
-                }}
-              >
-                {service.number}
-              </span> */}
-              <div style={{ width: '28px', height: '1px', background: 'var(--color-highlight)', opacity: 0.4 }} />
+              <div style={{ width: '28px', height: '2px', background: 'var(--color-highlight)', opacity: 0.6 }} />
               <p
-                className="text-label"
+                className="text-h4"
                 style={{ color: 'var(--color-highlight)' }}
               >
                 {service.eyebrow}
@@ -40,7 +29,7 @@ function S2Overview({ service }) {
             <div
               style={{
                 width: '40px',
-                height: '2px',
+                height: '3px',
                 background: 'var(--color-accent)',
                 borderRadius: '2px',
                 marginBottom: '28px',
@@ -72,9 +61,9 @@ function S2Overview({ service }) {
                       width: '6px',
                       height: '6px',
                       borderRadius: '50%',
-                      background: 'var(--color-accent)',
+                      background: 'var(--color-highlight)',
                       flexShrink: 0,
-                      marginTop: '8px',
+                      marginTop: '10px',
                     }}
                   />
                   <p className="text-body" style={{ color: 'var(--color-text-secondary)', lineHeight: 1.65 }}>
@@ -97,11 +86,13 @@ function S2Overview({ service }) {
               }}
             >
               <p
-                className="text-label"
+                className="text-body"
                 style={{
-                  color: 'rgba(255,255,255,0.6)',
-                  marginBottom: '24px',
+                  // color: 'rgba(255,255,255,0.75)',
+                  color: 'var(--color-highlight)',
+                  marginBottom: '16px',
                   letterSpacing: '0.14em',
+                  textTransform: 'uppercase'
                 }}
               >
                 Capabilities
@@ -122,7 +113,7 @@ function S2Overview({ service }) {
                     
                     <span
                       className="text-body-sm"
-                      style={{ color: 'rgba(255,255,255,0.75)', lineHeight: 1.4 }}
+                      style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.4 }}
                     >
                       {sub.name}
                     </span>

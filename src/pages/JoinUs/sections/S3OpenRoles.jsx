@@ -163,7 +163,7 @@ function RoleRow({ role, open, onToggle }) {
             className="text-label px-3 py-1 rounded-full"
             style={{
               background: 'rgba(255,255,255,0.08)',
-              color: 'rgba(255,255,255,0.55)',
+              color: 'rgba(255,255,255,0.65)',
             }}
           >
             {role.department}
@@ -197,7 +197,7 @@ function RoleRow({ role, open, onToggle }) {
                       className="mt-2 flex-shrink-0 w-1.5 h-1.5 rounded-full"
                       style={{ background: 'var(--color-accent)' }}
                     />
-                    <span className="text-body-sm text-white/70">{r}</span>
+                    <span className="text-body-sm" style={{color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}>{r}</span>
                   </li>
                 ))}
               </ul>

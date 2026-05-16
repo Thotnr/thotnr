@@ -33,19 +33,7 @@ function PrincipleCard({ number, title, desc }) {
         transition: 'border-color 0.3s ease',
       }}
     >
-      <span
-        style={{
-          fontFamily: 'var(--font-mono)',
-          fontSize: '11px',
-          fontWeight: 500,
-          letterSpacing: '0.16em',
-          color: 'rgba(255,255,255,0.35)',
-          marginBottom: '12px',
-        }}
-      >
-        {number}
-      </span>
-
+      
       <h3
         className="text-h3"
         style={{
@@ -60,7 +48,7 @@ function PrincipleCard({ number, title, desc }) {
 
       <p
         className="text-body"
-        style={{ color: 'rgba(255,255,255,0.62)', lineHeight: 1.7 }}
+        style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.7 }}
       >
         {desc}
       </p>
@@ -80,7 +68,7 @@ function S3Philosophy() {
         <div className="mb-12">
           <p className="text-h4 text-[var(--color-highlight)]">Our Approach</p>
           <h2 className="text-h1 text-white">How We Build</h2>
-          <p className="text-body mt-2 max-w-xl" style={{ color: 'rgba(255,255,255,0.62)' }}>
+          <p className="text-body mt-2 max-w-xl" style={{ color: 'rgba(255,255,255,0.85)' }}>
             Three principles that govern every product decision we make — from architecture to interface.
           </p>
         </div>
@@ -104,34 +92,33 @@ function S3Philosophy() {
             >
               Have a product idea?
             </p>
-            <p className="text-body" style={{ color: 'rgba(255,255,255,0.55)' }}>
+            <p className="text-body" style={{ color: 'rgba(255,255,255,0.85)' }}>
               Let's explore whether it's the right problem to build for.
             </p>
           </div>
 
           <Link
             to="/contact"
-            className="flex-shrink-0 flex items-center gap-2 px-7 py-3 rounded-full no-underline font-semibold"
+            className="flex items-center gap-2 px-7 py-3 rounded-full font-semibold cursor-pointer bg-transparent"
             style={{
-              border: '1px solid var(--color-accent)',
-              color: 'var(--color-accent)',
+              border: '1px solid rgba(255,255,255,0.28)',
+              color: '#ffffff',
               fontFamily: 'var(--font-heading)',
               fontSize: '14px',
-              transition: 'background 0.2s ease, color 0.2s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'var(--color-accent)'
-              e.currentTarget.style.color      = 'var(--color-secondary)'
+              transition: 'background 0.22s ease, border-color 0.22s ease, color 0.22s ease',
             }}
             onMouseLeave={(e) => {
+              e.currentTarget.style.background = '#ffffff'
+              e.currentTarget.style.borderColor = '#ffffff'
+              e.currentTarget.style.color = 'var(--color-secondary)'
+            }}
+            onMouseEnter={(e) => {
               e.currentTarget.style.background = 'transparent'
-              e.currentTarget.style.color      = 'var(--color-accent)'
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.95)'
+              e.currentTarget.style.color = '#ffffff'
             }}
           >
             Talk to us
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
           </Link>
         </div>
 

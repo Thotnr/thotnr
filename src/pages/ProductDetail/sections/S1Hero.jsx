@@ -107,7 +107,7 @@ function S1Hero({ product }) {
             <p
               className="pdh-tagline text-body-lg mb-8"
               style={{
-                color: 'rgba(255,255,255,0.62)',
+                color: 'rgba(255,255,255,0.85)',
                 fontStyle: 'italic',
                 lineHeight: 1.6,
                 maxWidth: '480px',
@@ -119,7 +119,7 @@ function S1Hero({ product }) {
             {/* Divider */}
             <div
               className="pdh-divider mb-8"
-              style={{ width: '48px', height: '1px', background: 'rgba(255,255,255,0.25)' }}
+              style={{ width: '48px', height: '2px', background: 'var(--color-accent)' }}
             />
 
             {/* Stat */}
@@ -139,7 +139,7 @@ function S1Hero({ product }) {
               </span>
               <span
                 className="text-label"
-                style={{ color: 'rgba(255,255,255,0.42)', letterSpacing: '0.12em' }}
+                style={{ color: 'rgba(255,255,255,0.75)', letterSpacing: '0.12em' }}
               >
                 {product.stat.label}
               </span>

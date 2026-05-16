@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
-import icon1 from '../../../assets/images/human-ai.png'
-import icon2 from '../../../assets/images/human-meets-ai.png'
-import icon3 from '../../../assets/images/collabration-layers.png'
+import { Brain, Database, Settings } from 'lucide-react'
+import augDec from '../../../assets/images/augmented-decision.png'
+import groundedAI from '../../../assets/images/grounded-ai.png'
+import embedded from '../../../assets/images/embedded-execution.png'
+
+
 
 function useInView(threshold = 0.12) {
   const ref = useRef(null)
@@ -10,9 +13,7 @@ function useInView(threshold = 0.12) {
     const el = ref.current
     if (!el) return
     const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) { setInView(true); obs.unobserve(el) }
-      },
+      ([entry]) => { if (entry.isIntersecting) { setInView(true); obs.unobserve(el) } },
       { threshold }
     )
     obs.observe(el)
@@ -21,144 +22,215 @@ function useInView(threshold = 0.12) {
   return [ref, inView]
 }
 
+// Opacity variants kept as rgba — no design-system token exists for translucent overlays
+const ACCENTS = {
+  red: {
+    color: 'var(--color-highlight)',
+    bg: 'rgba(230,57,70,0.13)',
+    border: 'rgba(230,57,70,0.30)',
+    glow: 'rgba(230,57,70,0.10)',
+  },
+  purple: {
+    color: 'var(--color-cap-purple)',
+    bg: 'rgba(124,58,237,0.13)',
+    border: 'rgba(124,58,237,0.30)',
+    glow: 'rgba(124,58,237,0.10)',
+  },
+  blue: {
+    color: 'var(--color-cap-blue)',
+    bg: 'rgba(37,99,235,0.13)',
+    border: 'rgba(37,99,235,0.30)',
+    glow: 'rgba(37,99,235,0.10)',
+  },
+}
+
 const capabilities = [
   {
-    icon: icon1,
-    category: 'Augmentation',
+    id: 'decisioning',
+    eyebrow: 'DECISIONING',
     title: 'Augmented Decisions',
-    body: 'We design AI systems that sharpen human judgment with speed, scale, and precision — surfacing the right intelligence at the right moment so every decision is faster, better-informed, and more accountable.',
+    subtitle: 'Human judgment, elevated by AI.',
+    description: 'We design AI systems that extend human thinking with greater speed, scale, and precision. By combining machine intelligence with human judgment, we help teams make faster, more informed decisions without losing the context, oversight, and control that strong businesses depend on.',
+    accentKey: 'red',
+    Icon: augDec,
+    
   },
   {
-    icon: icon2,
-    category: 'Grounded AI',
+    id: 'context',
+    eyebrow: 'CONTEXT',
     title: 'Grounded AI',
-    body: 'AI grounded in your enterprise context — connected to your data, your domain, and your operational reality. Not a generic model, but intelligence built around the specifics of how your business actually works.',
+    subtitle: 'Connected to business reality.',
+    description: 'We anchor AI in trusted data, enterprise knowledge, and real operating context. This ensures outputs are not only technically sound, but also relevant, dependable, and aligned to how your organisation actually works across teams, systems, and day-to-day business decisions.',
+    accentKey: 'red',
+    Icon: groundedAI,
   },
   {
-    icon: icon3,
-    category: 'Integration',
+    id: 'execution',
+    eyebrow: 'EXECUTION',
     title: 'Embedded Execution',
-    body: 'Intelligence embedded directly into workflows, systems, and decision points — not a standalone tool, but a native enterprise capability that improves efficiency, consistency, and adaptability over time.',
+    subtitle: 'Built into workflows and decisions.',
+    description: 'We integrate AI into systems, processes, and day-to-day operations so it becomes part of execution, not just analysis. The result is AI that supports real work, drives consistent action, and creates measurable value across the enterprise over time.',
+    accentKey: 'red',
+    Icon: embedded,
   },
 ]
 
-function CapabilityCard({ icon, category, title, body, index, inView }) {
+function CapabilityCard({ eyebrow, title, subtitle, description, accentKey, Icon, index, inView }) {
   const [hovered, setHovered] = useState(false)
+  const a = ACCENTS[accentKey]
 
   return (
+    // Outer div: scroll entrance only — no hover transition so hover feels instant
     <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
       style={{
-        position: 'relative',
-        borderRadius: '16px',
-        padding: '36px 32px 28px',
-        background: hovered
-          ? 'rgba(255,255,255,0.072)'
-          : 'rgba(255,255,255,0.038)',
-        border: `1px solid ${hovered ? 'rgba(168,218,220,0.24)' : 'rgba(255,255,255,0.08)'}`,
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        transform: inView
-          ? hovered ? 'translateY(-10px)' : 'translateY(0)'
-          : 'translateY(44px)',
-        opacity: inView ? 1 : 0,
-        boxShadow: hovered
-          ? '0 32px 72px rgba(0,0,0,0.6), 0 0 56px rgba(168,218,220,0.07), inset 0 1px 0 rgba(255,255,255,0.06)'
-          : '0 4px 28px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.03)',
-        transition: [
-          `opacity 0.78s ease ${0.15 + index * 0.14}s`,
-          `transform 0.78s cubic-bezier(0.16,1,0.3,1) ${0.15 + index * 0.14}s`,
-          'background 0.35s ease',
-          'border-color 0.35s ease',
-          'box-shadow 0.45s ease',
-        ].join(', '),
         display: 'flex',
         flexDirection: 'column',
-        cursor: 'default',
-        overflow: 'hidden',
+        height: '100%',
+        opacity: inView ? 1 : 0,
+        transform: inView ? 'translateY(0)' : 'translateY(44px)',
+        transition: `opacity 0.78s ease ${0.15 + index * 0.14}s, transform 0.78s cubic-bezier(0.16,1,0.3,1) ${0.15 + index * 0.14}s`,
       }}
     >
+      {/* Inner div: hover lift — no entrance delay so it's snappy */}
+      <div
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={{
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          borderRadius: '24px',
+          padding: '16px 20px 12px',
+          border: `1px solid ${hovered ? a.border : 'rgba(255,255,255,0.10)'}`,
+          background: hovered ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.035)',
+          boxShadow: hovered
+            ? `0 24px 64px rgba(0,0,0,0.5), 0 0 48px ${a.glow}, inset 0 1px 0 rgba(255,255,255,0.07)`
+            : '0 4px 28px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04)',
+          transform: hovered ? 'translateY(-6px)' : 'translateY(0)',
+          transition: 'transform 0.35s cubic-bezier(0.16,1,0.3,1), border-color 0.35s ease, background 0.35s ease, box-shadow 0.45s ease',
+          cursor: 'default',
+          position: 'relative',
+          overflow: 'hidden',
+          minHeight: '420px',
+        }}
+      >
+        {/* 3D floating icon stage */}
+        <div style={{
+          perspective: '900px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '180px',
+          position: 'relative',
+          marginBottom: '0px',
+          flexShrink: 0,
+        }}>
+          {/* Accent glow orb — sits beneath icon, pulses in sync */}
+          <div style={{
+            position: 'absolute',
+            bottom: '4px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 0,
+          }}>
+            <div
+              className={`cap-glow-${index}`}
+              style={{
+                width: '130px',
+                height: '60px',
+                borderRadius: '50%',
+                background: `radial-gradient(ellipse, ${a.color} 0%, transparent 70%)`,
+                opacity: hovered ? 0.65 : 0.3,
+                filter: 'blur(18px)',
+                transition: 'opacity 0.45s ease',
+              }}
+            />
+          </div>
 
-      {/* Icon + ambient glow */}
-      <div style={{ position: 'relative', marginBottom: '28px', width: '104px', height: '104px' }}>
+          {/* Icon — 3D float animation */}
+          <img
+            src={Icon}
+            alt=""
+            className={`cap-icon-${index}`}
+            style={{
+              width: '160px',
+              height: '160px',
+              objectFit: 'contain',
+              position: 'relative',
+              zIndex: 1,
+              filter: hovered
+                ? `drop-shadow(0 0 32px ${a.color}) drop-shadow(0 10px 20px rgba(0,0,0,0.55)) brightness(1.18)`
+                : 'drop-shadow(0 10px 22px rgba(0,0,0,0.55)) brightness(1)',
+              transition: 'filter 0.45s ease',
+            }}
+          />
+        </div>
+
+        {/* Eyebrow */}
+        <p className="text-body" style={{ color: 'var(--color-highlight)', marginBottom: '10px' , fontWeight: 500}}>
+          {eyebrow}
+        </p>
+
+        
+
+        {/* Title */}
+        <h3
+          className="text-h3"
+          style={{
+            color: 'var(--color-text-white)',
+            lineHeight: 1.25,
+            marginBottom: '10px',
+            fontWeight: 600,
+          }}
+        >
+          {title}
+        </h3>
+
+        {/* Subtitle */}
+        <p
+          className="text-body-sm"
+          style={{
+            color: 'rgba(255,255,255,0.85)',
+            marginBottom: '20px'
+            
+          }}
+        >
+          {subtitle}
+        </p>
+
+        {/* Colored underline */}
+        <div
+          style={{
+            width: '24px',
+            height: '2px',
+            borderRadius: '2px',
+            background: 'var(--color-highlight)',
+            marginBottom: '18px',
+          }}
+        />
+
+        {/* Description */}
+        <p
+          className="text-body"
+          style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.78, flex: 1 }}
+        >
+          {description}
+        </p>
+
+        {/* Bottom accent glow line */}
         <div
           style={{
             position: 'absolute',
-            inset: '-28px',
-            borderRadius: '50%',
-            background: hovered
-              ? 'radial-gradient(circle, rgba(168,218,220,0.2) 0%, transparent 68%)'
-              : 'radial-gradient(circle, rgba(168,218,220,0.07) 0%, transparent 68%)',
-            transition: 'background 0.45s ease',
-            pointerEvents: 'none',
-          }}
-        />
-        <img
-          src={icon}
-          alt={title}
-          style={{
-            width: '104px',
-            height: '104px',
-            objectFit: 'contain',
-            position: 'relative',
-            zIndex: 1,
-            filter: hovered
-              ? 'brightness(1.12) drop-shadow(0 0 12px rgba(168,218,220,0.25))'
-              : 'brightness(1)',
-            transition: 'filter 0.45s ease',
+            bottom: 0,
+            left: '15%',
+            right: '15%',
+            height: '1px',
+            background: `linear-gradient(90deg, transparent 0%, ${a.color} 50%, transparent 100%)`,
+            opacity: hovered ? 0.55 : 0,
+            transition: 'opacity 0.4s ease',
           }}
         />
       </div>
-
-      {/* Category label */}
-      <p
-        className="text-label"
-        style={{ color: 'var(--color-accent)', marginBottom: '10px' }}
-      >
-        {category}
-      </p>
-
-      {/* Title */}
-      <h3
-        className="text-h3"
-        style={{
-          color: 'var(--color-text-white)',
-          lineHeight: 1.25,
-          marginBottom: '14px',
-          fontWeight: 600,
-        }}
-      >
-        {title}
-      </h3>
-
-      {/* Body */}
-      <p
-        className="text-body"
-        style={{
-          color: 'rgba(255,255,255,0.85)', lineHeight: 1.75,
-          flex: 1,
-        }}
-      >
-        {body}
-      </p>
-
-
-      {/* Arrow button */}
-    
-      {/* Bottom accent glow line */}
-      <div
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          left: '15%',
-          right: '15%',
-          height: '1px',
-          background: 'linear-gradient(90deg, transparent 0%, var(--color-accent) 50%, transparent 100%)',
-          opacity: hovered ? 0.65 : 0,
-          transition: 'opacity 0.4s ease',
-        }}
-      />
     </div>
   )
 }
@@ -171,60 +243,32 @@ function ServicesCards() {
       className="py-16 px-6 md:px-10 lg:px-16 relative overflow-hidden"
       style={{ background: 'var(--color-secondary)' }}
     >
-      {/* Decorative radial glows */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          top: '-120px',
-          left: '-80px',
-          width: '520px',
-          height: '520px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(168,218,220,0.09) 0%, transparent 62%)',
-          filter: 'blur(40px)',
-          pointerEvents: 'none',
-          zIndex: 0,
-        }}
-      />
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          bottom: '-80px',
-          right: '-60px',
-          width: '440px',
-          height: '440px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(230,57,70,0.07) 0%, transparent 62%)',
-          filter: 'blur(50px)',
-          pointerEvents: 'none',
-          zIndex: 0,
-        }}
-      />
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          top: '45%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '640px',
-          height: '360px',
-          borderRadius: '50%',
-          background: 'radial-gradient(ellipse, rgba(168,218,220,0.04) 0%, transparent 62%)',
-          filter: 'blur(60px)',
-          pointerEvents: 'none',
-          zIndex: 0,
-        }}
-      />
+      {/* Decorative ambient glows */}
+      <div aria-hidden="true" style={{
+        position: 'absolute', top: '-100px', left: '-60px',
+        width: '480px', height: '480px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(230,57,70,0.11) 0%, transparent 62%)',
+        filter: 'blur(48px)', pointerEvents: 'none', zIndex: 0,
+      }} />
+      <div aria-hidden="true" style={{
+        position: 'absolute', top: '-80px', right: '-40px',
+        width: '440px', height: '440px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(37,99,235,0.13) 0%, transparent 62%)',
+        filter: 'blur(52px)', pointerEvents: 'none', zIndex: 0,
+      }} />
+      <div aria-hidden="true" style={{
+        position: 'absolute', bottom: '-60px', left: '50%',
+        transform: 'translateX(-50%)',
+        width: '600px', height: '300px', borderRadius: '50%',
+        background: 'radial-gradient(ellipse, rgba(124,58,237,0.07) 0%, transparent 62%)',
+        filter: 'blur(60px)', pointerEvents: 'none', zIndex: 0,
+      }} />
 
       <div ref={sectionRef} className="max-w-7xl mx-auto relative" style={{ zIndex: 1 }}>
 
-        {/* ── Header ── */}
+        {/* Header */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-end mb-12 md:mb-14">
 
-          {/* Left: eyebrow + heading */}
           <div
             style={{
               opacity: inView ? 1 : 0,
@@ -232,31 +276,19 @@ function ServicesCards() {
               transition: 'opacity 0.78s ease, transform 0.78s cubic-bezier(0.16,1,0.3,1)',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '22px' }}>
-              
-              <p className="text-h4 mb-4 tracking-widest" style={{ color: 'var(--color-highlight)' }}>
+            <p className="text-h4" style={{ color: 'var(--color-highlight)', marginBottom: '16px' }}>
               AI Capabilities
             </p>
-            </div>
-
             <h2
-              className="text-h1"
-              style={{ color: 'var(--color-text-white)', lineHeight: 1.16, fontWeight: 600 }}
+              className="text-h1 mt-1"
+              style={{ color: 'var(--color-text-white)', lineHeight: 1.16 }}
             >
-              The foundations of{' '}
-              <span
-                style={{
-                  fontFamily: 'var(--font-accent)',
-                  fontStyle: 'italic',
-                  color: 'var(--color-accent)',
-                }}
-              >
-                Intelligence Augmented
-              </span>
+              The foundations of <br />
+              Intelligence Augmented
+             
             </h2>
           </div>
 
-          {/* Right: description */}
           <div
             style={{
               opacity: inView ? 1 : 0,
@@ -264,101 +296,109 @@ function ServicesCards() {
               transition: 'opacity 0.78s ease 0.16s, transform 0.78s cubic-bezier(0.16,1,0.3,1) 0.16s',
             }}
           >
-            <div
-              style={{
-                width: '36px',
-                height: '2px',
-                borderRadius: '2px',
-                background: 'var(--color-highlight)',
-                marginBottom: '20px',
-              }}
-            />
-            <p
-              className="text-body-lg"
-              style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}
-            >
-              Three core capabilities turn AI from a standalone model into practical business value. We focus on improving decisions, grounding AI in real business context, and embedding it into execution — so intelligence does not sit outside the enterprise, but works within it.
+            <div style={{ width: '36px', height: '2px', borderRadius: '2px', background: 'var(--color-highlight)', marginBottom: '20px' }} />
+            <p className="text-body-lg" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.78 }}>
+              Three core capabilities turn AI from a standalone model into practical business value.
+              We focus on improving decisions, grounding AI in real business context, and embedding
+              it into execution — so intelligence does not sit outside the enterprise, but works within it.
             </p>
           </div>
         </div>
 
-        {/* ── Cards ── */}
+        {/* Cards — 3-col desktop, 2-col tablet (3rd centered), 1-col mobile */}
         <style>{`
           @media (min-width: 768px) and (max-width: 1023px) {
-            .cap-cards-grid .cap-card-col-2 {
-              grid-column: 1 / -1;
-              max-width: calc(50% - 10px);
-              margin-left: auto;
-              margin-right: auto;
-              width: 100%;
-            }
+            .cap-grid .cap-third { grid-column: 1 / -1; max-width: calc(50% - 10px); margin: 0 auto; width: 100%; }
           }
+
+          /* 3D float — each card offset so they're never in sync */
+          @keyframes capFloat0 {
+            0%   { transform: translateY(2px)   rotateY(-14deg) rotateX(5deg); }
+            100% { transform: translateY(-20px)  rotateY(14deg)  rotateX(-5deg); }
+          }
+          @keyframes capFloat1 {
+            0%   { transform: translateY(-8px)  rotateY(12deg)  rotateX(-6deg); }
+            100% { transform: translateY(14px)   rotateY(-12deg) rotateX(6deg); }
+          }
+          @keyframes capFloat2 {
+            0%   { transform: translateY(5px)   rotateY(-18deg) rotateX(4deg); }
+            100% { transform: translateY(-18px)  rotateY(10deg)  rotateX(-7deg); }
+          }
+
+          /* Glow orb scale — synced to same duration as matching icon */
+          @keyframes capGlow0 {
+            0%   { transform: scale(0.82); }
+            100% { transform: scale(1.22); }
+          }
+          @keyframes capGlow1 {
+            0%   { transform: scale(1.18); }
+            100% { transform: scale(0.78); }
+          }
+          @keyframes capGlow2 {
+            0%   { transform: scale(0.88); }
+            100% { transform: scale(1.18); }
+          }
+
+          .cap-icon-0 { animation: capFloat0 4.0s ease-in-out infinite alternate; }
+          .cap-icon-1 { animation: capFloat1 4.6s ease-in-out infinite alternate -1.4s; }
+          .cap-icon-2 { animation: capFloat2 3.8s ease-in-out infinite alternate -2.7s; }
+
+          .cap-glow-0 { animation: capGlow0 4.0s ease-in-out infinite alternate; }
+          .cap-glow-1 { animation: capGlow1 4.6s ease-in-out infinite alternate -1.4s; }
+          .cap-glow-2 { animation: capGlow2 3.8s ease-in-out infinite alternate -2.7s; }
         `}</style>
-        <div className="cap-cards-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        <div className="cap-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {capabilities.map((cap, i) => (
-            <div key={cap.title} className={i === 2 ? 'cap-card-col-2' : ''} style={{ display: 'flex', flexDirection: 'column' }}>
+            <div key={cap.id} className={i === 2 ? 'cap-third' : ''} style={{ display: 'flex', flexDirection: 'column' }}>
               <CapabilityCard {...cap} index={i} inView={inView} />
             </div>
           ))}
         </div>
 
-        {/* ── Insight strip ── */}
+        {/* Insight strip */}
         <div
           style={{
             marginTop: '28px',
-            padding: '18px 28px',
-            borderRadius: '12px',
+            padding: '20px 28px',
+            borderRadius: '14px',
             border: '1px solid rgba(255,255,255,0.07)',
             background: 'rgba(255,255,255,0.03)',
             backdropFilter: 'blur(10px)',
             WebkitBackdropFilter: 'blur(10px)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '20px',
-            flexWrap: 'wrap',
+            display: 'grid',
+            gridTemplateColumns: '1fr',
+            gap: '16px',
             opacity: inView ? 1 : 0,
             transform: inView ? 'translateY(0)' : 'translateY(20px)',
             transition: 'opacity 0.78s ease 0.58s, transform 0.78s cubic-bezier(0.16,1,0.3,1) 0.58s',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <span
-              style={{
-                color: 'var(--color-accent)',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '16px',
-                opacity: 0.75,
-                flexShrink: 0,
-              }}
-            >
-              ✦
-            </span>
-            <p
-              style={{
+          <style>{`
+            @media (min-width: 1024px) {
+              .insight-strip { grid-template-columns: 0.9fr 1.6fr !important; align-items: center; }
+            }
+          `}</style>
+          <div className="insight-strip" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+              <span style={{ color: 'var(--color-accent)', fontFamily: 'var(--font-mono)', fontSize: '16px', opacity: 0.75, flexShrink: 0 }}>
+                ✦
+              </span>
+              <p style={{
                 fontFamily: 'var(--font-accent)',
                 fontStyle: 'italic',
                 fontSize: '17px',
                 lineHeight: 1.4,
                 color: 'var(--color-text-white)',
                 margin: 0,
-              }}
-            >
-              One principle. Three capabilities. Real impact.
+              }}>
+                One principle. Three capabilities. Real impact.
+              </p>
+            </div>
+            <p className="text-body-sm" style={{ color: 'rgba(255,255,255,0.80)', lineHeight: 1.75 }}>
+              When these three work together, AI becomes a force multiplier — not just for technology,
+              but for the business outcomes that matter most.
             </p>
           </div>
-          <p
-            className="text-body-sm"
-            style={{
-              color: 'rgba(255,255,255,0.85)', lineHeight: 1.75,
-              
-              maxWidth: '340px',
-             
-              textAlign: 'right',
-            }}
-          >
-            Built for enterprises where intelligence must do more than impress — it must perform within the business.
-          </p>
         </div>
 
       </div>

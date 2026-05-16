@@ -132,7 +132,10 @@ function Clients() {
             <div>
               <p className="text-h4 text-[var(--color-highlight)]">Trusted By Brands</p>
               <h2 className="text-h1 text-white mt-1">Our Clients</h2>
-              <p className="text-body text-white/60 mt-3 leading-relaxed max-w-lg">
+              <p 
+              className="text-body text-white/60 mt-3 leading-relaxed max-w-lg"
+              style={{color: 'rgba(255,255,255,0.85)', lineHeight: 1.75}}
+              >
                 We partner with forward-thinking enterprises to turn operational complexity
                 into competitive clarity — built on long-term trust and measurable outcomes.
                 From fintech startups to global mining groups, every engagement is shaped
@@ -159,7 +162,7 @@ function Clients() {
                   </span>
                   <span
                     className="text-body-lg"
-                    style={{ color: 'rgba(255,255,255,0.50)' }}
+                    style={{ color: 'rgba(255,255,255,0.85)' }}
                   >
                     {s.label}
                   </span>

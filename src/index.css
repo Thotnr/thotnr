@@ -34,6 +34,10 @@
   --color-overlay-border: rgba(255, 255, 255, 0.15);
   --color-overlay-metric: rgba(0, 0, 0, 0.15);
   --color-icon-bg:        rgba(168, 218, 220, 0.18);
+
+  /* Capability card accents — ServicesCards section */
+  --color-cap-purple: #7C3AED;
+  --color-cap-blue:   #2563EB;
 }
 
 /* 4. Base Styles */
