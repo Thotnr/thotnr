@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { products } from '../../../data/products'
@@ -28,7 +27,7 @@ function SizeBtn({ label, onClick }) {
   )
 }
 
-function ProductCard({ product, index, logoSize }) {
+function ProductCard({ product, index }) {
   const numStr = String(index + 1).padStart(2, '0')
   const shortDesc = product.description.length > 120
     ? product.description.slice(0, 120).trimEnd() + '…'
@@ -61,10 +60,9 @@ function ProductCard({ product, index, logoSize }) {
           src={product.logo}
           alt={product.name}
           style={{
-            maxHeight: `${logoSize}px`,
-            maxWidth: `${Math.round(logoSize * 2.47)}px`,
+            maxHeight: `${product.logoH ?? 90}px`,
+            maxWidth: `${product.logoW ?? 200}px`,
             objectFit: 'contain',
-            transition: 'max-height 0.25s ease, max-width 0.25s ease',
           }}
         />
 
@@ -155,7 +153,6 @@ function ProductCard({ product, index, logoSize }) {
 }
 
 function S2ProductList() {
-  const [logoSize, setLogoSize] = useState(100)
 
   return (
     <section className="py-16 px-6 md:px-10 lg:px-16 bg-[var(--color-primary)]">
@@ -225,7 +222,7 @@ function S2ProductList() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
           {products.map((product, i) => (
             <div key={product.id} className={`pd-card-${i} flex`}>
-              <ProductCard product={product} index={i} logoSize={logoSize} />
+              <ProductCard product={product} index={i} />
             </div>
           ))}
         </div>

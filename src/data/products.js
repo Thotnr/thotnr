@@ -39,6 +39,8 @@ export const products = [
     ],
     stat: { number: '2,500+', label: 'Hotels on platform' },
     logo: djuboLogo,
+    logoW: 220,
+    logoH: 100,
   },
 
   // ─── EDUMARSHAL ──────────────────────────────────────────────────────────
@@ -76,6 +78,8 @@ export const products = [
     ],
     stat: { number: '300+', label: 'Institutions served' },
     logo: edumarshalLogo,
+    logoW: 300,
+    logoH: 130,
   },
 
   // ─── CITTA ───────────────────────────────────────────────────────────────
@@ -115,6 +119,8 @@ export const products = [
     ],
     stat: { number: '150+', label: 'Integration connectors' },
     logo: cittaLogo,
+    logoW: 220,
+    logoH: 120,
   },
 
   // ─── QAMP ────────────────────────────────────────────────────────────────
@@ -152,5 +158,7 @@ export const products = [
     ],
     stat: { number: '35%', label: 'Average energy reduction' },
     logo: qampLogo,
+    logoW: 180,
+    logoH: 80,
   },
 ]

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { Brain, Database, Settings } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import augDec from '../../../assets/images/augmented-decision.png'
 import groundedAI from '../../../assets/images/grounded-ai.png'
 import embedded from '../../../assets/images/embedded-execution.png'
@@ -25,57 +25,59 @@ function useInView(threshold = 0.12) {
 // Opacity variants kept as rgba — no design-system token exists for translucent overlays
 const ACCENTS = {
   red: {
-    color: 'var(--color-highlight)',
-    bg: 'rgba(230,57,70,0.13)',
-    border: 'rgba(230,57,70,0.30)',
-    glow: 'rgba(230,57,70,0.10)',
+    color: '#F43F5E',
+    bg: 'rgba(244,63,94,0.12)',
+    border: 'rgba(244,63,94,0.28)',
+    glow: 'rgba(244,63,94,0.12)',
   },
   purple: {
-    color: 'var(--color-cap-purple)',
-    bg: 'rgba(124,58,237,0.13)',
-    border: 'rgba(124,58,237,0.30)',
-    glow: 'rgba(124,58,237,0.10)',
-  },
+  color: '#9A6FE3',
+  bg: 'rgba(154,111,227,0.10)',
+  border: 'rgba(154,111,227,0.24)',
+  glow: 'rgba(154,111,227,0.10)',
+},
   blue: {
-    color: 'var(--color-cap-blue)',
-    bg: 'rgba(37,99,235,0.13)',
-    border: 'rgba(37,99,235,0.30)',
-    glow: 'rgba(37,99,235,0.10)',
+    color: '#22D3EE',
+    bg: 'rgba(34,211,238,0.10)',
+    border: 'rgba(34,211,238,0.26)',
+    glow: 'rgba(34,211,238,0.10)',
   },
 }
 
 const capabilities = [
   {
     id: 'decisioning',
+    slug: 'ai-intelligence',
     eyebrow: 'DECISIONING',
     title: 'Augmented Decisions',
     subtitle: 'Human judgment, elevated by AI.',
     description: 'We design AI systems that extend human thinking with greater speed, scale, and precision. By combining machine intelligence with human judgment, we help teams make faster, more informed decisions without losing the context, oversight, and control that strong businesses depend on.',
     accentKey: 'red',
     Icon: augDec,
-    
   },
   {
     id: 'context',
+    slug: 'data-engineering',
     eyebrow: 'CONTEXT',
     title: 'Grounded AI',
     subtitle: 'Connected to business reality.',
     description: 'We anchor AI in trusted data, enterprise knowledge, and real operating context. This ensures outputs are not only technically sound, but also relevant, dependable, and aligned to how your organisation actually works across teams, systems, and day-to-day business decisions.',
-    accentKey: 'red',
+    accentKey: 'purple',
     Icon: groundedAI,
   },
   {
     id: 'execution',
+    slug: 'enterprise-architecture',
     eyebrow: 'EXECUTION',
     title: 'Embedded Execution',
     subtitle: 'Built into workflows and decisions.',
     description: 'We integrate AI into systems, processes, and day-to-day operations so it becomes part of execution, not just analysis. The result is AI that supports real work, drives consistent action, and creates measurable value across the enterprise over time.',
-    accentKey: 'red',
+    accentKey: 'blue',
     Icon: embedded,
   },
 ]
 
-function CapabilityCard({ eyebrow, title, subtitle, description, accentKey, Icon, index, inView }) {
+function CapabilityCard({ slug, eyebrow, title, subtitle, description, accentKey, Icon, index, inView }) {
   const [hovered, setHovered] = useState(false)
   const a = ACCENTS[accentKey]
 
@@ -91,14 +93,15 @@ function CapabilityCard({ eyebrow, title, subtitle, description, accentKey, Icon
         transition: `opacity 0.78s ease ${0.15 + index * 0.14}s, transform 0.78s cubic-bezier(0.16,1,0.3,1) ${0.15 + index * 0.14}s`,
       }}
     >
-      {/* Inner div: hover lift — no entrance delay so it's snappy */}
-      <div
+      {/* Link wraps inner card — hover lift, no entrance delay so it's snappy */}
+      <Link
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         style={{
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
+          textDecoration: 'none',
           borderRadius: '24px',
           padding: '16px 20px 12px',
           border: `1px solid ${hovered ? a.border : 'rgba(255,255,255,0.10)'}`,
@@ -108,7 +111,7 @@ function CapabilityCard({ eyebrow, title, subtitle, description, accentKey, Icon
             : '0 4px 28px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04)',
           transform: hovered ? 'translateY(-6px)' : 'translateY(0)',
           transition: 'transform 0.35s cubic-bezier(0.16,1,0.3,1), border-color 0.35s ease, background 0.35s ease, box-shadow 0.45s ease',
-          cursor: 'default',
+          cursor: 'pointer',
           position: 'relative',
           overflow: 'hidden',
           minHeight: '420px',
@@ -167,7 +170,7 @@ function CapabilityCard({ eyebrow, title, subtitle, description, accentKey, Icon
         </div>
 
         {/* Eyebrow */}
-        <p className="text-body" style={{ color: 'var(--color-highlight)', marginBottom: '10px' , fontWeight: 500}}>
+        <p className="text-body" style={{ color: `${a.color}`, marginBottom: '10px' , fontWeight: 500}}>
           {eyebrow}
         </p>
 
@@ -204,7 +207,7 @@ function CapabilityCard({ eyebrow, title, subtitle, description, accentKey, Icon
             width: '24px',
             height: '2px',
             borderRadius: '2px',
-            background: 'var(--color-highlight)',
+            background: `${a.color}`,
             marginBottom: '18px',
           }}
         />
@@ -230,7 +233,7 @@ function CapabilityCard({ eyebrow, title, subtitle, description, accentKey, Icon
             transition: 'opacity 0.4s ease',
           }}
         />
-      </div>
+      </Link>
     </div>
   )
 }
@@ -243,24 +246,24 @@ function ServicesCards() {
       className="py-16 px-6 md:px-10 lg:px-16 relative overflow-hidden"
       style={{ background: 'var(--color-secondary)' }}
     >
-      {/* Decorative ambient glows */}
+      {/* Decorative ambient glows — match card accent palette */}
       <div aria-hidden="true" style={{
         position: 'absolute', top: '-100px', left: '-60px',
         width: '480px', height: '480px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(230,57,70,0.11) 0%, transparent 62%)',
+        background: 'radial-gradient(circle, rgba(244,63,94,0.11) 0%, transparent 62%)',
         filter: 'blur(48px)', pointerEvents: 'none', zIndex: 0,
       }} />
       <div aria-hidden="true" style={{
         position: 'absolute', top: '-80px', right: '-40px',
         width: '440px', height: '440px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(37,99,235,0.13) 0%, transparent 62%)',
+        background: 'radial-gradient(circle, rgba(34,211,238,0.09) 0%, transparent 62%)',
         filter: 'blur(52px)', pointerEvents: 'none', zIndex: 0,
       }} />
       <div aria-hidden="true" style={{
         position: 'absolute', bottom: '-60px', left: '50%',
         transform: 'translateX(-50%)',
         width: '600px', height: '300px', borderRadius: '50%',
-        background: 'radial-gradient(ellipse, rgba(124,58,237,0.07) 0%, transparent 62%)',
+        background: 'radial-gradient(ellipse, rgba(139,92,246,0.09) 0%, transparent 62%)',
         filter: 'blur(60px)', pointerEvents: 'none', zIndex: 0,
       }} />
 

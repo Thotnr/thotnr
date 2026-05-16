@@ -7,17 +7,24 @@ import bharat from '../../../assets/images/about-us_Bharat.jpg'
 import hariraj from '../../../assets/images/about-us_Hariraj.jpg'
 import deepak from '../../../assets/images/about-us_Deepak.jpg'
 import neha from '../../../assets/images/about-us_Neha.jpg'
+import sanjay from '../../../assets/images/sanjay-gupta.jpeg'
+import gauraksha from '../../../assets/images/gauraksha-kautilya.png'
+
+
+
 
 // Replace placeholderImg with actual headshots when available (e.g. gaurav.jpg)
 const team = [
-  { id: 1, img: sankalp, name: 'SANKALP',    role: 'A Tech Enthusiast',   desc: 'Thought leader' },
-  { id: 2, img: gauravK, name: 'GAURAV KUMAR',      role: 'CEO',  desc: 'Startup visionary & Technopreneur' },
+  { id: 1, img: sankalp, name: 'SANKALP',         role: 'A Tech Enthusiast',   desc: 'Thought leader' },
+  { id: 2, img: gauravK, name: 'GAURAV KUMAR',    role: 'CEO',  desc: 'Startup visionary & Technopreneur' },
   { id: 3, img: gauravV,name: 'GAURAV VERMA',     role: 'A Varied Industry Expert', desc: 'A Skilled Technocrat' },
   { id: 4, img: love, name: 'LOVE SINGHAL',       role: 'Technical Lead', desc: 'Tech Ideologist' },
-  { id: 5, img: bharat,name: 'BHARAT GARG',      role: 'Technical Lead',          desc: 'A Multilingual Coder' },
+  { id: 5, img: bharat,name: 'BHARAT GARG',       role: 'Technical Lead', desc: 'A Multilingual Coder'},
   { id: 6, img: hariraj,name: 'HARIRAJ SINGH',    role: 'Cloud and Application Technologist',         desc: 'A Tinkerer at Heart' },
   { id: 7, img: deepak,name: 'DEEPAK BINDAL',     role: 'Technical Lead',     desc: 'Natural Technovator' },
-  { id: 8, img: neha, name: 'NEHA JAISWAL',     role: 'A Human Resource professional',       desc: 'A Psychologist at Heart' },
+  { id: 8, img: neha, name: 'NEHA JAISWAL',       role: 'A Human Resource professional',       desc: 'A Psychologist at Heart' },
+  { id: 9, img: sanjay, name: 'SANJAY GUPTA',     role: 'AI Architect',       desc: 'An Intelligence Strategist' },
+  { id: 10,img: gauraksha, name: 'GAURAKSHA KAUTILYA',  role: 'Enterprise Solution Architect',       desc: 'A Systems Thinker' }
 ]
 
 function TeamCard({ img, name, role, desc }) {

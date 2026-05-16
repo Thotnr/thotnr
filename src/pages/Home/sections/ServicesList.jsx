@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { services as servicesData } from '../../../data/services'
 
 const cards = servicesData.map((s, i) => ({
+  slug:    s.slug,
   title:   s.title,
   tagline: s.eyebrow,
   stat:    ['3× faster AI adoption', '60% faster delivery cycles', '5× data pipeline efficiency', '40% infrastructure savings', '45% higher engagement'][i],
@@ -16,18 +17,21 @@ const cards = servicesData.map((s, i) => ({
   image:   s.coverImage,
 }))
 
-function ExpandingCard({ title, tagline, stat, desc, image }) {
+function ExpandingCard({ slug, title, tagline, stat, desc, image }) {
   const [hovered, setHovered] = useState(false)
 
   return (
-    <div
+    <Link
+      to={`/services/${slug}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative flex flex-col justify-end overflow-hidden rounded-2xl cursor-default"
+      className="relative flex flex-col justify-end overflow-hidden rounded-2xl"
       style={{
         flex: hovered ? '2.5' : '1',
         minHeight: '420px',
         transition: 'flex 0.5s cubic-bezier(0.4,0,0.2,1)',
+        textDecoration: 'none',
+        cursor: 'pointer',
       }}
     >
       {/* Background image — inner wrapper guarantees overflow clip on all flex items */}
@@ -87,7 +91,7 @@ function ExpandingCard({ title, tagline, stat, desc, image }) {
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 

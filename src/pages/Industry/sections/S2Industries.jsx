@@ -1,36 +1,92 @@
-import imgBanking      from '../../../assets/images/banking.jpg'
-import imgHealthcare   from '../../../assets/images/health-medical.jpg'
-import imgAutomotive   from '../../../assets/images/automotive.jpg'
-import imgTravel       from '../../../assets/images/travel-hospitality.jpg'
-import imgSports       from '../../../assets/images/sports.jpg'
-import imgShipping     from '../../../assets/images/shipping-logistics.jpg'
-import imgTelecom      from '../../../assets/images/tele-communications.jpg'
-import imgRealEstate   from '../../../assets/images/real-estate.jpg'
-import imgEntertainment from '../../../assets/images/entertainment.jpg'
-import imgFashion      from '../../../assets/images/fashion-retail.jpg'
-import imgEducation    from '../../../assets/images/education.jpg'
-import imgPharma       from '../../../assets/images/pharma.jpg'
-import imgLegal        from '../../../assets/images/legal.jpg'
-import imgBeauty       from '../../../assets/images/beauty-cosmetics.jpg'
+import imgBanking        from '../../../assets/images/banking.jpg'
+import imgHealthcare     from '../../../assets/images/health-medical.jpg'
+import imgAutomotive     from '../../../assets/images/automotive.jpg'
+import imgTravel         from '../../../assets/images/travel-hospitality.jpg'
+import imgSports         from '../../../assets/images/sports.jpg'
+import imgShipping       from '../../../assets/images/shipping-logistics.jpg'
+import imgTelecom        from '../../../assets/images/tele-communications.jpg'
+import imgRealEstate     from '../../../assets/images/real-estate.jpg'
+import imgFashion        from '../../../assets/images/fashion-retail.jpg'
+import imgEducation      from '../../../assets/images/education.jpg'
+import imgPharma         from '../../../assets/images/pharma.jpg'
+import imgLegal          from '../../../assets/images/legal.jpg'
+import imgInsurance      from '../../../assets/images/studies/ai-insurance.jpg'
+import imgMining         from '../../../assets/images/studies/mining.png'
+import imgInfraEng       from '../../../assets/images/services/infrastructure-engineering.jpg'
+import imgEnterprisePlatform from '../../../assets/images/services/enterprise-plateform.jpg'
+import imgLifeInsurance from '../../../assets/images/life-insurance.jpg'
 
 const featured = [
-  { name: 'Banking & Financial Services', image: imgBanking,    desc: 'Credit risk, fraud detection, regulatory compliance, and intelligent decisioning at scale.' },
-  { name: 'Healthcare & Life Sciences',   image: imgHealthcare, desc: 'Clinical AI, patient intelligence, and connected care infrastructure for modern health systems.' },
-  { name: 'Automotive',                   image: imgAutomotive, desc: 'Connected vehicle platforms, supply chain intelligence, and factory floor automation.' },
+  {
+    name: 'Banking & Financial Services',
+    image: imgBanking,
+    desc: 'Credit risk, fraud detection, regulatory compliance, and intelligent decisioning at scale.'
+  },
+  {
+    name: 'Life Insurance',
+    image: imgLifeInsurance,
+    desc: 'Claims intelligence, underwriting automation, policy analytics, and AI-driven customer servicing.'
+  },
+  {
+    name: 'Automotive',
+    image: imgAutomotive,
+    desc: 'Connected vehicle platforms, supply chain intelligence, and factory floor automation.'
+  },
 ]
 
 const allIndustries = [
-  { name: 'Travel & Hospitality',  image: imgTravel       },
-  { name: 'Sports & Analytics',    image: imgSports       },
-  { name: 'Shipping & Logistics',  image: imgShipping     },
-  { name: 'Telecommunications',    image: imgTelecom      },
-  { name: 'Real Estate',           image: imgRealEstate   },
-  { name: 'Entertainment',         image: imgEntertainment },
-  { name: 'Fashion & Retail',      image: imgFashion      },
-  { name: 'Education',             image: imgEducation    },
-  { name: 'Pharma & Biotech',      image: imgPharma       },
-  { name: 'Legal & Compliance',    image: imgLegal        },
-  { name: 'Beauty & Cosmetics',    image: imgBeauty       },
+  {
+    name: 'Healthcare & Life Sciences',
+    image: imgHealthcare,
+  },
+  {
+    name: 'Manufacturing & Industrial',
+    image: imgInfraEng,
+  },
+  {
+    name: 'Enterprise Technology',
+    image: imgEnterprisePlatform,
+  },
+  {
+    name: 'Telecommunications',
+    image: imgTelecom,
+  },
+  {
+    name: 'Shipping & Logistics',
+    image: imgShipping,
+  },
+  {
+    name: 'Travel & Hospitality',
+    image: imgTravel,
+  },
+  {
+    name: 'Retail & Consumer Commerce',
+    image: imgFashion,
+  },
+  {
+    name: 'Education',
+    image: imgEducation,
+  },
+  {
+    name: 'Legal & Compliance',
+    image: imgLegal,
+  },
+  {
+    name: 'Mining & Resources',
+    image: imgMining,
+  },
+  {
+    name: 'Sports & Entertainment',
+    image: imgSports,
+  },
+  {
+    name: 'Pharma & Biotech',
+    image: imgPharma,
+  },
+  {
+    name: 'Real Estate',
+    image: imgRealEstate,
+  },
 ]
 
 function FeaturedCard({ name, image, desc }) {

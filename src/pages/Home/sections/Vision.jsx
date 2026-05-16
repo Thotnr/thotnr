@@ -39,26 +39,14 @@ function Vision() {
               AI Vision
             </p>
             <h2
-              style={{
-                fontFamily: 'var(--font-heading)',
-                fontSize: 'clamp(24px, 3.5vw, 48px)',
-                fontWeight: 700,
-                lineHeight: 1.15,
-                color: '#ffffff',
-                marginBottom: '4px',
-              }}
+              className="text-h1 mt-1"
+              style={{ color: 'var(--color-text-white)', lineHeight: 1.16 }}
             >
               Great AI doesn't start with a model.
             </h2>
             <h2
-              style={{
-                fontFamily: 'var(--font-accent)',
-                fontSize: 'clamp(22px, 3.2vw, 44px)',
-                fontWeight: 600,
-               
-                lineHeight: 1.15,
-                color: 'var(--color-text-white)',
-              }}
+              className="text-h1 mt-1"
+              style={{ color: 'var(--color-text-white)', lineHeight: 1.16, fontStyle: 'italic' }}
             >
               It starts with your data.
             </h2>

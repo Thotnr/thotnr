@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import djuboLogo from '../../../assets/images/products/djubo.png'
 import kingdomLogo from '../../../assets/images/products/edumarshal.png'
 import cittaLogo from '../../../assets/images/products/citta.png'
@@ -8,40 +8,56 @@ import qampLogo from '../../../assets/images/products/qamp.png'
 const products = [
   {
     id: 1,
+    slug: 'djubo',
     name: 'Djubo',
     tagline: 'End-to-end hospitality intelligence',
     domain: 'Hospitality',
     logo: djuboLogo,
+    logoW: 200,
+    logoH: 200,
   },
   {
     id: 2,
+    slug: 'edumarshal',
     name: 'Edumarshal',
     tagline: 'Learning infrastructure for institutions',
     domain: 'Education',
     logo: kingdomLogo,
+    logoW: 300,
+    logoH: 300,
   },
   {
     id: 3,
+    slug: 'citta',
     name: 'Citta',
     tagline: 'AI-driven personalised skin health',
     domain: 'Skin Health',
     logo: cittaLogo,
+    logoW: 230,
+    logoH: 230,
   },
   {
     id: 4,
+    slug: 'qamp',
     name: 'Qamp',
     tagline: 'Intelligent infrastructure management at scale.',
     domain: 'Infrastructure',
     logo: qampLogo,
+    logoW: 200,
+    logoH: 200,
   },
 ]
 
-function ProductCard({ name, tagline, domain, logo, logoSize, hovered, setHovered }) {
+function ProductCard({ name, tagline, domain, logo, logoW, logoH, slug, hovered, setHovered }) {
   return (
-    <div
+    <Link
+      to={`/products/${slug}`}
+      style={{ display: 'block', textDecoration: 'none' }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative flex min-h-[300px] flex-col items-center justify-center overflow-hidden rounded-[28px] cursor-default"
+    >
+    <div
+      className="relative flex h-[360px] flex-col items-center justify-center overflow-hidden rounded-[28px] cursor-pointer"
       style={{
         padding: '42px 28px 34px',
         background:
@@ -55,6 +71,31 @@ function ProductCard({ name, tagline, domain, logo, logoSize, hovered, setHovere
           'transform 0.36s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease, border-color 0.3s ease',
       }}
     >
+      {/* Hover arrow — top-right, fades in to signal clickability */}
+      <div style={{
+        position: 'absolute',
+        top: '16px',
+        right: '16px',
+        width: '30px',
+        height: '30px',
+        borderRadius: '50%',
+        border: `1px solid ${hovered ? 'rgba(225,29,72,0.3)' : 'rgba(11,15,25,0.10)'}`,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        opacity: hovered ? 1 : 0,
+        transform: hovered ? 'translate(0,0)' : 'translate(3px,-3px)',
+        transition: 'opacity 0.28s ease, transform 0.35s cubic-bezier(0.16,1,0.3,1), border-color 0.28s ease',
+        zIndex: 10,
+      }}>
+        <svg width="11" height="11" viewBox="0 0 14 14" fill="none">
+          <path d="M1 13L13 1M13 1H5M13 1V9"
+            stroke={hovered ? 'var(--color-highlight)' : 'var(--color-text-tertiary)'}
+            strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+            style={{ transition: 'stroke 0.28s ease' }}
+          />
+        </svg>
+      </div>
       {/* Soft background glow */}
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -94,8 +135,8 @@ function ProductCard({ name, tagline, domain, logo, logoSize, hovered, setHovere
           src={logo}
           alt={name}
           style={{
-            maxHeight: `${logoSize}px`,
-            maxWidth: `${Math.round(logoSize * 3)}px`,
+            maxHeight: `${logoH}px`,
+            maxWidth: `${logoW}px`,
             width: 'auto',
             height: 'auto',
             objectFit: 'contain',
@@ -145,12 +186,12 @@ function ProductCard({ name, tagline, domain, logo, logoSize, hovered, setHovere
         }}
       />
     </div>
+    </Link>
   )
 }
 
 export default function Products() {
   const navigate = useNavigate()
-  const [logoSize] = useState(100)
   const [hoveredId, setHoveredId] = useState(null)
 
   return (
@@ -185,7 +226,6 @@ export default function Products() {
             <ProductCard
               key={p.id}
               {...p}
-              logoSize={logoSize}
               hovered={hoveredId === p.id}
               setHovered={(v) => setHoveredId(v ? p.id : null)}
             />

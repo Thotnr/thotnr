@@ -10,17 +10,26 @@ import hollard       from '../../../assets/images/clients/hollard.png'
 import csav          from '../../../assets/images/clients/csav.png'
 import tata          from '../../../assets/images/clients/tata.png'
 import nykaa         from '../../../assets/images/clients/nykaa.png'
+import bajajAuto     from '../../../assets/images/clients/bajaj-auto.png'
+import ukg           from '../../../assets/images/clients/ukg.svg'
+import obasa         from '../../../assets/images/clients/obasa.png'
 
 const featured = [
-  { id: 1, name: 'Standard Bank',    logo: standardBank,  logoH: 150, logoW: 250 },
-  { id: 2, name: 'Vodacom',          logo: vodacom,        logoH: 80,  logoW: 120 },
-  { id: 3, name: 'ZS',               logo: zs,             logoH: 100, logoW: 140 },
-  { id: 4, name: 'Hollard',          logo: hollard,        logoH: 70,  logoW: 130 },
-  { id: 5, name: 'Anglo American',   logo: angloAmerican,  logoH: 110, logoW: 160 },
-  { id: 6, name: 'Creditas',         logo: creditas,       logoH: 120, logoW: 160 },
-  { id: 7, name: 'Rexall',             logo: csav,           logoH: 80,  logoW: 130 },
-  { id: 8, name: 'Tata International', logo: tata,         logoH: 80,  logoW: 130 },
-  { id: 9, name: 'Nykaa',            logo: nykaa,          logoH: 70,  logoW: 120 },
+  // Row 1
+  { id: 1,  name: 'Standard Bank',      logo: standardBank,  logoH: 150, logoW: 220 },
+  { id: 2,  name: 'Vodacom',            logo: vodacom,        logoH: 70, logoW: 120  },
+  { id: 3,  name: 'ZS',                 logo: zs,             logoH: 100, logoW: 150  },
+  { id: 4,  name: 'Hollard',            logo: hollard,        logoH: 80, logoW: 130  },
+  // Row 2
+  { id: 5,  name: 'Rexall',             logo: csav,           logoH: 90, logoW: 140  },
+  { id: 6,  name: 'Anglo American',     logo: angloAmerican,  logoH: 90, logoW: 140 },
+  { id: 7,  name: 'Creditas',           logo: creditas,       logoH: 100, logoW: 150 },
+  { id: 8,  name: 'Bajaj Auto',         logo: bajajAuto,      logoH: 80, logoW: 130  },
+  // Row 3
+  { id: 9,  name: 'UKG',                logo: ukg,            logoH: 70, logoW: 100  },
+  { id: 10, name: 'Obasa',              logo: obasa,          logoH: 90, logoW: 130  },
+  { id: 11, name: 'Tata International', logo: tata,           logoH: 90, logoW: 130  },
+  { id: 12, name: 'Nykaa',              logo: nykaa,          logoH: 68, logoW: 110  },
 ]
 
 const stats = [
@@ -35,7 +44,7 @@ function LogoCard({ logo, name, logoH, logoW }) {
     <div
       className="relative flex flex-col items-center justify-center rounded-2xl h-full min-h-24 transition-all duration-300 hover:scale-[1.03] overflow-hidden"
       style={{
-        background: 'linear-gradient(145deg, rgba(255,255,255,0.85), rgba(255,255,255,0.75))',
+        background: 'linear-gradient(145deg, rgba(255,255,255,0.99), rgba(255,255,255,0.89))',
         border: '1px solid rgba(255,255,255,0.10)',
         paddingBottom: '22px',
       }}
@@ -77,7 +86,7 @@ function LogoCard({ logo, name, logoH, logoW }) {
         }}
       >
         <span
-        className='text-body'
+        className='text-body-sm'
           style={{
             // fontFamily: 'var(--font-mono)',
             // fontSize: '12px',
@@ -123,7 +132,7 @@ function Clients() {
       <div className="max-w-7xl mx-auto flex flex-col gap-10">
 
         {/* ── TOP ROW: left content + right cards — equal height ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-12 lg:gap-16 items-stretch">
 
           {/* LEFT: content */}
           <div className="flex flex-col justify-between gap-8">
@@ -172,8 +181,8 @@ function Clients() {
 
           </div>
 
-          {/* RIGHT: 3×3 logo grid — stretches to match left height */}
-          <div className="grid grid-cols-3 grid-rows-3 gap-3 md:gap-4 h-full">
+          {/* RIGHT: 4×3 logo grid — stretches to match left height */}
+          <div className="grid grid-cols-4 grid-rows-3 gap-4 h-full">
             {featured.map((client) => (
               <LogoCard key={client.id} logo={client.logo} name={client.name} logoH={client.logoH} logoW={client.logoW} />
             ))}

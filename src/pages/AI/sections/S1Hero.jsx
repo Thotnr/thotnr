@@ -1,4 +1,4 @@
-import coverVideo from '../../../assets/videos/ai-cover.mp4'
+import aiCoverVideo from '../../../assets/videos/ai-cover.mp4'
 
 function S1Hero() {
   return (
@@ -7,14 +7,14 @@ function S1Hero() {
       style={{ height: '100vh', minHeight: '100dvh', background: 'var(--color-secondary)' }}
     >
       <style>{`
-        @keyframes heroIn {
+        @keyframes sdHeroIn {
           from { opacity: 0; transform: translateY(18px); }
           to   { opacity: 1; transform: translateY(0); }
         }
-        .hero-content {
-          animation: heroIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+        .sd-hero-anim {
+          animation: sdHeroIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
         }
-        .hero-content-pos {
+        .sd-hero-pos {
           position: absolute;
           left: 6%;
           right: 6%;
@@ -23,7 +23,7 @@ function S1Hero() {
           z-index: 10;
         }
         @media (min-width: 768px) {
-          .hero-content-pos {
+          .sd-hero-pos {
             left: 8%;
             right: auto;
             top: 50%;
@@ -32,24 +32,25 @@ function S1Hero() {
           }
         }
         @media (min-width: 1024px) {
-          .hero-content-pos {
+          .sd-hero-pos {
             left: 10%;
             right: auto;
             top: 30%;
             transform: translateY(-50%);
-            max-width: 520px;
+            max-width: 560px;
           }
         }
       `}</style>
 
+      {/* Background video */}
       <video
         className="absolute inset-0 w-full h-full object-cover z-0"
-        style={{ objectPosition: 'center center', filter: 'brightness(0.72) contrast(1.05)' }}
-        src={coverVideo}
+        src={aiCoverVideo}
         autoPlay
         muted
         loop
         playsInline
+        style={{ objectPosition: 'center center', filter: 'brightness(0.72) contrast(1.05)' }}
       />
 
       {/* Layer 1: Desktop left-to-right gradient */}
@@ -58,7 +59,7 @@ function S1Hero() {
         background: 'linear-gradient(to right, rgba(1,7,22,0.82) 0%, rgba(1,7,22,0.04) 100%)',
       }} />
 
-      {/* Layer 2: Mobile/tablet flat overlay */}
+      {/* Layer 2: Mobile flat overlay */}
       <div
         className="block lg:hidden"
         style={{
@@ -79,14 +80,15 @@ function S1Hero() {
         background: 'linear-gradient(to bottom, rgba(1,7,22,0.45) 0%, transparent 25%)',
       }} />
 
-      <div className="hero-content hero-content-pos">
+      {/* Content */}
+      <div className="sd-hero-anim sd-hero-pos">
 
         {/* Eyebrow */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '36px' }}>
-          <div className="hero-accent-line" style={{
+          <div style={{
             width: 'clamp(28px, 4vw, 40px)',
             height: '1px',
-            background: 'linear-gradient(90deg, transparent 0%, #7dd3c0 100%)',
+            background: 'linear-gradient(90deg, transparent 0%, rgba(168,218,220,0.9) 100%)',
           }} />
           <span style={{
             fontFamily: 'var(--font-mono)',
@@ -94,20 +96,15 @@ function S1Hero() {
             fontWeight: 500,
             letterSpacing: '0.34em',
             textTransform: 'uppercase',
-            color: '#7dd3c0',
+            color: 'rgba(168,218,220,0.9)',
           }}>
-            Artificial Intelligence
+            Intelligence Augmented
           </span>
         </div>
 
         {/* Headline */}
         <h1 className="text-display text-white leading-tight mb-6" style={{ maxWidth: '600px' }}>
-          
-          <em style={{ color: 'var(--color-accent)', fontStyle: 'italic' }}>
-           Enterprise AI
-          </em>
-          <br />
-          Engineered
+          AI and Intelligence
         </h1>
 
         {/* Thin divider */}
@@ -119,7 +116,7 @@ function S1Hero() {
           marginBottom: '20px',
         }} />
 
-        {/* Supporting text */}
+        {/* Tagline */}
         <p style={{
           fontFamily: 'var(--font-body)',
           fontSize: '17px',
@@ -132,7 +129,7 @@ function S1Hero() {
           letterSpacing: '-0.005em',
           textShadow: '0 2px 16px rgba(0, 0, 0, 0.5)',
         }}>
-          AI strategy, engineering, and deployment — built to run in production, not just in a demo.
+          Intelligent systems that augment human capability, automate operations, and accelerate innovation.
         </p>
 
       </div>
