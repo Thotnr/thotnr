@@ -2,24 +2,24 @@ function Vision() {
   const steps = [
     {
       number: '01',
-      label: 'Listen',
-      statement: ['We ', 'understand the data', ' before we touch the model.'],
+      label: 'Sense',
+      statement: ['We ', 'understand data', ' before design the intelligence.'],
       accentIndex: 1,
-      body: 'We map where it lives, how clean it is, what it can and can\'t tell you. Most AI fails here, quietly. We make it the loudest part of the conversation.',
+      body: 'We map where it lives, how clean it is, what it can prove, and what it cannot tell you. Most AI fails here, quietly. TIA makes data the starting point of every decision.',
     },
     {
       number: '02',
-      label: 'Build',
-      statement: ['We ', 'build AI that fits', ' your stack and your workflow.'],
+      label: 'Shape',
+      statement: ['We ', 'shape intelligence', ' around your business.'],
       accentIndex: 1,
-      body: 'Demos fail where enterprise complexity begins. We engineer for your infrastructure, governance, and the way your teams work.',
+      body: 'We engineer AI for your infrastructure, governance, and workflows — so intelligence fits how your teams operate today and helps them grow tomorrow.',
     },
     {
       number: '03',
-      label: 'Prove',
-      statement: ['We ', 'prove it in the P&L', ' — not the lab.'],
+      label: 'Scale',
+      statement: ['We ', 'turn intelligence', ' into measurable growth.'],
       accentIndex: 1,
-      body: 'Every deployment ships with metrics that matter to your business — revenue lift, hours saved, decisions accelerated. AI that earns its line item.',
+      body: 'Every deployment ships with metrics that matter — revenue lift, hours saved, faster decisions, lower risk, and stronger customer outcomes.',
     },
   ]
 
@@ -36,13 +36,13 @@ function Vision() {
           {/* Left — eyebrow + headline */}
           <div>
             <p className="text-h4 mb-4 tracking-widest" style={{ color: 'var(--color-highlight)' }}>
-              AI Vision
+              TIA Vision
             </p>
             <h2
               className="text-h1 mt-1"
               style={{ color: 'var(--color-text-white)', lineHeight: 1.16 }}
             >
-              Great AI doesn't start with a model.
+              Great AI doesn’t start with technology.
             </h2>
             <h2
               className="text-h1 mt-1"
@@ -58,10 +58,7 @@ function Vision() {
               className="text-body"
               style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}
             >
-              We see AI as a discipline, not a demo. Three things separate the
-              deployments that scale from the ones that stall — and we build for
-              all three, in this order.
-            </p>
+We see AI as a discipline, not a demo. Through TIA, we build intelligence in three steps: understand the enterprise reality, design the right AI capability, and prove value through measurable outcomes.            </p>
           </div>
 
         </div>
@@ -180,7 +177,7 @@ function Vision() {
               className="text-h4"
               style={{ color: '#ffffff', fontWeight: 400 }}
             >
-              Engineered for your business
+              Embedded in your business
             </span>
 
             <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: '18px' }}>·</span>
@@ -189,7 +186,7 @@ function Vision() {
               className="text-h4"
               style={{ color: '#ffffff', fontWeight: 400 }}
             >
-              Measured by your results.
+              Measured by your growth.
             </span>
           </div>
 

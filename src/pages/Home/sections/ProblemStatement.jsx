@@ -9,14 +9,13 @@ function ProblemStatement() {
             The Reality of Enterprise AI Today
           </p>
           <p className="text-body text-[var(--color-text-secondary)] mb-6">
-            Most enterprises are drowning in AI pilots that never reach production.
-          </p>
+Most enterprises are drowning in AI pilots that never reach production.          </p>
 
         
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6">
   {[
     { pct: '95%', label: 'of GenAI pilots fail to reach production',                source: 'MIT NANDA, 2025'   },
-    { pct: '80%', label: 'of AI projects fail overall',         source: 'RAND CORP., 2025'  },
+    { pct: '7-10x', label: 'more tokens wasted on simple reasoning tasks',         source: 'AMAZON SCIENCE, 2025'  },
     { pct: '42%', label: 'abandoned in 2025 (vs 17% in 2024)', source: 'S&P GLOBAL, 2025'  },
     { pct: '74%', label: 'see no tangible value from AI',       source: 'BCG, 2025'         },
   ].map((s, i) => (
@@ -75,9 +74,9 @@ function ProblemStatement() {
               marginBottom: '4px',
             }}
           >
-            We don't just build AI solutions.
+           We don’t chase AI experiments.
             <br />
-            We make them work inside your real organization.
+            We build intelligence that works inside enterprise.
           </h2>
           {/* <h2
             style={{
@@ -101,10 +100,7 @@ function ProblemStatement() {
               lineHeight: 1.8,
             }}
           >
-            We bridge the gap between experimental models and scalable enterprise reality —
-            engineering every deployment for your existing infrastructure, your operational
-            workflows, and your governance reality. So your AI doesn't just demo well.
-            It ships, scales, and pays back.
+            Through TIA, we bridge the gap between AI ambition and enterprise reality — understanding your data first, engineering intelligence into your existing systems and workflows, and measuring success by business value. So AI moves beyond experimentation and becomes a reliable part of how your business operates.
           </p>
         </div>
 
@@ -266,16 +262,16 @@ function ProblemStatement() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
-              title: 'Built for your infrastructure',
-              body: 'Every solution integrates with the systems, data pipelines, and security boundaries you already have — not the ones a demo assumes.',
+              title: 'Built on your data',
+              body: 'Every solution starts with your real data landscape — where it lives, how reliable it is, what it can prove, and what needs to be fixed before AI can scale.',
             },
             {
               title: 'Embedded in real workflows',
-              body: 'We design around how your teams actually work. AI that fits the operation is AI that gets adopted, scaled, and trusted.',
+              body: 'We design around how your teams actually work — your systems, handoffs, controls, and governance — so intelligence becomes part of execution, not a side experiment.',
             },
             {
               title: 'Measured in business value',
-              body: 'Every deployment ships with the metrics that matter to your P&L — so AI investment becomes a number you can defend, not a hope.',
+              body: 'Every deployment is tied to outcomes your business can defend — revenue lift, faster decisions, hours saved, lower risk, and better customer experience.',
             },
           ].map((pillar) => (
             <div key={pillar.title} className="flex flex-col gap-3">

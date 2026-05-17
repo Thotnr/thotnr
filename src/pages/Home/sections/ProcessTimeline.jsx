@@ -5,21 +5,21 @@ const icons = [Brain, Search, Rocket]
 const steps = [
   {
     number:  '01',
-    title:   'Map the Data Landscape',
+    title:   'Sense the Enterprise',
     summary: 'We immerse in your organisation — not your decks.',
-    detail:  'Deep-dive workshops, system audits, and stakeholder interviews surface the real data landscape, process bottlenecks, and cultural constraints that will determine whether any AI project lives or dies.',
+    detail:  'We assess your data, systems, processes, decision points, and operating constraints to understand where AI can genuinely create value. This creates a clear view of your enterprise reality before any solution is designed.',
   },
   {
     number:  '02',
-    title:   'Find the AI Angle',
+    title:   'Shape the Intelligence',
     summary: 'Not every problem needs AI. The ones that do deserve precision.',
-    detail:  'We identify the highest-impact AI opportunities specific to your context — prioritising by ROI potential, implementation complexity, and organisational readiness, not industry buzzwords.',
+    detail:  'We identify and prioritise AI opportunities based on business value, data readiness, implementation complexity, risk, and adoption potential — focusing only on use cases that can become practical business capability.',
   },
   {
     number:  '03',
-    title:   'Make It Real',
+    title:   'Scale the Capability',
     summary: 'Engineering for long-term production capability, not just a clean demo.',
-    detail:  'We handle end-to-end deployment, infrastructure integration, and ongoing governance. From day one, we monitor performance and train your team to ensure your AI scales reliably and compounds in value.',
+    detail:  'We deploy intelligence into your infrastructure, workflows, and governance model — then monitor outcomes so AI becomes a repeatable capability, not a one-time experiment.',
   },
 ]
 
@@ -31,16 +31,15 @@ function ProcessTimeline() {
         {/* Header */}
         <div className="mb-8">
           <p className="text-h4 text-[var(--color-highlight)]">
-            The Intelligence Lifecycle
+            TIA Framework
           </p>
 
           <h2 className="text-h1 text-[var(--color-text-primary)]">
-            How AI Thinking Works in Practice
+            How Thotnr Intelligence Augmentation Works
           </h2>
 
           <p className="text-body text-[var(--color-text-secondary)] mt-2 max-w-2xl">
-            A three-phase engagement designed to move at the speed of your organisation while never sacrificing depth.
-          </p>
+A three-phase engagement designed to move from enterprise reality to measurable AI value — without sacrificing depth, governance, or adoption.          </p>
         </div>
 
         {/* Cards */}

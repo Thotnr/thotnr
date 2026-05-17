@@ -48,10 +48,10 @@ const capabilities = [
   {
     id: 'decisioning',
     slug: 'ai-intelligence',
-    eyebrow: 'DECISIONING',
+    eyebrow: 'AUTONOMISATION',
     title: 'Augmented Decisions',
     subtitle: 'Human judgment, elevated by AI.',
-    description: 'We design AI systems that extend human thinking with greater speed, scale, and precision. By combining machine intelligence with human judgment, we help teams make faster, more informed decisions without losing the context, oversight, and control that strong businesses depend on.',
+    description: 'We design decision systems that combine machine intelligence, business rules, and human oversight — enabling faster, more consistent decisions with controlled autonomy where the business is ready, without losing accountability or trust.',
     accentKey: 'red',
     Icon: augDec,
   },
@@ -59,9 +59,9 @@ const capabilities = [
     id: 'context',
     slug: 'data-engineering',
     eyebrow: 'CONTEXT',
-    title: 'Grounded AI',
+    title: 'Grounded Intelligence',
     subtitle: 'Connected to business reality.',
-    description: 'We anchor AI in trusted data, enterprise knowledge, and real operating context. This ensures outputs are not only technically sound, but also relevant, dependable, and aligned to how your organisation actually works across teams, systems, and day-to-day business decisions.',
+    description: 'We anchor AI in trusted data, enterprise knowledge, policies, and real operating context. This ensures outputs are not only technically sound, but relevant, dependable, and aligned to how your organisation actually works.',
     accentKey: 'purple',
     Icon: groundedAI,
   },
@@ -71,7 +71,7 @@ const capabilities = [
     eyebrow: 'EXECUTION',
     title: 'Embedded Execution',
     subtitle: 'Built into workflows and decisions.',
-    description: 'We integrate AI into systems, processes, and day-to-day operations so it becomes part of execution, not just analysis. The result is AI that supports real work, drives consistent action, and creates measurable value across the enterprise over time.',
+    description: 'We integrate intelligence into systems, processes, and day-to-day operations so it becomes part of execution, not just analysis. The result is AI that supports real work, drives consistent action, and creates measurable value over time.',
     accentKey: 'blue',
     Icon: embedded,
   },
@@ -280,14 +280,14 @@ function ServicesCards() {
             }}
           >
             <p className="text-h4" style={{ color: 'var(--color-highlight)', marginBottom: '16px' }}>
-              AI Capabilities
+              TIA Capabilities
             </p>
             <h2
               className="text-h1 mt-1"
               style={{ color: 'var(--color-text-white)', lineHeight: 1.16 }}
             >
               The foundations of <br />
-              Intelligence Augmented
+              Thotnr Intelligence Augmentation
              
             </h2>
           </div>
@@ -301,9 +301,7 @@ function ServicesCards() {
           >
             <div style={{ width: '36px', height: '2px', borderRadius: '2px', background: 'var(--color-highlight)', marginBottom: '20px' }} />
             <p className="text-body-lg" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.78 }}>
-              Three core capabilities turn AI from a standalone model into practical business value.
-              We focus on improving decisions, grounding AI in real business context, and embedding
-              it into execution — so intelligence does not sit outside the enterprise, but works within it.
+              TIA turns AI from a standalone initiative into practical business capability. We focus on improving decisions, grounding intelligence in real enterprise context, and embedding autonomous execution into daily operations — so AI works within the enterprise, not outside it.
             </p>
           </div>
         </div>
@@ -394,12 +392,10 @@ function ServicesCards() {
                 color: 'var(--color-text-white)',
                 margin: 0,
               }}>
-                One principle. Three capabilities. Real impact.
-              </p>
+Most AI sits beside the business. TIA works inside it              </p>
             </div>
             <p className="text-body-sm" style={{ color: 'rgba(255,255,255,0.80)', lineHeight: 1.75 }}>
-              When these three work together, AI becomes a force multiplier — not just for technology,
-              but for the business outcomes that matter most.
+              Decisioning, context, and execution are not three features — they are three reasons AI finally moves from pilot to production.
             </p>
           </div>
         </div>

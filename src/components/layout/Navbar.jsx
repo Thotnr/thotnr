@@ -352,7 +352,7 @@ function Navbar() {
             <Link to="/case-studies" className={linkCls} style={linkStyle} onMouseEnter={onEnter} onMouseLeave={onLeave}>applied intelligence</Link>
             <Link to="/insights"     className={linkCls} style={linkStyle} onMouseEnter={onEnter} onMouseLeave={onLeave}>augmented insights</Link>
             <Link to="/products"     className={linkCls} style={linkStyle} onMouseEnter={onEnter} onMouseLeave={onLeave}>products</Link>
-            <Link to="/ai"           className={linkCls} style={linkStyle} onMouseEnter={onEnter} onMouseLeave={onLeave}>AI</Link>
+            <Link to="/ai"           className={linkCls} style={linkStyle} onMouseEnter={onEnter} onMouseLeave={onLeave}>TIA</Link>
           </div>
 
           <div className="flex items-center gap-1 flex-shrink-0 -mr-3">
@@ -409,7 +409,7 @@ function Navbar() {
             { label: 'applied intelligence',   to: '/case-studies' },
             { label: 'augmented insights',   to: '/insights'},
             { label: 'products',   to: '/products'     },
-            { label: 'AI',         to: '/ai'           },
+            { label: 'TIA',         to: '/ai'           },
             { label: 'services',   to: '/services'     },
             { label: 'industries', to: '/industries'   },
             { label: 'about',      to: '/about'        },
