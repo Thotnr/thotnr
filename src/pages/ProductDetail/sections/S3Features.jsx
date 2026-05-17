@@ -4,6 +4,7 @@ import {
   Scan, Sparkles, TrendingUp,
   Wifi, Zap, Wrench,
   Layers, Package, ShieldCheck,
+  MapPin, MessageCircle, Briefcase,
 } from 'lucide-react'
 
 const ICON_MAP = {
@@ -12,6 +13,7 @@ const ICON_MAP = {
   Scan, Sparkles, TrendingUp,
   Wifi, Zap, Wrench,
   Layers, Package, ShieldCheck,
+  MapPin, MessageCircle, Briefcase,
 }
 
 function FeatureCard({ icon, label, desc, index }) {

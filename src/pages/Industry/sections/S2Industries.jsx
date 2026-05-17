@@ -15,6 +15,8 @@ import imgMining         from '../../../assets/images/studies/mining.png'
 import imgInfraEng       from '../../../assets/images/services/infrastructure-engineering.jpg'
 import imgEnterprisePlatform from '../../../assets/images/services/enterprise-plateform.jpg'
 import imgLifeInsurance from '../../../assets/images/life-insurance.jpg'
+import imgHCM           from '../../../assets/images/human-capital-management.jpg'
+
 
 const featured = [
   {
@@ -28,9 +30,9 @@ const featured = [
     desc: 'Claims intelligence, underwriting automation, policy analytics, and AI-driven customer servicing.'
   },
   {
-    name: 'Automotive',
-    image: imgAutomotive,
-    desc: 'Connected vehicle platforms, supply chain intelligence, and factory floor automation.'
+    name: 'Human Capital Management',
+    image: imgHCM,
+    desc: 'Workforce intelligence, talent operations, employee experience, and enterprise people management systems.'
   },
 ]
 
@@ -38,6 +40,10 @@ const allIndustries = [
   {
     name: 'Healthcare & Life Sciences',
     image: imgHealthcare,
+  },
+  {
+    name: 'Automotive',
+    image: imgAutomotive,
   },
   {
     name: 'Manufacturing & Industrial',
@@ -109,14 +115,44 @@ function FeaturedCard({ name, image, desc }) {
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)',
+          background: `
+            linear-gradient(
+              to top,
+              rgba(0,0,0,0.90) 0%,
+              rgba(0,0,0,0.68) 30%,
+              rgba(0,0,0,0.22) 62%,
+              rgba(0,0,0,0.04) 100%
+            )
+          `,
+        }}
+      />
+
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `
+            radial-gradient(
+              circle at center,
+              transparent 38%,
+              rgba(0,0,0,0.18) 100%
+            )
+          `,
+        }}
+      />
+
+      {/* Bottom content overlay */}
+      <div
+        className="absolute bottom-0 left-0 right-0"
+        style={{
+          height: '50%',
+          background: 'linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%)',
         }}
       />
 
       {/* Text */}
       <div className="absolute bottom-0 left-0 right-0 p-6">
         <h3 className="text-h3 text-white leading-tight mb-2">{name}</h3>
-        <p className="text-body-sm text-white/70">{desc}</p>
+        <p className="text-body-sm" style={{color:'rgba(255,255,255,0.95)'}}>{desc}</p>
       </div>
     </div>
   )

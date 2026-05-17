@@ -23,7 +23,7 @@ function BrandMark({ scrolled, size = 'md' }) {
         fontFamily: 'var(--font-heading)',
         fontSize: isLg ? '20px' : '15px',
         fontWeight: 900,
-        // letterSpacing: isLg ? '0.10em' : '0.40em',
+        letterSpacing: isLg ? '0.10em' : '0.40em',
         color: scrolled ? 'var(--color-text-primary)' : '#ffffff',
         display: 'block',
         transition: 'color 0.3s ease',

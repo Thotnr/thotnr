@@ -64,40 +64,42 @@ function LogoCard({ logo, name, logoH, logoW }) {
     <div
       className="relative flex flex-col overflow-hidden cursor-default rounded-3xl"
       style={{
-        background: 'linear-gradient(145deg, rgba(255,255,255,0.52), rgba(255,255,255,0.36))',
-        border: `1px solid ${hovered ? 'rgba(29,53,87,0.18)' : 'rgba(29,53,87,0.08)'}`,
+        background: hovered
+          ? 'var(--color-secondary)'
+          : 'linear-gradient(145deg, rgba(255,255,255,0.52), rgba(255,255,255,0.36))',
+        border: `1px solid ${hovered ? 'rgba(168,218,220,0.18)' : 'rgba(29,53,87,0.08)'}`,
         boxShadow: hovered
-          ? '0 16px 48px rgba(6,4,31,0.12)'
+          ? '0 28px 72px rgba(6,4,31,0.30), inset 0 1px 0 rgba(255,255,255,0.06)'
           : '0 10px 30px rgba(6,4,31,0.06)',
         minHeight: '188px',
-        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
-        transition: 'transform 0.45s cubic-bezier(0.16,1,0.3,1), box-shadow 0.45s ease, border-color 0.35s ease',
+        transform: hovered ? 'translateY(-6px)' : 'translateY(0)',
+        transition: 'background 0.4s ease, border-color 0.4s ease, box-shadow 0.45s ease, transform 0.45s cubic-bezier(0.16,1,0.3,1)',
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Soft hover glow */}
+      {/* Subtle radial glow on dark bg */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'radial-gradient(circle at top right, rgba(225,29,72,0.10), transparent 42%)',
+          background: 'radial-gradient(ellipse at 70% 20%, rgba(168,218,220,0.09) 0%, transparent 65%)',
           opacity: hovered ? 1 : 0,
           transition: 'opacity 0.5s ease',
           pointerEvents: 'none',
         }}
       />
 
-      {/* Top accent bar */}
+      {/* Top accent bar — full width on dark */}
       <div
         style={{
           position: 'absolute',
           top: 0,
-          left: '24px',
-          right: '24px',
+          left: 0,
+          right: 0,
           height: '2px',
-          background: 'var(--color-highlight)',
-          transformOrigin: 'center',
+          background: 'linear-gradient(90deg, var(--color-highlight) 0%, rgba(168,218,220,0.7) 100%)',
+          transformOrigin: 'left',
           transform: hovered ? 'scaleX(1)' : 'scaleX(0)',
           transition: 'transform 0.5s cubic-bezier(0.16,1,0.3,1)',
         }}
@@ -116,9 +118,9 @@ function LogoCard({ logo, name, logoH, logoW }) {
             height: `${logoH}px`,
             width: `${logoW}px`,
             maxWidth: '100%',
-            transform: hovered ? 'scale(0.92)' : 'scale(1)',
-            opacity: hovered ? 0.28 : 1,
-            transition: 'transform 0.5s cubic-bezier(0.16,1,0.3,1), opacity 0.5s ease',
+            transform: hovered ? 'scale(0.88)' : 'scale(1)',
+            opacity: hovered ? 0.07 : 1,
+            transition: 'transform 0.5s cubic-bezier(0.16,1,0.3,1), opacity 0.4s ease',
           }}
         />
       </div>
@@ -129,9 +131,7 @@ function LogoCard({ logo, name, logoH, logoW }) {
           height: '1px',
           marginLeft: '20px',
           marginRight: '20px',
-          background: hovered
-            ? 'rgba(29,53,87,0.12)'
-            : 'rgba(29,53,87,0.07)',
+          background: hovered ? 'rgba(255,255,255,0.10)' : 'rgba(29,53,87,0.07)',
           transition: 'background 0.35s ease',
         }}
       />
@@ -142,14 +142,13 @@ function LogoCard({ logo, name, logoH, logoW }) {
         style={{
           padding: '10px 16px',
           opacity: hovered ? 0 : 1,
-          transition: 'opacity 0.35s ease',
+          transition: 'opacity 0.25s ease',
         }}
       >
         <span
           className="text-body"
           style={{
             color: 'var(--color-secondary)',
-            
             textAlign: 'center',
             whiteSpace: 'nowrap',
             overflow: 'hidden',
@@ -162,31 +161,43 @@ function LogoCard({ logo, name, logoH, logoW }) {
         </span>
       </div>
 
-      {/* Hover name pill — centered overlay */}
+      {/* Hover reveal — name centered on dark card */}
       <div
-        className="absolute inset-0 z-20 flex items-center justify-center px-4"
+        className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-3 px-5"
         style={{
           opacity: hovered ? 1 : 0,
-          transform: hovered ? 'translateY(0)' : 'translateY(10px)',
-          transition: 'opacity 0.45s ease, transform 0.45s cubic-bezier(0.16,1,0.3,1)',
+          transform: hovered ? 'translateY(0)' : 'translateY(16px)',
+          transition: 'opacity 0.38s ease 0.08s, transform 0.48s cubic-bezier(0.16,1,0.3,1) 0.08s',
           pointerEvents: 'none',
         }}
       >
-        <div
-          className="rounded-full px-5 py-2 backdrop-blur-md"
+        {/* <span
           style={{
-            background: 'rgba(255,255,255,0.82)',
-            border: '1px solid rgba(29,53,87,0.12)',
-            boxShadow: '0 8px 24px rgba(6,4,31,0.1)',
+            fontFamily: 'var(--font-mono)',
+            fontSize: '10px',
+            letterSpacing: '0.26em',
+            textTransform: 'uppercase',
+            color: 'rgba(168,218,220,0.72)',
           }}
         >
-          <p
-            className="text-label text-center"
-            style={{ color: 'var(--color-text-primary)' }}
-          >
-            {name}
-          </p>
-        </div>
+          Client
+        </span> */}
+
+        <p
+          className="text-h3 font-semibold text-center text-white leading-tight"
+          style={{ maxWidth: '190px' }}
+        >
+          {name}
+        </p>
+
+        <div
+          style={{
+            width: '28px',
+            height: '2px',
+            borderRadius: '2px',
+            background: 'var(--color-highlight)',
+          }}
+        />
       </div>
     </div>
   )

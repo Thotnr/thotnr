@@ -2,12 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { services } from '../../data/services'
 
-// Row 1: first 2 services (AI & Intelligence, Enterprise Architecture)
-// Row 2: remaining 3 (Data & Engineering, Cloud, Experience, Design & Trust)
-const ROW1 = services.slice(0, 2)
-const ROW2 = services.slice(2)
-
-function useInView(threshold = 0.08) {
+function useInView(threshold = 0.06) {
   const ref = useRef(null)
   const [inView, setInView] = useState(false)
   useEffect(() => {
@@ -23,104 +18,135 @@ function useInView(threshold = 0.08) {
   return [ref, inView]
 }
 
-function ServiceBlock({ service, colIndex, rowOffset, inView }) {
-  const [hovered, setHovered] = useState(false)
-  const staggerDelay = (rowOffset + colIndex) * 0.13
+function SubItem({ sub, serviceSlug, idx, inView, colDelay }) {
+  const [hov, setHov] = useState(false)
+  const d = colDelay + 0.20 + idx * 0.042
+
+  return (
+    <Link
+      to={`/services/${serviceSlug}`}
+      style={{ textDecoration: 'none', display: 'block' }}
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+    >
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px',
+          height: '34px',
+
+          borderBottom: '1px solid rgba(52, 72, 92, 0.10)',
+
+          opacity: inView ? 1 : 0,
+          transform: inView ? 'translateX(0)' : 'translateX(-10px)',
+
+          transition: `
+            opacity 0.5s ease ${d}s,
+            transform 0.5s cubic-bezier(0.16,1,0.3,1) ${d}s
+          `,
+        }}
+      >
+        <span
+          style={{
+            width: '4px',
+            height: '4px',
+            borderRadius: '50%',
+            flexShrink: 0,
+
+            background: hov
+              ? 'var(--color-highlight)'
+              : 'rgba(52, 72, 92, 0.46)',
+
+            transition: 'background 0.2s ease',
+          }}
+        />
+
+        <span
+          className="text-body-sm"
+          style={{
+            color: !hov
+              ? 'rgba(15, 23, 42, 0.98)'
+              : 'var(--color-highlight)',
+
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+
+            transition: 'color 0.2s ease',
+          }}
+        >
+          {sub.name}
+        </span>
+      </div>
+    </Link>
+  )
+}
+
+function ServiceColumn({ service, index, inView }) {
+  const [hov, setHov] = useState(false)
+  const d = index * 0.10
+  const isLast = index === services.length - 1
 
   return (
     <div
       style={{
+        padding: '0 20px',
+        borderRight: isLast ? 'none' : '1px solid rgba(29,53,87,0.15)',
         opacity: inView ? 1 : 0,
-        transform: inView ? 'translateY(0)' : 'translateY(28px)',
-        transition: `opacity 0.7s ease ${staggerDelay}s, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${staggerDelay}s`,
+        transform: inView ? 'translateY(0)' : 'translateY(36px)',
+        transition: `opacity 0.65s ease ${d}s, transform 0.65s cubic-bezier(0.16,1,0.3,1) ${d}s`,
       }}
     >
-      {/* Eyebrow */}
-      <p className="text-body-sm" style={{ color: 'var(--color-highlight)', marginBottom: '14px' }}>
-        {service.eyebrow}
-      </p>
-
-      {/* Heading — the clickable link */}
+      {/* Title — fixed height so 1-line titles align with 2-line titles */}
       <Link
         to={`/services/${service.slug}`}
-        style={{ textDecoration: 'none', display: 'block' }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+        style={{
+          textDecoration: 'none',
+          display: 'flex',
+          alignItems: 'flex-start',
+          minHeight: '50px',
+          marginBottom: '16px',
+        }}
+        onMouseEnter={() => setHov(true)}
+        onMouseLeave={() => setHov(false)}
       >
-        {/* Title row */}
-        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-          <h3
-            className="text-h2"
-            style={{
-              color: hovered ? 'var(--color-secondary)' : 'var(--color-text-primary)',
-              lineHeight: 1.2,
-              flex: 1,
-              transition: 'color 0.28s ease',
-            }}
-          >
-            {service.title}
-          </h3>
-
-          {/* Arrow — moves diagonally on hover */}
-          <svg
-            width="18" height="18" viewBox="0 0 14 14" fill="none"
-            style={{
-              marginTop: '5px',
-              flexShrink: 0,
-              opacity: hovered ? 1 : 0,                                     
-              transform: hovered ? 'translate(0,0)' : 'translate(-4px,4px)',
-              transition: 'opacity 0.3s ease, transform 0.38s cubic-bezier(0+.16,1,0.3,1)',                                          
-            }}
-          >
-            <path
-              d="M1 13L13 1M13 1H5M13 1V9"
-              stroke={hovered ? 'var(--color-secondary)' : 'var(--color-text-tertiary)'}
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              style={{ transition: 'stroke 0.28s ease' }}
-            />
-          </svg>
-        </div>
-
-        {/* Animated underline — grows from left on hover */}
-        <div
+        <h3
+          className="text-h4"
           style={{
-            height: '2px',
-            background: 'var(--color-secondary)',
-            marginTop: '10px',
-            borderRadius: '2px',
-            transformOrigin: 'left center',
-            transform: hovered ? 'scaleX(1)' : 'scaleX(0)',
-            transition: 'transform 0.45s cubic-bezier(0.16,1,0.3,1)',
+            color: hov ? 'var(--color-secondary)' : 'var(--color-text-primary)',
+            lineHeight: 1.3,
+            fontWeight: 600,
+            transition: 'color 0.24s ease',
           }}
-        />
+        >
+          {service.title}
+        </h3>
       </Link>
 
-      {/* Sub-services — stagger in after heading */}
-      <div style={{ marginTop: '28px', display: 'flex', flexDirection: 'column', gap: '13px' }}>
+      {/* Separator */}
+      <div
+        style={{
+          height: '1px',
+          background: 'rgba(29,53,87,0.14)',
+          marginBottom: '0',
+          transformOrigin: 'left',
+          transform: inView ? 'scaleX(1)' : 'scaleX(0)',
+          transition: `transform 0.7s cubic-bezier(0.16,1,0.3,1) ${d + 0.15}s`,
+        }}
+      />
+
+      {/* Sub-services */}
+      <div>
         {service.subServices.map((sub, i) => (
-          <div
+          <SubItem
             key={sub.name}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-              opacity: inView ? 1 : 0,
-              transform: inView ? 'translateY(0)' : 'translateY(8px)',
-              transition: `opacity 0.55s ease ${staggerDelay + 0.28 + i * 0.07}s, transform 0.55s cubic-bezier(0.16,1,0.3,1) ${staggerDelay + 0.28 + i * 0.07}s`,
-            }}
-          >
-            <div
-              style={{
-                width: '5px', height: '5px', borderRadius: '50%',
-                background: 'var(--color-accent)', flexShrink: 0,
-              }}
-            />
-            <span className="text-body-sm" style={{ color: 'var(--color-text-secondary)' }}>
-              {sub.name}
-            </span>
-          </div>
+            sub={sub}
+            serviceSlug={service.slug}
+            idx={i}
+            inView={inView}
+            colDelay={d}
+          />
         ))}
       </div>
     </div>
@@ -128,13 +154,11 @@ function ServiceBlock({ service, colIndex, rowOffset, inView }) {
 }
 
 function AllServicesSection() {
-  const [headerRef, headerInView] = useInView(0.2)
-  const [row1Ref, row1InView] = useInView(0.1)
-  const [sepRef, sepInView] = useInView(0.3)
-  const [row2Ref, row2InView] = useInView(0.08)
+  const [secRef, inView] = useInView(0.05)
 
   return (
     <section
+      ref={secRef}
       className="py-16 px-6 md:px-10 lg:px-16"
       style={{
         background: 'radial-gradient(ellipse at 80% 10%, rgba(255,255,255,0.4) 0%, var(--color-accent) 60%)',
@@ -144,71 +168,30 @@ function AllServicesSection() {
 
         {/* Header */}
         <div
-          ref={headerRef}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end mb-14"
+          className="mb-12"
           style={{
-            opacity: headerInView ? 1 : 0,
-            transform: headerInView ? 'translateY(0)' : 'translateY(24px)',
-            transition: 'opacity 0.75s ease, transform 0.75s cubic-bezier(0.16,1,0.3,1)',
+            opacity: inView ? 1 : 0,
+            transform: inView ? 'translateY(0)' : 'translateY(22px)',
+            transition: 'opacity 0.65s ease, transform 0.65s cubic-bezier(0.16,1,0.3,1)',
           }}
         >
-          <div>
-            <p className="text-h4" style={{ color: 'var(--color-highlight)' }}>Practice Areas</p>
-            <h2 className="text-h1" style={{ color: 'var(--color-text-primary)', lineHeight: 1.15 }}>
-              Everything We Build
-            </h2>
-          </div>
-          <div>
-            <p
-              className="text-body"
-              style={{ color: 'var(--color-text-secondary)', lineHeight: 1.8, maxWidth: '480px' }}
-            >
-              Five integrated practice areas spanning thirty-one capabilities — each built around a single ambition: intelligence that augments.
-            </p>
-          </div>
+          <p className="text-h4 text-[var(--color-highlight)]">Practice Areas</p>
+          <h2 className="text-h1" style={{ color: 'var(--color-text-primary)', lineHeight: 1.15 }}>
+            Everything We Build
+          </h2>
+          <p className="text-body mt-2 max-w-2xl" style={{ color: 'var(--color-text-secondary)', lineHeight: 1.8 }}>
+            Five practice areas, fifty capabilities — each built around a single ambition: intelligence that augments.
+          </p>
         </div>
 
-        {/* Row 1 — 2 equal columns */}
-        <div
-          ref={row1Ref}
-          className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16"
-        >
-          {ROW1.map((svc, i) => (
-            <ServiceBlock
-              key={svc.slug}
-              service={svc}
-              colIndex={i}
-              rowOffset={0}
-              inView={row1InView}
-            />
-          ))}
-        </div>
-
-        {/* Horizontal row separator — animates in */}
-        <div
-          ref={sepRef}
-          style={{
-            height: '1px',
-            background: 'rgba(29,53,87,0.12)',
-            margin: '56px 0',
-            transformOrigin: 'left center',
-            transform: sepInView ? 'scaleX(1)' : 'scaleX(0)',
-            transition: 'transform 1s cubic-bezier(0.16,1,0.3,1) 0.1s',
-          }}
-        />
-
-        {/* Row 2 — 3 equal columns */}
-        <div
-          ref={row2Ref}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12"
-        >
-          {ROW2.map((svc, i) => (
-            <ServiceBlock
-              key={svc.slug}
-              service={svc}
-              colIndex={i}
-              rowOffset={ROW1.length}
-              inView={row2InView}
+        {/* 5-column grid — 1 col mobile → 2 sm → 3 lg → 5 xl */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-y-10 gap-x-0">
+          {services.map((service, i) => (
+            <ServiceColumn
+              key={service.slug}
+              service={service}
+              index={i}
+              inView={inView}
             />
           ))}
         </div>
