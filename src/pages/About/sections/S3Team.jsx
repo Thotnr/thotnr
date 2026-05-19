@@ -7,7 +7,8 @@ import bharat from '../../../assets/images/about-us_Bharat.jpg'
 import hariraj from '../../../assets/images/about-us_Hariraj.jpg'
 import deepak from '../../../assets/images/about-us_Deepak.jpg'
 import neha from '../../../assets/images/about-us_Neha.jpg'
-import sanjay from '../../../assets/images/sanjay-gupta.jpeg'
+import sachin from '../../../assets/images/sachin.jpg'
+import sanjay from '../../../assets/images/sanjay-gupta.jpg'
 import gauraksha from '../../../assets/images/gauraksha-kautilya.png'
 
 
@@ -23,8 +24,9 @@ const team = [
   { id: 6, img: hariraj,name: 'HARIRAJ SINGH',    role: 'Cloud and Application Technologist',         desc: 'A Tinkerer at Heart' },
   { id: 7, img: deepak,name: 'DEEPAK BINDAL',     role: 'Technical Lead',     desc: 'Natural Technovator' },
   { id: 8, img: neha, name: 'NEHA JAISWAL',       role: 'A Human Resource professional',       desc: 'A Psychologist at Heart' },
-  { id: 9, img: sanjay, name: 'SANJAY GUPTA',     role: 'AI Architect',       desc: 'An Intelligence Strategist' },
-  { id: 10,img: gauraksha, name: 'GAURAKSHA KAUTILYA',  role: 'Enterprise Solution Architect',       desc: 'A Systems Thinker' }
+  { id: 9, img: sachin, name: 'SACHIN MITTAL',     role: 'Techy with Vision',       desc: 'Driven by Innovation' },
+  { id: 10, img: sanjay, name: 'SANJAY GUPTA',     role: 'AI Architect',       desc: 'An Intelligence Strategist' },
+  { id: 11,img: gauraksha, name: 'GAURAKSHA KAUTILYA',  role: 'Enterprise Solution Architect',       desc: 'A Systems Thinker' }
 ]
 
 function TeamCard({ img, name, role, desc }) {

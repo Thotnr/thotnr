@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { useLayoutEffect } from 'react'
 import Home             from './pages/Home'
+import TIA              from './pages/TIA'
 import About            from './pages/About'
 import Contact          from './pages/Contact'
 import JoinUs           from './pages/JoinUs'
@@ -57,6 +58,7 @@ function AnimatedRoutes() {
           <Route path="/clients"               element={<Clients />}            />
           <Route path="/accelerators"          element={<Accelerators />}       />
           <Route path="/accelerators/:slug"    element={<AcceleratorDetail />}  />
+          <Route path="/tia"                   element={<TIA />}                />
         </Routes>
       </div>
     </>

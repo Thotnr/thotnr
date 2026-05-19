@@ -111,7 +111,7 @@ export const accelerators = [
   {
     slug: 'ai-trust-safety-shield',
     label: 'Accelerator',
-    title: 'AI Trust & Safety Shield',
+    title: 'AI Trust and Safety Shield',
     category: 'AI Governance & Security',
     icon: 'shield-check',
     image: securityImg,

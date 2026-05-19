@@ -38,6 +38,9 @@
   /* Capability card accents — ServicesCards section */
   --color-cap-purple: #7C3AED;
   --color-cap-blue:   #2563EB;
+
+  /* S3 Pillars section accent */
+  --color-pillars-cyan: #5EEAD4;
 }
 
 /* 4. Base Styles */

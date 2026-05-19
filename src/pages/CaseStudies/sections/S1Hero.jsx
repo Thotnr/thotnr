@@ -102,7 +102,7 @@ function S1Hero() {
 
         {/* Headline */}
         <h1 className="text-display text-white leading-tight mb-6" style={{ maxWidth: '600px' }}>
-          Real
+          Real{' '}
           <em style={{ color: 'var(--color-accent)', fontStyle: 'italic' }}>
            Impact
           </em>

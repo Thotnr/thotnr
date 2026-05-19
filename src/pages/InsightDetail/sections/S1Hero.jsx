@@ -31,6 +31,7 @@ function S1Hero({ data }) {
           letterSpacing: '-0.032em',
           color: 'var(--color-text-white)',
           marginBottom: '28px',
+          wordSpacing: '20px',
           textTransform: 'uppercase !important',
         }}
         >

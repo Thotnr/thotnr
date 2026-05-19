@@ -65,6 +65,7 @@ function S1Hero({ data }) {
           lineHeight: 1.06,
           letterSpacing: '-0.032em',
           color: 'var(--color-text-white)',
+          wordSpacing: '20px',
           marginBottom: '28px',
          
         }}
