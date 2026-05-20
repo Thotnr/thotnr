@@ -10,9 +10,9 @@ const FOUNDERS = [
 ]
 
 const PARAGRAPHS = [
-  'Across 20+ enterprise AI engagements — spanning pharma, financial services, insurance, and digital lending — we saw the same pattern repeat:',
-  "Models worked in demos. Pilots didn't reach scale. Production rarely arrived. Quarters passed. Budgets stretched. Outcomes stayed promised, not delivered.",
-  'We stopped blaming the model. We started fixing the framework around it — the data discipline, the delivery rhythm, the governance, the way intelligence was embedded into how the business actually operated.',
+  'Across enterprise AI programmes in pharma, financial services, insurance, and digital lending, we saw the same pattern repeat: models worked, pilots looked promising, but production adoption slowed. Data was fragmented. Workflows were not ready. Governance arrived too late. Outcomes became difficult to measure.',
+  "The issue was not only the model. It was the operating environment around it — the data foundation, decision points, workflow integration, risk controls, and accountability needed to make AI useful at enterprise scale.",
+  'TIA was created to fix that gap: a framework for building AI that is grounded in enterprise reality, embedded into the way work happens, and measured by outcomes the business can defend.',
 ]
 
 function useInView(threshold = 0.08) {
@@ -157,18 +157,18 @@ function S2Origin() {
             display: 'grid',
             gridTemplateColumns: '54fr 46fr',
             gap: 'clamp(48px, 8vw, 112px)',
-            alignItems: 'center',
+            alignItems: 'stretch',
           }}
         >
 
           {/* ─────────── LEFT — Narrative ─────────── */}
-          <div>
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
 
             {/* Eyebrow */}
           <div className="mb-8">
               
               <p className="text-h4 text-[var(--color-highlight)] mb-2">
-            The Origin
+            Why TIA Exists
             </p>
             <h2
               className="text-h1 text-[var(--color-text-primary)]"
@@ -178,7 +178,8 @@ function S2Origin() {
                 
               }}
             >
-              TIA was born from a problem we kept seeing.
+              Enterprise AI rarely fails in the demo.
+              It fails between pilot and production.
             </h2>
           </div>
 
@@ -210,7 +211,7 @@ function S2Origin() {
               ))}
 
               {/* Closing statement */}
-              <p
+              {/* <p
                 className="text-h3 text-[var(--color-text-primary)] mt-4"
               style={{
                 
@@ -219,15 +220,15 @@ function S2Origin() {
               }}
               >
                 That framework became TIA.
-              </p>
+              </p> */}
             </div>
 
           </div>
 
           {/* ─────────── RIGHT — Visuals ─────────── */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
 
-            {/* Founder portraits — 3 horizontal */}
+            {/* Founder portraits — each with name directly below */}
             <div
               className="s2-portrait-grid"
               style={{
@@ -237,75 +238,79 @@ function S2Origin() {
               }}
             >
               {FOUNDERS.map((founder, i) => (
-                <div
-                  key={founder.name}
-                  className={`s2-photo-${i} s2-portrait-wrap`}
-                  style={{ overflow: 'hidden', borderRadius: '10px', aspectRatio: '3/4' }}
-                >
-                  <img
-                    src={founder.img}
-                    alt={founder.name}
+                <div key={founder.name} className={`s2-photo-${i}`}>
+                  <div
+                    className="s2-portrait-wrap"
+                    style={{ overflow: 'hidden', borderRadius: '10px', aspectRatio: '3/4' }}
+                  >
+                    <img
+                      src={founder.img}
+                      alt={founder.name}
+                      style={{
+                        width: '100%', height: '100%',
+                        objectFit: 'cover',
+                        objectPosition: 'center top',
+                        display: 'block',
+                      }}
+                    />
+                  </div>
+                  <p
+                    className="text-caption"
                     style={{
-                      width: '100%', height: '100%',
-                      objectFit: 'cover',
-                      objectPosition: 'center top',
-                      display: 'block',
+                      marginTop: '8px',
+                      textAlign: 'center',
+                      color: 'var(--color-text-primary)',
+                      letterSpacing: '0.12em',
+                      fontWeight: 700,
+                      textTransform: 'uppercase',
+                      lineHeight: 1.3,
                     }}
-                  />
+                  >
+                    {founder.name}
+                  </p>
                 </div>
               ))}
             </div>
 
-            {/* Founder names row */}
-            <div
-              className="s2-names"
-              style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around',  }}
-            >
-              {FOUNDERS.map((founder, i) => (
-                <span
-                  key={founder.name}
-                  style={{ display: 'flex', alignItems: 'center', gap: '10px' }}
-                >
-                  <span
-                    className="text-label"
-                    style={{
-                      color: 'var(--color-text-primary)',
-                      letterSpacing: '0.18em',
-                      fontWeight: 700,
-                    }}
-                  >
-                    {founder.name}
-                  </span>
-                  {i < FOUNDERS.length - 1 && (
-                    <span style={{ color: 'var(--color-accent)', fontSize: '14px', opacity: 0.7 }}>·</span>
-                  )}
-                </span>
-              ))}
+            {/* Founders label + supporting para */}
+            <div className="s2-names" style={{ textAlign: 'center' }}>
+              <p
+                className="text-label"
+                style={{
+                  color: 'var(--color-highlight)',
+                  fontWeight: 600,
+                  marginBottom: '8px',
+                }}
+              >
+                Built by Thotnr practitioners
+              </p>
+              <p
+                className="text-body-sm"
+                style={{
+                  color: 'var(--color-text-secondary)',
+                  lineHeight: 1.65,
+                  maxWidth: '340px',
+                  margin: '0 auto',
+                }}
+              >
+                Built by the Thotnr team behind enterprise AI, data, architecture, and delivery programmes.
+              </p>
             </div>
-
-            {/* Founders label */}
-            <p
-              className="text-body-lg"
-              style={{
-                margin: '-12px 0 0',
-                textAlign: 'center',
-                color: 'var(--color-text-tertiary)',
-                letterSpacing: '0.14em',
-              }}
-            >
-              Founders, TIA
-            </p>
 
             {/* Quote card */}
             <div
               className="s2-quote"
               style={{
+                flex: 1,
                 borderRadius: '16px',
                 padding: 'clamp(24px, 3.5vw, 40px)',
                 background: 'rgba(255,255,255,0.72)',
                 backdropFilter: 'blur(8px)',
                 boxShadow: '0 4px 24px rgba(11,15,25,0.06), 0 1px 4px rgba(11,15,25,0.04)',
                 border: '1px solid rgba(11,15,25,0.06)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
               }}
             >
               <div
@@ -340,8 +345,7 @@ function S2Origin() {
                       fontWeight: 500,
                     }}
                   >
-                    After the 20th pilot, we stopped blaming the model. We started fixing the framework.
-                  </p>
+The breakthrough was not another model. It was the framework around the model — data, workflow, governance, and measurable accountability.                  </p>
 
                   <div style={{
                     width: '32px', height: '2px',
@@ -354,7 +358,7 @@ function S2Origin() {
                     className="text-caption"
                     style={{ margin: 0, color: 'var(--color-text-secondary)', letterSpacing: '0.1em' }}
                   >
-                    — HARIRAJ, <span style={{ opacity: 0.65 }}>Co-founder</span>
+                    — HARIRAJ, <span style={{ opacity: 0.65 }}>Enterprise AI Architect</span>
                   </p>
                 </div>
               </div>

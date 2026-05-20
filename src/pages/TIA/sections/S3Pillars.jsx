@@ -4,10 +4,10 @@ import { BrainCircuit, Box, Sparkles } from 'lucide-react'
 const PILLARS = [
   {
     num: '01',
-    title: 'Discipline',
+    title: 'Foundation',
     subtitle: 'The thinking behind TIA.',
-    description: 'Data first. Outcomes led. Governance by design. We treat AI as a discipline — not a demo. Every TIA engagement begins with a worldview the enterprise can defend.',
-    list: ['Data before model', 'Outcomes before outputs', 'Production before pilots', 'Discipline before demos'],
+    description: 'Data first. Outcomes led. Governance by design. TIA begins with a foundation the enterprise can defend — before any model is designed, deployed, or scaled.',
+    list: ['Data before model', 'Outcomes before outputs', 'Production before pilots', 'Governance before scale'],
     cta: { label: 'Read the TIA Principles', target: 'tia-principles' },
     Icon: BrainCircuit,
   },
@@ -15,12 +15,21 @@ const PILLARS = [
     num: '02',
     title: 'Delivery Model',
     subtitle: 'The way we work.',
-    description: 'Sense → Shape → Scale. A three-phase engagement built for enterprise reality. Repeatable, measurable, accountable — without sacrificing depth or governance.',
+    description: 'TIA is delivered through a structured model that follows the same three moves as the framework — trace enterprise reality, integrate intelligence into the way work happens, and amplify measurable outcomes.',
     phases: [
-      { name: 'Sense', desc: 'Understand the enterprise reality' },
-      { name: 'Shape', desc: 'Design the right AI capability' },
-      { name: 'Scale', desc: 'Embed into systems and operations' },
-    ],
+      {
+        name: 'Trace',
+        desc: 'Understand systems and constraints',
+      },
+      {
+        name: 'Integrate',
+        desc: 'Embed AI into operations',
+      },
+      {
+        name: 'Amplify',
+        desc: 'Scale outcomes and adoption',
+      },
+    ],    
     cta: { label: 'See the framework in action', target: 'tia-framework' },
     Icon: Box,
   },
@@ -28,14 +37,14 @@ const PILLARS = [
     num: '03',
     title: 'Product',
     subtitle: 'The future of TIA.',
-    description: 'Soon, the framework will talk back. Ask TIA — a conversational interface to the discipline itself. Self-assess your AI readiness. Surface opportunities. Get a TIA-shaped plan, on demand.',
+    description: 'TIA is evolving beyond advisory and delivery into product experiences that make the framework easier to access, apply, and scale. Ask TIA is one upcoming expression — a conversational interface for readiness, opportunity discovery, and AI roadmap shaping.',
     prompts: [
       {
         text: 'How AI-ready is my data?',
         answer: "I'd start by checking three things: your data foundation (where it lives, how clean it is), your decision points (which moments matter for the business), and your delivery rhythm (do you have the discipline to ship). In private beta, I'll walk you through each. Join the waitlist to be invited.",
       },
       {
-        text: 'Find AI angles in pharma.',
+        text: 'Find AI opportunities in my industry',
         answer: 'For pharma, three angles consistently work: 1) Field intelligence — replacing quarterly analysis with real-time HCP decisioning. 2) Clinical operations — accelerating trial protocols. 3) Compliance — automating regulatory review. I can map these to your specific data landscape. Join the waitlist for the full conversation.',
       },
       {
@@ -438,14 +447,14 @@ function PillarCard({ pillar, index, onPromptClick }) {
         </div>
       )}
 
-      {/* ── Spacer pushes CTA down ── */}
-      <div style={{ flexGrow: 1 }} />
+      
+      {/* <div style={{ flexGrow: 1 }} /> */}
 
       {/* ── Bottom divider ── */}
-      <div style={{ width: '100%', height: '1px', background: 'rgba(255,255,255,0.08)', margin: '12px 0 6px' }} />
+      {/* <div style={{ width: '100%', height: '1px', background: 'rgba(255,255,255,0.08)', margin: '12px 0 6px' }} /> */}
 
       {/* ── CTA ── */}
-      <button
+      {/* <button
         aria-label={pillar.cta.label}
         onClick={() => scrollTo(pillar.cta.target)}
         onMouseEnter={() => setCtaHov(true)}
@@ -464,7 +473,7 @@ function PillarCard({ pillar, index, onPromptClick }) {
           transition: 'transform 0.25s cubic-bezier(0.16,1,0.3,1)',
           display: 'inline-block',
         }}>→</span>
-      </button>
+      </button> */}
     </div>
   )
 }
@@ -525,6 +534,7 @@ function S3Pillars() {
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 14px;
+          align-items: stretch;
         }
         @media (max-width: 1023px) {
           .s3-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -534,10 +544,6 @@ function S3Pillars() {
           .s3-card-grid { grid-template-columns: 1fr; }
           .s3-product-card { grid-column: span 1; }
         }
-        @media (min-width: 640px) {
-          .s3-card-0, .s3-card-1, .s3-card-2 { min-height: 620px; }
-        }
-
         @media (prefers-reduced-motion: reduce) {
           .s3-eyebrow-line, .s3-eyebrow-text, .s3-heading,
           .s3-card-0, .s3-card-1, .s3-card-2 {

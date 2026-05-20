@@ -1,21 +1,24 @@
-import { Brain, Search, Rocket } from "lucide-react"
+import { Radar, Blocks, TrendingUp } from "lucide-react"
 
-const icons = [Brain, Search, Rocket]
+const icons = [ Radar, Blocks, TrendingUp]
 
 const steps = [
   {
     number: '01',
-    title: 'T — TRACE',
+    title: 'TRACE',
+    highlightColor: '#B13E53',
     detail: 'We trace enterprise reality before designing intelligence — mapping where your data lives, how work flows, where decisions happen, and what constraints must be addressed before AI can scale.',
   },
   {
     number: '02',
-    title: 'I — INTEGRATE',
+    title: 'INTEGRATE',
+    highlightColor: '#445D8C',
     detail: 'We integrate intelligence into the way your business works — engineering AI around your systems, workflows, governance, controls, and teams so it becomes part of execution.',
   },
   {
     number: '03',
-    title: 'A — AMPLIFY',
+    title: 'AMPLIFY',
+    highlightColor: '#445D8C',
     detail: 'We amplify outcomes your business can measure — delivering faster decisions, reduced effort, lower risk, improved conversion, and stronger customer outcomes.',
   },
 ]
@@ -37,7 +40,27 @@ function ProcessTimeline() {
               </h2>
 
           <p className="text-body text-[var(--color-text-secondary)] mt-2 max-w-2xl">
-Through TIA, we build intelligence in three moves: trace the reality of your enterprise, integrate AI into the way work actually happens, and amplify outcomes your business can measure.     </p>
+              Through <span
+                style={{
+                  color: 'var(--color-secondary)',
+                  fontWeight: 600,
+                  letterSpacing: '-0.02em',
+                  position: 'relative',
+                  display: 'inline-block',
+                }}
+              >
+                TIA
+                <span
+                  style={{
+                    position: 'absolute',
+                    left: 0,
+                    bottom: '-2px',
+                    width: '100%',
+                    height: '1px',
+                    background: 'rgba(69,123,157,0.35)',
+                  }}
+                />
+              </span>, we build intelligence in three moves: trace the reality of your enterprise, integrate AI into the way work actually happens, and amplify outcomes your business can measure.     </p>
         </div>
 
         {/* Cards */}
@@ -82,17 +105,18 @@ Through TIA, we build intelligence in three moves: trace the reality of your ent
 
                   {/* Icon */}
                   <div
-                    className="mb-5 flex items-center justify-center w-12 h-12 rounded-xl transition group-hover:scale-110"
+                    className="mb-5 flex items-center justify-center w-14 h-14 rounded-xl transition group-hover:scale-110"
                     style={{
                       background: 'rgba(230,57,70,0.08)',
                       color: 'var(--color-highlight)',
                     }}
                   >
-                    <Icon size={22} strokeWidth={2} />
+                    <Icon size={32} strokeWidth={2} />
                   </div>
 
                   {/* Title */}
                   <h3 className="text-h3 text-[var(--color-text-primary)] mb-4">
+                    
                     {step.title}
                   </h3>
 

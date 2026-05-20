@@ -69,9 +69,9 @@ function FAQRow({ faq, index, defaultOpen }) {
     <div
       className={`faq10-row-${index}`}
       style={{
-        borderBottom: '1px solid rgba(11,15,25,0.08)',
+        borderBottom: '1px solid rgba(255,255,255,0.1)',
         borderLeft: open ? '3px solid var(--color-tertiary)' : '3px solid transparent',
-        background: open ? 'rgba(29,53,87,0.04)' : 'transparent',
+        background: open ? 'rgba(255,255,255,0.06)' : 'transparent',
         paddingLeft: open ? '20px' : '0',
         transition: 'border-left-color 0.25s ease, background 0.25s ease, padding-left 0.25s ease',
       }}
@@ -98,7 +98,7 @@ function FAQRow({ faq, index, defaultOpen }) {
           <h4
             className="text-h3"
             style={{
-              color: open ? 'var(--color-secondary)' : 'var(--color-text-secondary)',
+              color: open ? 'var(--color-text-white)' : 'rgba(255,255,255,0.80)',
               fontWeight: 600, margin: 0, lineHeight: 1.3,
               transition: 'color 0.22s ease',
             }}
@@ -110,9 +110,9 @@ function FAQRow({ faq, index, defaultOpen }) {
         <span style={{
           flexShrink: 0,
           width: '26px', height: '26px', borderRadius: '50%',
-          border: `1.5px solid ${open ? 'var(--color-tertiary)' : 'rgba(11,15,25,0.2)'}`,
+          border: `1.5px solid ${open ? 'var(--color-tertiary)' : 'rgba(255,255,255,0.22)'}`,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          color: open ? 'var(--color-tertiary)' : 'rgba(11,15,25,0.4)',
+          color: open ? 'var(--color-tertiary)' : 'rgba(255,255,255,0.45)',
           fontSize: '17px', lineHeight: 1,
           transform: open ? 'rotate(45deg)' : 'rotate(0)',
           transition: 'all 0.28s cubic-bezier(0.16,1,0.3,1)',
@@ -131,7 +131,7 @@ function FAQRow({ faq, index, defaultOpen }) {
         <p
           className="text-body"
           style={{
-            color: 'var(--color-text-secondary)', lineHeight: 1.85,
+            color: 'rgba(255,255,255,0.78)', lineHeight: 1.85,
             padding: '0 0 26px 36px', margin: 0,
           }}
         >
@@ -174,15 +174,16 @@ function S10FAQ() {
       <section
         id="tia-faq"
         ref={sectionRef}
-        className={`py-16 px-5 md:px-10 lg:px-16 bg-[var(--color-primary)] ${inView ? 'faq10-running' : 'faq10-paused'}`}
+        className={`py-16 px-5 md:px-10 lg:px-16 ${inView ? 'faq10-running' : 'faq10-paused'}`}
+        style={{ background: 'var(--color-secondary)' }}
       >
         <div style={{ maxWidth: '1320px', margin: '0 auto' }}>
 
           {/* Header — left-aligned */}
           <div className="faq10-header mb-10">
-            <p className="text-h4 text-[var(--color-highlight)] mb-1">Common Questions</p>
+            <p className="text-h4 mb-1" style={{ color: 'var(--color-highlight)' }}>Common Questions</p>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-              <h2 className="text-h1 text-[var(--color-text-primary)]" style={{ lineHeight: 1.2 }}>
+              <h2 className="text-h1" style={{ color: 'var(--color-text-white)', lineHeight: 1.2 }}>
                 What people ask about TIA.
               </h2>
               
@@ -190,7 +191,7 @@ function S10FAQ() {
           </div>
 
           {/* Accordion — full width */}
-          <div style={{ borderTop: '1px solid rgba(11,15,25,0.08)' }}>
+          <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
             {FAQS.map((faq, i) => (
               <FAQRow key={faq.num} faq={faq} index={i} defaultOpen={i === 0} />
             ))}
@@ -203,15 +204,15 @@ function S10FAQ() {
               className="inline-block px-8 py-3 rounded-lg font-semibold"
               style={{
                 background: 'transparent',
-                color: 'var(--color-secondary)',
-                border: '1px solid var(--color-secondary)',
+                color: 'var(--color-accent)',
+                border: '1px solid rgba(168,218,220,0.45)',
                 textDecoration: 'none',
                 fontFamily: 'var(--font-heading)', fontSize: '15px',
                 transition: 'background 0.22s ease, border-color 0.22s ease, color 0.22s ease',
                 flexShrink: 0,
               }}
-              onMouseEnter={e => { e.currentTarget.style.background = 'var(--color-secondary)'; e.currentTarget.style.borderColor = 'var(--color-secondary)'; e.currentTarget.style.color = 'var(--color-text-white)' }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(29,53,87,0.24)'; e.currentTarget.style.color = 'var(--color-secondary)' }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'var(--color-accent)'; e.currentTarget.style.borderColor = 'var(--color-accent)'; e.currentTarget.style.color = 'var(--color-secondary)' }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(168,218,220,0.45)'; e.currentTarget.style.color = 'var(--color-accent)' }}
             >
               Talk to us
             </Link>

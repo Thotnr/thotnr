@@ -4,7 +4,7 @@ function ProblemStatement() {
       {/* ── SECTION 1: Stats bar ── */}
       <section className="py-16 px-5 md:px-10 lg:px-16 bg-[var(--color-primary)]">
         <div className="max-w-7xl mx-auto">
-          <p className="text-h4 text-[var(--color-highlight)] mb-2 tracking-widest">
+          <p className="text-h4 text-[var(--color-highlight)] mb-2">
             The Enterprise AI Opportunity
           </p>
           <p className="text-body text-[var(--color-text-secondary)] mb-6">
@@ -72,7 +72,7 @@ function ProblemStatement() {
 
           {/* Block 2: Problem / Solution headline */}
           <div className="mb-8">
-            <p className="text-h4 mb-1 tracking-widest" style={{ color: 'var(--color-highlight)' }}>
+            <p className="text-h4 mb-1" style={{ color: 'var(--color-highlight)' }}>
               Why TIA Matters
             </p>
 

@@ -168,7 +168,7 @@ function Accelerators() {
             className="text-h1"
             style={{ color: 'var(--color-text-primary)', lineHeight: 1.12 }}
           >
-            Pre-built AI for faster enterprise transformation
+            TIA Accelerators for faster AI transformation
           </h2>
           <p
             className="text-body mt-3 max-w-2xl"

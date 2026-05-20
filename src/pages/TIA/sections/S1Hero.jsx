@@ -3,8 +3,8 @@ import tiaVideo from '../../../assets/videos/ai-cover.mp4'
 
 const PILLS = [
   {
-    label: 'Discipline',
-    content: 'The thinking behind TIA — a data-first, outcome-led discipline for enterprise AI. We treat AI as an operating capability, not a project, governed by clear principles and measurable accountability.',
+    label: 'Foundation',
+    content: 'The foundation behind TIA — data-first, outcome-led, and governed by design. We treat AI as an operating capability, not a project, built on trusted data, workflows, and accountability.',
   },
   {
     label: 'Delivery Model',

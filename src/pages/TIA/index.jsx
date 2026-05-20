@@ -106,9 +106,9 @@ function TIA() {
       <S2Origin />
       <S3Pillars />
       <S4Framework />
-      <S5Engagement />
+      {/* <S5Engagement />
       <S6Principles />
-      <S7Industries />
+      <S7Industries /> */}
       <S8CaseStudies />
       <S9AskTIA />
       <S10FAQ />

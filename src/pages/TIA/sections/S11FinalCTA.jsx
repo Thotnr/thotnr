@@ -32,10 +32,10 @@ function StatCard({ stat, index }) {
       style={{
         padding: 'clamp(22px, 2.5vw, 32px) clamp(20px, 2vw, 28px)',
         borderRadius: '10px',
-        background: hov ? 'rgba(255,255,255,0.075)' : 'rgba(255,255,255,0.04)',
-        border: `1px solid ${hov ? 'rgba(168,218,220,0.32)' : 'rgba(168,218,220,0.12)'}`,
+        background: hov ? 'rgba(29,53,87,0.07)' : 'rgba(29,53,87,0.04)',
+        border: `1px solid ${hov ? 'rgba(29,53,87,0.28)' : 'rgba(29,53,87,0.12)'}`,
         transform: hov ? 'translateY(-5px)' : 'none',
-        boxShadow: hov ? '0 20px 56px rgba(0,0,0,0.22)' : 'none',
+        boxShadow: hov ? '0 12px 36px rgba(29,53,87,0.14)' : 'none',
         transition: [
           'background 0.38s cubic-bezier(0.16,1,0.3,1)',
           'border-color 0.38s cubic-bezier(0.16,1,0.3,1)',
@@ -49,7 +49,7 @@ function StatCard({ stat, index }) {
         fontFamily: 'var(--font-heading)',
         fontSize: 'clamp(26px, 3vw, 38px)',
         fontWeight: 700,
-        color: 'var(--color-accent)',
+        color: 'var(--color-secondary)',
         margin: '0 0 8px',
         lineHeight: 1.1,
       }}>
@@ -58,7 +58,7 @@ function StatCard({ stat, index }) {
       <p style={{
         fontFamily: 'var(--font-body)',
         fontSize: '15px',
-        color: 'rgba(255,255,255,0.72)',
+        color: 'var(--color-text-secondary)',
         lineHeight: 1.5,
         margin: '0 0 12px',
       }}>
@@ -69,7 +69,7 @@ function StatCard({ stat, index }) {
         fontSize: '11px',
         letterSpacing: '0.12em',
         textTransform: 'uppercase',
-        color: 'rgba(168,218,220,0.45)',
+        color: 'var(--color-text-tertiary)',
         margin: 0,
       }}>
         {stat.sector} · {stat.client}
@@ -145,7 +145,7 @@ function S11FinalCTA({ onAskTIA }) {
         id="tia-final-cta"
         ref={sectionRef}
         className={`py-16 px-6 md:px-10 lg:px-16 ${inView ? 'cta11-running' : 'cta11-paused'}`}
-        style={{ background: 'var(--color-secondary)' }}
+        style={{ background: 'var(--color-primary)' }}
       >
         <div style={{ maxWidth: '1320px', margin: '0 auto' }}>
 
@@ -159,11 +159,11 @@ function S11FinalCTA({ onAskTIA }) {
             <p className="cta11-eyebrow text-h4 text-[var(--color-highlight)] mb-2">
               Thotnr Intelligence Augmentation
             </p>
-            <h2 className="cta11-heading text-h1" style={{ color: 'var(--color-text-white)', lineHeight: 1.15, marginBottom: '20px' }}>
+            <h2 className="cta11-heading text-h1" style={{ color: 'var(--color-text-primary)', lineHeight: 1.15, marginBottom: '20px' }}>
               Ready to move beyond AI pilots?
             </h2>
             <p className="cta11-sub text-body-lg" style={{
-              color: 'rgba(255,255,255,0.85)',
+              color: 'var(--color-text-secondary)',
               lineHeight: 1.75,
               maxWidth: '800px',
               margin: '0 auto',
@@ -191,8 +191,8 @@ function S11FinalCTA({ onAskTIA }) {
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 padding: '7px 36px',
                 borderRadius: '100px',
-                background: primaryHov ? 'var(--color-text-white)' : 'var(--color-accent)',
-                color: 'var(--color-secondary)',
+                background: primaryHov ? 'var(--color-secondary)' : 'var(--color-accent)',
+                color: primaryHov ? 'var(--color-text-white)' : 'var(--color-secondary)',
                 textDecoration: 'none',
                 fontFamily: 'var(--font-heading)', fontSize: '15px', fontWeight: 700,
                 transition: 'background 0.28s ease, transform 0.22s ease, box-shadow 0.28s ease',
@@ -213,9 +213,9 @@ function S11FinalCTA({ onAskTIA }) {
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 padding: '12px 36px',
                 borderRadius: '100px',
-                background: secondaryHov ? 'rgba(168,218,220,0.1)' : 'transparent',
-                color: secondaryHov ? 'var(--color-text-white)' : 'rgba(255,255,255,0.68)',
-                border: `1.5px solid ${secondaryHov ? 'rgba(168,218,220,0.45)' : 'rgba(255,255,255,0.18)'}`,
+                background: secondaryHov ? 'rgba(29,53,87,0.07)' : 'transparent',
+                color: secondaryHov ? 'var(--color-secondary)' : 'var(--color-text-secondary)',
+                border: `1.5px solid ${secondaryHov ? 'rgba(29,53,87,0.45)' : 'rgba(29,53,87,0.22)'}`,
                 fontFamily: 'var(--font-heading)', fontSize: '15px', fontWeight: 600,
                 cursor: 'pointer',
                 transition: 'all 0.28s cubic-bezier(0.16,1,0.3,1)',
@@ -241,7 +241,7 @@ function S11FinalCTA({ onAskTIA }) {
               fontSize: '12px',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              color: 'rgba(168,218,220,0.8)',
+              color: 'var(--color-text-tertiary)',
               fontWeight: 500,
               marginBottom: '10px',
             }}>
@@ -251,7 +251,7 @@ function S11FinalCTA({ onAskTIA }) {
               fontFamily: 'var(--font-accent)',
               fontStyle: 'italic',
               fontSize: 'clamp(15px, 1.5vw, 18px)',
-              color: 'rgba(255,255,255,0.95)',
+              color: 'var(--color-text-primary)',
               lineHeight: 1.6,
               marginBottom: '8px',
             }}>
@@ -262,7 +262,7 @@ function S11FinalCTA({ onAskTIA }) {
               fontSize: '12px',
               letterSpacing: '0.16em',
               textTransform: 'uppercase',
-              color: 'rgba(168,218,220,0.8)',
+              color: 'var(--color-text-tertiary)',
               fontWeight: 500
             }}>
               Discipline. Delivery. Product. One framework.

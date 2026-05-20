@@ -5,20 +5,20 @@ import hollardLogo  from '../../../assets/images/clients/hollard.png'
 import rexall from '../../../assets/images/clients/csav.png'
 
 const LENS_META = {
-  sense: {
+  trace: {
     border: 'var(--color-tertiary)',
-    bgBase: 'rgba(69,123,157,0.05)',
-    bgHov:  'rgba(69,123,157,0.11)',
+    bgBase: 'rgba(69,123,157,0.14)',
+    bgHov:  'rgba(69,123,157,0.24)',
   },
-  shape: {
+  integrate: {
     border: 'var(--color-highlight)',
-    bgBase: 'rgba(230,57,70,0.04)',
-    bgHov:  'rgba(230,57,70,0.09)',
+    bgBase: 'rgba(230,57,70,0.12)',
+    bgHov:  'rgba(230,57,70,0.22)',
   },
-  scale: {
+  amplify: {
     border: '#7C3AED',
-    bgBase: 'rgba(124,58,237,0.04)',
-    bgHov:  'rgba(124,58,237,0.09)',
+    bgBase: 'rgba(124,58,237,0.12)',
+    bgHov:  'rgba(124,58,237,0.22)',
   },
 }
 
@@ -27,57 +27,65 @@ const CASES = [
     id: 'rexall', sector: 'Pharma & Healthcare',
     client: 'Rexall',
     title: 'Autonomous Field Intelligence',
-    logo: rexall,
-    context: 'Rexall operates one of the largest pharmacy chains with a large field force serving thousands of HCPs. Performance management ran on manual quarterly analysis — strategic decisions were being made on data already 3 months old.',
-    sense: 'We mapped 5 years of HCP visit data, sales transactions, territory configurations, and CRM coverage gaps. Surfaced the structural lag: insight cycle was running 3 months behind decisions.',
-    shape: 'Identified the two highest-impact decision points — weekly territory prioritization and rep-level coaching. Designed an Agentic AI platform anchored to these decisions, not generic \'AI for sales.\'',
-    scale: 'Deployed end-to-end on Snowflake + AWS. Autonomous agents running bell-curve segmentation, pattern detection, and performance scoring. A GenAI recommendation engine translates analytics into plain-language weekly plans.',
+    logo: rexall, logoHeight: 48,
+    context: "Rexall operates one of Canada’s largest pharmacy chains, supported by a field force responsible for building relationships with healthcare professionals across territories. Performance management depended on manually compiled visit logs and sales data, reviewed at the end of each quarter. By the time insights reached leadership, the data was already three months old — making territory planning, coaching, and HCP targeting reactive instead of real time.",
+    trace: 'We mapped five years of HCP visit data, sales transactions, territory structures, and CRM coverage gaps to identify where decisions were being delayed and where field opportunities were being missed.',
+    integrate: 'We designed an Agentic AI platform on Snowflake and AWS, with autonomous agents for segmentation, pattern detection, performance scoring, and territory-level opportunity discovery.',
+    amplify: 'A GenAI recommendation engine translated analytics into plain-language weekly plans, giving representatives targeted actions, managers early risk signals, and leadership a faster view of field performance.',
     outcomes: [
       'Insight cycle compressed from 3 months to 7–15 days',
-      'AI-powered field coaching activated across the entire force',
-      'Smart HCP targeting — high-potential professionals auto-prioritized',
-      'Early risk detection — performance declines flagged weeks before quarterly impact',
-      'Autonomous opportunity discovery — AI agents surface untapped territories',
+      'AI-powered field coaching activated across the field force',
+      'Smart HCP targeting enabled for high-potential professionals',
+      'Early risk detection surfaced performance declines before quarterly impact',
+      'Autonomous opportunity discovery identified untapped territories and market potential',
     ],
-    ctaLabel: 'Read the full Rexall case study →', ctaLink: '/case-studies/rexall',
+    ctaLabel: 'Read the full Rexall case study →', ctaLink: '/case-studies/autonomous-field-intelligence-rexall',
   },
   {
     id: 'sa-insurer', sector: 'Life & Short-Term Insurance',
     client: 'Hollard',
     title: 'End-to-End Agentic AI for Insurance Operations',
-    logo: hollardLogo,
-    context: 'A leading insurer running Life and short-term lines. Manual claims processing, reactive rule-based fraud detection, 5-day motor assessment cycles — operating under strict POPIA and GDPR obligations.',
-    sense: 'Mapped the legacy claims journey end-to-end: 18% straight-through processing, fragmented data across document systems, fraud flagged post-payment, dark data trapped from cross-sell.',
-    shape: 'Designed four orchestrated AI agents — Document Intake, Fraud Network, Claims Decision, Revenue & Lead — built on Azure AI Foundry. Governance and compliance designed into architecture from week one.',
-    scale: 'Phased rollout across Life and Insure divisions. Document Intelligence replaced legacy OCR. Semantic Kernel powered real-time fraud network graph analysis. WhatsApp concierge for FNOL-to-assessment workflows.',
-    outcomes: [
-      'Claims STP lifted from 18% to 44%',
-      'Motor assessment turnaround reduced by 3 working days',
-      'R285 cost savings per motor assessment via workflow optimization',
-      'Fraud syndicates surfaced pre-payment via ML network graph analysis',
-      '10+ AI use cases deployed into production across Life and Insure',
-      'Dark data transformed into live revenue intelligence',
-    ],
-    ctaLabel: 'Read the full SA Insurer case study →', ctaLink: '/case-studies/sa-insurer',
+    logo: hollardLogo, logoHeight: 52,
+    context: "Hollard operates across Life and short-term insurance lines, where claims processing involved manual document review, fragmented systems, reactive fraud checks, and long assessment cycles. Only a limited share of claims moved straight through without intervention, while strict POPIA and GDPR obligations required every AI-led decisioning capability to be secure, explainable, and governed from the start.",
+
+  trace: "We mapped the claims journey end to end, identifying fragmented document flows, post-payment fraud detection gaps, dark data sources, and manual bottlenecks across FNOL, assessment, decisioning, and settlement.",
+
+  integrate: "We deployed an Agentic AI platform on Azure AI Foundry, replacing legacy OCR with Document Intelligence and orchestrating agents for document intake, fraud networks, claims decisioning, and revenue intelligence.",
+
+  amplify: "The platform was rolled out in phases across Life and Insure operations, with governance controls, compliance guardrails, and WhatsApp-led workflows embedded into the claims operating model.",
+
+  outcomes: [
+    'Claims STP lifted from 18% to 44%',
+    'Motor assessment turnaround reduced by 3 working days',
+    'Cost savings of R285 per motor assessment through workflow optimization',
+    'Fraud syndicates surfaced pre-payment using ML network graph analysis',
+    '10+ AI use cases deployed into production across Life and Insure',
+    'Dark data transformed into live revenue and broker intelligence',
+  ],
+    ctaLabel: 'Read the full Hollard case study →', ctaLink: '/case-studies/enterprise-ai-architecture-governance',
   },
   {
     id: 'creditas', sector: 'Finance & Digital Lending',
     client: 'Creditas',
     title: 'Embedded Agentic AI Across the Customer Lifecycle',
-    logo: creditasLogo,
-    context: 'Creditas, a leading digital lending platforms, ran polished web apps across acquisition, account management, and collections — but every meaningful interaction required a live agent. Support queues overwhelmed, drop-offs high, costs scaling linearly with users.',
-    sense: 'Audited the full customer lifecycle, identified where live-agent dependency was creating bottlenecks. Quantified drop-offs, repetitive query volume, and revenue leakage from missed personalization moments.',
-    shape: 'Designed a journey-aware Agentic AI platform — RAG-grounded for accuracy, MCP-enabled for real-time platform actions, with human-in-the-loop checkpoints for compliance. Multi-agent orchestration.',
-    scale: 'Deployed across the full lifecycle. Agents detect intent, recommend actions, execute platform operations (payments, bookings, status), and learn continuously — within a detect-recommend-act-learn loop with strict guardrails.',
-    outcomes: [
-      '60%+ reduction in live-agent hand-offs',
-      '25–30% lift in offer conversion via context-rich personalization',
-      'Average query resolution under 30 seconds',
-      '80%+ first-contact resolution on help-desk queries (RAG-grounded)',
-      '70%+ of routine platform operations automated via MCP',
-      'Scalable agentic foundation across the customer lifecycle',
-    ],
-    ctaLabel: 'Read the full Creditas case study →', ctaLink: '/case-studies/creditas',
+    logo: creditasLogo, logoHeight: 50,
+    context: "Creditas runs digital lending journeys across acquisition, account management, and collections. While the web experiences were polished, many meaningful customer interactions still required live-agent support for guidance, clarification, or execution. This created high support load, repetitive query volume, journey drop-offs, and missed opportunities for timely, personalized offers.",
+
+  trace: "We audited the full customer lifecycle to identify where live-agent dependency, repetitive queries, fragmented journeys, and missed personalization moments were creating bottlenecks and revenue leakage.",
+
+  integrate: "We designed a journey-aware Agentic AI layer using RAG for grounded responses, MCP-enabled platform actions, and human-in-the-loop checkpoints for compliance-sensitive interactions.",
+
+  amplify: "The platform embedded agents across acquisition, servicing, help desk, and operations — enabling users to detect intent, receive recommendations, execute actions, and learn continuously within strict guardrails.",
+
+  outcomes: [
+    '60%+ reduction in live-agent hand-offs',
+    '25–30% lift in offer conversion through context-rich personalization',
+    'Average query resolution reduced to under 30 seconds',
+    '80%+ first-contact resolution on RAG-grounded help-desk queries',
+    '70%+ routine platform operations automated through MCP-enabled actions',
+    'Scalable agentic foundation embedded across the customer lifecycle',
+  ],
+    ctaLabel: 'Read the full Creditas case study →', ctaLink: '/case-studies/agentic-ai-for-digital-lending',
   },
 ]
 
@@ -107,16 +115,16 @@ function TabButton({ cs, isActive, onClick }) {
         padding: '14px 24px',
         borderRadius: '10px',
         background: isActive
-          ? 'var(--color-secondary)'
-          : hov ? 'rgba(29,53,87,0.07)' : 'rgba(11,15,25,0.03)',
+          ? 'rgba(255,255,255,0.13)'
+          : hov ? 'rgba(255,255,255,0.07)' : 'rgba(255,255,255,0.03)',
         border: `1px solid ${
           isActive
-            ? 'var(--color-secondary)'
-            : hov ? 'rgba(29,53,87,0.22)' : 'rgba(11,15,25,0.1)'
+            ? 'rgba(255,255,255,0.28)'
+            : hov ? 'rgba(255,255,255,0.18)' : 'rgba(255,255,255,0.1)'
         }`,
         boxShadow: isActive
-          ? '0 10px 36px rgba(29,53,87,0.22), 0 2px 8px rgba(29,53,87,0.12)'
-          : hov ? '0 4px 18px rgba(11,15,25,0.07)' : 'none',
+          ? '0 8px 28px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08)'
+          : hov ? '0 4px 16px rgba(0,0,0,0.14)' : 'none',
         cursor: 'pointer',
         textAlign: 'left',
         transform: isActive ? 'translateY(-2px)' : hov ? 'translateY(-1px)' : 'none',
@@ -128,21 +136,22 @@ function TabButton({ cs, isActive, onClick }) {
         ].join(', '),
       }}
     >
-      <p className="text-sm" style={{
+      <p className="text-label" style={{
         color: isActive
-          ? 'rgba(168,218,220,0.85)'
-          : hov ? 'var(--color-highlight)' : 'var(--color-text-tertiary)',
-        // letterSpacing: '0.1em',
+          ? 'var(--color-accent)'
+          : hov ? 'var(--color-accent)' : 'var(--color-primary)',
+        letterSpacing: '0.1em',
         textTransform: 'uppercase',
         margin: '0 0 4px',
         transition: 'color 0.28s ease',
+        fontWeight:600
       }}>
         {cs.sector}
       </p>
       <p className="text-body-sm" style={{
         color: isActive
           ? 'var(--color-text-white)'
-          : hov ? 'var(--color-secondary)' : 'var(--color-text-secondary)',
+          : hov ? 'rgba(255,255,255,0.92)' : 'rgba(255,255,255,0.68)',
         fontWeight: isActive ? 600 : 400,
         margin: 0,
         transition: 'color 0.28s ease',
@@ -171,13 +180,13 @@ function LensRow({ lensKey, label, text }) {
       onMouseLeave={() => setHov(false)}
     >
       <p className="text-label mb-2" style={{
-        color: 'var(--color-secondary)',
+        color: 'var(--color-accent)',
         letterSpacing: '0.14em',
         fontWeight: 600,
       }}>
         TIA LENS — {label.toUpperCase()}
       </p>
-      <p className="text-body-sm" style={{ color: 'var(--color-text-secondary)', lineHeight: 1.7, margin: 0 }}>
+      <p className="text-body-sm" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.7, margin: 0 }}>
         {text}
       </p>
     </div>
@@ -194,23 +203,38 @@ function CaseContent({ cs }) {
         {/* Logo + sector + title */}
         <div>
           {cs.logo && (
-            <img
-              src={cs.logo}
-              alt={cs.client}
-              style={{ height: '50px', objectFit: 'contain', marginBottom: '12px', }}
-            />
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '200px',
+              height: '76px',
+              borderRadius: '10px',
+              background: 'rgba(255,255,255,0.94)',
+              boxShadow: '0 2px 16px rgba(0,0,0,0.22), 0 1px 4px rgba(0,0,0,0.12)',
+              marginBottom: '16px',
+              border: '1px solid rgba(255,255,255,0.6)',
+              padding: '0 20px',
+              boxSizing: 'border-box',
+            }}>
+              <img
+                src={cs.logo}
+                alt={cs.client}
+                style={{ height: `${cs.logoHeight || 48}px`, width: '100%', objectFit: 'contain', display: 'block' }}
+              />
+            </div>
           )}
-          <p className="text-label mb-2" style={{ color: 'var(--color-highlight)', letterSpacing: '0.14em' }}>
+          <p className="text-label mb-2" style={{ color: 'var(--color-highlight)', letterSpacing: '0.14em', fontWeight: 600 }}>
             {cs.sector}
           </p>
-          <h3 className="text-h2" style={{ color: 'var(--color-secondary)', fontWeight: 600, lineHeight: 1.2, marginBottom: 0 }}>
+          <h3 className="text-h2" style={{ color: 'var(--color-text-white)', fontWeight: 600, lineHeight: 1.2, marginBottom: 0 }}>
             {cs.client} — {cs.title}
           </h3>
         </div>
 
         {/* Context */}
         <p className="text-body-lg" style={{
-          color: 'var(--color-text-secondary)',
+          color: 'rgba(255,255,255,0.82)',
           lineHeight: 1.8,
           borderLeft: '3px solid var(--color-accent)',
           paddingLeft: '18px',
@@ -219,12 +243,12 @@ function CaseContent({ cs }) {
           {cs.context}
         </p>
 
-        {/* TIA lens rows — fills remaining height */}
+        {/* TIA lens rows */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', flexGrow: 1 }}>
           {[
-            { key: 'sense', label: 'Sense', text: cs.sense },
-            { key: 'shape', label: 'Shape', text: cs.shape },
-            { key: 'scale', label: 'Scale', text: cs.scale },
+            { key: 'trace', label: 'Trace', text: cs.trace },
+            { key: 'integrate', label: 'Integrate', text: cs.integrate },
+            { key: 'amplify', label: 'Amplify', text: cs.amplify },
           ].map((lens) => (
             <LensRow key={lens.key} lensKey={lens.key} label={lens.label} text={lens.text} />
           ))}
@@ -236,13 +260,13 @@ function CaseContent({ cs }) {
         <div style={{
           padding: '28px',
           borderRadius: '12px',
-          background: 'rgba(29,53,87,0.05)',
-          border: '1px solid rgba(29,53,87,0.1)',
+          background: 'rgba(255,255,255,0.06)',
+          border: '1px solid rgba(255,255,255,0.12)',
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
         }}>
-          <p className="text-label mb-4" style={{ color: 'var(--color-secondary)', letterSpacing: '0.14em', flexShrink: 0 }}>
+          <p className="text-label mb-4" style={{ color: 'var(--color-accent)', letterSpacing: '0.14em', flexShrink: 0 }}>
             THE OUTCOME
           </p>
           <ul style={{
@@ -253,8 +277,8 @@ function CaseContent({ cs }) {
           }}>
             {cs.outcomes.map((o, i) => (
               <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                <span style={{ color: 'var(--color-tertiary)', flexShrink: 0, marginTop: '3px', fontSize: '13px', fontWeight: 700 }}>✓</span>
-                <span className="text-body-sm" style={{ color: 'var(--color-text-secondary)', lineHeight: 1.65 }}>{o}</span>
+                <span style={{ color: 'var(--color-accent)', flexShrink: 0, marginTop: '3px', fontSize: '13px', fontWeight: 700 }}>✓</span>
+                <span className="text-body-sm" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.65 }}>{o}</span>
               </li>
             ))}
           </ul>
@@ -263,13 +287,13 @@ function CaseContent({ cs }) {
         <Link
           to={cs.ctaLink}
           style={{
-            fontFamily: 'var(--font-mono)', fontSize: '12px', letterSpacing: '0.07em',
-            color: 'var(--color-secondary)', textDecoration: 'none',
+            fontFamily: 'var(--font-accent)', fontSize: '14px', letterSpacing: '0.07em',
+            color: 'var(--color-accent)', textDecoration: 'none',
             display: 'inline-flex', alignItems: 'center', gap: '6px',
             transition: 'color 0.2s ease, gap 0.2s ease',
           }}
           onMouseEnter={e => { e.currentTarget.style.color = 'var(--color-highlight)'; e.currentTarget.style.gap = '10px' }}
-          onMouseLeave={e => { e.currentTarget.style.color = 'var(--color-secondary)'; e.currentTarget.style.gap = '6px' }}
+          onMouseLeave={e => { e.currentTarget.style.color = 'var(--color-accent)'; e.currentTarget.style.gap = '6px' }}
         >
           {cs.ctaLabel}
         </Link>
@@ -331,17 +355,17 @@ function S8CaseStudies() {
       <section
         id="tia-case-studies"
         ref={sectionRef}
-        className={`py-16 px-5 md:px-10 lg:px-16 bg-[var(--color-primary)] ${inView ? 'cs-running' : 'cs-paused'}`}
+        className={`py-16 px-5 md:px-10 lg:px-16 ${inView ? 'cs-running' : 'cs-paused'}`}
+        style={{ background: 'var(--color-secondary)' }}
       >
         <div style={{ maxWidth: '1320px', margin: '0 auto' }}>
 
           {/* Header */}
           <div className="mb-10">
-            <p className="cs-eyebrow text-h4 text-[var(--color-highlight)] mb-1">PROOF</p>
-            <h2 className="cs-heading text-h1 text-[var(--color-text-primary)]" style={{ lineHeight: 1.2 }}>
-              TIA in action.
+            <p className="cs-eyebrow text-h4 mb-1" style={{ color: 'var(--color-highlight)' }}>TIA in Action</p>
+            <h2 className="cs-heading text-h1" style={{ color: 'var(--color-text-white)', lineHeight: 1.2 }}>
+              Where TIA creates measurable <br /> enterprise outcomes. 
             </h2>
-          
           </div>
 
           {/* Tab navigation */}

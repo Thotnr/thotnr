@@ -9,7 +9,7 @@ import analyticsVideo from '../assets/videos/ai-analytics-co-pilot.mp4'
 export const accelerators = [
   {
     slug: 'ai-smart-emailing-assistant',
-    label: 'Accelerator',
+    label: 'TIA Powered Accelerator',
     title: 'AI Smart Emailing Assistant',
     category: 'Communication Automation',
     icon: 'mail',
@@ -110,7 +110,7 @@ export const accelerators = [
 
   {
     slug: 'ai-trust-safety-shield',
-    label: 'Accelerator',
+    label: 'TIA Powered Accelerator',
     title: 'AI Trust and Safety Shield',
     category: 'AI Governance & Security',
     icon: 'shield-check',
@@ -211,7 +211,7 @@ export const accelerators = [
 
   {
     slug: 'ai-analytics-co-pilot',
-    label: 'Accelerator',
+    label: 'TIA Powered Accelerator',
     title: 'AI Analytics Co-Pilot',
     category: 'Business Intelligence',
     icon: 'trending-up',

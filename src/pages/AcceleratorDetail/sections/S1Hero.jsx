@@ -81,8 +81,8 @@ function S1Hero({ label, title, tagline, tags, video }) {
           }} />
           <span style={{
             fontFamily: 'var(--font-mono)',
-            fontSize: '11.5px',
-            fontWeight: 500,
+            fontSize: '15.5px',
+            fontWeight: 600,
             letterSpacing: '0.34em',
             textTransform: 'uppercase',
             color: '#7dd3c0',
