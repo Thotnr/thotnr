@@ -195,15 +195,9 @@ function S6Principles() {
                 
               }}>
               <span style={{ color: 'var(--color-text-primary)' }}>
-                Seven principles.{' '}
+                Seven principles. One discipline.
               </span>
-              <span style={{
-                fontFamily: 'var(--font-accent)',
-                fontStyle: 'italic',
-                color: 'var(--color-tertiary)',
-              }}>
-                One discipline.
-              </span>
+              
             </h2>
           </div>
 

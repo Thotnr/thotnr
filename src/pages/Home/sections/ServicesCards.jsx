@@ -1,10 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
 import augDec from '../../../assets/images/augmented-decision.png'
 import groundedAI from '../../../assets/images/grounded-ai.png'
 import embedded from '../../../assets/images/embedded-execution.png'
-
-
 
 function useInView(threshold = 0.12) {
   const ref = useRef(null)
@@ -22,222 +19,312 @@ function useInView(threshold = 0.12) {
   return [ref, inView]
 }
 
-// Opacity variants kept as rgba — no design-system token exists for translucent overlays
-const ACCENTS = {
-  red: {
-    color: '#F43F5E',
-    bg: 'rgba(244,63,94,0.12)',
-    border: 'rgba(244,63,94,0.28)',
-    glow: 'rgba(244,63,94,0.12)',
-  },
-  purple: {
-  color: '#9A6FE3',
-  bg: 'rgba(154,111,227,0.10)',
-  border: 'rgba(154,111,227,0.24)',
-  glow: 'rgba(154,111,227,0.10)',
-},
-  blue: {
-    color: '#22D3EE',
-    bg: 'rgba(34,211,238,0.10)',
-    border: 'rgba(34,211,238,0.26)',
-    glow: 'rgba(34,211,238,0.10)',
-  },
-}
+const RED  = { color: '#F43F5E', border: 'rgba(244,63,94,0.35)',   ambient: 'rgba(244,63,94,0.20)'  }
+const PRP  = { color: '#9A6FE3', border: 'rgba(154,111,227,0.52)', ambient: 'rgba(154,111,227,0.28)' }
+const CYAN = { color: '#22D3EE', border: 'rgba(34,211,238,0.35)',  ambient: 'rgba(34,211,238,0.20)'  }
 
-const capabilities = [
-  {
-    id: 'decisioning',
-    slug: 'ai-intelligence',
-    eyebrow: 'AUTONOMISATION',
-    title: 'Augmented Decisions',
-    subtitle: 'Human judgment, elevated by AI.',
-    description: 'We design decision systems that combine machine intelligence, business rules, and human oversight — enabling faster, more consistent decisions with controlled autonomy where the business is ready, without losing accountability or trust.',
-    accentKey: 'red',
-    Icon: augDec,
-  },
-  {
-    id: 'context',
-    slug: 'data-engineering',
-    eyebrow: 'CONTEXT',
-    title: 'Grounded Intelligence',
-    subtitle: 'Connected to business reality.',
-    description: 'We anchor AI in trusted data, enterprise knowledge, policies, and real operating context. This ensures outputs are not only technically sound, but relevant, dependable, and aligned to how your organisation actually works.',
-    accentKey: 'purple',
-    Icon: groundedAI,
-  },
-  {
-    id: 'execution',
-    slug: 'enterprise-architecture',
-    eyebrow: 'EXECUTION',
-    title: 'Embedded Execution',
-    subtitle: 'Built into workflows and decisions.',
-    description: 'We integrate intelligence into systems, processes, and day-to-day operations so it becomes part of execution, not just analysis. The result is AI that supports real work, drives consistent action, and creates measurable value over time.',
-    accentKey: 'blue',
-    Icon: embedded,
-  },
+const OUTCOMES = [
+  { symbol: '⚡', metric: '3×',  label: 'Faster decisions',  accent: RED.color   },
+  { symbol: '◈',  metric: '60%', label: 'Reduced effort',    accent: PRP.color   },
+  { symbol: '▽',  metric: '40%', label: 'Lower risk',         accent: CYAN.color  },
+  { symbol: '↑',  metric: '2×',  label: 'Stronger outcomes', accent: 'var(--color-accent)' },
 ]
 
-function CapabilityCard({ slug, eyebrow, title, subtitle, description, accentKey, Icon, index, inView }) {
-  const [hovered, setHovered] = useState(false)
-  const a = ACCENTS[accentKey]
-
+/* ─── Side card ─── */
+function SideCard({ eyebrow, title, subtitle, desc, badge, icon, accent, animClass, glowClass, inView, delay }) {
+  const [hov, setHov] = useState(false)
   return (
-    // Outer div: scroll entrance only — no hover transition so hover feels instant
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%',
-        opacity: inView ? 1 : 0,
-        transform: inView ? 'translateY(0)' : 'translateY(44px)',
-        transition: `opacity 0.78s ease ${0.15 + index * 0.14}s, transform 0.78s cubic-bezier(0.16,1,0.3,1) ${0.15 + index * 0.14}s`,
-      }}
-    >
-      {/* Link wraps inner card — hover lift, no entrance delay so it's snappy */}
-      <Link
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+    <div style={{
+      opacity: inView ? 1 : 0,
+      transform: inView ? 'translateY(0)' : 'translateY(52px)',
+      transition: `opacity 0.82s ease ${delay}, transform 0.82s cubic-bezier(0.16,1,0.3,1) ${delay}`,
+      height: '100%',
+    }}>
+      <div
+        onMouseEnter={() => setHov(true)}
+        onMouseLeave={() => setHov(false)}
         style={{
-          flex: 1,
+          position: 'relative',
+          borderRadius: '24px',
+          padding: '32px 26px 28px',
+          border: `1px solid ${hov ? accent.border.replace(/[\d.]+\)$/, '0.55)') : accent.border}`,
+          background: hov ? 'rgba(255,255,255,0.055)' : 'rgba(255,255,255,0.028)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          boxShadow: hov
+            ? `0 28px 64px rgba(0,0,0,0.52), 0 0 72px ${accent.ambient}, inset 0 1px 0 rgba(255,255,255,0.08)`
+            : `0 8px 32px rgba(0,0,0,0.28), 0 0 44px ${accent.ambient.replace('0.20', '0.09')}, inset 0 1px 0 rgba(255,255,255,0.04)`,
+          transform: hov ? 'translateY(-6px)' : 'translateY(0)',
+          transition: 'transform 0.30s cubic-bezier(0.16,1,0.3,1), border-color 0.28s ease, background 0.28s ease, box-shadow 0.38s ease',
+          overflow: 'hidden',
+          minHeight: '440px',
           display: 'flex',
           flexDirection: 'column',
-          textDecoration: 'none',
-          borderRadius: '24px',
-          padding: '16px 20px 12px',
-          border: `1px solid ${hovered ? a.border : 'rgba(255,255,255,0.10)'}`,
-          background: hovered ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.035)',
-          boxShadow: hovered
-            ? `0 24px 64px rgba(0,0,0,0.5), 0 0 48px ${a.glow}, inset 0 1px 0 rgba(255,255,255,0.07)`
-            : '0 4px 28px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04)',
-          transform: hovered ? 'translateY(-6px)' : 'translateY(0)',
-          transition: 'transform 0.35s cubic-bezier(0.16,1,0.3,1), border-color 0.35s ease, background 0.35s ease, box-shadow 0.45s ease',
-          cursor: 'pointer',
-          position: 'relative',
-          overflow: 'hidden',
-          minHeight: '420px',
+          alignItems: 'center',
+          textAlign: 'center',
         }}
       >
-        {/* 3D floating icon stage */}
+        {/* Ambient top glow */}
         <div style={{
-          perspective: '900px',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '180px',
-          position: 'relative',
-          marginBottom: '0px',
-          flexShrink: 0,
-        }}>
-          {/* Accent glow orb — sits beneath icon, pulses in sync */}
-          <div style={{
-            position: 'absolute',
-            bottom: '4px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            zIndex: 0,
-          }}>
-            <div
-              className={`cap-glow-${index}`}
-              style={{
-                width: '130px',
-                height: '60px',
-                borderRadius: '50%',
-                background: `radial-gradient(ellipse, ${a.color} 0%, transparent 70%)`,
-                opacity: hovered ? 0.65 : 0.3,
-                filter: 'blur(18px)',
-                transition: 'opacity 0.45s ease',
-              }}
-            />
-          </div>
+          position: 'absolute', top: '-30px', left: '50%', transform: 'translateX(-50%)',
+          width: '200px', height: '200px', borderRadius: '50%',
+          background: `radial-gradient(circle, ${accent.color}24 0%, transparent 70%)`,
+          filter: 'blur(26px)', pointerEvents: 'none', zIndex: 0,
+          opacity: hov ? 1 : 0.55, transition: 'opacity 0.38s ease',
+        }} />
 
-          {/* Icon — 3D float animation */}
+        {/* Badge */}
+        <div style={{
+          display: 'inline-flex', alignItems: 'center', gap: '7px',
+          padding: '6px 15px', borderRadius: '100px',
+          background: `${accent.color}30`,
+          border: `1px solid ${accent.color}70`,
+          marginBottom: '20px', position: 'relative', zIndex: 1,
+          alignSelf: 'center',
+          boxShadow: `0 0 18px ${accent.color}22`,
+        }}>
+          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: accent.color, display: 'inline-block', boxShadow: `0 0 9px ${accent.color}, 0 0 4px ${accent.color}` }} />
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 600, color: accent.color, letterSpacing: '0.13em', textTransform: 'uppercase' }}>
+            {badge}
+          </span>
+        </div>
+
+        {/* Icon stage */}
+        <div style={{ position: 'relative', marginBottom: '4px', zIndex: 1, perspective: '800px' }}>
+          <div className={glowClass} style={{
+            position: 'absolute', bottom: '2px', left: '50%',
+            width: '100px', height: '38px', borderRadius: '50%',
+            background: `radial-gradient(ellipse, ${accent.color} 0%, transparent 70%)`,
+            filter: 'blur(14px)', opacity: hov ? 0.72 : 0.34,
+            transition: 'opacity 0.38s ease', zIndex: 0,
+          }} />
           <img
-            src={Icon}
+            src={icon}
             alt=""
-            className={`cap-icon-${index}`}
+            className={animClass}
             style={{
-              width: '160px',
-              height: '160px',
-              objectFit: 'contain',
-              position: 'relative',
-              zIndex: 1,
-              filter: hovered
-                ? `drop-shadow(0 0 32px ${a.color}) drop-shadow(0 10px 20px rgba(0,0,0,0.55)) brightness(1.18)`
-                : 'drop-shadow(0 10px 22px rgba(0,0,0,0.55)) brightness(1)',
-              transition: 'filter 0.45s ease',
+              width: '148px', height: '148px', objectFit: 'contain',
+              position: 'relative', zIndex: 1,
+              filter: hov
+                ? `drop-shadow(0 0 30px ${accent.color}) drop-shadow(0 9px 20px rgba(0,0,0,0.58)) brightness(1.2)`
+                : `drop-shadow(0 0 13px ${accent.color}90) drop-shadow(0 9px 20px rgba(0,0,0,0.50)) brightness(1)`,
+              transition: 'filter 0.38s ease',
             }}
           />
         </div>
 
-        {/* Eyebrow */}
-        <p className="text-body" style={{ color: `${a.color}`, marginBottom: '10px' , fontWeight: 500}}>
+        <p style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', fontWeight: 600, color: accent.color, letterSpacing: '0.22em', textTransform: 'uppercase', marginBottom: '8px', position: 'relative', zIndex: 1 }}>
           {eyebrow}
         </p>
-
-        
-
-        {/* Title */}
-        <h3
-          className="text-h3"
-          style={{
-            color: 'var(--color-text-white)',
-            lineHeight: 1.25,
-            marginBottom: '10px',
-            fontWeight: 600,
-          }}
-        >
+        <h3 className="text-h4" style={{ color: 'var(--color-text-white)', fontWeight: 700, marginBottom: '8px', lineHeight: 1.18, position: 'relative', zIndex: 1 }}>
           {title}
         </h3>
-
-        {/* Subtitle */}
-        <p
-          className="text-body-sm"
-          style={{
-            color: 'rgba(255,255,255,0.85)',
-            marginBottom: '20px'
-            
-          }}
-        >
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'rgba(255,255,255,0.70)', marginBottom: '15px', lineHeight: 1.55, position: 'relative', zIndex: 1 }}>
           {subtitle}
         </p>
-
-        {/* Colored underline */}
-        <div
-          style={{
-            width: '24px',
-            height: '2px',
-            borderRadius: '2px',
-            background: `${a.color}`,
-            marginBottom: '18px',
-          }}
-        />
-
-        {/* Description */}
-        <p
-          className="text-body"
-          style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.78, flex: 1 }}
-        >
-          {description}
+        <div style={{ width: '24px', height: '1px', background: accent.color, opacity: 0.65, marginBottom: '15px', position: 'relative', zIndex: 1 }} />
+        <p className="text-body-sm" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.76, flex: 1, position: 'relative', zIndex: 1 }}>
+          {desc}
         </p>
 
-        {/* Bottom accent glow line */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: 0,
-            left: '15%',
-            right: '15%',
-            height: '1px',
-            background: `linear-gradient(90deg, transparent 0%, ${a.color} 50%, transparent 100%)`,
-            opacity: hovered ? 0.55 : 0,
-            transition: 'opacity 0.4s ease',
-          }}
-        />
-      </Link>
+        {/* Bottom glow accent */}
+        <div style={{
+          position: 'absolute', bottom: 0, left: '14%', right: '14%', height: '1px',
+          background: `linear-gradient(90deg, transparent 0%, ${accent.color} 50%, transparent 100%)`,
+          opacity: hov ? 0.65 : 0.18, transition: 'opacity 0.38s ease',
+        }} />
+      </div>
     </div>
   )
 }
 
+/* ─── Center card ─── */
+function CentreCard({ inView }) {
+  const [hov, setHov] = useState(false)
+  return (
+    <div style={{
+      opacity: inView ? 1 : 0,
+      transform: inView ? 'translateY(0)' : 'translateY(52px)',
+      transition: 'opacity 0.82s ease 0.28s, transform 0.82s cubic-bezier(0.16,1,0.3,1) 0.28s',
+    }}>
+      <div
+        onMouseEnter={() => setHov(true)}
+        onMouseLeave={() => setHov(false)}
+        style={{
+          position: 'relative',
+          borderRadius: '28px',
+          padding: '44px 34px 36px',
+          border: `1px solid ${hov ? 'rgba(154,111,227,0.72)' : PRP.border}`,
+          background: 'rgba(154,111,227,0.07)',
+          backdropFilter: 'blur(28px)',
+          WebkitBackdropFilter: 'blur(28px)',
+          boxShadow: hov
+            ? `0 36px 88px rgba(0,0,0,0.58), 0 0 130px rgba(154,111,227,0.44), inset 0 1px 0 rgba(255,255,255,0.11)`
+            : `0 20px 56px rgba(0,0,0,0.38), 0 0 96px rgba(154,111,227,0.30), inset 0 1px 0 rgba(255,255,255,0.06)`,
+          transform: hov ? 'translateY(-8px)' : 'translateY(0)',
+          transition: 'transform 0.30s cubic-bezier(0.16,1,0.3,1), border-color 0.28s ease, box-shadow 0.40s ease',
+          overflow: 'hidden',
+          minHeight: '530px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center',
+          zIndex: 2,
+        }}
+      >
+        {/* Purple aurora */}
+        <div style={{
+          position: 'absolute', top: '-70px', left: '50%', transform: 'translateX(-50%)',
+          width: '340px', height: '340px', borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(154,111,227,0.24) 0%, transparent 65%)',
+          filter: 'blur(34px)', pointerEvents: 'none', zIndex: 0,
+          opacity: hov ? 1 : 0.78, transition: 'opacity 0.40s ease',
+        }} />
+
+        {/* Subtle grid texture overlay */}
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', borderRadius: '28px',
+          backgroundImage: 'linear-gradient(rgba(154,111,227,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(154,111,227,0.04) 1px, transparent 1px)',
+          backgroundSize: '32px 32px',
+          opacity: 0.6,
+        }} />
+
+        {/* Badge */}
+        <div style={{
+          display: 'inline-flex', alignItems: 'center', gap: '8px',
+          padding: '7px 18px', borderRadius: '100px',
+          background: 'rgba(154,111,227,0.28)',
+          border: '1px solid rgba(154,111,227,0.65)',
+          marginBottom: '28px', position: 'relative', zIndex: 1,
+          alignSelf: 'center',
+          boxShadow: '0 0 24px rgba(154,111,227,0.22)',
+        }}>
+          <span style={{
+            width: '7px', height: '7px', borderRadius: '50%', background: '#9A6FE3',
+            display: 'inline-block', boxShadow: '0 0 12px #9A6FE3, 0 0 24px rgba(154,111,227,0.6)',
+          }} />
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', fontWeight: 600, color: '#B08FF0', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+            Intelligence Engine
+          </span>
+        </div>
+
+        {/* Icon */}
+        <div style={{ position: 'relative', marginBottom: '6px', zIndex: 1, perspective: '900px' }}>
+          <div className="sg-glow-centre" style={{
+            position: 'absolute', bottom: '0px', left: '50%',
+            width: '160px', height: '60px', borderRadius: '50%',
+            background: 'radial-gradient(ellipse, rgba(154,111,227,0.95) 0%, transparent 70%)',
+            filter: 'blur(20px)', opacity: hov ? 0.88 : 0.50,
+            transition: 'opacity 0.40s ease', zIndex: 0,
+          }} />
+          <img
+            src={groundedAI}
+            alt=""
+            className="sg-icon-centre"
+            style={{
+              width: '200px', height: '200px', objectFit: 'contain',
+              position: 'relative', zIndex: 1,
+              filter: hov
+                ? 'drop-shadow(0 0 46px rgba(154,111,227,0.95)) drop-shadow(0 14px 30px rgba(0,0,0,0.62)) brightness(1.22)'
+                : 'drop-shadow(0 0 24px rgba(154,111,227,0.58)) drop-shadow(0 14px 30px rgba(0,0,0,0.52)) brightness(1.05)',
+              transition: 'filter 0.40s ease',
+            }}
+          />
+        </div>
+
+        <p style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 600, color: '#B08FF0', letterSpacing: '0.22em', textTransform: 'uppercase', marginBottom: '10px', position: 'relative', zIndex: 1 }}>
+          CONTEXT
+        </p>
+        <h3 className="text-h3" style={{ color: 'var(--color-text-white)', fontWeight: 700, marginBottom: '10px', lineHeight: 1.14, position: 'relative', zIndex: 1 }}>
+          Grounded Intelligence
+        </h3>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'rgba(255,255,255,0.70)', marginBottom: '20px', lineHeight: 1.55, position: 'relative', zIndex: 1 }}>
+          Connected to business reality.
+        </p>
+        <div style={{ width: '36px', height: '1px', background: '#9A6FE3', opacity: 0.75, marginBottom: '20px', position: 'relative', zIndex: 1 }} />
+        <p className="text-body" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.78, flex: 1, position: 'relative', zIndex: 1 }}>
+          We anchor AI in trusted data, enterprise knowledge, policies, workflows, and operating context — so outputs are relevant, dependable, and aligned to how your organisation actually works.
+        </p>
+
+        {/* Bottom glow */}
+        <div style={{
+          position: 'absolute', bottom: 0, left: '8%', right: '8%', height: '1px',
+          background: 'linear-gradient(90deg, transparent 0%, rgba(154,111,227,0.85) 50%, transparent 100%)',
+          opacity: hov ? 1 : 0.42, transition: 'opacity 0.40s ease',
+        }} />
+
+        {/* Left connection port */}
+        <div style={{
+          position: 'absolute', left: '-6px', top: '50%', transform: 'translateY(-50%)',
+          width: '12px', height: '12px', borderRadius: '50%',
+          background: 'rgba(154,111,227,0.92)',
+          boxShadow: '0 0 18px rgba(154,111,227,1), 0 0 7px rgba(154,111,227,0.8)',
+          zIndex: 4,
+        }} />
+        {/* Right connection port */}
+        <div style={{
+          position: 'absolute', right: '-6px', top: '50%', transform: 'translateY(-50%)',
+          width: '12px', height: '12px', borderRadius: '50%',
+          background: 'rgba(154,111,227,0.92)',
+          boxShadow: '0 0 18px rgba(154,111,227,1), 0 0 7px rgba(154,111,227,0.8)',
+          zIndex: 4,
+        }} />
+      </div>
+    </div>
+  )
+}
+
+/* ─── Connector line (desktop only — display controlled by CSS) ─── */
+function Connector({ fromColor, toColor, direction, inView, delay }) {
+  const pulseClass = direction === 'right' ? 'conn-pulse-right' : 'conn-pulse-left'
+  const baseGrad = direction === 'right'
+    ? `linear-gradient(90deg, ${fromColor}50 0%, ${toColor}50 100%)`
+    : `linear-gradient(90deg, ${toColor}50 0%, ${fromColor}50 100%)`
+  const pulseCol = direction === 'right' ? toColor : fromColor
+
+  return (
+    <div
+      className="sc-conn"
+      style={{
+        position: 'relative',
+        opacity: inView ? 1 : 0,
+        transition: `opacity 0.82s ease ${delay}`,
+      }}
+    >
+      {/* Base static line */}
+      <div style={{
+        position: 'absolute', top: '50%', left: 0, right: 0,
+        height: '1px', transform: 'translateY(-50%)',
+        background: baseGrad,
+        borderRadius: '1px',
+      }} />
+      {/* Animated energy pulse */}
+      <div
+        className={pulseClass}
+        style={{
+          position: 'absolute', top: '50%', left: 0, right: 0,
+          height: '2px', transform: 'translateY(-50%)',
+          background: `linear-gradient(90deg, transparent 0%, ${pulseCol} 50%, transparent 100%)`,
+          backgroundSize: '200% 100%',
+          borderRadius: '2px',
+          boxShadow: `0 0 10px ${pulseCol}`,
+        }}
+      />
+      {/* Terminal dot */}
+      <div style={{
+        position: 'absolute', top: '50%',
+        ...(direction === 'right' ? { right: '-3px' } : { left: '-3px' }),
+        transform: 'translateY(-50%)',
+        width: '6px', height: '6px', borderRadius: '50%',
+        background: pulseCol,
+        boxShadow: `0 0 10px ${pulseCol}, 0 0 4px ${pulseCol}`,
+        zIndex: 1,
+      }} />
+    </div>
+  )
+}
+
+/* ─── Section ─── */
 function ServicesCards() {
   const [sectionRef, inView] = useInView()
 
@@ -246,32 +333,15 @@ function ServicesCards() {
       className="py-16 px-6 md:px-10 lg:px-16 relative overflow-hidden"
       style={{ background: 'var(--color-secondary)' }}
     >
-      {/* Decorative ambient glows — match card accent palette */}
-      <div aria-hidden="true" style={{
-        position: 'absolute', top: '-100px', left: '-60px',
-        width: '480px', height: '480px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(244,63,94,0.11) 0%, transparent 62%)',
-        filter: 'blur(48px)', pointerEvents: 'none', zIndex: 0,
-      }} />
-      <div aria-hidden="true" style={{
-        position: 'absolute', top: '-80px', right: '-40px',
-        width: '440px', height: '440px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(34,211,238,0.09) 0%, transparent 62%)',
-        filter: 'blur(52px)', pointerEvents: 'none', zIndex: 0,
-      }} />
-      <div aria-hidden="true" style={{
-        position: 'absolute', bottom: '-60px', left: '50%',
-        transform: 'translateX(-50%)',
-        width: '600px', height: '300px', borderRadius: '50%',
-        background: 'radial-gradient(ellipse, rgba(139,92,246,0.09) 0%, transparent 62%)',
-        filter: 'blur(60px)', pointerEvents: 'none', zIndex: 0,
-      }} />
+      {/* Ambient background glows */}
+      <div aria-hidden="true" style={{ position: 'absolute', top: '-100px', left: '-60px', width: '480px', height: '480px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(244,63,94,0.10) 0%, transparent 62%)', filter: 'blur(48px)', pointerEvents: 'none', zIndex: 0 }} />
+      <div aria-hidden="true" style={{ position: 'absolute', top: '-80px', right: '-40px', width: '440px', height: '440px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(34,211,238,0.08) 0%, transparent 62%)', filter: 'blur(52px)', pointerEvents: 'none', zIndex: 0 }} />
+      <div aria-hidden="true" style={{ position: 'absolute', bottom: '-60px', left: '50%', transform: 'translateX(-50%)', width: '600px', height: '300px', borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(154,111,227,0.11) 0%, transparent 62%)', filter: 'blur(60px)', pointerEvents: 'none', zIndex: 0 }} />
 
       <div ref={sectionRef} className="max-w-7xl mx-auto relative" style={{ zIndex: 1 }}>
 
-        {/* Header */}
+        {/* ── Header — unchanged ── */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-end mb-12 md:mb-14">
-
           <div
             style={{
               opacity: inView ? 1 : 0,
@@ -286,9 +356,8 @@ function ServicesCards() {
               className="text-h1 mt-1"
               style={{ color: 'var(--color-text-white)', lineHeight: 1.16 }}
             >
-              The foundations of <br />
-              Thotnr Intelligence Augmentation
-             
+              The intelligence layer <br />
+              TIA builds
             </h2>
           </div>
 
@@ -301,61 +370,211 @@ function ServicesCards() {
           >
             <div style={{ width: '36px', height: '2px', borderRadius: '2px', background: 'var(--color-highlight)', marginBottom: '20px' }} />
             <p className="text-body-lg" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.78 }}>
-              TIA turns AI from a standalone initiative into practical business capability. We focus on improving decisions, grounding intelligence in real enterprise context, and embedding autonomous execution into daily operations — so AI works within the enterprise, not outside it.
+              TIA turns AI from a standalone initiative into practical enterprise capability — grounded in real context, applied to better decisions, and carried into the way work gets done.
             </p>
           </div>
         </div>
 
-        {/* Cards — 3-col desktop, 2-col tablet (3rd centered), 1-col mobile */}
+        {/* ── Styles ── */}
         <style>{`
-          @media (min-width: 768px) and (max-width: 1023px) {
-            .cap-grid .cap-third { grid-column: 1 / -1; max-width: calc(50% - 10px); margin: 0 auto; width: 100%; }
+          /* Icon float animations */
+          @keyframes sgFloatCentre {
+            0%   { transform: translateY(-5px)  rotateY(-9deg)  rotateX(3deg);  }
+            100% { transform: translateY(9px)   rotateY(9deg)   rotateX(-3deg); }
+          }
+          @keyframes sgFloat0 {
+            0%   { transform: translateY(5px)   rotateY(-14deg) rotateX(5deg);  }
+            100% { transform: translateY(-18px)  rotateY(13deg)  rotateX(-5deg); }
+          }
+          @keyframes sgFloat1 {
+            0%   { transform: translateY(-8px)  rotateY(13deg)  rotateX(-5deg); }
+            100% { transform: translateY(16px)   rotateY(-11deg) rotateX(5deg);  }
+          }
+          @keyframes sgGlowC {
+            0%   { transform: translateX(-50%) scale(0.80); opacity: 0.48; }
+            100% { transform: translateX(-50%) scale(1.26); opacity: 0.88; }
+          }
+          @keyframes sgGlow0 {
+            0%   { transform: translateX(-50%) scale(0.78); opacity: 0.32; }
+            100% { transform: translateX(-50%) scale(1.22); opacity: 0.70; }
+          }
+          @keyframes sgGlow1 {
+            0%   { transform: translateX(-50%) scale(1.20); opacity: 0.68; }
+            100% { transform: translateX(-50%) scale(0.76); opacity: 0.30; }
           }
 
-          /* 3D float — each card offset so they're never in sync */
-          @keyframes capFloat0 {
-            0%   { transform: translateY(2px)   rotateY(-14deg) rotateX(5deg); }
-            100% { transform: translateY(-20px)  rotateY(14deg)  rotateX(-5deg); }
+          .sg-icon-centre { animation: sgFloatCentre 4.4s ease-in-out infinite alternate; }
+          .sg-icon-0      { animation: sgFloat0      4.0s ease-in-out infinite alternate; }
+          .sg-icon-1      { animation: sgFloat1      3.8s ease-in-out infinite alternate -1.6s; }
+          .sg-glow-centre { animation: sgGlowC       4.4s ease-in-out infinite alternate; }
+          .sg-glow-0      { animation: sgGlow0       4.0s ease-in-out infinite alternate; }
+          .sg-glow-1      { animation: sgGlow1       3.8s ease-in-out infinite alternate -1.6s; }
+
+          /* Connector pulse animations */
+          @keyframes connPulseRight {
+            0%   { background-position: -100% 0; }
+            100% { background-position: 200%  0; }
           }
-          @keyframes capFloat1 {
-            0%   { transform: translateY(-8px)  rotateY(12deg)  rotateX(-6deg); }
-            100% { transform: translateY(14px)   rotateY(-12deg) rotateX(6deg); }
+          @keyframes connPulseLeft {
+            0%   { background-position: 200%  0; }
+            100% { background-position: -100% 0; }
           }
-          @keyframes capFloat2 {
-            0%   { transform: translateY(5px)   rotateY(-18deg) rotateX(4deg); }
-            100% { transform: translateY(-18px)  rotateY(10deg)  rotateX(-7deg); }
+          .conn-pulse-right { animation: connPulseRight 2.2s linear infinite; }
+          .conn-pulse-left  { animation: connPulseLeft  2.2s linear infinite; }
+
+          /* ── Layout ── */
+          /* Mobile: single column */
+          .sc-arch  { display: flex; flex-direction: column; gap: 16px; }
+          .sc-conn  { display: none; }
+
+          /* Desktop: 5-column grid — side | connector | centre | connector | side */
+          @media (min-width: 1024px) {
+            .sc-arch {
+              display: grid;
+              grid-template-columns: 1fr 58px 1.30fr 58px 1fr;
+              align-items: center;
+              gap: 0;
+            }
+            .sc-conn {
+              display: flex;
+              align-self: stretch;
+              align-items: center;
+              justify-content: center;
+              position: relative;
+            }
+            .sc-centre-wrap { position: relative; z-index: 2; }
+            .sc-side-wrap   { position: relative; z-index: 1; }
           }
 
-          /* Glow orb scale — synced to same duration as matching icon */
-          @keyframes capGlow0 {
-            0%   { transform: scale(0.82); }
-            100% { transform: scale(1.22); }
-          }
-          @keyframes capGlow1 {
-            0%   { transform: scale(1.18); }
-            100% { transform: scale(0.78); }
-          }
-          @keyframes capGlow2 {
-            0%   { transform: scale(0.88); }
-            100% { transform: scale(1.18); }
+          /* Outcomes grid */
+          .sc-outcomes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+          @media (min-width: 1024px) {
+            .sc-outcomes { grid-template-columns: repeat(4, 1fr); gap: 14px; }
           }
 
-          .cap-icon-0 { animation: capFloat0 4.0s ease-in-out infinite alternate; }
-          .cap-icon-1 { animation: capFloat1 4.6s ease-in-out infinite alternate -1.4s; }
-          .cap-icon-2 { animation: capFloat2 3.8s ease-in-out infinite alternate -2.7s; }
-
-          .cap-glow-0 { animation: capGlow0 4.0s ease-in-out infinite alternate; }
-          .cap-glow-1 { animation: capGlow1 4.6s ease-in-out infinite alternate -1.4s; }
-          .cap-glow-2 { animation: capGlow2 3.8s ease-in-out infinite alternate -2.7s; }
+          @media (prefers-reduced-motion: reduce) {
+            .sg-icon-centre, .sg-icon-0, .sg-icon-1,
+            .sg-glow-centre, .sg-glow-0,  .sg-glow-1,
+            .conn-pulse-right, .conn-pulse-left {
+              animation: none !important;
+            }
+          }
         `}</style>
-        <div className="cap-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-          {capabilities.map((cap, i) => (
-            <div key={cap.id} className={i === 2 ? 'cap-third' : ''} style={{ display: 'flex', flexDirection: 'column' }}>
-              <CapabilityCard {...cap} index={i} inView={inView} />
-            </div>
-          ))}
+
+        {/* ── Architecture layout ── */}
+        <div className="sc-arch">
+
+          {/* Left card — Decisioning */}
+          <div className="sc-side-wrap">
+            <SideCard
+              eyebrow="DECISIONING"
+              title="Augmented Decisions"
+              subtitle="Human judgment, elevated by AI."
+              desc="We design decision systems that combine machine intelligence, business rules, and human oversight — enabling faster, more consistent decisions without losing accountability or trust."
+              badge="Decision Layer"
+              icon={augDec}
+              accent={RED}
+              animClass="sg-icon-0"
+              glowClass="sg-glow-0"
+              inView={inView}
+              delay="0.14s"
+            />
+          </div>
+
+          {/* Left connector — energy flows center → left */}
+          <Connector
+            fromColor={PRP.color}
+            toColor={RED.color}
+            direction="left"
+            inView={inView}
+            delay="0.48s"
+          />
+
+          {/* Center card — Grounded Intelligence */}
+          <div className="sc-centre-wrap">
+            <CentreCard inView={inView} />
+          </div>
+
+          {/* Right connector — energy flows center → right */}
+          <Connector
+            fromColor={PRP.color}
+            toColor={CYAN.color}
+            direction="right"
+            inView={inView}
+            delay="0.48s"
+          />
+
+          {/* Right card — Execution */}
+          <div className="sc-side-wrap">
+            <SideCard
+              eyebrow="EXECUTION"
+              title="Intelligent Execution"
+              subtitle="AI carried into daily operations."
+              desc="We integrate intelligence into systems, processes, approvals, and day-to-day workflows — so AI supports real work, drives consistent action, and creates measurable value over time."
+              badge="Execution Layer"
+              icon={embedded}
+              accent={CYAN}
+              animClass="sg-icon-1"
+              glowClass="sg-glow-1"
+              inView={inView}
+              delay="0.14s"
+            />
+          </div>
+
         </div>
 
+        {/* ── Outcomes strip ── */}
+        <div style={{
+          marginTop: '36px',
+          opacity: inView ? 1 : 0,
+          transform: inView ? 'translateY(0)' : 'translateY(22px)',
+          transition: 'opacity 0.82s ease 0.76s, transform 0.82s cubic-bezier(0.16,1,0.3,1) 0.76s',
+        }}>
+          <div className="sc-outcomes">
+            {OUTCOMES.map((o, i) => (
+              <div
+                key={i}
+                style={{
+                  padding: '20px 22px',
+                  borderRadius: '14px',
+                  border: '1px solid rgba(255,255,255,0.07)',
+                  background: 'rgba(255,255,255,0.028)',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '14px',
+                }}
+              >
+                <div style={{
+                  width: '42px', height: '42px', borderRadius: '11px', flexShrink: 0,
+                  background: o.accent === 'var(--color-accent)' ? 'rgba(168,218,220,0.14)' : `${o.accent}18`,
+                  border: `1px solid ${o.accent === 'var(--color-accent)' ? 'rgba(168,218,220,0.30)' : o.accent + '38'}`,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: '18px',
+                  boxShadow: o.accent === 'var(--color-accent)' ? '0 0 16px rgba(168,218,220,0.18)' : `0 0 16px ${o.accent}1A`,
+                }}>
+                  {o.symbol}
+                </div>
+                <div>
+                  <p style={{
+                    fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: '22px',
+                    color: o.accent, lineHeight: 1.05, marginBottom: '3px',
+                  }}>
+                    {o.metric}
+                  </p>
+                  <p style={{
+                    fontFamily: 'var(--font-mono)', fontSize: '12px',
+                    color: 'rgba(255,255,255,0.85)', letterSpacing: '0.09em', textTransform: 'uppercase',
+                  }}>
+                    {o.label}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        
         {/* Insight strip */}
         <div
           style={{
@@ -387,19 +606,17 @@ function ServicesCards() {
               <p style={{
                 fontFamily: 'var(--font-accent)',
                 fontStyle: 'italic',
-                fontSize: '17px',
+                fontSize: '18px',
                 lineHeight: 1.4,
                 color: 'var(--color-text-white)',
                 margin: 0,
               }}>
-Most AI sits beside the business. TIA works inside it              </p>
+                Most AI sits beside the business. TIA works inside it              </p>
             </div>
-            <p className="text-body-sm" style={{ color: 'rgba(255,255,255,0.80)', lineHeight: 1.75 }}>
-              Decisioning, context, and execution are not three features — they are three reasons AI finally moves from pilot to production.
-            </p>
+            <p className="text-body" style={{ color: 'rgba(255,255,255,0.80)', lineHeight: 1.75 }}>
+                Built on real context. Designed for enterprise work. Measured by outcomes that compound.            </p>
           </div>
         </div>
-
       </div>
     </section>
   )

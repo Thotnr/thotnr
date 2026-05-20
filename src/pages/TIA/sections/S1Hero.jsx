@@ -152,27 +152,27 @@ function S1Hero({ onAskTIA }) {
             paddingRight: 'clamp(24px, 5%, 80px)',
           }}
         >
-          <div className="max-w-7xl mx-auto">
-            <div style={{ maxWidth: '680px' }}>
+          <div className="max-w-8xl mx-auto">
+            <div style={{ maxWidth: 'min(1020px, 72vw)' }}>
 
               {/* Eyebrow */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '20px' }}>
-          <div className="hero-accent-line" style={{
-            width: 'clamp(28px, 4vw, 40px)',
-            height: '1px',
-            background: 'linear-gradient(90deg, transparent 0%, #7dd3c0 100%)',
-          }} />
-          <span style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: '12.5px',
-            fontWeight: 500,
-            letterSpacing: '0.32em',
-            textTransform: 'uppercase',
-            color: '#7dd3c0',
-          }}>
-            The Framework
-          </span>
-        </div>
+                  <div className="hero-accent-line" style={{
+                  width: 'clamp(28px, 4vw, 40px)',
+                  height: '1px',
+                  background: 'linear-gradient(90deg, transparent 0%, #7dd3c0 100%)',
+                }} />
+                <span style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '12.5px',
+                  fontWeight: 500,
+                  letterSpacing: '0.32em',
+                  textTransform: 'uppercase',
+                  color: '#7dd3c0',
+                }}>
+                  The Framework
+                </span>
+              </div>
 
               {/* TIA */}
               <div
@@ -193,25 +193,25 @@ function S1Hero({ onAskTIA }) {
 
               {/* Subtitle */}
               <div
-          style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: 'clamp(16px, 1.05vw, 24px)',
-            fontWeight: 500,
-            letterSpacing: '0.28em',
-            textTransform: 'uppercase',
-            color: '#7dd3c0',
-            opacity: 0.85,
-            marginBottom: '20px',
-          }}
-        >
-          Thotnr Intelligence Augmentation
-        </div>
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: 'clamp(16px, 1.05vw, 24px)',
+                  fontWeight: 500,
+                  letterSpacing: '0.28em',
+                  textTransform: 'uppercase',
+                  color: '#7dd3c0',
+                  opacity: 0.85,
+                  marginBottom: '20px',
+                }}
+              >
+                Thotnr Intelligence Augmentation
+              </div>
 
               {/* Tagline */}
               <div
                 className="s1-tagline"
                 style={{
-                  fontSize: 'clamp(22px, 2.8vw, 28px)',
+                  fontSize: 'clamp(22px, 2.6vw, 36px)',
                   fontFamily: 'var(--font-heading)',
                   fontWeight: 500,
                   lineHeight: 1.45,
@@ -219,11 +219,12 @@ function S1Hero({ onAskTIA }) {
                 }}
               >
                 <span style={{ display: 'block', color: 'var(--color-text-white)' }}>
-                  A framework, a delivery model, and soon
+                  A framework, a delivery model, and soon{' '}
+                  <em style={{ color: 'var(--color-accent)', fontStyle: 'italic', fontFamily: 'var(--font-accent)' }}>— product</em>
                 </span>
-                <span style={{ display: 'block', color: 'var(--color-accent)', fontStyle: 'italic', fontFamily: 'var(--font-accent)' }}>
-                  — a product you can talk to.
-                </span>
+                <em style={{ display: 'block', color: 'var(--color-accent)', fontStyle: 'italic', fontFamily: 'var(--font-accent)' }}>
+                  you can talk to.
+                </em>
               </div>
 
               {/* Pills */}
@@ -310,11 +311,11 @@ function S1Hero({ onAskTIA }) {
                   }}
                 >
                   <p
-                    className="text-body"
+                    className="text-body-lg"
                     style={{
                       color: '#e8eaed',
                       lineHeight: 1.78,
-                      maxWidth: '540px',
+                      maxWidth: '840px',
                     }}
                   >
                     {PILLS[activePill].content}
@@ -324,11 +325,11 @@ function S1Hero({ onAskTIA }) {
 
               {/* Supporting paragraph */}
               <p
-                className="s1-para text-body"
+                className="s1-para text-body-lg"
                 style={{
                   color: 'rgba(255,255,255,0.85)',
                   lineHeight: 1.82,
-                  maxWidth: '540px',
+                  maxWidth: '820px',
                   marginBottom: '44px',
                 }}
               >

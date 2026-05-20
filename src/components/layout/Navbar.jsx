@@ -269,6 +269,11 @@ function DropdownItem({ label, data, scrolled }) {
             : scrolled
             ? 'var(--color-text-primary)'
             : '#ffffff',
+          fontFamily: 'Sora, sans-serif',
+          fontSize: '15px',
+          fontWeight: 500,
+          letterSpacing: '-0.03em',
+          lineHeight: 1,
         }}
         onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-highlight)' }}
         onMouseLeave={(e) => {
@@ -328,7 +333,14 @@ function Navbar() {
       }
     : { background: 'transparent' }
 
-  const linkStyle = { color: scrolled ? 'var(--color-text-primary)' : '#ffffff', transition: 'color 0.2s ease' }
+  const linkStyle = { 
+    color: scrolled ? 'var(--color-text-primary)' : '#ffffff', transition: 'color 0.2s ease', 
+    fontFamily: 'Sora, sans-serif',
+    fontSize: '15px',
+    fontWeight: 500,
+    letterSpacing: '-0.03em',
+    lineHeight: 1,
+  }
   const onEnter   = (e) => { e.currentTarget.style.color = 'var(--color-highlight)' }
   const onLeave   = (e) => { e.currentTarget.style.color = scrolled ? 'var(--color-text-primary)' : '#ffffff' }
   const linkCls   = 'px-3 py-2 text-body rounded-md no-underline'
@@ -421,7 +433,13 @@ function Navbar() {
                 to={to}
                 onClick={() => setMobileOpen(false)}
                 className="block px-2 py-3 text-body-lg font-medium no-underline transition-colors duration-150"
-                style={{ color: 'var(--color-text-primary)' }}
+                style={{ color: 'var(--color-text-primary)', 
+                  fontFamily: 'Sora, sans-serif',
+  
+  fontWeight: 500,
+  letterSpacing: '-0.03em',
+  lineHeight: 1,
+                }}
                 onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-highlight)' }}
                 onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-primary)' }}
               >

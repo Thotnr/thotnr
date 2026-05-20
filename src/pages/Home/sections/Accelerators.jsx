@@ -162,7 +162,7 @@ function Accelerators() {
             className="text-h4 mb-3"
             style={{ color: 'var(--color-highlight)' }}
           >
-           Accelerators
+           TIA Accelerators
           </p>
           <h2
             className="text-h1"

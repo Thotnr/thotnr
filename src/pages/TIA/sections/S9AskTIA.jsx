@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 
-const GREETING = 'Hi. I\'m TIA. I can help you think through enterprise AI — grounded in your data, shaped for your business, scaled with governance. What would you like to explore?'
-
 const PROMPTS = [
   { emoji: '📊', label: 'Assess my AI readiness' },
   { emoji: '🎯', label: 'Find AI opportunities in my industry' },
@@ -13,7 +11,7 @@ const FAKE_RESPONSES = {
   'Assess my AI readiness': 'To give you a meaningful read, I\'ll map your data infrastructure, governance posture, and decision-making workflows. The TIA Sense phase is designed exactly for this. Want me to outline what that looks like for your sector?',
   'Find AI opportunities in my industry': 'Based on TIA engagements across pharma, financial services, and insurance, the highest-ROI AI entry points tend to be in decision augmentation, not automation. What industry are you operating in?',
   'Map a TIA engagement for my business': 'A full Sense → Shape → Scale sequence typically runs 12–16 weeks. Sense starts in week one — with your data, not a generic template. Shall I outline what a Sense engagement looks like?',
-  'Talk to the Thotnr team': 'Connecting you to the Thotnr team... You can reach them at the contact page, or leave your details in the waitlist form and they\'ll prioritize your request.',
+  'Talk to the Thotnr team': 'Connecting you to the Thotnr team. You can reach them at the contact page, or leave your details in the waitlist form and they\'ll prioritize your request.',
 }
 
 const ROLES      = ['CIO', 'CDO', 'CTO', 'CEO', 'Head of AI/Data', 'Other']
@@ -21,18 +19,14 @@ const INDUSTRIES = ['Pharma', 'Finance', 'Insurance', 'Other']
 
 function getFakeResponse(text) {
   const t = text.toLowerCase()
-  if (t.includes('ready') || t.includes('assess') || t.includes('data') || t.includes('readiness')) {
+  if (t.includes('ready') || t.includes('assess') || t.includes('data') || t.includes('readiness'))
     return FAKE_RESPONSES['Assess my AI readiness']
-  }
-  if (t.includes('industry') || t.includes('sector') || t.includes('opportunit') || t.includes('pharma') || t.includes('finance') || t.includes('insurance')) {
+  if (t.includes('industry') || t.includes('sector') || t.includes('opportunit') || t.includes('pharma') || t.includes('finance') || t.includes('insurance'))
     return FAKE_RESPONSES['Find AI opportunities in my industry']
-  }
-  if (t.includes('engag') || t.includes('timeline') || t.includes('how') || t.includes('process') || t.includes('weeks') || t.includes('start')) {
+  if (t.includes('engag') || t.includes('timeline') || t.includes('how') || t.includes('process') || t.includes('weeks') || t.includes('start'))
     return FAKE_RESPONSES['Map a TIA engagement for my business']
-  }
-  if (t.includes('contact') || t.includes('team') || t.includes('talk') || t.includes('meet') || t.includes('connect')) {
+  if (t.includes('contact') || t.includes('team') || t.includes('talk') || t.includes('meet') || t.includes('connect'))
     return FAKE_RESPONSES['Talk to the Thotnr team']
-  }
   return "That's a thoughtful question. The way TIA approaches this is through structured discovery — mapping your data, decisions, and workflows before recommending a path. Would you like to explore how a Sense phase could surface the right entry points for your business?"
 }
 
@@ -50,31 +44,35 @@ function useInView(threshold = 0.08) {
   return [ref, inView]
 }
 
+function TIAAvatar({ size = 30 }) {
+  return (
+    <div style={{
+      width: size, height: size, borderRadius: '50%', flexShrink: 0,
+      background: 'var(--color-secondary)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      boxShadow: '0 2px 8px rgba(29,53,87,0.25)',
+    }}>
+      <span style={{
+        fontFamily: 'var(--font-heading)',
+        fontSize: size * 0.26 + 'px',
+        fontWeight: 700,
+        color: 'var(--color-accent)',
+        letterSpacing: '0.03em',
+      }}>TIA</span>
+    </div>
+  )
+}
+
 export function AskTIAChat({ compact = false }) {
-  const [typed,        setTyped]        = useState('')
-  const [greetingDone, setGreetingDone] = useState(false)
-  const [messages,     setMessages]     = useState([])
-  const [thinking,     setThinking]     = useState(false)
-  const [userInput,    setUserInput]    = useState('')
-  const timerRef      = useRef(null)
-  const startedRef    = useRef(false)
-  const messagesEndRef = useRef(null)
+  const [messages,  setMessages]  = useState([])
+  const [thinking,  setThinking]  = useState(false)
+  const [userInput, setUserInput] = useState('')
+  const [sendHov,   setSendHov]   = useState(false)
+  const scrollAreaRef = useRef(null)
 
   useEffect(() => {
-    if (startedRef.current) return
-    startedRef.current = true
-    let i = 0
-    timerRef.current = setInterval(() => {
-      setTyped(GREETING.slice(0, i + 1))
-      i++
-      if (i >= GREETING.length) { clearInterval(timerRef.current); setGreetingDone(true) }
-    }, 16)
-    return () => clearInterval(timerRef.current)
-  }, [])
-
-  useEffect(() => {
-    if (messages.length > 0 || thinking)
-      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    if (scrollAreaRef.current)
+      scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight
   }, [messages, thinking])
 
   const handlePrompt = (p) => {
@@ -99,75 +97,61 @@ export function AskTIAChat({ compact = false }) {
     }, 1400 + Math.random() * 600)
   }
 
+  const canSend = userInput.trim() && !thinking
+
   return (
     <div style={{
-      background: 'rgba(11,15,25,0.72)',
-      border: '1px solid rgba(168,218,220,0.22)',
-      borderRadius: '18px',
+      background: 'var(--color-primary)',
+      borderRadius: '20px',
       overflow: 'hidden',
       display: 'flex',
       flexDirection: 'column',
-      height: '100%',
-      minHeight: '520px',
-      boxShadow: '0 12px 56px rgba(0,0,0,0.28), 0 2px 8px rgba(0,0,0,0.14)',
-      backdropFilter: 'blur(16px)',
+      height: 'clamp(520px, 62vh, 620px)',
+      boxShadow: '0 32px 80px rgba(0,0,0,0.32), 0 8px 24px rgba(0,0,0,0.14)',
+      border: '1px solid rgba(11,15,25,0.07)',
     }}>
 
-      {/* Title bar */}
+      {/* ── Header ── */}
       <div style={{
-        padding: '12px 18px',
-        borderBottom: '1px solid rgba(168,218,220,0.1)',
-        background: 'rgba(255,255,255,0.03)',
+        padding: '14px 18px',
+        borderBottom: '1px solid rgba(11,15,25,0.07)',
         display: 'flex', alignItems: 'center', gap: '12px',
         flexShrink: 0,
+        background: 'var(--color-primary)',
       }}>
-        <div style={{ display: 'flex', gap: '6px', flexShrink: 0 }}>
-          {['#FF5F57', '#FEBC2E', '#28C840'].map((c, i) => (
-            <div key={i} style={{ width: '10px', height: '10px', borderRadius: '50%', background: c }} />
-          ))}
+        <TIAAvatar size={36} />
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <p style={{
+            fontFamily: 'var(--font-heading)', fontSize: '14px', fontWeight: 700,
+            color: 'var(--color-text-primary)', margin: 0, lineHeight: 1.2,
+          }}>Ask TIA</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginTop: '3px' }}>
+            <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 5px rgba(34,197,94,0.6)' }} />
+            <span style={{
+              fontFamily: 'var(--font-mono)', fontSize: '10px',
+              color: 'var(--color-text-tertiary)', letterSpacing: '0.06em',
+            }}>Active · Private Beta</span>
+          </div>
         </div>
-        <p style={{
-          flex: 1, textAlign: 'center', margin: 0,
-          fontFamily: 'var(--font-mono)', fontSize: '11px',
-          letterSpacing: '0.1em', color: 'rgba(255,255,255,0.35)',
-        }}>
-          Ask TIA — Beta
-        </p>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '5px', flexShrink: 0 }}>
-          <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--color-accent)', animation: 'askPulse 2s ease infinite' }} />
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'rgba(168,218,220,0.5)' }}>Active</span>
-        </div>
+        <span className="ask9-beta-pill" style={{
+          padding: '4px 12px', borderRadius: '100px',
+          background: 'rgba(230,57,70,0.1)',
+          border: '1px solid rgba(230,57,70,0.3)',
+          fontFamily: 'var(--font-mono)', fontSize: '10px', fontWeight: 600,
+          color: 'rgba(185,28,38,1)', letterSpacing: '0.12em', textTransform: 'uppercase',
+          flexShrink: 0,
+        }}>Beta</span>
       </div>
 
-      {/* Message area */}
-      <div style={{
-        flex: 1, overflowY: 'auto', padding: '18px',
-        display: 'flex', flexDirection: 'column', gap: '12px',
-      }}>
-        {/* TIA greeting */}
-        <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-          <div style={{
-            width: '26px', height: '26px', borderRadius: '50%', flexShrink: 0,
-            background: 'linear-gradient(135deg, rgba(168,218,220,0.3) 0%, rgba(29,53,87,0.6) 100%)',
-            border: '1px solid rgba(168,218,220,0.3)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>
-            <span style={{ fontFamily: 'var(--font-heading)', fontSize: '8px', fontWeight: 700, color: 'var(--color-accent)' }}>TIA</span>
-          </div>
-          <div style={{
-            padding: '11px 14px', borderRadius: '4px 14px 14px 14px',
-            background: 'rgba(168,218,220,0.07)',
-            border: '1px solid rgba(168,218,220,0.12)',
-            maxWidth: '88%',
-          }}>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'rgba(255,255,255,0.88)', margin: 0, lineHeight: 1.7 }}>
-              {typed}
-              {!greetingDone && (
-                <span style={{ display: 'inline-block', width: '2px', height: '11px', background: 'var(--color-accent)', marginLeft: '2px', animation: 'askCursor 1s step-end infinite', verticalAlign: 'text-bottom' }} />
-              )}
-            </p>
-          </div>
-        </div>
+      {/* ── Messages ── */}
+      <div
+        ref={scrollAreaRef}
+        style={{
+          flex: 1, minHeight: 0, overflowY: 'auto',
+          padding: '20px 18px 10px',
+          display: 'flex', flexDirection: 'column', gap: '16px',
+        }}
+      >
 
         {/* Conversation messages */}
         {messages.map((msg, i) => (
@@ -175,74 +159,110 @@ export function AskTIAChat({ compact = false }) {
             display: 'flex',
             flexDirection: msg.role === 'user' ? 'row-reverse' : 'row',
             gap: '10px', alignItems: 'flex-start',
-            animation: 'askMsgIn 0.3s ease both',
+            animation: 'askMsgIn 0.32s cubic-bezier(0.16,1,0.3,1) both',
           }}>
+            {msg.role === 'tia' && <TIAAvatar size={28} />}
             <div style={{
-              padding: '10px 14px',
-              borderRadius: msg.role === 'user' ? '14px 4px 14px 14px' : '4px 14px 14px 14px',
-              background: msg.role === 'user' ? 'rgba(230,57,70,0.12)' : 'rgba(168,218,220,0.07)',
-              border: msg.role === 'user' ? '1px solid rgba(230,57,70,0.2)' : '1px solid rgba(168,218,220,0.12)',
+              padding: '12px 16px',
+              borderRadius: msg.role === 'user' ? '18px 4px 18px 18px' : '4px 18px 18px 18px',
+              background: msg.role === 'user' ? 'var(--color-secondary)' : 'rgba(168,218,220,0.22)',
+              border: msg.role === 'user' ? 'none' : '1px solid rgba(168,218,220,0.38)',
               maxWidth: '82%',
             }}>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'rgba(255,255,255,0.88)', margin: 0, lineHeight: 1.6 }}>
+              <p style={{
+                fontFamily: 'var(--font-body)', fontSize: '14px',
+                color: msg.role === 'user' ? 'rgba(255,255,255,0.92)' : 'var(--color-text-primary)',
+                margin: 0, lineHeight: 1.7,
+              }}>
                 {msg.text}
               </p>
             </div>
           </div>
         ))}
 
-        {/* Thinking dots */}
+        {/* Thinking indicator */}
         {thinking && (
-          <div style={{ display: 'flex', gap: '8px', padding: '10px 14px', borderRadius: '4px 14px 14px 14px', background: 'rgba(168,218,220,0.07)', border: '1px solid rgba(168,218,220,0.12)', alignSelf: 'flex-start' }}>
-            {[0, 1, 2].map(i => (
-              <div key={i} style={{ width: '5px', height: '5px', borderRadius: '50%', background: 'var(--color-accent)', animation: `askDot 1.2s ease ${i * 0.15}s infinite` }} />
-            ))}
+          <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+            <TIAAvatar size={28} />
+            <div style={{
+              display: 'flex', gap: '5px', alignItems: 'center',
+              padding: '14px 18px',
+              borderRadius: '4px 18px 18px 18px',
+              background: 'rgba(168,218,220,0.22)',
+              border: '1px solid rgba(168,218,220,0.38)',
+            }}>
+              {[0, 1, 2].map(i => (
+                <div key={i} style={{
+                  width: '6px', height: '6px', borderRadius: '50%',
+                  background: 'var(--color-secondary)',
+                  opacity: 0.55,
+                  animation: `askDot 1.2s ease ${i * 0.18}s infinite`,
+                }} />
+              ))}
+            </div>
           </div>
         )}
 
-        {/* Live typing preview — reflects what user is typing */}
+        {/* Live typing preview */}
         {userInput && !thinking && (
           <div style={{
-            display: 'flex', flexDirection: 'row-reverse', gap: '10px', alignItems: 'flex-start',
-            opacity: 0.62,
+            display: 'flex', flexDirection: 'row-reverse', gap: '10px',
+            alignItems: 'flex-start', opacity: 0.55,
           }}>
             <div style={{
-              padding: '10px 14px',
-              borderRadius: '14px 4px 14px 14px',
-              background: 'rgba(230,57,70,0.08)',
-              border: '1px dashed rgba(230,57,70,0.28)',
+              padding: '12px 16px',
+              borderRadius: '18px 4px 18px 18px',
+              background: 'rgba(29,53,87,0.55)',
+              border: '1px dashed rgba(29,53,87,0.28)',
               maxWidth: '82%',
             }}>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'rgba(255,255,255,0.78)', margin: 0, lineHeight: 1.6 }}>
+              <p style={{
+                fontFamily: 'var(--font-body)', fontSize: '14px',
+                color: 'rgba(255,255,255,0.9)', margin: 0, lineHeight: 1.7,
+              }}>
                 {userInput}
-                <span style={{ display: 'inline-block', width: '2px', height: '11px', background: 'rgba(255,255,255,0.55)', marginLeft: '2px', animation: 'askCursor 1s step-end infinite', verticalAlign: 'text-bottom' }} />
+                <span style={{
+                  display: 'inline-block', width: '2px', height: '13px',
+                  background: 'rgba(255,255,255,0.6)', marginLeft: '2px',
+                  animation: 'askCursor 1s step-end infinite', verticalAlign: 'text-bottom',
+                }} />
               </p>
             </div>
           </div>
         )}
 
-        <div ref={messagesEndRef} />
       </div>
 
-      {/* Prompt grid — only before first message */}
-      {messages.length === 0 && greetingDone && (
-        <div style={{ padding: '0 16px 14px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px', flexShrink: 0 }}>
+      {/* ── Prompt chips ── */}
+      {messages.length === 0 && (
+        <div style={{
+          padding: '0 16px 12px',
+          display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px',
+          flexShrink: 0,
+        }}>
           {PROMPTS.map((p, i) => (
             <button
               key={p.label}
               onClick={() => handlePrompt(p)}
               style={{
-                padding: '9px 11px', borderRadius: '10px',
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(168,218,220,0.15)',
-                color: 'rgba(255,255,255,0.75)',
+                padding: '9px 12px', borderRadius: '10px',
+                background: 'rgba(11,15,25,0.04)',
+                border: '1px solid rgba(11,15,25,0.1)',
+                color: 'var(--color-text-secondary)',
                 fontFamily: 'var(--font-body)', fontSize: '12px',
                 cursor: 'pointer', textAlign: 'left',
-                transition: 'all 0.2s ease',
-                animation: `askPrompt 0.35s ease ${i * 0.08}s both`,
+                lineHeight: 1.45,
+                transition: 'background 0.18s ease, border-color 0.18s ease',
+                animation: `askPrompt 0.35s cubic-bezier(0.16,1,0.3,1) ${i * 0.08}s both`,
               }}
-              onMouseEnter={e => { e.currentTarget.style.background = 'rgba(168,218,220,0.1)'; e.currentTarget.style.borderColor = 'rgba(168,218,220,0.3)' }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; e.currentTarget.style.borderColor = 'rgba(168,218,220,0.15)' }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = 'rgba(168,218,220,0.2)'
+                e.currentTarget.style.borderColor = 'rgba(168,218,220,0.5)'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = 'rgba(11,15,25,0.04)'
+                e.currentTarget.style.borderColor = 'rgba(11,15,25,0.1)'
+              }}
             >
               {p.emoji} {p.label}
             </button>
@@ -250,56 +270,64 @@ export function AskTIAChat({ compact = false }) {
         </div>
       )}
 
-      {/* Text input */}
+      {/* ── Input bar ── */}
       <div style={{
         padding: '10px 14px 14px',
-        borderTop: '1px solid rgba(168,218,220,0.1)',
-        background: 'rgba(255,255,255,0.02)',
+        borderTop: '1px solid rgba(11,15,25,0.07)',
+        background: 'var(--color-primary)',
         flexShrink: 0,
-        display: 'flex',
-        gap: '8px',
-        alignItems: 'center',
+        display: 'flex', gap: '8px', alignItems: 'center',
       }}>
         <input
-          className="ask9-input"
+          className="ask9-chat-input"
           type="text"
-          placeholder="Type your question..."
+          placeholder="Ask TIA anything…"
           value={userInput}
           onChange={e => setUserInput(e.target.value)}
           onKeyDown={e => { if (e.key === 'Enter') handleSend() }}
           style={{
-            flex: 1,
-            padding: '9px 14px',
-            borderRadius: '10px',
-            background: 'rgba(255,255,255,0.07)',
-            border: '1px solid rgba(168,218,220,0.2)',
-            color: 'rgba(255,255,255,0.9)',
-            fontFamily: 'var(--font-body)',
-            fontSize: '13px',
+            flex: 1, padding: '11px 16px',
+            borderRadius: '12px',
+            background: 'rgba(11,15,25,0.05)',
+            border: '1.5px solid rgba(11,15,25,0.1)',
+            color: 'var(--color-text-primary)',
+            fontFamily: 'var(--font-body)', fontSize: '14px',
             outline: 'none',
-            transition: 'border-color 0.22s ease, box-shadow 0.22s ease',
+            transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
           }}
-          onFocus={e => { e.target.style.borderColor = 'rgba(168,218,220,0.52)'; e.target.style.boxShadow = '0 0 0 3px rgba(168,218,220,0.08)' }}
-          onBlur={e => { e.target.style.borderColor = 'rgba(168,218,220,0.2)'; e.target.style.boxShadow = 'none' }}
+          onFocus={e => {
+            e.target.style.borderColor = 'rgba(29,53,87,0.38)'
+            e.target.style.boxShadow = '0 0 0 3px rgba(29,53,87,0.06)'
+          }}
+          onBlur={e => {
+            e.target.style.borderColor = 'rgba(11,15,25,0.1)'
+            e.target.style.boxShadow = 'none'
+          }}
         />
         <button
           onClick={handleSend}
-          disabled={!userInput.trim() || thinking}
+          disabled={!canSend}
+          onMouseEnter={() => setSendHov(true)}
+          onMouseLeave={() => setSendHov(false)}
           style={{
-            padding: '9px 16px',
-            borderRadius: '10px',
-            background: userInput.trim() && !thinking ? 'var(--color-accent)' : 'rgba(255,255,255,0.06)',
-            border: `1px solid ${userInput.trim() && !thinking ? 'var(--color-accent)' : 'rgba(168,218,220,0.18)'}`,
-            color: userInput.trim() && !thinking ? 'var(--color-secondary)' : 'rgba(255,255,255,0.28)',
-            fontFamily: 'var(--font-heading)',
-            fontSize: '13px',
-            fontWeight: 700,
-            cursor: userInput.trim() && !thinking ? 'pointer' : 'default',
-            transition: 'all 0.22s cubic-bezier(0.16,1,0.3,1)',
+            width: '42px', height: '42px',
+            borderRadius: '12px',
+            background: canSend
+              ? (sendHov ? 'var(--color-accent)' : 'var(--color-secondary)')
+              : 'rgba(11,15,25,0.07)',
+            border: 'none',
+            color: canSend ? 'var(--color-text-white)' : 'rgba(11,15,25,0.25)',
+            cursor: canSend ? 'pointer' : 'default',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
             flexShrink: 0,
+            transition: 'background 0.22s ease, transform 0.2s ease',
+            transform: canSend && sendHov ? 'translateY(-2px)' : 'none',
           }}
+          aria-label="Send"
         >
-          Send
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 13V3M8 3L3.5 7.5M8 3L12.5 7.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </button>
       </div>
     </div>
@@ -451,11 +479,10 @@ function S9AskTIA() {
         @keyframes askFadeUp     { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
         @keyframes askBlurReveal { from { opacity:0; filter:blur(10px); transform:translateY(14px); } to { opacity:1; filter:blur(0); transform:translateY(0); } }
         @keyframes askScaleIn    { from { opacity:0; transform:scale(0.97); filter:blur(6px); } to { opacity:1; transform:scale(1); filter:blur(0); } }
-        @keyframes askPulse      { 0%,100% { opacity:1; } 50% { opacity:0.25; } }
         @keyframes askCursor     { 0%,100% { opacity:1; } 50% { opacity:0; } }
-        @keyframes askDot        { 0%,80%,100% { transform:translateY(0); } 40% { transform:translateY(-5px); } }
-        @keyframes askPrompt     { from { opacity:0; transform:scale(0.93); } to { opacity:1; transform:scale(1); } }
-        @keyframes askMsgIn      { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes askDot        { 0%,80%,100% { transform:translateY(0); opacity:0.55; } 40% { transform:translateY(-5px); opacity:1; } }
+        @keyframes askPrompt     { from { opacity:0; transform:scale(0.93) translateY(6px); } to { opacity:1; transform:scale(1) translateY(0); } }
+        @keyframes askMsgIn      { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
         @keyframes askSuccessIn  { from { opacity:0; transform:scale(0.96); } to { opacity:1; transform:scale(1); } }
 
         .ask9-eyebrow { animation: askFadeUp      0.5s  cubic-bezier(0.16,1,0.3,1) 0.08s both; }
@@ -473,8 +500,16 @@ function S9AskTIA() {
           animation-play-state: running;
         }
 
-        .ask9-input::placeholder { color: rgba(255,255,255,0.3); }
-        .ask9-select option       { background: #1D3557; color: #ffffff; }
+        .ask9-input::placeholder      { color: rgba(255,255,255,0.3); }
+        .ask9-select option            { background: #1D3557; color: #ffffff; }
+        .ask9-chat-input::placeholder  { color: rgba(11,15,25,0.35); }
+
+        @keyframes ask9BetaPulse {
+          0%, 100% { box-shadow: 0 0 8px rgba(230,57,70,0.22), 0 2px 6px rgba(230,57,70,0.12); border-color: rgba(230,57,70,0.28); }
+          50%      { box-shadow: 0 0 20px rgba(230,57,70,0.42), 0 3px 14px rgba(230,57,70,0.22); border-color: rgba(230,57,70,0.55); }
+        }
+        .ask9-beta-pill { animation: ask9BetaPulse 2.6s ease-in-out infinite; }
+
 
         @media (prefers-reduced-motion: reduce) {
           .ask9-eyebrow, .ask9-heading, .ask9-sub, .ask9-left, .ask9-right {
@@ -496,16 +531,12 @@ function S9AskTIA() {
             <p className="ask9-eyebrow text-h4 text-[var(--color-highlight)] mb-2">
               Coming Soon
             </p>
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-              <h2 className="ask9-heading text-h1" style={{ lineHeight: 1.15 }}>
-                <span style={{ color: 'var(--color-text-white)' }}>Meet Ask TIA. <br /> The framework, in conversation.</span>
-                
-              </h2>
-              
-            </div>
+            <h2 className="ask9-heading text-h1" style={{ color: 'var(--color-text-white)', lineHeight: 1.15 }}>
+              Meet Ask TIA. The framework, in conversation.
+            </h2>
           </div>
 
-          {/* Waitlist left, Chat right */}
+          {/* Grid — form left, chat right */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
             <div className="ask9-left">
               <WaitlistForm />

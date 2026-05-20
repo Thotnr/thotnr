@@ -211,17 +211,12 @@ function S2Origin() {
 
               {/* Closing statement */}
               <p
-                className="s2-closing"
-                style={{
-                  margin: '16px 0 0',
-                  fontFamily: 'var(--font-accent)',
-                  fontWeight: 700,
-                  fontSize: 'clamp(20px, 2.2vw, 28px)',
-                  lineHeight: 1.3,
-                  color: 'rgba(32, 178, 170, 0.9)',
-                  textShadow: '0 1px 0 rgba(255,255,255,0.35)',
-                  letterSpacing: '-0.01em',
-                }}
+                className="text-h3 text-[var(--color-text-primary)] mt-4"
+              style={{
+                
+                lineHeight: 1.2,
+                
+              }}
               >
                 That framework became TIA.
               </p>

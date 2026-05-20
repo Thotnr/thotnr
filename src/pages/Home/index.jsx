@@ -24,11 +24,11 @@ function Home() {
       <Navbar />
       <Hero />
       <ProblemStatement />
-      <Vision />
       <ProcessTimeline />
       <ServicesCards />
-      <CaseStudies />
       <Accelerators />
+      <CaseStudies />
+      
       <Clients />
       <Products />
       <ServicesList />

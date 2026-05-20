@@ -1,307 +1,151 @@
 function ProblemStatement() {
   return (
-    <section className="py-16 px-5 md:px-10 lg:px-16 bg-[var(--color-primary)]">
-      <div className="max-w-7xl mx-auto">
-
-        {/* ── BLOCK 1: Stats bar ── */}
-        <div className="mb-8">
+    <>
+      {/* ── SECTION 1: Stats bar ── */}
+      <section className="py-16 px-5 md:px-10 lg:px-16 bg-[var(--color-primary)]">
+        <div className="max-w-7xl mx-auto">
           <p className="text-h4 text-[var(--color-highlight)] mb-2 tracking-widest">
-            The Reality of Enterprise AI Today
+            The Enterprise AI Opportunity
           </p>
           <p className="text-body text-[var(--color-text-secondary)] mb-6">
-Most enterprises are drowning in AI pilots that never reach production.          </p>
+            Enterprise AI is moving from experiment to engine.
+          </p>
 
-        
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6">
-  {[
-    { pct: '95%', label: 'of GenAI pilots fail to reach production',                source: 'MIT NANDA, 2025'   },
-    { pct: '7-10x', label: 'more tokens wasted on simple reasoning tasks',         source: 'AMAZON SCIENCE, 2025'  },
-    { pct: '42%', label: 'abandoned in 2025 (vs 17% in 2024)', source: 'S&P GLOBAL, 2025'  },
-    { pct: '74%', label: 'see no tangible value from AI',       source: 'BCG, 2025'         },
-  ].map((s, i) => (
-    <div key={i} className="flex flex-col gap-1">
-
-      {/* Number + label on same line */}
-      <div className="flex items-center gap-2">
-        <span style={{
-          fontFamily: 'var(--font-heading)',
-          fontSize: 'clamp(20px, 2.8vw, 24px)',
-          fontWeight: 700,
-          lineHeight: 1,
-          color: 'var(--color-text-primary)',
-          flexShrink: 0,
-        }}>
-          {s.pct}
-        </span>
-        <span className="text-body-sm" style={{
-          color: 'var(--color-text-secondary)',
-          lineHeight: 1.35,
-          maxWidth: '160px',
-        }}>
-          {s.label}
-        </span>
-      </div>
-
-      {/* Source below */}
-      <span className="text-body-sm" style={{
-        color: 'var(--color-secondary)',
-        letterSpacing: '0.06em',
-      }}>
-        {s.source}
-      </span>
-
-    </div>
-  ))}
-</div>
-        </div>
-
-        {/* Thin divider */}
-        <div className="mb-10" style={{ height: '1px', background: 'rgba(11,15,25,0.08)' }} />
-
-        {/* ── BLOCK 2: Problem / Solution headline ── */}
-        <div className="mb-8">
-          <p className="text-h4 text-[var(--color-highlight)] mb-4 tracking-widest">
-            Why Thotnr is Different
-          </p>
-
-          <h2
-            style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: 'clamp(22px, 3.8vw, 40px)',
-              fontWeight: 600,
-              lineHeight: 1.3,
-              color: 'var(--color-text-primary)',
-              marginBottom: '4px',
-            }}
-          >
-           We don’t chase AI experiments.
-            <br />
-            We build intelligence that works inside enterprise.
-          </h2>
-          {/* <h2
-            style={{
-              fontFamily: 'var(--font-accent)',
-              fontSize: 'clamp(22px, 3.8vw, 46px)',
-              fontWeight: 600,
-              fontStyle: 'italic',
-              lineHeight: 1.15,
-              color: 'var(--color-text-primary)',
-              marginBottom: '24px',
-            }}
-          >
-            We make them work inside your real organization.
-          </h2> */}
-
-          <p
-            className="text-body"
-            style={{
-              color: 'var(--color-text-secondary)',
-              maxWidth: '760px',
-              lineHeight: 1.8,
-            }}
-          >
-            Through TIA, we bridge the gap between AI ambition and enterprise reality — understanding your data first, engineering intelligence into your existing systems and workflows, and measuring success by business value. So AI moves beyond experimentation and becomes a reliable part of how your business operates.
-          </p>
-        </div>
-
-        {/* ── BLOCK 3: Evidence card ── */}
-        
-        {/* <div
-          className="mb-12 p-6 md:p-8 rounded-2xl"
-          style={{
-            background: 'rgba(255,255,255,0.72)',
-            border: '1px solid rgba(11,15,25,0.07)',
-            boxShadow: '0 4px 24px rgba(11,15,25,0.05)',
-          }}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-
-            
-            <div>
-              <p className="text-body text-[var(--color-text-tertiary)] mb-5 tracking-widest">
-                WHERE AI PILOTS END UP
-              </p>
-              <div className="flex items-center gap-6 flex-wrap">
-
-                
-                <div className="relative flex-shrink-0" style={{ width: '110px', height: '110px' }}>
-                  <svg viewBox="0 0 110 110" width="110" height="110">
-                    
-                    <circle cx="55" cy="55" r="42" fill="none" stroke="rgba(11,15,25,0.07)" strokeWidth="14" />
-                    
-                    <circle
-                      cx="55" cy="55" r="42"
-                      fill="none"
-                      stroke="var(--color-highlight)"
-                      strokeWidth="14"
-                      strokeDasharray={`${0.34 * 263.9} ${263.9}`}
-                      strokeDashoffset="0"
-                      strokeLinecap="butt"
-                      transform="rotate(-90 55 55)"
-                    />
-                    
-                    <circle
-                      cx="55" cy="55" r="42"
-                      fill="none"
-                      stroke="rgba(230,57,70,0.45)"
-                      strokeWidth="14"
-                      strokeDasharray={`${0.29 * 263.9} ${263.9}`}
-                      strokeDashoffset={`-${0.34 * 263.9}`}
-                      strokeLinecap="butt"
-                      transform="rotate(-90 55 55)"
-                    />
-                   
-                    <circle
-                      cx="55" cy="55" r="42"
-                      fill="none"
-                      stroke="rgba(230,57,70,0.22)"
-                      strokeWidth="14"
-                      strokeDasharray={`${0.17 * 263.9} ${263.9}`}
-                      strokeDashoffset={`-${(0.34 + 0.29) * 263.9}`}
-                      strokeLinecap="butt"
-                      transform="rotate(-90 55 55)"
-                    />
-                  
-                    <circle
-                      cx="55" cy="55" r="42"
-                      fill="none"
-                      stroke="var(--color-secondary)"
-                      strokeWidth="14"
-                      strokeDasharray={`${0.20 * 263.9} ${263.9}`}
-                      strokeDashoffset={`-${(0.34 + 0.29 + 0.17) * 263.9}`}
-                      strokeLinecap="butt"
-                      transform="rotate(-90 55 55)"
-                    />
-                   
-                    <text
-                      x="55" y="51"
-                      textAnchor="middle"
-                      style={{ fontFamily: 'var(--font-heading)', fontSize: '15px', fontWeight: 700, fill: 'var(--color-text-primary)' }}
-                    >
-                      80%
-                    </text>
-                    <text
-                      x="55" y="64"
-                      textAnchor="middle"
-                      style={{ fontFamily: 'var(--font-heading)', fontSize: '8px', fill: 'var(--color-text-tertiary)', letterSpacing: '0.06em' }}
-                    >
-                      FAIL
-                    </text>
-                  </svg>
-                </div>
-
-                
-                <div className="flex flex-col gap-2">
-                  {[
-                    { color: 'var(--color-highlight)',       label: 'Abandoned before production', pct: '34%' },
-                    { color: 'rgba(230,57,70,0.45)',         label: 'Completed but no business value', pct: '29%' },
-                    { color: 'rgba(230,57,70,0.22)',         label: 'Value too low to justify cost', pct: '17%' },
-                    { color: 'var(--color-secondary)',       label: 'Reach production & deliver value', pct: '20%' },
-                  ].map((item) => (
-                    <div key={item.label} className="flex items-start gap-2">
-                      <div
-                        className="flex-shrink-0 mt-1 rounded-sm"
-                        style={{ width: '10px', height: '10px', background: item.color }}
-                      />
-                      <span className="text-body" style={{ color: 'var(--color-text-secondary)', lineHeight: 1.5 }}>
-                        {item.label} — <strong>{item.pct}</strong>
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-           
-            <div className="flex flex-col justify-center">
-              <p className="text-body text-[var(--color-text-tertiary)] mb-5 tracking-widest">
-                THE MIT FINDING THAT DEFINES OUR APPROACH
-              </p>
-
-              <div className="flex items-baseline gap-3 mb-3">
-                <span
-                  style={{
+            {[
+  {
+    pct: '$4.4T',
+    label: 'potential AI value for enterprises',
+    source: 'MCKINSEY'
+  },
+  {
+    pct: '3x',
+    label: 'higher value creation by AI leaders',
+    source: 'BCG'
+  },
+  {
+    pct: '70%',
+    label: 'CEOs place AI among top priorities',
+    source: 'PwC'
+  },
+  {
+    pct: '5%',
+    label: 'capture outsized AI value',
+    source: 'MIT / NANDA'
+  },
+].map((s, i) => (
+              <div key={i} className="flex flex-col gap-1">
+                <div className="flex items-center gap-2">
+                  <span style={{
                     fontFamily: 'var(--font-heading)',
-                    fontSize: 'clamp(48px, 7vw, 80px)',
-                    fontWeight: 800,
+                    fontSize: 'clamp(20px, 2.8vw, 24px)',
+                    fontWeight: 700,
                     lineHeight: 1,
                     color: 'var(--color-text-primary)',
-                  }}
-                >
-                  2×
-                </span>
-                <span
-                  className="text-body"
-                  style={{ color: 'var(--color-text-secondary)', maxWidth: '160px', lineHeight: 1.5 }}
-                >
-                  higher success rate with vendor-led AI
+                    flexShrink: 0,
+                  }}>
+                    {s.pct}
+                  </span>
+                  <span className="text-body-sm" style={{
+                    color: 'var(--color-text-secondary)',
+                    lineHeight: 1.35,
+                    maxWidth: '160px',
+                  }}>
+                    {s.label}
+                  </span>
+                </div>
+                <span className="text-body-sm" style={{
+                  color: 'var(--color-secondary)',
+                  letterSpacing: '0.06em',
+                }}>
+                  {s.source}
                 </span>
               </div>
-
-              <p className="text-body-sm mb-3" style={{ color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>
-                Vendor-led, workflow-embedded AI succeeds{' '}
-                <strong style={{ color: 'var(--color-text-primary)' }}>67%</strong> of the time.
-                Internal builds succeed only{' '}
-                <strong style={{ color: 'var(--color-text-primary)' }}>33%</strong>.
-              </p>
-
-              <p
-                className="text-body-sm font-semibold"
-                style={{ color: 'var(--color-text-primary)' }}
-              >
-                That's the side of the line we put you on.
-              </p>
-            </div>
-
+            ))}
           </div>
-        </div> */}
-
-
-
-        {/* ── BLOCK 4: Three pillars ── */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              title: 'Built on your data',
-              body: 'Every solution starts with your real data landscape — where it lives, how reliable it is, what it can prove, and what needs to be fixed before AI can scale.',
-            },
-            {
-              title: 'Embedded in real workflows',
-              body: 'We design around how your teams actually work — your systems, handoffs, controls, and governance — so intelligence becomes part of execution, not a side experiment.',
-            },
-            {
-              title: 'Measured in business value',
-              body: 'Every deployment is tied to outcomes your business can defend — revenue lift, faster decisions, hours saved, lower risk, and better customer experience.',
-            },
-          ].map((pillar) => (
-            <div key={pillar.title} className="flex flex-col gap-3">
-              {/* Red dash accent */}
-              <div
-                style={{
-                  width: '28px',
-                  height: '2px',
-                  background: 'var(--color-highlight)',
-                  borderRadius: '2px',
-                }}
-              />
-              <h3
-                className="text-h4 font-semibold"
-                style={{ color: 'var(--color-text-primary)' }}
-              >
-                {pillar.title}
-              </h3>
-              <p
-                className="text-body"
-                style={{ color: 'var(--color-text-secondary)', lineHeight: 1.75 }}
-              >
-                {pillar.body}
-              </p>
-            </div>
-          ))}
         </div>
+      </section>
 
-      </div>
-    </section>
+      {/* ── SECTION 2: Why Thotnr is Different + Three pillars ── */}
+      <section className="py-16 px-5 md:px-10 lg:px-16" style={{ background: 'var(--color-secondary)' }}>
+        <div className="max-w-7xl mx-auto">
+
+          {/* Block 2: Problem / Solution headline */}
+          <div className="mb-8">
+            <p className="text-h4 mb-1 tracking-widest" style={{ color: 'var(--color-highlight)' }}>
+              Why TIA Matters
+            </p>
+
+            <h2
+              style={{
+                fontFamily: 'var(--font-heading)',
+                fontSize: 'clamp(22px, 3.8vw, 40px)',
+                fontWeight: 600,
+                lineHeight: 1.3,
+                color: 'var(--color-text-white)',
+                marginBottom: '8px',
+              }}
+            >
+              TIA turns AI ambition into enterprise capability.
+              {/* <br />
+              We build intelligence that works inside enterprise. */}
+            </h2>
+
+            <p
+              className="text-body"
+              style={{
+                color: 'rgba(255,255,255,0.85)',
+                maxWidth: '760px',
+                lineHeight: 1.8,
+              }}
+            >
+Through TIA — Thotnr Intelligence Augmentation — we help organisations build AI that is grounded in their data, shaped around real operating workflows, and measured by business value. So AI moves beyond experimentation and becomes a reliable part of how the business works.            </p>
+          </div>
+
+          {/* Block 3: Three pillars */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+  {
+    title: 'Grounded in your data',
+  body: 'Every TIA engagement starts with your real data landscape — where it lives, how reliable it is, what it can support, and what must be fixed before AI can scale.',
+  },
+  {
+    title: 'Embedded in your workflows',
+    body: 'We design around how your teams actually work — systems, approvals, controls, and governance — so intelligence becomes part of execution.',
+  },
+  {
+    title: 'Measured by business value',
+    body: 'Every deployment is tied to measurable outcomes — faster decisions, lower risk, improved experience, and business value that compounds over time.',
+  },
+].map((pillar) => (
+              <div key={pillar.title} className="flex flex-col gap-3">
+                <div
+                  style={{
+                    width: '28px',
+                    height: '2px',
+                    background: 'var(--color-highlight)',
+                    borderRadius: '2px',
+                  }}
+                />
+                <h3
+                  className="text-h4 font-semibold"
+                  style={{ color: 'var(--color-text-white)' }}
+                >
+                  {pillar.title}
+                </h3>
+                <p
+                  className="text-body"
+                  style={{ color: 'rgba(255,255,255,0.80)', lineHeight: 1.75 }}
+                >
+                  {pillar.body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+    </>
   )
 }
 

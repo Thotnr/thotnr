@@ -4,22 +4,19 @@ const icons = [Brain, Search, Rocket]
 
 const steps = [
   {
-    number:  '01',
-    title:   'Sense the Enterprise',
-    summary: 'We immerse in your organisation — not your decks.',
-    detail:  'We assess your data, systems, processes, decision points, and operating constraints to understand where AI can genuinely create value. This creates a clear view of your enterprise reality before any solution is designed.',
+    number: '01',
+    title: 'T — TRACE',
+    detail: 'We trace enterprise reality before designing intelligence — mapping where your data lives, how work flows, where decisions happen, and what constraints must be addressed before AI can scale.',
   },
   {
-    number:  '02',
-    title:   'Shape the Intelligence',
-    summary: 'Not every problem needs AI. The ones that do deserve precision.',
-    detail:  'We identify and prioritise AI opportunities based on business value, data readiness, implementation complexity, risk, and adoption potential — focusing only on use cases that can become practical business capability.',
+    number: '02',
+    title: 'I — INTEGRATE',
+    detail: 'We integrate intelligence into the way your business works — engineering AI around your systems, workflows, governance, controls, and teams so it becomes part of execution.',
   },
   {
-    number:  '03',
-    title:   'Scale the Capability',
-    summary: 'Engineering for long-term production capability, not just a clean demo.',
-    detail:  'We deploy intelligence into your infrastructure, workflows, and governance model — then monitor outcomes so AI becomes a repeatable capability, not a one-time experiment.',
+    number: '03',
+    title: 'A — AMPLIFY',
+    detail: 'We amplify outcomes your business can measure — delivering faster decisions, reduced effort, lower risk, improved conversion, and stronger customer outcomes.',
   },
 ]
 
@@ -30,16 +27,17 @@ function ProcessTimeline() {
 
         {/* Header */}
         <div className="mb-8">
-          <p className="text-h4 text-[var(--color-highlight)]">
+          <p className="text-h4 text-[var(--color-highlight)] mb-1">
             TIA Framework
           </p>
 
-          <h2 className="text-h1 text-[var(--color-text-primary)]">
-            How Thotnr Intelligence Augmentation Works
-          </h2>
+          <h2 className="text-h1 text-[var(--color-text-primary)]" style={{lineHeight: 1.2}}>
+            Great AI doesn’t start with technology. <br />
+            <span style= {{fontStyle:'italic'}}>It starts with enterprise reality.</span>    
+              </h2>
 
           <p className="text-body text-[var(--color-text-secondary)] mt-2 max-w-2xl">
-A three-phase engagement designed to move from enterprise reality to measurable AI value — without sacrificing depth, governance, or adoption.          </p>
+Through TIA, we build intelligence in three moves: trace the reality of your enterprise, integrate AI into the way work actually happens, and amplify outcomes your business can measure.     </p>
         </div>
 
         {/* Cards */}
