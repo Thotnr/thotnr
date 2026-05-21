@@ -184,7 +184,7 @@ function LensRow({ lensKey, label, text }) {
         letterSpacing: '0.14em',
         fontWeight: 600,
       }}>
-        TIA LENS — {label.toUpperCase()}
+        TIA MOVE — {label.toUpperCase()}
       </p>
       <p className="text-body-sm" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.7, margin: 0 }}>
         {text}
@@ -202,7 +202,7 @@ function CaseContent({ cs }) {
 
         {/* Logo + sector + title */}
         <div>
-          {cs.logo && (
+          {/* {cs.logo && (
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -226,7 +226,7 @@ function CaseContent({ cs }) {
           )}
           <p className="text-label mb-2" style={{ color: 'var(--color-highlight)', letterSpacing: '0.14em', fontWeight: 600 }}>
             {cs.sector}
-          </p>
+          </p> */}
           <h3 className="text-h2" style={{ color: 'var(--color-text-white)', fontWeight: 600, lineHeight: 1.2, marginBottom: 0 }}>
             {cs.client} — {cs.title}
           </h3>

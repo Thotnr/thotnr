@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import frameworkVideo from '../../../assets/videos/TIA-framework-2.mp4'
+import frameworkImg from '../../../assets/images/tia-framework.png'
 
 function useInView(threshold = 0.08) {
   const ref = useRef(null)
@@ -25,48 +25,22 @@ function S4Framework() {
           from { opacity: 0; transform: translateY(22px); }
           to   { opacity: 1; transform: translateY(0); }
         }
-        @keyframes fw4VideoReveal {
-          from { opacity: 0; transform: translateY(32px) scale(0.98); filter: blur(8px); }
-          to   { opacity: 1; transform: translateY(0)    scale(1);    filter: blur(0); }
+        @keyframes fw4ImgReveal {
+          from { opacity: 0; transform: translateY(28px); filter: blur(8px); }
+          to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
         }
 
-        .fw4-header { animation: fw4FadeUp       0.75s cubic-bezier(0.16,1,0.3,1) 0.10s both; }
-        .fw4-video  { animation: fw4VideoReveal  1.0s  cubic-bezier(0.16,1,0.3,1) 0.28s both; }
+        .fw4-header { animation: fw4FadeUp     0.75s cubic-bezier(0.16,1,0.3,1) 0.10s both; }
+        .fw4-img    { animation: fw4ImgReveal  1.0s  cubic-bezier(0.16,1,0.3,1) 0.28s both; }
 
         .fw4-paused .fw4-header,
-        .fw4-paused .fw4-video  { opacity: 0; animation-play-state: paused; }
+        .fw4-paused .fw4-img  { opacity: 0; animation-play-state: paused; }
 
         .fw4-running .fw4-header,
-        .fw4-running .fw4-video { animation-play-state: running; }
-
-        /* Desktop: 100vh, centered video at natural aspect ratio */
-        @media (min-width: 768px) {
-          .fw4-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-          }
-          .fw4-inner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-          }
-          .fw4-header {
-            width: 100%;
-          }
-          .fw4-video-wrap {
-            width: clamp(480px, 72%, 860px);
-            margin: 0 auto;
-          }
-          .fw4-video-wrap video {
-            width: 100%;
-            height: auto;
-          }
-        }
+        .fw4-running .fw4-img { animation-play-state: running; }
 
         @media (prefers-reduced-motion: reduce) {
-          .fw4-header, .fw4-video {
+          .fw4-header, .fw4-img {
             animation: none !important; opacity: 1 !important;
             filter: none !important; transform: none !important;
           }
@@ -76,14 +50,14 @@ function S4Framework() {
       <section
         id="tia-framework"
         ref={sectionRef}
-        className={`fw4-section py-16 px-5 md:px-10 lg:px-16 bg-[var(--color-primary)] ${inView ? 'fw4-running' : 'fw4-paused'}`}
+        className={`bg-[var(--color-primary)] ${inView ? 'fw4-running' : 'fw4-paused'}`}
+        style={{ height: '100vh', display: 'flex', flexDirection: 'column', paddingTop: '64px', paddingBottom: '40px' }}
       >
-        <div className="fw4-inner max-w-7xl mx-auto">
-
-          {/* Header — matches S2Origin pattern */}
-          <div className="fw4-header mb-8">
+        {/* Header */}
+        <div className="fw4-header px-5 md:px-10 lg:px-16 mb-8" style={{ flexShrink: 0 }}>
+          <div className="max-w-7xl mx-auto">
             <p className="text-h4 text-[var(--color-highlight)] mb-2">
-              THE FRAMEWORK
+              The Framework
             </p>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
               <h2
@@ -92,7 +66,7 @@ function S4Framework() {
               >
                 One picture. Three phases. Three capabilities.
               </h2>
-              <p
+              {/* <p
                 className="text-body-sm"
                 style={{
                   color: 'var(--color-text-tertiary)',
@@ -102,36 +76,28 @@ function S4Framework() {
                 }}
               >
                 Built on your data.<br />Measured by your growth.
-              </p>
+              </p> */}
             </div>
           </div>
+        </div>
 
-          {/* Video */}
-          <div
-            className="fw4-video fw4-video-wrap"
+        {/* Image — fills remaining viewport height, full content visible */}
+        <div
+          className="fw4-img px-5 md:px-10 lg:px-16"
+          style={{ flex: 1, minHeight: 0, lineHeight: 0 }}
+        >
+          <img
+            src={frameworkImg}
+            alt="TIA Framework Diagram"
             style={{
+              width: '100%',
+              height: '100%',
+              display: 'block',
+              objectFit: 'contain',
+              objectPosition: 'center top',
               borderRadius: '16px',
-              overflow: 'hidden',
-              border: '1px solid rgba(11,15,25,0.08)',
-              boxShadow: '0 8px 48px rgba(11,15,25,0.1), 0 2px 16px rgba(11,15,25,0.06)',
-              background: 'rgba(11,15,25,0.04)',
-              lineHeight: 0,
             }}
-          >
-            <video
-              src={frameworkVideo}
-              autoPlay
-              muted
-              loop
-              playsInline
-              style={{
-                width: '100%',
-                height: 'auto',
-                display: 'block',
-              }}
-            />
-          </div>
-
+          />
         </div>
       </section>
     </>

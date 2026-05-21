@@ -1,4 +1,4 @@
-import coverVideo from '../../../assets/videos/insight-cover.mp4'
+import coverVideo from '../../../assets/videos/insight-cover-2.mp4'
 
 function S1Hero() {
   return (

@@ -604,8 +604,8 @@ function ServicesCards() {
                 ✦
               </span>
               <p style={{
-                fontFamily: 'var(--font-accent)',
-                fontStyle: 'italic',
+                fontFamily: 'var(--font-heading)',
+                
                 fontSize: '18px',
                 lineHeight: 1.4,
                 color: 'var(--color-text-white)',

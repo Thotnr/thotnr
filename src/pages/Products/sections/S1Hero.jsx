@@ -1,4 +1,4 @@
-import coverVideo from '../../../assets/videos/products-cover.mp4'
+import coverVideo from '../../../assets/videos/products-cover-2.mp4'
 
 function S1Hero() {
   return (

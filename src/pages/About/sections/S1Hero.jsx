@@ -1,21 +1,20 @@
-import aboutBg from '../../../assets/images/about-us.jpg'
+import coverVideo from '../../../assets/videos/about-cover.mp4'
 
 function S1Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden">
 
       {/* Background */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url(${aboutBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      />
-
-      {/* Dark overlay */}
-      <div className="absolute inset-0 z-0 bg-black/60" />
+      <video
+              className="absolute inset-0 w-full h-full object-cover z-0"
+              style={{ objectPosition: 'center center', filter: 'brightness(0.72) contrast(1.05)' }}
+              src={coverVideo}
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+      
 
       {/* Content */}
       <div className="absolute z-10 left-[10%] top-[60%] -translate-y-1/2">

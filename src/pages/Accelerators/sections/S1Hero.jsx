@@ -76,17 +76,21 @@ function S1Hero() {
       <div className="acc-hero-content acc-hero-pos">
 
         {/* Eyebrow */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '28px' }}>
-          <div style={{ width: '22px', height: '1px', background: 'var(--color-accent)', opacity: 0.5 }} />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '20px' }}>
+          <div className="hero-accent-line" style={{
+            width: 'clamp(28px, 4vw, 40px)',
+            height: '1px',
+            background: 'linear-gradient(90deg, transparent 0%, #7dd3c0 100%)',
+          }} />
           <span style={{
             fontFamily: 'var(--font-mono)',
-            fontSize: '11px',
-            letterSpacing: '0.30em',
+            fontSize: '13px',
+            fontWeight: 600,
+            letterSpacing: '0.23em',
             textTransform: 'uppercase',
-            color: 'var(--color-accent)',
-            opacity: 0.82,
+            color: '#7dd3c0',
           }}>
-            Accelerators
+            TIA Powered Accelerators
           </span>
         </div>
 

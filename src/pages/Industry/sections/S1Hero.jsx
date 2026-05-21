@@ -1,4 +1,4 @@
-import coverVideo from '../../../assets/videos/industry-cover.mp4'
+import coverVideo from '../../../assets/videos/industry-cover-2.mp4'
 
 function S1Hero() {
   return (
@@ -52,31 +52,16 @@ function S1Hero() {
         playsInline
       />
 
-      {/* Layer 1: Desktop left-to-right gradient */}
+      {/* Left-to-right dark overlay — content side fully dark, right opens up */}
       <div style={{
-        position: 'absolute', inset: 0, zIndex: 2, pointerEvents: 'none',
-        background: 'linear-gradient(to right, rgba(1,7,22,0.82) 0%, rgba(1,7,22,0.04) 100%)',
+        position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none',
+        background: 'linear-gradient(to right, rgba(0,0,0,0.73) 0%, rgba(0,0,0,0.78) 35%, rgba(0,0,0,0.65) 80%, rgba(0,0,0,0.40) 100%)',
       }} />
 
-      {/* Layer 2: Mobile/tablet flat overlay */}
-      <div
-        className="block lg:hidden"
-        style={{
-          position: 'absolute', inset: 0, zIndex: 2, pointerEvents: 'none',
-          background: 'rgba(1,7,22,0.52)',
-        }}
-      />
-
-      {/* Layer 3: Bottom vignette */}
+      {/* Bottom vignette */}
       <div style={{
-        position: 'absolute', inset: 0, zIndex: 2, pointerEvents: 'none',
-        background: 'linear-gradient(to top, rgba(1,7,22,0.65) 0%, transparent 40%)',
-      }} />
-
-      {/* Layer 4: Top vignette */}
-      <div style={{
-        position: 'absolute', inset: 0, zIndex: 2, pointerEvents: 'none',
-        background: 'linear-gradient(to bottom, rgba(1,7,22,0.45) 0%, transparent 25%)',
+        position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none',
+        background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 38%)',
       }} />
 
       <div className="hero-content hero-content-pos">

@@ -72,7 +72,7 @@ import qualityEngineeringImg  from '../assets/images/services/quality-engineerin
 import cloudImg               from '../assets/images/cloud.jpg'
 import cloudMigrationImg      from '../assets/images/services/cloud-migration.jpg'
 
-import experienceDesignImg    from '../assets/images/services/experience-design.jpg'
+import experienceDesignImg    from '../assets/images/services/experience-design.png'
 import uxResearchImg          from '../assets/images/services/ux-research.jpg'
 import userExperienceImg      from '../assets/images/user-experience.jpg'
 import securityRiskImg        from '../assets/images/security-risk.jpg'

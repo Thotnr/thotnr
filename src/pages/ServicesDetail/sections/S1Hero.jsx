@@ -40,15 +40,12 @@ function S1Hero({ service }) {
         }
       `}</style>
 
-      {/* Background video */}
-      <video
+      {/* Background image */}
+      <img
+        src={service.coverImage}
+        alt={service.title}
         className="absolute inset-0 w-full h-full object-cover z-0"
-        src={service.coverVideo}
-        autoPlay
-        muted
-        loop
-        playsInline
-        style={{ objectPosition: 'center center', filter: 'brightness(0.72) contrast(1.05)' }}
+        style={{ objectPosition: 'center center', filter: 'brightness(0.80) contrast(1.05)' }}
       />
 
       {/* Layer 1: Desktop left-to-right gradient */}
@@ -82,19 +79,19 @@ function S1Hero({ service }) {
       <div className="sd-hero-anim sd-hero-pos">
 
         {/* Eyebrow */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '36px' }}>
-          <div style={{
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '20px' }}>
+          <div className="hero-accent-line" style={{
             width: 'clamp(28px, 4vw, 40px)',
             height: '1px',
-            background: 'linear-gradient(90deg, transparent 0%, rgba(168,218,220,0.9) 100%)',
+            background: 'linear-gradient(90deg, transparent 0%, #7dd3c0 100%)',
           }} />
           <span style={{
             fontFamily: 'var(--font-mono)',
-            fontSize: '11.5px',
-            fontWeight: 500,
-            letterSpacing: '0.34em',
+            fontSize: '13px',
+            fontWeight: 600,
+            letterSpacing: '0.23em',
             textTransform: 'uppercase',
-            color: 'rgba(168,218,220,0.9)',
+            color: '#7dd3c0',
           }}>
             {service.eyebrow}
           </span>

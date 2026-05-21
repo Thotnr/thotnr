@@ -20,7 +20,7 @@ function AcceleratorDetail() {
         title={accelerator.title}
         tagline={accelerator.tagline}
         tags={accelerator.tags}
-        video={accelerator.video}
+        image={accelerator.image}
       />
       <S2Description accelerator={accelerator} />
       <SubscribeSection/>

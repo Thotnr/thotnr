@@ -1,12 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Activity, Landmark, ShieldCheck } from 'lucide-react'
-import home1 from '../../../assets/videos/home-1.mp4'
-import home2 from '../../../assets/videos/home-2.mp4'
-import home3 from '../../../assets/videos/home-3.mp4'
-
-const HERO_VIDEOS = [home1, home2, home3]
-const STORAGE_KEY = 'thotnr_hero_vid_idx'
+import heroVideo from '../../../assets/videos/home.mp4'
 
 const METRICS = [
   { icon: Activity,    value: '40%↑',   label: 'fast HCP decisions', industry: 'PHARMA & HEALTHCARE', slug: 'autonomous-field-intelligence-rexall'    },
@@ -14,15 +9,6 @@ const METRICS = [
   { icon: ShieldCheck, value: '18→44%', label: 'STP lift in claims',    industry: 'LIFE & INSURANCE',    slug: 'ai-powered-insurance-intelligence'       },
 ]
 
-function pickVideo() {
-  try {
-    const idx = parseInt(localStorage.getItem(STORAGE_KEY) ?? '0', 10)
-    localStorage.setItem(STORAGE_KEY, String((idx + 1) % HERO_VIDEOS.length))
-    return HERO_VIDEOS[idx]
-  } catch {
-    return HERO_VIDEOS[0]
-  }
-}
 
 function MetricCard({ icon: Icon, value, label, industry, slug }) {
   const [hov, setHov] = useState(false)
@@ -133,10 +119,8 @@ function MetricCard({ icon: Icon, value, label, industry, slug }) {
 }
 
 function Hero() {
-  const [videoSrc]   = useState(pickVideo)
   const [exploreHov, setExploreHov] = useState(false)
   const [accelHov,   setAccelHov]   = useState(false)
-  const [svcHov,     setSvcHov]     = useState(false)
 
   return (
     <section
@@ -230,12 +214,12 @@ function Hero() {
 
       {/* Background video */}
       <video
-        key={videoSrc}
         className="h-bg-video absolute inset-0 w-full h-full z-0"
-        style={{ filter: 'brightness(0.52) contrast(1.12)' }}
-        src={videoSrc}
+        style={{ filter: 'brightness(0.82) contrast(1.05)' }}
+        src={heroVideo}
         autoPlay muted loop playsInline
       />
+
 
       {/* Overlay 1 — left-to-right (matches TIA hero) */}
       <div style={{

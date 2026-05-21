@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import tiaVideo from '../../../assets/videos/ai-cover.mp4'
+import tiaVideo from '../../../assets/videos/tia-cover.mp4'
 
 const PILLS = [
   {
@@ -107,19 +107,17 @@ function S1Hero({ onAskTIA }) {
           src={tiaVideo}
         />
 
-        {/* Gradient overlays */}
-        <div style={{
-          position: 'absolute', inset: 0, zIndex: 2, pointerEvents: 'none',
-          background: 'linear-gradient(to right, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.88) 20%, rgba(0,0,0,0.72) 55%, rgba(0,0,0,0.45) 100%)',
-        }} />
-        <div style={{
-          position: 'absolute', inset: 0, zIndex: 2, pointerEvents: 'none',
-          background: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 72%, rgba(0,0,0,0.55) 100%)',
-        }} />
-        <div className="block lg:hidden" style={{
-          position: 'absolute', inset: 0, zIndex: 2, pointerEvents: 'none',
-          background: 'rgba(0,0,0,0.52)',
-        }} />
+        {/* Left-to-right dark overlay — content side fully dark, right opens up */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none',
+        background: 'linear-gradient(to right, rgba(0,0,0,0.53) 0%, rgba(0,0,0,0.75) 30%, rgba(0,0,0,0.65) 80%, rgba(0,0,0,0.40) 100%)',
+      }} />
+
+      {/* Bottom vignette */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none',
+        background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 38%)',
+      }} />
 
         {/* SVG mesh */}
         <svg

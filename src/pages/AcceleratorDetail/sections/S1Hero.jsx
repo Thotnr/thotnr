@@ -1,4 +1,4 @@
-function S1Hero({ label, title, tagline, tags, video }) {
+function S1Hero({ label, title, tagline, tags, image }) {
   return (
     <section
       className="relative w-full overflow-hidden"
@@ -40,14 +40,11 @@ function S1Hero({ label, title, tagline, tags, video }) {
         }
       `}</style>
 
-      <video
+      <img
+        src={image}
+        alt={title}
         className="absolute inset-0 w-full h-full object-cover z-0"
-        style={{ objectPosition: 'center center', filter: 'brightness(0.65) contrast(1.08)' }}
-        src={video}
-        autoPlay
-        muted
-        loop
-        playsInline
+        style={{ objectPosition: 'center center', filter: 'brightness(0.80) contrast(1.05)' }}
       />
 
       <div style={{
@@ -135,13 +132,17 @@ function S1Hero({ label, title, tagline, tags, video }) {
                 key={tag}
                 style={{
                   fontFamily: 'var(--font-mono)',
-                  fontSize: '11px',
-                  letterSpacing: '0.06em',
-                  padding: '5px 14px',
+                  fontSize: '11.5px',
+                  fontWeight: 600,
+                  letterSpacing: '0.10em',
+                  textTransform: 'uppercase',
+                  padding: '6px 16px',
                   borderRadius: '999px',
-                  border: '1px solid rgba(168,218,220,0.4)',
-                  color: 'var(--color-accent)',
-                  opacity: 0.85,
+                  background: 'rgba(168,218,220,0.12)',
+                  border: '1.5px solid rgba(168,218,220,0.55)',
+                  color: '#7dd3c0',
+                  backdropFilter: 'blur(8px)',
+                  boxShadow: '0 0 12px rgba(168,218,220,0.12)',
                 }}
               >
                 {tag}

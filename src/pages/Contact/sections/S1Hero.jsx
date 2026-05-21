@@ -1,4 +1,4 @@
-import contactBg from '../../../assets/images/contact-cover.jpg'
+import contactBg from '../../../assets/images/contact-cover.png'
 
 function S1Hero() {
   return (
