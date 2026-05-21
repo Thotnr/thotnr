@@ -1,4 +1,4 @@
-import coverImg from '../../../assets/images/clients/clients-cover.jpg'
+import coverImg from '../../../assets/images/our-clients.png'
 
 function S1Hero() {
   return (

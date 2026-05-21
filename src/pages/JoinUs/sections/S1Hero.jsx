@@ -1,4 +1,4 @@
-import heroBg from '../../../assets/images/life-at-thotnr-2.jpg'
+import heroBg from '../../../assets/images/join-us-cover.png'
 
 function S1Hero() {
   return (
@@ -27,7 +27,7 @@ function S1Hero() {
 
         <h1 className="text-display text-white mb-4 leading-tight">
           Build With{' '}
-          <span className="italic" style={{ color: 'var(--color-accent)' }}>
+          <span  style={{ color: '#7dd3c0' }}>
             Us
           </span>
         </h1>

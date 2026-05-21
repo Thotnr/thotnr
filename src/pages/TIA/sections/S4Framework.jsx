@@ -39,6 +39,15 @@ function S4Framework() {
         .fw4-running .fw4-header,
         .fw4-running .fw4-img { animation-play-state: running; }
 
+        @media (min-width: 1440px) {
+          .fw4-img {
+            max-width: 1408px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+          }
+        }
+
         @media (prefers-reduced-motion: reduce) {
           .fw4-header, .fw4-img {
             animation: none !important; opacity: 1 !important;
@@ -57,7 +66,7 @@ function S4Framework() {
         <div className="fw4-header px-5 md:px-10 lg:px-16 mb-8" style={{ flexShrink: 0 }}>
           <div className="max-w-7xl mx-auto">
             <p className="text-h4 text-[var(--color-highlight)] mb-2">
-              The Framework
+              The TIA Framework
             </p>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
               <h2
@@ -66,18 +75,18 @@ function S4Framework() {
               >
                 One picture. Three phases. Three capabilities.
               </h2>
-              {/* <p
-                className="text-body-sm"
+              
+            </div>
+            <p
+                className="text-body-sm mt-4"
                 style={{
-                  color: 'var(--color-text-tertiary)',
-                  maxWidth: '260px',
+                  color: 'var(--color-text-primary)',
+                  maxWidth: '660px',
                   lineHeight: 1.75,
                   flexShrink: 0,
                 }}
               >
-                Built on your data.<br />Measured by your growth.
-              </p> */}
-            </div>
+TIA connects how intelligence is shaped with where it creates value — from enterprise data reality to decisions, workflows, and measurable growth.              </p>
           </div>
         </div>
 

@@ -27,7 +27,7 @@ function S1Hero() {
 
         <h1 className="text-display text-white mb-4 leading-tight">
           Let's{' '}
-          <span className="italic" style={{ color: 'var(--color-accent)' }}>
+          <span style={{ color: '#7dd3c0' }}>
             Connect
           </span>
         </h1>

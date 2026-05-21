@@ -26,12 +26,12 @@ function S1Hero() {
 
         <h1 className="text-display text-white mb-4 leading-tight max-w-xl">
           We{' '}
-          <span className="italic" style={{ color: 'var(--color-accent)' }}>
+          <span  style={{ color: '#7dd3c0' }}>
             Think
           </span>
           ,<br />
           Therefore We{' '}
-          <span className="italic" style={{ color: 'var(--color-accent)' }}>
+          <span  style={{ color: '#7dd3c0' }}>
             Build
           </span>
         </h1>
@@ -41,7 +41,7 @@ function S1Hero() {
           fontSize: '17px',
           lineHeight: 1.6,
           fontWeight: 400,
-          color: '#e8eaed',
+          color: 'var(255, 255, 255, 0.95)',
           opacity: 0.85,
           maxWidth: 'min(540px, 100%)',
           marginBottom: '40px',
