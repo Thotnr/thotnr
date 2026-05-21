@@ -40,6 +40,9 @@ function S1Hero() {
             max-width: 520px;
           }
         }
+        @media (min-width: 1440px) {
+          .hero-content-pos { left: calc((100vw - 1280px) / 2 + 64px); }
+        }
       `}</style>
 
       <video

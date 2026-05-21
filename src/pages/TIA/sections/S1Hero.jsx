@@ -82,6 +82,10 @@ function S1Hero({ onAskTIA }) {
         }
         .s1-pill-btn:hover { transform: translateY(-1px); }
 
+        @media (min-width: 1440px) {
+          .s1-xl-pad { padding-left: calc((100vw - 1280px) / 2 + 64px) !important; }
+        }
+
         @media (prefers-reduced-motion: reduce) {
           .s1-eyebrow, .s1-tia, .s1-subtitle, .s1-tagline, .s1-pills,
           .s1-dyn-wrap, .s1-para, .s1-ctas, .s1-dynamic-content {
@@ -141,7 +145,7 @@ function S1Hero({ onAskTIA }) {
 
         {/* Content */}
         <div
-          className="relative"
+          className="relative s1-xl-pad"
           style={{
             zIndex: 10,
             paddingTop: 'clamp(120px, 14vw, 10%)',

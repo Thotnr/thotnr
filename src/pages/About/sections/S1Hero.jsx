@@ -3,6 +3,11 @@ import coverVideo from '../../../assets/videos/about-cover.mp4'
 function S1Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden">
+      <style>{`
+        @media (min-width: 1440px) {
+          .about-hero-xl { left: calc((100vw - 1280px) / 2 + 64px) !important; }
+        }
+      `}</style>
 
       {/* Background */}
       <video
@@ -17,7 +22,7 @@ function S1Hero() {
       
 
       {/* Content */}
-      <div className="absolute z-10 left-[10%] top-[60%] -translate-y-1/2">
+      <div className="absolute z-10 left-[10%] top-[60%] -translate-y-1/2 about-hero-xl">
 
         <h1 className="text-display text-white mb-4 leading-tight max-w-xl">
           We{' '}

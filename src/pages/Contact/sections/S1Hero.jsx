@@ -3,6 +3,11 @@ import contactBg from '../../../assets/images/contact-cover.png'
 function S1Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden">
+      <style>{`
+        @media (min-width: 1440px) {
+          .contact-hero-xl { left: calc((100vw - 1280px) / 2 + 64px) !important; }
+        }
+      `}</style>
 
       {/* Background */}
       <div
@@ -18,7 +23,7 @@ function S1Hero() {
       <div className="absolute inset-0 z-0 bg-black/60" />
 
       {/* Content */}
-      <div className="absolute z-10 left-[10%] top-[60%] -translate-y-1/2 max-w-2xl">
+      <div className="absolute z-10 left-[10%] top-[60%] -translate-y-1/2 max-w-2xl contact-hero-xl">
 
         <h1 className="text-display text-white mb-4 leading-tight">
           Let's{' '}

@@ -204,6 +204,10 @@ function Hero() {
           .h-cards     { margin-bottom: 16px !important; }
         }
 
+        @media (min-width: 1440px) {
+          .h-content { left: calc((100vw - 1280px) / 2 + 64px); }
+        }
+
         @media (prefers-reduced-motion: reduce) {
           .h-headline, .h-tia-block, .h-cards, .h-ctas {
             animation: none !important; opacity: 1 !important; filter: none !important;

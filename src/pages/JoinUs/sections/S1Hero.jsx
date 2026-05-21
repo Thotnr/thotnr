@@ -3,6 +3,11 @@ import heroBg from '../../../assets/images/life-at-thotnr-2.jpg'
 function S1Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden">
+      <style>{`
+        @media (min-width: 1440px) {
+          .joinus-hero-xl { left: calc((100vw - 1280px) / 2 + 64px) !important; }
+        }
+      `}</style>
 
       {/* Background */}
       <div
@@ -18,7 +23,7 @@ function S1Hero() {
       <div className="absolute inset-0 z-0 bg-black/65" />
 
       {/* Content */}
-      <div className="absolute z-10 left-[10%] top-[60%] -translate-y-1/2 max-w-2xl">
+      <div className="absolute z-10 left-[10%] top-[60%] -translate-y-1/2 max-w-2xl joinus-hero-xl">
 
         <h1 className="text-display text-white mb-4 leading-tight">
           Build With{' '}

@@ -40,6 +40,9 @@ function S1Hero() {
             max-width: 540px;
           }
         }
+        @media (min-width: 1440px) {
+          .clients-hero-pos { left: calc((100vw - 1280px) / 2 + 64px); }
+        }
       `}</style>
 
       {/* Cover image */}

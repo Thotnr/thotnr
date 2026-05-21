@@ -11,6 +11,9 @@ function S1Hero() {
         .prod-hero-content {
           animation: prodHeroIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
         }
+        @media (min-width: 1440px) {
+          .prod-hero-content { left: calc((100vw - 1280px) / 2 + 64px) !important; }
+        }
       `}</style>
 
       {/* Background video */}
