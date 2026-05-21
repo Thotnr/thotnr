@@ -13,6 +13,7 @@ import nykaa         from '../../../assets/images/clients/nykaa.png'
 import bajajAuto     from '../../../assets/images/clients/bajaj-auto.png'
 import ukg           from '../../../assets/images/clients/ukg.svg'
 import obasa         from '../../../assets/images/clients/obasa.png'
+import lexus          from '../../../assets/images/clients/lexus-removebg-preview.png'
 
 const featured = [
   // Row 1
@@ -27,9 +28,10 @@ const featured = [
   { id: 8,  name: 'Bajaj Auto',         logo: bajajAuto,      logoH: 80, logoW: 130  },
   // Row 3
   { id: 9,  name: 'UKG',                logo: ukg,            logoH: 70, logoW: 100  },
-  { id: 10, name: 'Obasa',              logo: obasa,          logoH: 90, logoW: 130  },
-  { id: 11, name: 'Tata International', logo: tata,           logoH: 90, logoW: 130  },
-  { id: 12, name: 'Nykaa',              logo: nykaa,          logoH: 68, logoW: 110  },
+  { id: 10, name: 'Tata International', logo: tata,           logoH: 90, logoW: 130  },
+  { id: 11, name: 'Nykaa',              logo: nykaa,          logoH: 68, logoW: 110  },
+  { id: 12, name: 'Lexus',          logo: lexus,          logoH: 98,  logoW: 160 },
+  
 ]
 
 const stats = [

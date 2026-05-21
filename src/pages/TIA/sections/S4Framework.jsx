@@ -60,7 +60,7 @@ function S4Framework() {
         id="tia-framework"
         ref={sectionRef}
         className={`bg-[var(--color-primary)] ${inView ? 'fw4-running' : 'fw4-paused'}`}
-        style={{ height: '100vh', display: 'flex', flexDirection: 'column', paddingTop: '64px', paddingBottom: '40px' }}
+        style={{  display: 'flex', flexDirection: 'column', paddingTop: '64px', paddingBottom: '40px' }}
       >
         {/* Header */}
         <div className="fw4-header px-5 md:px-10 lg:px-16 mb-8" style={{ flexShrink: 0 }}>
@@ -93,17 +93,15 @@ TIA connects how intelligence is shaped with where it creates value — from ent
         {/* Image — fills remaining viewport height, full content visible */}
         <div
           className="fw4-img px-5 md:px-10 lg:px-16"
-          style={{ flex: 1, minHeight: 0, lineHeight: 0 }}
+          style={{ flex: 1, minHeight: 0, lineHeight: 0, overflow: 'hidden' }}
         >
           <img
             src={frameworkImg}
             alt="TIA Framework Diagram"
             style={{
               width: '100%',
-              height: '100%',
-              display: 'block',
-              objectFit: 'contain',
-              objectPosition: 'center top',
+              height: 'auto',
+              display: 'contain',
               borderRadius: '16px',
             }}
           />
