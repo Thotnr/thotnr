@@ -108,7 +108,7 @@ function S1Hero() {
           marginBottom: '24px',
         }}>
           Enterprise <br/>
-          <em style={{ fontStyle: 'italic', color: 'var(--color-accent)', opacity: 0.65 }}>Accelerators</em>
+          <em style={{ color: '#7dd3c0' }}>Accelerators</em>
         
         </h1>
 
@@ -124,8 +124,7 @@ function S1Hero() {
           fontSize: '17px',
           lineHeight: 1.6,
           fontWeight: 400,
-          color: '#e8eaed',
-          opacity: 0.85,
+          color: 'rgba(255,255,255,0.99)',
           maxWidth: 'min(540px, 100%)',
           marginBottom: '40px',
           letterSpacing: '-0.005em',

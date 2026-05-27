@@ -84,15 +84,19 @@ function S1Hero() {
       <div className="clients-hero-content clients-hero-pos">
 
         {/* Eyebrow */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '28px' }}>
-          <div style={{ width: '22px', height: '1px', background: 'var(--color-accent)', opacity: 0.55 }} />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '20px' }}>
+          <div className="hero-accent-line" style={{
+            width: 'clamp(28px, 4vw, 40px)',
+            height: '1px',
+            background: 'linear-gradient(90deg, transparent 0%, #7dd3c0 100%)',
+          }} />
           <span style={{
             fontFamily: 'var(--font-mono)',
-            fontSize: '11px',
-            letterSpacing: '0.30em',
+            fontSize: '13px',
+            fontWeight: 600,
+            letterSpacing: '0.23em',
             textTransform: 'uppercase',
-            color: 'var(--color-accent)',
-            opacity: 0.80,
+            color: '#7dd3c0',
           }}>
             Our Network
           </span>
@@ -101,16 +105,16 @@ function S1Hero() {
         {/* Headline */}
         <h1 style={{
           fontFamily: 'var(--font-accent)',
-          fontSize: 'clamp(36px, 8.5vw, 92px)',
+          fontSize: 'clamp(34px, 7.5vw, 82px)',
           fontWeight: 600,
           lineHeight: 1.06,
-          letterSpacing: '-0.032em',
+          letterSpacing: '-0.028em',
           color: 'var(--color-text-white)',
-          marginBottom: '28px',
+          marginBottom: '24px',
         }}>
           Trusted by Leading<br />
           {' '}
-          <em style={{ fontStyle: 'italic', color: 'var(--color-accent)', opacity: 0.65 }}>
+          <em style={{ color: '#7dd3c0' }}>
             Industry
           </em>
         </h1>
@@ -130,8 +134,7 @@ function S1Hero() {
           fontSize: '17px',
           lineHeight: 1.6,
           fontWeight: 400,
-          color: '#e8eaed',
-          opacity: 0.85,
+          color: 'rgba(255,255,255,0.99)',
           maxWidth: 'min(540px, 100%)',
           marginBottom: '40px',
           letterSpacing: '-0.005em',

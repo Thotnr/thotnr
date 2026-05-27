@@ -313,7 +313,7 @@ function Hero() {
                 fontSize: 'clamp(12.5px, 1vw, 14.5px)',
                 lineHeight: 1.78,
                 maxWidth: '440px',
-                color: 'rgba(255,255,255,0.85)',
+                color: 'rgba(255,255,255,0.99)',
                 margin: 0,
                 paddingTop: '2px',
               }}>

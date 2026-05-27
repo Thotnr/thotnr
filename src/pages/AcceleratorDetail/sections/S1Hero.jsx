@@ -70,7 +70,7 @@ function S1Hero({ label, title, tagline, tags, image }) {
       <div className="acc-detail-hero-content acc-detail-hero-pos">
 
         {/* Label */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '36px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '24px' }}>
           <div className="hero-accent-line" style={{
             width: 'clamp(28px, 4vw, 40px)',
             height: '1px',
@@ -78,7 +78,7 @@ function S1Hero({ label, title, tagline, tags, image }) {
           }} />
           <span style={{
             fontFamily: 'var(--font-mono)',
-            fontSize: '15.5px',
+            fontSize: '13.5px',
             fontWeight: 600,
             letterSpacing: '0.34em',
             textTransform: 'uppercase',
@@ -114,8 +114,7 @@ function S1Hero({ label, title, tagline, tags, image }) {
           fontSize: '17px',
           lineHeight: 1.6,
           fontWeight: 400,
-          color: '#e8eaed',
-          opacity: 0.85,
+          color: 'rgba(255,255,255,0.99)',
           maxWidth: 'min(540px, 100%)',
           marginBottom: '40px',
           letterSpacing: '-0.005em',

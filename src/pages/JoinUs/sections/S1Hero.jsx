@@ -19,8 +19,18 @@ function S1Hero() {
         }}
       />
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 z-0 bg-black/65" />
+      {/* Left-to-right dark overlay — content side fully dark, right opens up */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none',
+        background: 'linear-gradient(to right, rgba(0,0,0,0.73) 0%, rgba(0,0,0,0.78) 35%, rgba(0,0,0,0.65) 80%, rgba(0,0,0,0.40) 100%)',
+      }} />
+
+      {/* Bottom vignette */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none',
+        background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 38%)',
+      }} />
+
 
       {/* Content */}
       <div className="absolute z-10 left-[10%] top-[60%] -translate-y-1/2 max-w-2xl joinus-hero-xl">
@@ -37,8 +47,7 @@ function S1Hero() {
           fontSize: '17px',
           lineHeight: 1.6,
           fontWeight: 400,
-          color: '#e8eaed',
-          opacity: 0.85,
+          color: 'rgba(255,255,255,0.99)',
           maxWidth: 'min(540px, 100%)',
           marginBottom: '40px',
           letterSpacing: '-0.005em',
