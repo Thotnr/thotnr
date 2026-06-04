@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Recurse \"C:\\\\Users\\\\pt672\\\\OneDrive\\\\Desktop\\\\thotnr\\\\src\\\\assets\" | Where-Object { -not $_.PSIsContainer } | ForEach-Object { $_.FullName.Replace\\(\"C:\\\\Users\\\\pt672\\\\OneDrive\\\\Desktop\\\\thotnr\\\\src\\\\assets\\\\\", \"\"\\) })"
+    ]
+  }
+}

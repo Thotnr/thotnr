@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 
+const DIFY_API_KEY = import.meta.env.VITE_DIFY_API_KEY
+const DIFY_API_URL = import.meta.env.VITE_DIFY_API_URL
+
 const PROMPTS = [
   { emoji: '📊', label: 'Assess my AI readiness' },
   { emoji: '🎯', label: 'Find AI opportunities in my industry' },
@@ -7,27 +10,32 @@ const PROMPTS = [
   { emoji: '💼', label: 'Talk to the Thotnr team' },
 ]
 
-const FAKE_RESPONSES = {
-  'Assess my AI readiness': 'To give you a meaningful read, I\'ll map your data infrastructure, governance posture, and decision-making workflows. The TIA Sense phase is designed exactly for this. Want me to outline what that looks like for your sector?',
-  'Find AI opportunities in my industry': 'Based on TIA engagements across pharma, financial services, and insurance, the highest-ROI AI entry points tend to be in decision augmentation, not automation. What industry are you operating in?',
-  'Map a TIA engagement for my business': 'A full Sense → Shape → Scale sequence typically runs 12–16 weeks. Sense starts in week one — with your data, not a generic template. Shall I outline what a Sense engagement looks like?',
-  'Talk to the Thotnr team': 'Connecting you to the Thotnr team. You can reach them at the contact page, or leave your details in the waitlist form and they\'ll prioritize your request.',
-}
-
 const ROLES      = ['CIO', 'CDO', 'CTO', 'CEO', 'Head of AI/Data', 'Other']
 const INDUSTRIES = ['Pharma', 'Finance', 'Insurance', 'Other']
 
-function getFakeResponse(text) {
-  const t = text.toLowerCase()
-  if (t.includes('ready') || t.includes('assess') || t.includes('data') || t.includes('readiness'))
-    return FAKE_RESPONSES['Assess my AI readiness']
-  if (t.includes('industry') || t.includes('sector') || t.includes('opportunit') || t.includes('pharma') || t.includes('finance') || t.includes('insurance'))
-    return FAKE_RESPONSES['Find AI opportunities in my industry']
-  if (t.includes('engag') || t.includes('timeline') || t.includes('how') || t.includes('process') || t.includes('weeks') || t.includes('start'))
-    return FAKE_RESPONSES['Map a TIA engagement for my business']
-  if (t.includes('contact') || t.includes('team') || t.includes('talk') || t.includes('meet') || t.includes('connect'))
-    return FAKE_RESPONSES['Talk to the Thotnr team']
-  return "That's a thoughtful question. The way TIA approaches this is through structured discovery — mapping your data, decisions, and workflows before recommending a path. Would you like to explore how a Sense phase could surface the right entry points for your business?"
+async function callDify(query, conversationId) {
+  const body = {
+    inputs: {},
+    query,
+    response_mode: 'blocking',
+    user: 'tia-web-user',
+  }
+  if (conversationId) body.conversation_id = conversationId
+
+  const res = await fetch(`${DIFY_API_URL}/chat-messages`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${DIFY_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  })
+  if (!res.ok) {
+    const errText = await res.text()
+    throw new Error(`Dify ${res.status}: ${errText}`)
+  }
+  const data = await res.json()
+  return { answer: data.answer, conversationId: data.conversation_id }
 }
 
 function useInView(threshold = 0.08) {
@@ -64,39 +72,129 @@ function TIAAvatar({ size = 30 }) {
   )
 }
 
+function renderInline(str, keyPrefix) {
+  const regex = /\*\*(.+?)\*\*|\*(.+?)\*|`(.+?)`/g
+  const parts = []
+  let last = 0, i = 0, m
+  while ((m = regex.exec(str)) !== null) {
+    if (m.index > last) parts.push(str.slice(last, m.index))
+    if (m[1] != null) parts.push(<strong key={`${keyPrefix}-b${i}`} style={{ fontWeight: 700, color: 'rgba(255,255,255,1)' }}>{m[1]}</strong>)
+    else if (m[2] != null) parts.push(<em key={`${keyPrefix}-i${i}`}>{m[2]}</em>)
+    else if (m[3] != null) parts.push(<code key={`${keyPrefix}-c${i}`} className="ask9-md-code">{m[3]}</code>)
+    last = m.index + m[0].length
+    i++
+  }
+  if (last < str.length) parts.push(str.slice(last))
+  return parts
+}
+
+function MarkdownMessage({ text }) {
+  const base = { fontFamily: 'var(--font-body)', fontSize: '14px', color: 'rgba(255,255,255,0.90)', margin: 0, lineHeight: 1.7 }
+  const lines = text.split('\n')
+  const segments = []
+  let i = 0
+
+  while (i < lines.length) {
+    const line = lines[i]
+    if (line.trim() === '') { i++; continue }
+
+    if (/^#{1,3} /.test(line)) {
+      const level = line.match(/^(#+)/)[1].length
+      segments.push({ type: 'heading', level, content: line.replace(/^#+\s/, ''), key: `h${i}` })
+      i++; continue
+    }
+
+    if (/^[-*+] /.test(line)) {
+      const items = []
+      while (i < lines.length && /^[-*+] /.test(lines[i])) { items.push(lines[i].replace(/^[-*+] /, '')); i++ }
+      segments.push({ type: 'ul', items, key: `ul${i}` }); continue
+    }
+
+    if (/^\d+\. /.test(line)) {
+      const items = []
+      while (i < lines.length && /^\d+\. /.test(lines[i])) { items.push(lines[i].replace(/^\d+\. /, '')); i++ }
+      segments.push({ type: 'ol', items, key: `ol${i}` }); continue
+    }
+
+    const paraLines = []
+    while (i < lines.length && lines[i].trim() !== '' && !/^[-*+] /.test(lines[i]) && !/^\d+\. /.test(lines[i]) && !/^#{1,3} /.test(lines[i])) {
+      paraLines.push(lines[i]); i++
+    }
+    if (paraLines.length > 0) segments.push({ type: 'para', lines: paraLines, key: `p${i}` })
+  }
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      {segments.map(seg => {
+        if (seg.type === 'heading') {
+          const sz = { 1: '17px', 2: '16px', 3: '15px' }
+          return <p key={seg.key} style={{ ...base, fontFamily: 'var(--font-heading)', fontWeight: 600, fontSize: sz[seg.level] || '15px', color: 'rgba(255,255,255,1)' }}>{renderInline(seg.content, seg.key)}</p>
+        }
+        if (seg.type === 'ul') {
+          return (
+            <ul key={seg.key} className="ask9-md-ul">
+              {seg.items.map((item, j) => <li key={j} style={base}>{renderInline(item, `${seg.key}-${j}`)}</li>)}
+            </ul>
+          )
+        }
+        if (seg.type === 'ol') {
+          return (
+            <ol key={seg.key} className="ask9-md-ol">
+              {seg.items.map((item, j) => <li key={j} style={base}>{renderInline(item, `${seg.key}-${j}`)}</li>)}
+            </ol>
+          )
+        }
+        return (
+          <p key={seg.key} style={base}>
+            {seg.lines.map((l, j) => (
+              <span key={j}>{renderInline(l, `${seg.key}-${j}`)}{j < seg.lines.length - 1 && <br />}</span>
+            ))}
+          </p>
+        )
+      })}
+    </div>
+  )
+}
+
 /* Dark-themed chat widget — works on both light section and dark modal overlay */
 export function AskTIAChat({ compact = false }) {
   const [messages,  setMessages]  = useState([])
   const [thinking,  setThinking]  = useState(false)
   const [userInput, setUserInput] = useState('')
   const [sendHov,   setSendHov]   = useState(false)
-  const scrollAreaRef = useRef(null)
+  const scrollAreaRef   = useRef(null)
+  const conversationId  = useRef('')
 
   useEffect(() => {
     if (scrollAreaRef.current)
       scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight
   }, [messages, thinking])
 
-  const handlePrompt = (p) => {
+  const sendMessage = async (query, displayText) => {
     setUserInput('')
-    setMessages(m => [...m, { role: 'user', text: `${p.emoji} ${p.label}` }])
+    setMessages(m => [...m, { role: 'user', text: displayText }])
     setThinking(true)
-    setTimeout(() => {
+    try {
+      const { answer, conversationId: cid } = await callDify(query, conversationId.current)
+      conversationId.current = cid
+      setMessages(m => [...m, { role: 'tia', text: answer }])
+    } catch (err) {
+      console.error('[AskTIA] Dify API error:', err.message)
+      setMessages(m => [...m, { role: 'tia', text: "I'm having trouble connecting right now. Please try again in a moment." }])
+    } finally {
       setThinking(false)
-      setMessages(m => [...m, { role: 'tia', text: FAKE_RESPONSES[p.label] || '...' }])
-    }, 1600)
+    }
+  }
+
+  const handlePrompt = (p) => {
+    if (thinking) return
+    sendMessage(p.label, `${p.emoji} ${p.label}`)
   }
 
   const handleSend = () => {
     const text = userInput.trim()
     if (!text || thinking) return
-    setUserInput('')
-    setMessages(m => [...m, { role: 'user', text }])
-    setThinking(true)
-    setTimeout(() => {
-      setThinking(false)
-      setMessages(m => [...m, { role: 'tia', text: getFakeResponse(text) }])
-    }, 1400 + Math.random() * 600)
+    sendMessage(text, text)
   }
 
   const canSend = userInput.trim() && !thinking
@@ -171,13 +269,10 @@ export function AskTIAChat({ compact = false }) {
               border: msg.role === 'user' ? '1px solid rgba(168,218,220,0.35)' : '1px solid rgba(255,255,255,0.1)',
               maxWidth: '82%',
             }}>
-              <p style={{
-                fontFamily: 'var(--font-body)', fontSize: '14px',
-                color: 'rgba(255,255,255,0.90)',
-                margin: 0, lineHeight: 1.7,
-              }}>
-                {msg.text}
-              </p>
+              {msg.role === 'tia'
+                ? <MarkdownMessage text={msg.text} />
+                : <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'rgba(255,255,255,0.90)', margin: 0, lineHeight: 1.7 }}>{msg.text}</p>
+              }
             </div>
           </div>
         ))}
@@ -504,6 +599,11 @@ function S9AskTIA() {
         .ask9-input-light::placeholder { color: rgba(11,15,25,0.36); }
         .ask9-select-light option      { background: #ffffff; color: #0B0F19; }
         .ask9-chat-input::placeholder  { color: rgba(255,255,255,0.38); }
+
+        .ask9-md-ul, .ask9-md-ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }
+        .ask9-md-ul li::marker   { color: rgba(168,218,220,0.9); }
+        .ask9-md-ol li::marker   { color: rgba(168,218,220,0.9); font-family: var(--font-mono); font-size: 12px; }
+        .ask9-md-code            { font-family: var(--font-mono); font-size: 12px; background: rgba(168,218,220,0.14); padding: 2px 6px; border-radius: 4px; color: rgba(168,218,220,1); }
 
         @keyframes ask9BetaPulse {
           0%, 100% { box-shadow: 0 0 10px rgba(230,57,70,0.28), inset 0 1px 0 rgba(255,150,155,0.14); border-color: rgba(230,57,70,0.40); }
