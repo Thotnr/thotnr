@@ -1,28 +1,31 @@
+import { urlFor } from '../../../lib/sanityClient'
+
 function S1Hero({ data }) {
+  const coverImageUrl = data.coverImage
+    ? urlFor(data.coverImage).width(1800).url()
+    : ''
+
   return (
     <section className="relative w-full" style={{ height: '100vh' }}>
+      {coverImageUrl && (
+        <img
+          src={coverImageUrl}
+          alt={data.coverTagline}
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          style={{ filter: 'brightness(0.80) contrast(1.05)' }}
+        />
+      )}
 
-      {/* Image background — always */}
-      <img
-        src={data.coverImg}
-        alt={data.coverTagline}
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        style={{ filter: 'brightness(0.80) contrast(1.05)' }}
-      />
-
-      {/* Left-to-right dark overlay — content side fully dark, right opens up */}
       <div style={{
         position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none',
         background: 'linear-gradient(to right, rgba(0,0,0,0.73) 0%, rgba(0,0,0,0.78) 35%, rgba(0,0,0,0.65) 80%, rgba(0,0,0,0.40) 100%)',
       }} />
 
-      {/* Bottom vignette */}
       <div style={{
         position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none',
         background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 38%)',
       }} />
 
-      {/* Content */}
       <div
         className="absolute flex flex-col gap-5 z-10"
         style={{ top: '60%', left: '10%', right: '10%', transform: 'translateY(-50%)' }}
@@ -39,6 +42,7 @@ function S1Hero({ data }) {
         }}>
           {data.coverTagline}
         </h1>
+
         <p style={{
           fontFamily: 'var(--font-body)',
           fontSize: '17px',
@@ -54,7 +58,6 @@ function S1Hero({ data }) {
           {data.coverSubheadline}
         </p>
       </div>
-
     </section>
   )
 }

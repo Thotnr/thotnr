@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { caseStudies } from '../../../data/caseStudies'
+import { sanityClient, urlFor } from '../../../lib/sanityClient'
+import { caseStudiesQuery } from '../../../lib/sanityQueries'
 
 const INITIAL_COUNT = 7
 
@@ -12,17 +13,17 @@ function CaseBlock({ industry, headline, desc, image, slug, index }) {
       className={`flex flex-col ${isImageLeft ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 md:gap-16 py-10`}
       style={{ borderBottom: '1px solid rgba(108,117,125,0.12)' }}
     >
-      {/* Image */}
       <div className="w-full h-full md:w-[55%] flex-shrink-0">
-        <img
-          src={image}
-          alt={headline}
-          className="w-full rounded-xl object-cover"
-          style={{ aspectRatio: '16/10' }}
-        />
+        {image && (
+          <img
+            src={image}
+            alt={headline}
+            className="w-full rounded-xl object-cover"
+            style={{ aspectRatio: '16/10' }}
+          />
+        )}
       </div>
 
-      {/* Content */}
       <div className="w-full md:w-[45%] flex flex-col justify-center gap-4">
         <p className="text-h4" style={{ color: 'var(--color-highlight)' }}>
           {industry}
@@ -51,16 +52,29 @@ function CaseBlock({ industry, headline, desc, image, slug, index }) {
   )
 }
 
-
 function S2CaseStudies() {
+  const [caseStudies, setCaseStudies] = useState([])
   const [showAll, setShowAll] = useState(false)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    sanityClient
+      .fetch(caseStudiesQuery)
+      .then((data) => {
+        setCaseStudies(data || [])
+        setLoading(false)
+      })
+      .catch((error) => {
+        console.error('Failed to fetch case studies:', error)
+        setLoading(false)
+      })
+  }, [])
 
   const visible = showAll ? caseStudies : caseStudies.slice(0, INITIAL_COUNT)
 
   return (
     <section className="px-6 md:px-10 lg:px-16 bg-[var(--color-primary)]">
       <div className="max-w-7xl mx-auto">
-
         <div className="pt-16">
           <h2 className="text-h1" style={{ color: 'var(--color-text-primary)' }}>
             Case Studies
@@ -70,19 +84,24 @@ function S2CaseStudies() {
           </p>
         </div>
 
-        {visible.map((c, i) => (
+        {loading && (
+          <p className="py-10" style={{ color: 'var(--color-text-secondary)' }}>
+            Loading case studies...
+          </p>
+        )}
+
+        {!loading && visible.map((c, i) => (
           <CaseBlock
-            key={c.slug}
-            industry={c.meta.sector}
+            key={c._id}
+            industry={c.meta?.sector}
             headline={c.coverTagline}
-            desc={c.challenge.description}
-            image={c.coverImg}
-            slug={c.slug}
+            desc={c.challenge?.description}
+            image={c.coverImage ? urlFor(c.coverImage).width(1200).height(750).url() : ''}
+            slug={c.slug?.current}
             index={i}
           />
         ))}
 
-        {/* Load More */}
         {!showAll && caseStudies.length > INITIAL_COUNT && (
           <div className="flex justify-center py-12">
             <button
@@ -98,7 +117,6 @@ function S2CaseStudies() {
         )}
 
         <div className="pb-16" />
-
       </div>
     </section>
   )
