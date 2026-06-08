@@ -1,0 +1,90 @@
+.insight-html {
+
+  background:
+    var(--color-primary);
+
+  color:
+    var(--color-text-primary);
+
+  overflow:
+    hidden;
+
+}
+
+.insight-html * {
+
+  box-sizing:
+    border-box;
+
+}
+
+.insight-html img {
+
+  display:
+    block;
+
+  max-width:
+    100%;
+
+}
+
+.insight-html section {
+
+  position:
+    relative;
+
+}
+
+.insight-html h1,
+.insight-html h2,
+.insight-html h3 {
+
+  font-family:
+    var(--font-heading);
+
+}
+
+.insight-html p {
+
+  font-family:
+    var(--font-body);
+
+}
+
+.insight-html blockquote {
+
+  font-family:
+    var(--font-accent);
+
+}
+
+.insight-html a {
+
+  text-decoration:
+    none;
+
+}
+
+.insight-html ul {
+
+  padding-left:
+    24px;
+
+}
+
+.insight-html li {
+
+  margin-bottom:
+    12px;
+
+}
+
+.insight-html ::selection {
+
+  background:
+    var(--color-highlight);
+
+  color:
+    white;
+
+}
